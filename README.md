@@ -1,81 +1,84 @@
-# Turborepo starter
 
-This is an official starter Turborepo.
+# Euterpe Repository
 
-## Using this example
+This repository houses the different components of the Euterpe project, managed as a monorepo using Turborepo.
 
-Run the following command:
+## Structure
+
+The monorepo is organized into several repositories under the `apps` and `packages`:
+
+- `apps/docs`: an example [Next.js](https://nextjs.org/) app for reference
+- `apps/web`: The Euterpe frontend built with [Next.js](https://nextjs.org/).
+- `apps/api`: The Euterpe api built with [Fastify](https://fastify.dev/).
+- `apps/hardhat`: Blockchain and Solidity development for the Euterpe project using [Hardhat](https://hardhat.org/).
+- `packages/ui`: A stub React component library shared by the frontend and mobile applications.
+- `packages/eslint-config-custom`: Custom `eslint` configurations for the project.
+- `packages/tsconfig`: Shared TypeScript configurations used across the monorepo.
+
+All code within this monorepo is written in [TypeScript](https://www.typescriptlang.org/).
+
+## Setup and Development
+
+1. Clone the project:
+```bash
+git clone https://github.com/Tolu1/euterpe.git
+```
+
+2. Navigate to the root of the monorepo:
 
 ```sh
-npx create-turbo@latest
+cd euterpe
 ```
 
-## What's inside?
+3. Install dependencies:
 
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+```sh
+npm install
 ```
 
-### Develop
+4. To work on a specific app, navigate to its directory under `apps` and start the app. For example, for the mobile app:
 
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
+```sh
+cd apps/native
+npm run dev
 ```
 
-### Remote Caching
+Note: if you wish to run all apps in the repo, go to the root directory and run:
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
+```sh
+npm run dev
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## Contributing
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+We follow a standard Git workflow for contributions:
 
+1. Ensure you are on the `develop` branch:
+
+```sh
+git checkout develop
 ```
-npx turbo link
+
+2. Create a new branch for your feature or bugfix:
+
+```sh
+git checkout -b feature/my-new-feature
 ```
+
+3. Make your changes, commit them, and push your branch to the remote repository:
+
+```sh
+git add .
+git commit -m "Add my new feature"
+git push origin feature/my-new-feature
+```
+
+4. Open a pull request from your branch to the `develop` branch for review.
 
 ## Useful Links
 
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+- [Turborepo Documentation](https://turbo.build/)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [React Native Documentation](https://reactnative.dev/docs)
+- [Hardhat Documentation](https://hardhat.org/getting-started/)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
