@@ -13,11 +13,11 @@ import { HiOutlineRocketLaunch } from "react-icons/hi2";
 
 function Hero() {
   return (
-    <div className="container flex flex-col-reverse justify-center gap-10 lg:gap-12 md:flex-row md:px-10 lg:px-24">
+    <div className="container flex flex-col-reverse justify-center gap-10 md:flex-row md:px-10 lg:gap-12 lg:px-24">
       <div className="">
-        <div className="w-full h-full flex flex-col gap-6 max-w-md">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold">
-            <span className="text-primary underline underline-offset-4 leading-snug">
+        <div className="flex h-full w-full max-w-md flex-col gap-6">
+          <h1 className="text-3xl font-semibold md:text-4xl lg:text-5xl">
+            <span className="leading-snug text-primary underline underline-offset-4">
               Invest
             </span>{" "}
             In Your Favourite{" "}
@@ -25,7 +25,7 @@ function Hero() {
               Artists:
             </span>{" "}
             Earn{" "}
-            <span className="text-primary underline underline-offset-4 leading-snug">
+            <span className="leading-snug text-primary underline underline-offset-4">
               Royalties
             </span>{" "}
             And More.
@@ -34,9 +34,9 @@ function Hero() {
             Euterpe connects you with rising musicians, allowing you to support
             their journey and share in their achievements.
           </p>
-          <Button className="w-full md:w-fit gap-4" asChild>
+          <Button className="w-full gap-4 md:w-fit" asChild>
             <Link href="/app" target="_blank" rel="noopener noreferrer">
-              <HiOutlineRocketLaunch className="w-4 h-4" />
+              <HiOutlineRocketLaunch className="h-4 w-4" />
               Launch App
             </Link>
           </Button>
@@ -60,16 +60,16 @@ function Hero() {
         </div>
       </div>
       <div className="">
-        <Card className="w-full bg-black/15 rounded-3xl overflow-hidden md:w-[275px] lg:w-[420px]">
+        <Card className="w-full overflow-hidden rounded-3xl bg-black/15 md:w-[275px] lg:w-[420px]">
           <CardContent className="h-80 lg:h-96">
             <HeroLottie />
           </CardContent>
           <CardHeader className="border-t-8 border-background p-4">
-            <CardTitle className="relative h-6 inline-flex font-federant -ml-[18px] overflow-hidden">
+            <CardTitle className="relative -ml-[18px] inline-flex h-6 overflow-hidden font-federant">
               <div className="relative bottom-1/2">
                 <CoinLottie />
               </div>
-              <div className="flex items-center z-10 -ml-2">$0.03</div>
+              <div className="z-10 -ml-2 flex items-center">$0.03</div>
             </CardTitle>
             <CardDescription>Euterpe (ETP)</CardDescription>
           </CardHeader>

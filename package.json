@@ -20,5 +20,9 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@lottiefiles/react-lottie-player": "^3.5.3",
+    "@radix-ui/react-avatar": "^1.0.4"
+  }
 }
