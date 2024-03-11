@@ -12,7 +12,7 @@ export default function page() {
         loop
         autoplay
       />
-      <div className="m-auto flex w-[90%] flex-col items-center justify-center md:h-screen md:w-[80%] lg:m-0 lg:w-[70%] ">
+      <div className="m-auto flex w-[90%] flex-col items-center justify-center md:h-screen md:w-[80%] lg:m-0 lg:w-[60%] ">
         <header className="mb-0 mt-60 flex flex-wrap justify-center gap-2 lg:mt-16">
           <img className=" size-10" src="./logo/logo.png" alt="logo" />
           <h2 className="mb-0 text-center text-4xl font-bold text-white">
