@@ -1,15 +1,15 @@
-// "use client";
+"use client";
 // import { useState } from "react";
 
-import Intro from "@/components/Welcome/intro";
-export default function Page() {
-  return (
-    <>
-      {/* <Intro /> */}
-      <h1>Hello World</h1>
-    </>
-  );
-}
+// import Intro from "@/components/Welcome/intro";
+// export default function Page() {
+//   return (
+//     <>
+//       {/* <Intro /> */}
+//       <h1>Hello World</h1>
+//     </>
+//   );
+// }
 
 //
 // export default function page() {
@@ -115,3 +115,46 @@ export default function Page() {
 // }
 
 // New onboarding
+
+import Section1 from "@/components/onboarding/Section1";
+import Section2 from "@/components/onboarding/Section2";
+import React, { useState } from "react";
+// import Section1 from "./Section1";
+// import Section2 from "./Section2";
+// import Section3 and Section4 similarly
+
+const OnboardingPage: React.FC = () => {
+  const [currentSection, setCurrentSection] = useState<number>(1);
+
+  const handleNext = () => {
+    setCurrentSection((prevSection) => prevSection + 1);
+  };
+
+  const handleBack = () => {
+    setCurrentSection((prevSection) => prevSection - 1);
+  };
+
+  let sectionComponent: JSX.Element;
+  switch (currentSection) {
+    case 1:
+      sectionComponent = <Section1 onNext={handleNext} />;
+      break;
+    case 2:
+      sectionComponent = <Section2 onBack={handleBack} onNext={handleNext} />;
+      break;
+    // Render Section3 and Section4 similarly
+    default:
+      sectionComponent = <div>Invalid Section</div>;
+  }
+
+  return (
+    <div className="flex h-screen w-screen items-center justify-center">
+      {/* <div className="relative flex w-[40rem] flex-col justify-center overflow-hidden rounded-lg border-2 border-blue-700 py-32 shadow-lg"> */}
+      {/* <div className="flex flex-col items-center">{sectionComponent}</div> */}
+      {sectionComponent}
+    </div>
+    // </div>
+  );
+};
+
+export default OnboardingPage;
