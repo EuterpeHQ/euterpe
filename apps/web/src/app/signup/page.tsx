@@ -6,14 +6,14 @@ import Link from "next/link";
 import { CardContent } from "@/components/ui/card";
 export default function page() {
   return (
-    <div className="m-auto flex max-h-screen max-w-screen-2xl">
+    <div className=" m-auto flex max-h-screen max-w-screen-2xl gap-[4.5rem]">
       <Lottie
-        className=" hidden h-screen w-[40%] bg-black/15 lg:block"
+        className="hidden h-screen w-[40%] bg-black/15 lg:block"
         animationData={BoyLottie}
         loop
         autoplay
       />
-      <div className="m-auto flex w-[90%] flex-col items-center justify-center md:h-screen md:w-[80%] lg:m-0 lg:w-[60%] ">
+      <div className="m-auto flex w-[90%] flex-col items-center  justify-center  md:h-screen md:w-[80%] lg:m-0 lg:w-[50%]">
         <header className="mb-0 mt-60 flex flex-wrap justify-center gap-2 lg:mt-16">
           <img className=" size-10" src="./logo/logo.png" alt="logo" />
           <h2 className="mb-0 text-center text-4xl font-bold text-white">
@@ -100,7 +100,7 @@ export default function page() {
                 type="submit"
                 className="mt-5 w-full rounded-lg bg-white px-5 py-2.5 text-center text-sm font-medium text-black hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-blue-300"
               >
-                Login
+                Sign Up
               </button>
             </Link>
             <div className="my-2 flex items-center justify-center">
