@@ -1,4 +1,4 @@
-// Section2.tsx
+// Section3.tsx
 import React from "react";
 import { motion } from "framer-motion";
 

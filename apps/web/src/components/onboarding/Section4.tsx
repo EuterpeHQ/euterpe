@@ -1,4 +1,4 @@
-// Section2.tsx
+// Section4.tsx
 import React from "react";
 import { motion } from "framer-motion";
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
