@@ -1,7 +1,15 @@
 // Section2.tsx
 import React from "react";
 import { motion } from "framer-motion";
-
+import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardFooter,
+} from "../ui/card";
 interface Section4Props {
   onBack: () => void;
   onNext: () => void;
@@ -10,81 +18,75 @@ export const STAGGER_CHILD_VARIANTS = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0, transition: { duration: 0.4, type: "spring" } },
 };
+
 const Section4: React.FC<Section4Props> = ({ onBack, onNext }) => {
   return (
-    <div className="m-auto flex w-[90%] flex-col items-center justify-center gap-10  md:shadow-md lg:flex-row lg:gap-0">
-      <motion.div
-        className=" h-full w-[70%] rounded-lg md:w-[40%]"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <img
-          className="m-auto h-full w-full rounded-lg"
-          src="https://www.morebranches.com/wp-content/uploads/2023/10/IMG_0850-scaled.jpg"
-          alt="man-playing-saxaphone"
-        />
-      </motion.div>
-      <div className="flex h-full w-[90%] flex-col items-center justify-center md:w-[60%]">
-        <motion.div
-          className="z-10"
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.3, type: "spring" }}
-        >
-          <motion.div
-            variants={{
-              show: {
-                transition: {
-                  staggerChildren: 0.2,
-                },
-              },
-            }}
-            initial="hidden"
-            animate="show"
-            className="space-y-3"
-          >
-            <motion.h1
-              className="text-xl text-primary md:text-4xl"
-              variants={STAGGER_CHILD_VARIANTS}
-            >
-              Unlock Exclusive Experiences
-            </motion.h1>
-            <motion.p
-              className="text-base text-gray-200 transition-colors md:max-w-xl md:text-lg"
-              variants={STAGGER_CHILD_VARIANTS}
-            >
-              <span className="font-bold">
-                Artists, are you ready to engage with your fans like never
-                before?
-              </span>
-              <br /> Showcase your creativity through NFTs offering exclusive
-              experiences such as virtual concerts, backstage passes, and
-              personalized memorabilia. With{" "}
-              <span className="text-primary">Euterpe</span>, connect directly
-              with your audience and turn your art into unforgettable moments.
-            </motion.p>
-
-            <div className="flex gap-10">
-              <motion.button
-                onClick={onBack}
-                variants={STAGGER_CHILD_VARIANTS}
-                className=" w-auto rounded border-2 border-primary bg-background p-2 font-bold text-white shadow-lg hover:text-primary md:w-36 md:px-4 md:py-2"
-              >
-                <span>&larr; Previous </span>
-              </motion.button>
-              <motion.button
-                onClick={onNext}
-                variants={STAGGER_CHILD_VARIANTS}
-                className="w-auto rounded bg-primary p-2 font-bold text-black shadow-lg hover:bg-lime-400 md:w-36 md:px-4  md:py-2"
-              >
-                <span>Next &rarr;</span>
-              </motion.button>
-            </div>
-          </motion.div>
-        </motion.div>
+    <div className="m-auto flex w-[90%] flex-col items-center justify-center gap-10  lg:flex-row lg:gap-0">
+      <div className="flex w-full flex-col items-center justify-center gap-5 p-10">
+        <h1 className="text-center text-xl font-bold text-primary md:text-4xl">
+          Select your Path
+        </h1>
+        <p className="text-center text-sm md:text-base">
+          Are you ready to join the future of music? Choose your role below
+        </p>
+        <div className="flex flex-wrap justify-center gap-10">
+          <SelcetOption
+            type="Artist"
+            text="I'm ready to elevate my career and engage with my fans like never before."
+            img="./images/music-boy.png"
+          />
+          <SelcetOption
+            type="Investor"
+            text=" I'm excited to support innovative artists and grow my portfolio in
+            the music industry."
+            img="./images/investor.png"
+          />
+        </div>
       </div>
     </div>
   );
 };
-
+interface SelectOptionProps {
+  type: string;
+  text: String;
+  img: any;
+}
+function SelcetOption({ type, text, img }: SelectOptionProps) {
+  return (
+    <Card className="group flex h-[230px] w-[230px] cursor-pointer flex-col justify-between overflow-hidden border border-primary/20 bg-black/15 outline-none transition-all duration-200  md:hover:bg-primary/10 md:hover:outline md:hover:outline-offset-2 md:hover:outline-primary/20">
+      <CardContent className="relative flex items-center justify-center p-0 md:p-4">
+        <Avatar className=" h-24 w-24 rounded-none md:rounded-full">
+          <AvatarImage
+            className="mt-2 h-full w-full rounded-full"
+            src={img}
+            alt={type}
+          />
+          <AvatarFallback className="relative bg-black/5">
+            <svg
+              className="absolute left-1/2 h-full w-full -translate-x-1/2 text-black/20"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                clipRule="evenodd"
+              ></path>
+            </svg>
+          </AvatarFallback>
+        </Avatar>
+      </CardContent>
+      <CardHeader className="p-4 text-sm md:p-0 md:pb-4 md:text-center">
+        <CardTitle className="text-primary">{type}</CardTitle>
+        <CardDescription className="hover:text-white">
+          <span>{text}</span>
+        </CardDescription>
+      </CardHeader>
+      <CardFooter className="flex flex-col items-start justify-end md:hidden">
+        <div className="mb-4 h-px w-full bg-primary/20" />
+      </CardFooter>
+    </Card>
+  );
+}
 export default Section4;

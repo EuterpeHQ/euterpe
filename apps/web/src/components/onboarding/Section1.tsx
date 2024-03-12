@@ -10,6 +10,11 @@ export const STAGGER_CHILD_VARIANTS = {
   show: { opacity: 1, y: 0, transition: { duration: 0.4, type: "spring" } },
 };
 const Section1: React.FC<Section1Props> = ({ onNext }) => {
+  const handleSkip = () => {
+    onNext();
+    onNext();
+    onNext();
+  };
   return (
     <div className="m-auto flex w-[90%] flex-col items-center justify-center gap-10 md:shadow-md lg:flex-row lg:gap-0">
       <motion.div
@@ -62,7 +67,7 @@ const Section1: React.FC<Section1Props> = ({ onNext }) => {
 
             <div className="flex gap-10">
               <motion.button
-                onClick={onNext}
+                onClick={handleSkip}
                 variants={STAGGER_CHILD_VARIANTS}
                 className=" w-20 rounded border-2 border-primary bg-background px-4 py-2 font-bold text-white shadow-lg hover:text-primary md:w-36"
               >
