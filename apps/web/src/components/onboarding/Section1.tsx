@@ -1,7 +1,6 @@
 // Section1.tsx
 import React from "react";
 import { motion } from "framer-motion";
-import { CoinLottie } from "../Lotties";
 
 interface Section1Props {
   onNext: () => void;
@@ -12,12 +11,12 @@ export const STAGGER_CHILD_VARIANTS = {
 };
 const Section1: React.FC<Section1Props> = ({ onNext }) => {
   return (
-    <div className="m-auto flex h-3/4 w-[90%] flex-col shadow-md lg:flex-row">
+    <div className="m-auto flex w-[90%] flex-col items-center justify-center gap-10 md:shadow-md lg:flex-row lg:gap-0">
       <motion.div
-        className="h-full w-[40%] rounded-lg"
+        className="h-full w-[50%] rounded-lg md:w-[40%]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }} // Adjust the duration for the fade-in effect
+        transition={{ duration: 0.8 }}
       >
         <img
           className="h-full w-full rounded-lg"
@@ -25,7 +24,7 @@ const Section1: React.FC<Section1Props> = ({ onNext }) => {
           alt="woman-listening-to-music"
         />
       </motion.div>
-      <div className="flex h-full w-[60%] flex-col items-center justify-center">
+      <div className="flex h-full w-[90%] flex-col items-center justify-center md:w-[60%]">
         <motion.div
           className="z-10"
           exit={{ opacity: 0, scale: 0.95 }}
@@ -44,13 +43,13 @@ const Section1: React.FC<Section1Props> = ({ onNext }) => {
             className="space-y-3"
           >
             <motion.h1
-              className="text-4xl text-primary"
+              className="text-xl text-primary md:text-4xl"
               variants={STAGGER_CHILD_VARIANTS}
             >
               Discover your Potential
             </motion.h1>
             <motion.p
-              className="max-w-xl text-gray-200 transition-colors sm:text-lg"
+              className="text-base text-gray-200 transition-colors md:max-w-xl md:text-lg"
               variants={STAGGER_CHILD_VARIANTS}
             >
               Are you ready to revolutionize the music industry? <br /> With
@@ -65,14 +64,14 @@ const Section1: React.FC<Section1Props> = ({ onNext }) => {
               <motion.button
                 onClick={onNext}
                 variants={STAGGER_CHILD_VARIANTS}
-                className="w-36 rounded border-2 border-primary bg-background px-4 py-2 font-bold text-white shadow-lg hover:text-primary"
+                className=" w-20 rounded border-2 border-primary bg-background px-4 py-2 font-bold text-white shadow-lg hover:text-primary md:w-36"
               >
                 <span>Skip</span>
               </motion.button>
               <motion.button
                 onClick={onNext}
                 variants={STAGGER_CHILD_VARIANTS}
-                className="w-36 rounded bg-primary px-4 py-2 font-bold text-black shadow-lg  hover:bg-lime-400"
+                className="w-20 rounded bg-primary font-bold text-black shadow-lg hover:bg-lime-400 md:w-36 md:px-4  md:py-2"
               >
                 <span>Next &rarr;</span>
               </motion.button>
