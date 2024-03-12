@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config = {
   darkMode: ["class"],
@@ -56,6 +57,10 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        surface: {
+          DEFAULT: "hsl(var(--surface))",
+          foreground: "hsl(var(--surface-foreground))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -78,7 +83,19 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/forms"),
+    plugin(({ addVariant, e }) => {
+      // @ts-expect-error
+      addVariant("sidebar-expanded", ({ modifySelectors, separator }) => {
+        modifySelectors(
+          ({ className }: { className: string }) =>
+            `.sidebar-expanded .${e(`sidebar-expanded${separator}${className}`)}`,
+        );
+      });
+    }),
+  ],
 } satisfies Config;
 
 export default config;
