@@ -1,19 +1,42 @@
 "use client";
+import React, { useState, useEffect } from "react";
 import Section1 from "@/components/onboarding/Section1";
 import Section2 from "@/components/onboarding/Section2";
 import Section3 from "@/components/onboarding/Section3";
 import Section4 from "@/components/onboarding/Section4";
-import React, { useState } from "react";
+
 const OnboardingPage: React.FC = () => {
   const [currentSection, setCurrentSection] = useState<number>(1);
 
+  useEffect(() => {
+    const storedSection = localStorage.getItem("currentSection");
+    if (storedSection) {
+      setCurrentSection(parseInt(storedSection));
+    }
+  }, []);
+
   const handleNext = () => {
-    setCurrentSection((prevSection) => prevSection + 1);
+    setCurrentSection((prevSection) => {
+      const nextSection = prevSection + 1;
+      localStorage.setItem("currentSection", nextSection.toString());
+      return nextSection;
+    });
   };
 
   const handleBack = () => {
-    setCurrentSection((prevSection) => prevSection - 1);
+    setCurrentSection((prevSection) => {
+      const nextSection = prevSection - 1;
+      localStorage.setItem("currentSection", nextSection.toString());
+      return nextSection;
+    });
   };
+
+  // Reset local storage when onboarding is complete
+  useEffect(() => {
+    if (currentSection > 4) {
+      localStorage.removeItem("currentSection");
+    }
+  }, [currentSection]);
 
   let sectionComponent: JSX.Element;
   switch (currentSection) {
