@@ -39,6 +39,9 @@
     --background: 0 0% 17%;
     --foreground: 210 40% 98%;
 
+    --surface: 0 0% 16%;
+    --surface-foreground: 210 40% 98%;
+
     --card: 0 0% 23%;
     --card-foreground: 210 40% 98%;
 
@@ -72,5 +75,17 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }
