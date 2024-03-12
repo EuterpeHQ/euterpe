@@ -118,6 +118,8 @@
 
 import Section1 from "@/components/onboarding/Section1";
 import Section2 from "@/components/onboarding/Section2";
+import Section3 from "@/components/onboarding/Section3";
+import Section4 from "@/components/onboarding/Section4";
 import React, { useState } from "react";
 // import Section1 from "./Section1";
 // import Section2 from "./Section2";
@@ -142,9 +144,12 @@ const OnboardingPage: React.FC = () => {
     case 2:
       sectionComponent = <Section2 onBack={handleBack} onNext={handleNext} />;
       break;
+    case 3:
+      sectionComponent = <Section3 onBack={handleBack} onNext={handleNext} />;
+      break;
     // Render Section3 and Section4 similarly
     default:
-      sectionComponent = <div>Invalid Section</div>;
+      sectionComponent = <Section4 onBack={handleBack} onNext={handleNext} />;
   }
 
   return (

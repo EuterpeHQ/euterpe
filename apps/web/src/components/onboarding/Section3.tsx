@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-interface Section2Props {
+interface Section3Props {
   onBack: () => void;
   onNext: () => void;
 }
@@ -10,18 +10,18 @@ export const STAGGER_CHILD_VARIANTS = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0, transition: { duration: 0.4, type: "spring" } },
 };
-const Section2: React.FC<Section2Props> = ({ onBack, onNext }) => {
+const Section3: React.FC<Section3Props> = ({ onBack, onNext }) => {
   return (
     <div className="m-auto flex w-[90%] flex-col items-center justify-center gap-10  md:shadow-md lg:flex-row lg:gap-0">
       <motion.div
-        className=" h-full w-[50%] rounded-lg md:w-[40%]"
+        className=" h-full w-[70%] rounded-lg md:w-[40%]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
         <img
           className="m-auto h-full w-full rounded-lg"
-          src="./images/man-saxaphone.jpg"
+          src="https://www.morebranches.com/wp-content/uploads/2023/10/IMG_0850-scaled.jpg"
           alt="man-playing-saxaphone"
         />
       </motion.div>
@@ -47,18 +47,21 @@ const Section2: React.FC<Section2Props> = ({ onBack, onNext }) => {
               className="text-xl text-primary md:text-4xl"
               variants={STAGGER_CHILD_VARIANTS}
             >
-              Invest in Innovation
+              Unlock Exclusive Experiences
             </motion.h1>
             <motion.p
               className="text-base text-gray-200 transition-colors md:max-w-xl md:text-lg"
               variants={STAGGER_CHILD_VARIANTS}
             >
-              Investors, are you looking for the next big thing in music? <br />{" "}
-              Explore a diverse range of artists and track their growth over
-              time. From budding talents to established stars, invest in their
-              success and watch your portfolio flourish. With our unique token
-              system, your investments grow alongside the artists you believe
-              in.
+              <span className="font-bold">
+                Artists, are you ready to engage with your fans like never
+                before?
+              </span>
+              <br /> Showcase your creativity through NFTs offering exclusive
+              experiences such as virtual concerts, backstage passes, and
+              personalized memorabilia. With{" "}
+              <span className="text-primary">Euterpe</span>, connect directly
+              with your audience and turn your art into unforgettable moments.
             </motion.p>
 
             <div className="flex gap-10">
@@ -84,4 +87,4 @@ const Section2: React.FC<Section2Props> = ({ onBack, onNext }) => {
   );
 };
 
-export default Section2;
+export default Section3;
