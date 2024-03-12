@@ -6,14 +6,14 @@ import Link from "next/link";
 import { CardContent } from "@/components/ui/card";
 export default function page() {
   return (
-    <div className="m-auto flex max-h-screen max-w-screen-2xl">
+    <div className=" m-auto flex max-h-screen max-w-screen-2xl gap-[4.5rem]">
       <Lottie
-        className=" hidden h-screen w-[40%] bg-black/15 lg:block"
+        className="hidden h-screen w-[40%] bg-black/15 lg:block"
         animationData={BoyLottie}
         loop
         autoplay
       />
-      <div className="m-auto flex w-[90%] flex-col items-center justify-center md:h-screen md:w-[80%] lg:m-0 lg:w-[60%] ">
+      <div className="m-auto flex w-[90%] flex-col items-center  justify-center  md:h-screen md:w-[80%] lg:m-0 lg:w-[50%]">
         <header className="mb-0 mt-60 flex flex-wrap justify-center gap-2 lg:mt-16">
           <img className=" size-10" src="./logo/logo.png" alt="logo" />
           <h2 className="mb-0 text-center text-4xl font-bold text-white">
@@ -42,9 +42,9 @@ export default function page() {
                     viewBox="0 0 24 24"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M12 22a10 10 0 0 1-7.1-3A9.9 9.9 0 0 1 5 4.8C7 3 9.5 2 12.2 2h.2c2.4 0 4.8 1 6.6 2.6l-2.5 2.3a6.2 6.2 0 0 0-4.2-1.6c-1.8 0-3.5.7-4.8 2a6.6 6.6 0 0 0-.1 9.3c1.2 1.3 2.9 2 4.7 2h.1a6 6 0 0 0 4-1.1c1-.9 1.8-2 2.1-3.4v-.2h-6v-3.4h9.6l.1 1.9c-.1 5.7-4 9.6-9.7 9.6H12Z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     />
                   </svg>
                 </span>
@@ -100,7 +100,7 @@ export default function page() {
                 type="submit"
                 className="mt-5 w-full rounded-lg bg-white px-5 py-2.5 text-center text-sm font-medium text-black hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-blue-300"
               >
-                Login
+                Sign Up
               </button>
             </Link>
             <div className="my-2 flex items-center justify-center">
