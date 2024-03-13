@@ -1,5 +1,5 @@
 import React from "react";
-import { CoinLottie } from "./Lotties";
+import { CoinLottie } from "../../components/Lotties";
 import Spacer from "@/components/ui/spacer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";

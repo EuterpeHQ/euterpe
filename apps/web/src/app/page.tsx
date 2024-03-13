@@ -1,6 +1,6 @@
-import Hero from "@/components/Hero";
-import Harmonies from "@/components/Harmonies";
-import TopMusicians from "@/components/TopMusicians";
+import Hero from "@/partials/landing/Hero";
+import Harmonies from "@/partials/landing/Harmonies";
+import TopMusicians from "@/partials/landing/TopMusicians";
 import Spacer from "@/components/ui/spacer";
 
 export default function Page() {

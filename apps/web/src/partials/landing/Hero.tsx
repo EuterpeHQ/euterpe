@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { HeroLottie, CoinLottie } from "./Lotties";
+import { HeroLottie, CoinLottie } from "../../components/Lotties";
 import Link from "next/link";
 import { HiOutlineRocketLaunch } from "react-icons/hi2";
 
