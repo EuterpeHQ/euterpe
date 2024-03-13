@@ -5,6 +5,7 @@ import Notifications from "../components/DropdownNotifications";
 import Help from "../components/DropdownHelp";
 import UserMenu from "../components/DropdownProfile";
 import ThemeToggle from "../components/ThemeToggle";
+import ConnectButton from "@/components/ConnectButton";
 
 function Header() {
   const sidebarOpen = useSidebarStore((state) => state.isOpen);
@@ -79,7 +80,8 @@ function Header() {
             <Notifications align="right" />
             {/*  Divider */}
             <hr className="h-6 w-px border-none bg-slate-200 dark:bg-card/70" />
-            <UserMenu align="right" />
+            {/* <UserMenu align="right" /> */}
+            <ConnectButton align="right" />
           </div>
         </div>
       </div>
