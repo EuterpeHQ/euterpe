@@ -1,4 +1,5 @@
 // @ts-nocheck
+// TODO: Migrate file to TypeScript
 import React, { useRef, useEffect, useContext } from "react";
 import { CSSTransition as ReactCSSTransition } from "react-transition-group";
 
