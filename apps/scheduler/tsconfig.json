@@ -1,0 +1,11 @@
+{
+  "extends": "@repo/typescript-config/base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "sourceMap": true
+  },
+  "include": ["src/**/*.ts", "vitest.config.ts"],
+  "exclude": ["node_modules", "coverage"]
+}
