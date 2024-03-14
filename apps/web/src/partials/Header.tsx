@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { useSidebarStore } from "@/store/sidebar.store";
-import SearchModal from "../components/ModalSearch";
-import Notifications from "../components/DropdownNotifications";
-import Help from "../components/DropdownHelp";
-import UserMenu from "../components/DropdownProfile";
-import ThemeToggle from "../components/ThemeToggle";
+import SearchModal from "@/components/ModalSearch";
+import Notifications from "@/components/DropdownNotifications";
 import ConnectButton from "@/components/ConnectButton";
 
 function Header() {
@@ -80,7 +77,6 @@ function Header() {
             <Notifications align="right" />
             {/*  Divider */}
             <hr className="h-6 w-px border-none bg-slate-200 dark:bg-card/70" />
-            {/* <UserMenu align="right" /> */}
             <ConnectButton align="right" />
           </div>
         </div>
