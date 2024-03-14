@@ -1,4 +1,3 @@
-
 # Euterpe Repository
 
 This repository houses the different components of the Euterpe project, managed as a monorepo using Turborepo.
@@ -9,6 +8,7 @@ The monorepo is organized into several repositories under the `apps` and `packag
 
 - `apps/docs`: an example [Next.js](https://nextjs.org/) app for reference
 - `apps/web`: The Euterpe frontend built with [Next.js](https://nextjs.org/).
+- `apps/scheduler`: The Euterpe scheduler built with [Croner](https://croner.56k.guru/).
 - `apps/api`: The Euterpe api built with [Fastify](https://fastify.dev/).
 - `apps/hardhat`: Blockchain and Solidity development for the Euterpe project using [Hardhat](https://hardhat.org/).
 - `packages/ui`: A stub React component library shared by the frontend and mobile applications.
@@ -20,6 +20,7 @@ All code within this monorepo is written in [TypeScript](https://www.typescriptl
 ## Setup and Development
 
 1. Clone the project:
+
 ```bash
 git clone https://github.com/Tolu1/euterpe.git
 ```
