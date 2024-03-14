@@ -1,6 +1,10 @@
 import type { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 
+const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
+
 const config = {
   darkMode: ["class"],
   content: [
@@ -8,6 +12,7 @@ const config = {
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   prefix: "",
   theme: {
@@ -84,8 +89,10 @@ const config = {
     },
   },
   plugins: [
+    addVariablesForColors,
     require("tailwindcss-animate"),
     require("@tailwindcss/forms"),
+
     plugin(({ addVariant, e }) => {
       // @ts-expect-error
       addVariant("sidebar-expanded", ({ modifySelectors, separator }) => {
@@ -99,3 +106,14 @@ const config = {
 } satisfies Config;
 
 export default config;
+// This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
+function addVariablesForColors({ addBase, theme }: any) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val]),
+  );
+
+  addBase({
+    ":root": newVars,
+  });
+}
