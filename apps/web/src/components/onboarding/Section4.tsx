@@ -10,6 +10,7 @@ import {
   CardDescription,
   CardFooter,
 } from "../ui/card";
+import Link from "next/link";
 interface Section4Props {
   onBack: () => void;
   onNext: () => void;
@@ -30,17 +31,21 @@ const Section4: React.FC<Section4Props> = ({ onBack, onNext }) => {
           Are you ready to join the future of music? Choose your role below
         </p>
         <div className="flex flex-wrap justify-center gap-10">
-          <SelcetOption
-            type="Artist"
-            text="I'm ready to elevate my career and engage with my fans like never before."
-            img="./images/music-boy.png"
-          />
-          <SelcetOption
-            type="Investor"
-            text=" I'm excited to support innovative artists and grow my portfolio in
+          <Link href="/dashboard">
+            <SelcetOption
+              type="Creator"
+              text="I'm ready to elevate my career and engage with my fans like never before."
+              img="./images/music-boy.png"
+            />
+          </Link>
+          <Link href="/discover">
+            <SelcetOption
+              type="Investor"
+              text=" I'm excited to support innovative artists and grow my portfolio in
             the music industry."
-            img="./images/investor.png"
-          />
+              img="./images/investor.png"
+            />
+          </Link>
         </div>
       </div>
     </div>
