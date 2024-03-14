@@ -32,6 +32,9 @@ const config: HardhatUserConfig = {
   sourcify: {
     enabled: false,
   },
+  gasReporter: {
+    enabled: true,
+  },
 };
 
 export default config;
