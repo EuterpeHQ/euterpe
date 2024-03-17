@@ -397,7 +397,7 @@ function Sidebar() {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <NavLink
-                              to="/tokenomics/create-token"
+                              to="#"
                               className={({
                                 isActive,
                               }: {
@@ -413,6 +413,23 @@ function Sidebar() {
                                 Create New Token
                               </span>
                             </NavLink>
+                            {/* <NavLink
+                              to="/tokenomics/create-token"
+                              className={({
+                                isActive,
+                              }: {
+                                isActive: boolean;
+                              }) =>
+                                "block truncate transition duration-150 " +
+                                (isActive
+                                  ? "text-primary"
+                                  : "text-muted-foreground hover:text-white")
+                              }
+                            >
+                              <span className="text-sm font-normal duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
+                                Create New Token
+                              </span>
+                            </NavLink> */}
                           </li>
 
                           <li className="mb-1 last:mb-0">
