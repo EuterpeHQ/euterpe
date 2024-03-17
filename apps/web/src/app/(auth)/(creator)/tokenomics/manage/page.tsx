@@ -21,6 +21,7 @@ function Page() {
           </HoverCardTrigger>
           <HoverCardContent className=" border-2 border-primary bg-background">
             Create, Claim and Customize your personal token.
+            <br /> You can only claim your token once authenticated.
           </HoverCardContent>
         </HoverCard>
       </div>
