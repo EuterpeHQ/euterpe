@@ -8,6 +8,9 @@ import {
   HoverCardContent,
 } from "@/components/ui/hover-card";
 import Image from "next/image";
+import LineChart from "@/components/charts/LineChart";
+import Link from "next/link";
+import BarChart from "@/components/charts/BarChart";
 
 function Page() {
   return (
@@ -197,6 +200,26 @@ function Page() {
                 </li>
               </ul>
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="m-auto mt-16 flex w-[98%] flex-row flex-wrap justify-between">
+        <div className="m-auto mt-8 flex w-[98%] flex-wrap items-center justify-between gap-y-6 text-white  lg:gap-y-0 xl:max-w-7xl">
+          <HoverCard>
+            <HoverCardTrigger className="cursor-pointer rounded-l-sm rounded-r-sm border-b-2 border-primary p-2 text-xl font-bold">
+              Statistics
+            </HoverCardTrigger>
+            <HoverCardContent className=" border-2 border-primary bg-background">
+              This is your statistics and influence in the music industry.
+            </HoverCardContent>
+          </HoverCard>
+        </div>
+        <div className="flex w-full flex-col flex-wrap gap-y-8 lg:flex-row lg:gap-0">
+          <div className="m-auto w-[90%] lg:m-0 lg:w-[30%]">
+            <BarChart />
+          </div>
+          <div className="m-auto w-[90%] lg:m-0 lg:w-[70%]">
+            <LineChart />
           </div>
         </div>
       </div>
