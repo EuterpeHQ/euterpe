@@ -92,7 +92,7 @@ function Page() {
                 <div className="transform rounded-lg border-2 border-gray-600 px-4 py-6 transition duration-500 hover:scale-110">
                   <Image
                     className="mb-3 inline-block h-20 w-20 rounded-full border-2 border-primary"
-                    src="/images/profile-nft3.png"
+                    src="/images/profile-nft.png"
                     alt="user-profile"
                     width={200}
                     height={200}

@@ -114,7 +114,7 @@ function Sidebar() {
     <div>
       {/* Sidebar backdrop (mobile only) */}
       <div
-        className={`bg-surface/60 fixed inset-0 z-40 transition-opacity duration-200 lg:z-auto lg:hidden ${
+        className={`fixed inset-0 z-40 bg-surface/60 transition-opacity duration-200 lg:z-auto lg:hidden ${
           sidebarOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         aria-hidden="true"
@@ -124,7 +124,7 @@ function Sidebar() {
       <div
         id="sidebar"
         ref={sidebar}
-        className={`no-scrollbar bg-surface absolute left-0 top-0 z-40 flex h-screen w-64 shrink-0 flex-col overflow-y-scroll border-r border-card/65 p-4 transition-all duration-200 ease-in-out lg:static lg:left-auto lg:top-auto lg:w-20 lg:translate-x-0 lg:overflow-y-auto lg:sidebar-expanded:!w-64 2xl:!w-64 ${
+        className={`no-scrollbar absolute left-0 top-0 z-40 flex h-screen w-64 shrink-0 flex-col overflow-y-scroll border-r border-card/65 bg-surface p-4 transition-all duration-200 ease-in-out lg:static lg:left-auto lg:top-auto lg:w-20 lg:translate-x-0 lg:overflow-y-auto lg:sidebar-expanded:!w-64 2xl:!w-64 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-64"
         }`}
       >
@@ -378,25 +378,6 @@ function Sidebar() {
                         >
                           <li className="mb-1 last:mb-0">
                             <NavLink
-                              to="/tokenomics/create-token"
-                              className={({
-                                isActive,
-                              }: {
-                                isActive: boolean;
-                              }) =>
-                                "block truncate transition duration-150 " +
-                                (isActive
-                                  ? "text-primary"
-                                  : "text-muted-foreground hover:text-white")
-                              }
-                            >
-                              <span className="text-sm font-normal duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                                Create New Token
-                              </span>
-                            </NavLink>
-                          </li>
-                          <li className="mb-1 last:mb-0">
-                            <NavLink
                               to="/tokenomics/manage"
                               className={({
                                 isActive,
@@ -414,6 +395,26 @@ function Sidebar() {
                               </span>
                             </NavLink>
                           </li>
+                          <li className="mb-1 last:mb-0">
+                            <NavLink
+                              to="/tokenomics/create-token"
+                              className={({
+                                isActive,
+                              }: {
+                                isActive: boolean;
+                              }) =>
+                                "block truncate transition duration-150 " +
+                                (isActive
+                                  ? "text-primary"
+                                  : "text-muted-foreground hover:text-white")
+                              }
+                            >
+                              <span className="text-sm font-normal duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
+                                Create New Token
+                              </span>
+                            </NavLink>
+                          </li>
+
                           <li className="mb-1 last:mb-0">
                             <NavLink
                               to="/tokenomics/performance"
