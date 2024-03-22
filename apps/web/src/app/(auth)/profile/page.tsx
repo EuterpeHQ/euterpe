@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 function Page() {
   return (
     <div className="max-w-9xl mx-auto w-full px-4 py-8 sm:px-6 lg:px-8">
@@ -35,21 +36,40 @@ function Page() {
         </div>
       </div>
       {/* User profile */}
-      <div className="m-auto flex h-[900px] w-[60%] flex-col  border-2 border-primary">
-        <h2 className="text-center text-2xl">Account Info</h2>
+      <div className="m-auto mt-16 flex  w-[60%] flex-col">
+        <h2 className="rounded-l-sm rounded-r-sm border-b border-b-gray-300 text-center text-4xl font-bold text-blue-300 ">
+          Account Info
+        </h2>
 
-        <form className="justify-starth-[400px] mt-8 flex w-full flex-col  gap-y-4  border-2 border-orange-700">
-          <div className=" mx-auto h-28 w-28 rounded-full border border-primary"></div>
+        <form className=" mt-8 flex w-full flex-col gap-y-8 ">
+          <div className=" m-auto mx-auto flex h-28 w-28 items-center justify-center rounded-full border border-primary p-1">
+            <Image
+              className="m-auto ms-3 h-20 w-20 text-center"
+              src="/images/profile-nft.png"
+              alt="profile"
+              width={90}
+              height={90}
+            />
+          </div>
           <label htmlFor="" className="space-y-10 text-2xl font-bold">
             Full Name
           </label>
-          <p className="text-2xl text-primary">John Doe</p>
-          <div className=" w-full border border-gray-400"></div>
+          <p className="border-b-2 border-b-gray-400 text-2xl text-primary">
+            John Doe
+          </p>
           <label htmlFor="" className="text-2xl font-bold">
             User Name
           </label>
-          <p className="text-2xl text-primary">Selena Gomez</p>
-          <div className=" w-full border border-gray-400"></div>
+          <p className="border-b-2 border-b-gray-400 text-2xl text-primary ">
+            Selena Gomez
+          </p>
+          <label htmlFor="" className="text-2xl font-bold">
+            Email
+          </label>
+          <p className="border-b-2 border-b-gray-400 text-2xl text-primary ">
+            example@example.com
+          </p>
+          <Button className="mt-8 font-semibold">Edit</Button>
         </form>
       </div>
     </div>
