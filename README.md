@@ -8,6 +8,7 @@ The monorepo is organized into several repositories under the `apps` and `packag
 
 - `apps/core`: The Euterpe smart contracts built using [Hardhat](https://hardhat.org/).
 - `apps/web`: The Euterpe frontend built with [Next.js](https://nextjs.org/).
+- `apps/scheduler`: The Euterpe scheduler built with [Croner](https://croner.56k.guru/).
 - `apps/api`: The Euterpe api built with [Fastify](https://fastify.dev/).
 - `packages/ui`: A stub React component library shared by the frontend and mobile applications.
 - `packages/eslint-config-custom`: Custom `eslint` configurations for the project.
