@@ -1,6 +1,5 @@
 {
   "ArtistTokenFactoryModule#ArtistTokenFactory": "0x3519790a4cD44391CfE1da8ef79CC33f9944e43C",
   "PlatformTokenModule#PlatformToken": "0xb334A2EdB610d0d71894f103535f8147A120444A",
-  "YouTubeStreamsAggregatorModule#YouTubeStreamsAggregator": "0xf26C4210ec15126E6A8125E298E287ea07819559",
-  "HarmonyV0FactoryModule#HarmonyV0Factory": "0x483dBFF73dDCc6E397f4a378F69bAC578A9faCCa"
+  "YouTubeStreamsAggregatorModule#YouTubeStreamsAggregator": "0xf26C4210ec15126E6A8125E298E287ea07819559"
 }
