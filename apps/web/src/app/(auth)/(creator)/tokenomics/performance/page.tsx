@@ -15,7 +15,7 @@ import BarChart from "@/components/charts/BarChart";
 function Page() {
   return (
     <main className="m-auto mb-6 w-full max-w-[1500px]">
-      <div className="m-auto mt-8 flex w-[98%] flex-row flex-wrap justify-between">
+      <div className="m-auto mt-8 flex w-[90%] flex-row flex-wrap justify-between">
         <h2 className="text-2xl font-semibold">Token Performance</h2>
         <HoverCard>
           <HoverCardTrigger className="cursor-pointer rounded-l-sm rounded-r-sm border-b-2 border-b-primary p-2 text-sm font-bold text-gray-500 hover:text-white">
