@@ -27,6 +27,7 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
+import Link from "next/link";
 
 type ProfileCardProps = {
   rank: number;
