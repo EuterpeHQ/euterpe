@@ -79,7 +79,7 @@ function Page() {
             ></div>
           </div>
           <label htmlFor="table-search" className="sr-only">
-            Search...
+            Search
           </label>
           <div className="relative">
             <div className="rtl:inset-r-0 pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
