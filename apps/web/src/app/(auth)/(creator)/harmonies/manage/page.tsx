@@ -3,6 +3,72 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardFooter,
+} from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+type ProfileCardProps = {
+  rank: number;
+};
+
+function ProfileCard({ rank }: ProfileCardProps) {
+  return (
+    <Card className="group flex h-80 w-full cursor-pointer flex-col justify-between overflow-hidden border border-primary/20 bg-black/15 outline-none transition-all duration-200 md:hover:bg-primary/10 md:hover:outline md:hover:outline-offset-2 md:hover:outline-primary/20">
+      <CardContent className="relative flex items-center justify-center p-0 md:p-4">
+        <div className="h-40 w-full">
+          <Avatar className="h-full w-full rounded-none">
+            <AvatarImage
+              className="h-full w-full rounded-lg"
+              src="/images/skull.webp"
+            />
+            <AvatarFallback className="relative bg-black/5">
+              <svg
+                className="absolute left-1/2 h-full w-full -translate-x-1/2 text-black/20"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+            </AvatarFallback>
+          </Avatar>
+        </div>
+      </CardContent>
+
+      <CardHeader className="p-4 text-sm md:p-0 md:pb-4 md:text-center">
+        <p className="text-primary">Ticket Harmony</p>
+        <CardTitle>Description</CardTitle>
+        <p>
+          Artist: <span>Selena Gomez</span>
+        </p>
+        <CardDescription>
+          <span>Token Price: </span>
+          <span className="font-federant text-white">
+            {(rank / 3).toFixed(2)}
+            <span className="tracking-widest"> ETP</span>
+          </span>
+        </CardDescription>
+      </CardHeader>
+      <CardFooter className="flex flex-col items-start justify-end md:hidden">
+        <div className="mb-4 h-px w-full bg-primary/20" />
+      </CardFooter>
+    </Card>
+  );
+}
 function Page() {
   return (
     <div className="max-w-9xl mx-auto w-full px-4 py-8 sm:px-6 lg:px-8">
@@ -48,7 +114,7 @@ function Page() {
           </div>
         </div>
       </div>
-      <section className="mt-8 flex h-[400px] w-full flex-col items-center justify-center space-y-5 rounded-lg border-b-2 border-b-blue-200 shadow-md hover:border-b-primary">
+      <section className="mb-8 mt-8 flex h-[400px] w-full flex-col items-center justify-center space-y-5 rounded-lg border-b-2 border-b-blue-200 shadow-md hover:border-b-primary">
         <div className="flex flex-col items-center justify-center">
           <h2 className="text-lg">
             You don&apos;t have harmonies yet create one?
@@ -57,7 +123,7 @@ function Page() {
           <h2 className="text-lg">Browse our templates!</h2>
         </div>
         <div className="flex gap-4">
-          <Link href="#">
+          <Link href="/harmonies/create/">
             <button className="w-36 rounded-lg border border-primary bg-inherit p-2 hover:border-blue-200">
               Create
             </button>
@@ -70,13 +136,27 @@ function Page() {
         </div>
       </section>
       {/* Display top harmonies with cards */}
-      <section className="mt-20 flex h-[400px] w-full flex-col items-center justify-center space-y-5 rounded-lg  border-gray-300">
-        <div className="m-auto mt-8 flex w-full flex-row flex-wrap justify-between">
-          <h2 className="text-md font-semibold">Top Harmonies</h2>
+      <section className=" mt-20 flex h-[400px] w-full flex-col items-center justify-center space-y-5 rounded-lg">
+        <div className="m-auto mb-12 mt-8 flex w-full flex-row flex-wrap justify-between ">
+          <h2 className="text-md  font-semibold">Top Harmonies</h2>
           <h2 className="text-md cursor-pointer font-semibold text-blue-200">
             View all&rarr;
           </h2>
         </div>
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+        >
+          <CarouselContent>
+            {[...Array(6)].map((_, i) => (
+              <CarouselItem className="aspect-[320/404] max-w-xs" key={i}>
+                <ProfileCard rank={i + 1} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
       </section>
     </div>
   );
