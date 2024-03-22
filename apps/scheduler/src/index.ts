@@ -1,8 +1,11 @@
-import { Cron } from "croner";
+import apiTimer from "./jobs/apiTimer.js";
+import "dotenv/config";
 
-const schedule = Cron("0 * * * * *").nextRun();
-console.log(schedule);
+/**
+ * Run jobs
+ */
+function run() {
+  apiTimer();
+}
 
-Cron("0 * * * * *", () => {
-  console.log("Running job every minute");
-});
+run();
