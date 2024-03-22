@@ -36,7 +36,7 @@ function Page() {
         </div>
       </div>
       {/* User profile */}
-      <div className="m-auto mt-16 flex  w-[60%] flex-col">
+      <div className="m-auto mt-16 flex w-full  flex-col md:w-[60%]">
         <h2 className="rounded-l-sm rounded-r-sm border-b border-b-gray-300 text-center text-4xl font-bold text-blue-300 ">
           Account Info
         </h2>
