@@ -145,7 +145,7 @@ function Page() {
             <div className="h-auto w-full rounded-lg p-6 shadow-inner shadow-blue-300 md:h-[500px] lg:w-[50%]">
               <div className="my-4 flex flex-wrap items-center justify-between gap-y-4">
                 <h1 className="text-2xl">Popular Harmonies</h1>
-                <Link href="#">
+                <Link href="/harmonies/manage/">
                   <Button>View Templates</Button>
                 </Link>
               </div>
