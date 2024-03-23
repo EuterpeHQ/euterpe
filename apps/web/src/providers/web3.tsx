@@ -2,21 +2,58 @@
 
 import "@rainbow-me/rainbowkit/styles.css";
 import {
-  getDefaultConfig,
   RainbowKitProvider,
   Theme,
   darkTheme,
   DisclaimerComponent,
 } from "@rainbow-me/rainbowkit";
 import { WagmiProvider } from "wagmi";
+import { createConfig, http } from "@wagmi/core";
 import { arbitrum, arbitrumSepolia } from "wagmi/chains";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { connectorsForWallets } from "@rainbow-me/rainbowkit";
+import {
+  rainbowWallet,
+  walletConnectWallet,
+  metaMaskWallet,
+  coinbaseWallet,
+  trustWallet,
+  phantomWallet,
+  safeWallet,
+  injectedWallet,
+} from "@rainbow-me/rainbowkit/wallets";
 
-const config = getDefaultConfig({
-  appName: "Euterpe",
-  projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || "",
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: "Popular",
+      wallets: [metaMaskWallet, coinbaseWallet, rainbowWallet],
+    },
+    {
+      groupName: "Others",
+      wallets: [
+        walletConnectWallet,
+        trustWallet,
+        phantomWallet,
+        injectedWallet,
+        safeWallet,
+      ],
+    },
+  ],
+  {
+    appName: "Euterpe",
+    projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID!,
+  },
+);
+
+const wagmiConfig = createConfig({
   chains: [arbitrum, arbitrumSepolia],
+  connectors: connectors,
   ssr: true,
+  transports: {
+    [arbitrum.id]: http("https://arb1.arbitrum.io/rpc"),
+    [arbitrumSepolia.id]: http("https://sepolia-rollup.arbitrum.io/rpc"),
+  },
 });
 
 const queryClient = new QueryClient();
@@ -51,7 +88,7 @@ const Disclaimer: DisclaimerComponent = ({ Text, Link }) => (
 
 export function Web3Provider({ children }: { children: React.ReactNode }) {
   return (
-    <WagmiProvider config={config}>
+    <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider
           appInfo={{
