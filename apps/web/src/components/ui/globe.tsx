@@ -303,4 +303,3 @@ export function genRandomNumbers(min: number, max: number, count: number) {
 
   return arr;
 }
-relative h-screen w-ul flbg-white md:atoreltive h-fullmax-w-7xpx4te md:xt-4xlmx-auto mt-2 max-w-md :e-lgpointer-events-none inset-x0z4 w-full select-noneto-white z-10 w-full 
