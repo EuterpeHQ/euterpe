@@ -1,6 +1,17 @@
 export const abi = [
   {
-    inputs: [],
+    inputs: [
+      {
+        internalType: "address",
+        name: "_platformToken",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "_tokenPrice",
+        type: "uint256",
+      },
+    ],
     stateMutability: "nonpayable",
     type: "constructor",
   },
@@ -27,6 +38,11 @@ export const abi = [
     type: "error",
   },
   {
+    inputs: [],
+    name: "ReentrancyGuardReentrantCall",
+    type: "error",
+  },
+  {
     anonymous: false,
     inputs: [
       {
@@ -47,25 +63,32 @@ export const abi = [
   },
   {
     inputs: [],
-    name: "decimals",
-    outputs: [
+    name: "buy",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [
       {
-        internalType: "uint8",
-        name: "",
-        type: "uint8",
+        internalType: "uint256",
+        name: "listingIndex",
+        type: "uint256",
       },
     ],
-    stateMutability: "view",
+    name: "buyToken",
+    outputs: [],
+    stateMutability: "payable",
     type: "function",
   },
   {
     inputs: [],
-    name: "description",
+    name: "getListingsCount",
     outputs: [
       {
-        internalType: "string",
+        internalType: "uint256",
         name: "",
-        type: "string",
+        type: "uint256",
       },
     ],
     stateMutability: "view",
@@ -74,21 +97,54 @@ export const abi = [
   {
     inputs: [
       {
-        internalType: "string",
-        name: "artistIdentifier",
-        type: "string",
+        internalType: "contract IERC20",
+        name: "token",
+        type: "address",
       },
-    ],
-    name: "getArtistStreams",
-    outputs: [
       {
         internalType: "uint256",
-        name: "streams",
+        name: "amount",
         type: "uint256",
       },
       {
         internalType: "uint256",
-        name: "updatedAt",
+        name: "price",
+        type: "uint256",
+      },
+    ],
+    name: "listToken",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "listings",
+    outputs: [
+      {
+        internalType: "address",
+        name: "seller",
+        type: "address",
+      },
+      {
+        internalType: "contract IERC20",
+        name: "token",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "price",
         type: "uint256",
       },
     ],
@@ -110,9 +166,61 @@ export const abi = [
   },
   {
     inputs: [],
+    name: "platformToken",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
     name: "renounceOwnership",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_tokenPrice",
+        type: "uint256",
+      },
+    ],
+    name: "setTokenPrice",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "tokenPrice",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "totalListingsCount",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -129,34 +237,10 @@ export const abi = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "string[]",
-        name: "artistIdentifiers",
-        type: "string[]",
-      },
-      {
-        internalType: "uint256[]",
-        name: "streamCounts",
-        type: "uint256[]",
-      },
-    ],
-    name: "updateArtistStreamsBatch",
+    inputs: [],
+    name: "withdraw",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
-  {
-    inputs: [],
-    name: "version",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-];
+] as const;
