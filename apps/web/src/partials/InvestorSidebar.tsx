@@ -7,6 +7,16 @@ import Link from "next/link";
 import { UrlObject } from "url";
 import { Logomark } from "@/components/Logo";
 import { cn } from "@/lib/utils";
+import { Switch } from "@/components/ui/switch";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import SelectUserModeOption from "@/components/SelectUserMode";
 
 type Url = string | UrlObject;
 
@@ -110,11 +120,15 @@ function InvestorSidebar() {
     }
   }, [sidebarExpanded]);
 
+  const mode = useSidebarStore((state) => state.mode);
+  const [switchChecked, setSwitchChecked] = useState(false);
+  const [opendialog, setOpendialog] = useState(false);
+
   return (
     <div>
       {/* Sidebar backdrop (mobile only) */}
       <div
-        className={`bg-surface/60 fixed inset-0 z-40 transition-opacity duration-200 lg:z-auto lg:hidden ${
+        className={`fixed inset-0 z-40 bg-surface/60 transition-opacity duration-200 lg:z-auto lg:hidden ${
           sidebarOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         aria-hidden="true"
@@ -124,7 +138,7 @@ function InvestorSidebar() {
       <div
         id="sidebar"
         ref={sidebar}
-        className={`no-scrollbar bg-surface absolute left-0 top-0 z-40 flex h-screen w-64 shrink-0 flex-col overflow-y-scroll border-r border-card/65 p-4 transition-all duration-200 ease-in-out lg:static lg:left-auto lg:top-auto lg:w-20 lg:translate-x-0 lg:overflow-y-auto lg:sidebar-expanded:!w-64 2xl:!w-64 ${
+        className={`no-scrollbar absolute left-0 top-0 z-40 flex h-screen w-64 shrink-0 flex-col overflow-y-scroll border-r border-card/65 bg-surface p-4 transition-all duration-200 ease-in-out lg:static lg:left-auto lg:top-auto lg:w-20 lg:translate-x-0 lg:overflow-y-auto lg:sidebar-expanded:!w-64 2xl:!w-64 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-64"
         }`}
       >
@@ -175,9 +189,51 @@ function InvestorSidebar() {
               >
                 •••
               </span>
-              <span className="whitespace-nowrap lg:hidden lg:sidebar-expanded:block 2xl:block">
-                Investor Mode
-              </span>
+              <Dialog open={opendialog} onOpenChange={setOpendialog}>
+                <div className="items-center gap-2 whitespace-nowrap lg:hidden lg:sidebar-expanded:inline-flex  2xl:inline-flex ">
+                  <DialogTrigger>
+                    <Switch
+                      id="user-mode"
+                      checked={switchChecked}
+                      disabled={false}
+                    />
+                  </DialogTrigger>
+                  Investor Mode
+                </div>
+                <DialogContent className="w-fit max-w-full">
+                  <DialogHeader>
+                    <DialogTitle className="capitalize">
+                      Switch to Creator Mode?
+                    </DialogTitle>
+                    <DialogDescription>
+                      <div className="flex flex-nowrap justify-center gap-10 px-2 pt-6">
+                        <Link href="/dashboard">
+                          <SelectUserModeOption
+                            alt="Creator"
+                            text="I'm ready to elevate my career and engage with my fans like never before."
+                            image="/images/music-boy.png"
+                            className={cn({
+                              "bg-primary/10 md:outline md:outline-offset-2 md:outline-primary/20":
+                                mode === "creator",
+                            })}
+                          />
+                        </Link>
+                        <SelectUserModeOption
+                          alt="Investor"
+                          text=" I'm excited to support innovative artists and grow my portfolio in
+            the music industry."
+                          image="/images/investor.png"
+                          className={cn({
+                            "bg-primary/10 md:outline md:outline-offset-2 md:outline-primary/20":
+                              mode === "investor",
+                          })}
+                          onClick={() => setOpendialog(false)}
+                        />
+                      </div>
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
             </h3>
             <ul className="mt-3">
               {/* Discover */}
