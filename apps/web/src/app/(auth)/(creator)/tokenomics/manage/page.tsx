@@ -26,8 +26,6 @@ import { useState } from "react";
 // web3 integration here
 import { config } from "@/providers/web3";
 // import { ArtistTokenFactoryABI } from "@/abis/ArtistTokenFactory";
-import { abi } from "@/abis/ArtistTokenFactory";
-import { Web3Provider } from "@/providers/web3";
 
 function Page() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
