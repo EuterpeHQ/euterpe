@@ -46,7 +46,7 @@ const connectors = connectorsForWallets(
   },
 );
 
-const wagmiConfig = createConfig({
+export const config = createConfig({
   chains: [arbitrum, arbitrumSepolia],
   connectors: connectors,
   ssr: true,
@@ -88,7 +88,7 @@ const Disclaimer: DisclaimerComponent = ({ Text, Link }) => (
 
 export function Web3Provider({ children }: { children: React.ReactNode }) {
   return (
-    <WagmiProvider config={wagmiConfig}>
+    <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider
           appInfo={{
