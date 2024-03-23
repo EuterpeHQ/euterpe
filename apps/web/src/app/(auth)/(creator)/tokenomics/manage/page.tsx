@@ -21,13 +21,19 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
-
 import { useState } from "react";
-// web3 integration here
 import { config } from "@/providers/web3";
-// import { ArtistTokenFactoryABI } from "@/abis/ArtistTokenFactory";
+import { abi } from "@/abis/ArtistTokenFactory";
 
 function Page() {
+  // state to handle form data
+  const [formData, setFormData] = useState({
+    name: "",
+    symbol: "",
+    initialSupply: "",
+    artist: "",
+    spotify: "",
+  });
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Form submitted");
