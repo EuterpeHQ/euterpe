@@ -73,7 +73,7 @@ function Page() {
             <h2 className="text-2xl font-bold text-primary">Token Value</h2>
             <h2 className="text-2xl">0.0840 ETP</h2>
             <div className="flex flex-wrap items-center justify-start gap-5 min-[370px]:flex-nowrap">
-              <Button className="w-40">Claim your Token</Button>
+              {/* <Button className="w-40">Claim your Token</Button> */}
               <Dialog>
                 <DialogTrigger className="">
                   <Button className="w-40">Create New Token</Button>

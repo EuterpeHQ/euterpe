@@ -113,7 +113,7 @@ function TopMusicians() {
           variant="outline"
           asChild
         >
-          <Link href="/charts">
+          <Link href="/login">
             <BsBarChart className="h-[13px] w-[13px]" />
             View Charts
           </Link>
@@ -144,7 +144,7 @@ function TopMusicians() {
         </Carousel>
         <div className="container inline-flex md:hidden">
           <Button className="w-full gap-4" variant="outline" asChild>
-            <Link href="/charts">
+            <Link href="/login">
               <BsBarChart className="h-[13px] w-[13px]" />
               View Charts
             </Link>

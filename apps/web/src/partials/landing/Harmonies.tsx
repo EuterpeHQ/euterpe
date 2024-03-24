@@ -94,7 +94,7 @@ function Harmonies() {
           variant="outline"
           asChild
         >
-          <Link href="/harmonies">
+          <Link href="/login">
             <GrMoney className="h-[13px] w-[13px]" />
             See More
           </Link>
@@ -108,7 +108,7 @@ function Harmonies() {
       </div>
       <div className="container inline-flex pt-6 md:hidden">
         <Button className="w-full gap-4" variant="outline" asChild>
-          <Link href="/harmonies">
+          <Link href="/login">
             <GrMoney className="h-[13px] w-[13px]" />
             See More
           </Link>

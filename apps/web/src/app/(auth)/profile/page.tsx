@@ -1,6 +1,12 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+
+const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  console.log("Form submitted");
+};
 function Page() {
   return (
     <div className="max-w-9xl mx-auto w-full px-4 py-8 sm:px-6 lg:px-8">
@@ -29,9 +35,9 @@ function Page() {
             <button className="w-36 rounded-lg border border-white bg-inherit p-2">
               Explore
             </button>
-            <button className="w-36 rounded-lg border border-white bg-inherit p-2">
+            {/* <button className="w-36 rounded-lg border border-white bg-inherit p-2">
               Create
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
@@ -41,7 +47,10 @@ function Page() {
           Account Info
         </h2>
 
-        <form className=" mt-8 flex w-full flex-col gap-y-8 ">
+        <form
+          onSubmit={handleSubmit}
+          className=" mt-8 flex w-full flex-col gap-y-8 "
+        >
           <div className=" m-auto mx-auto flex h-28 w-28 items-center justify-center rounded-full border border-primary p-1">
             <Image
               className="m-auto ms-3 h-20 w-20 text-center"
@@ -67,9 +76,27 @@ function Page() {
             Email
           </label>
           <p className="border-b-2 border-b-gray-400 text-2xl text-primary ">
-            example@example.com
+            selena@gmail.com
           </p>
-          <Button className="mt-8 font-semibold">Edit</Button>
+          <label htmlFor="" className="text-2xl font-bold">
+            Spotify Name
+          </label>
+          <p className="border-b-2 border-b-gray-400 text-2xl text-primary ">
+            queenselena
+          </p>
+          <label htmlFor="" className="text-2xl font-bold">
+            Token Name
+          </label>
+          <p className="border-b-2 border-b-gray-400 text-2xl text-primary ">
+            ETP
+          </p>
+          <Button className="mt-8 font-semibold hover:bg-gray-400">Edit</Button>
+          <Button className=" bg-blue-300 font-semibold hover:bg-gray-400">
+            Disconnect Wallet
+          </Button>
+          <Button className=" bg-red-700 font-semibold text-white hover:bg-gray-400">
+            Logout
+          </Button>
         </form>
       </div>
     </div>

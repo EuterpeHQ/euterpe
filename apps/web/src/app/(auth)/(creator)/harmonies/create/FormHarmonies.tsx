@@ -15,7 +15,7 @@ export function FormHarmonies() {
     console.log("Form submitted");
   };
   return (
-    <div className="w-full max-w-lg rounded-none p-4 shadow-inner shadow-blue-300 md:rounded-2xl md:p-8">
+    <div className="w-full rounded-none p-4 shadow-md  md:rounded-2xl md:p-8">
       <h2 className="text-xl font-bold text-white">Create you Harmonies</h2>
       <p className="mt-2 max-w-sm text-sm text-neutral-600 dark:text-neutral-300">
         Create and Personalize your harmony.
@@ -44,7 +44,7 @@ export function FormHarmonies() {
           className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
           type="submit"
         >
-          Create &rarr;
+          Create
           <BottomGradient />
         </button>
 
