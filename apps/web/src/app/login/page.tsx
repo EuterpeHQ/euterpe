@@ -2,24 +2,10 @@
 import Link from "next/link";
 import Lottie from "lottie-react";
 import BoyLottie from "@/assets/animations/boy2.json";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 export default function page() {
   return (
     <>
-      <Alert className="border bg-red-700 shadow-md">
-        <ExclamationTriangleIcon className="mt-4 h-4 w-4" />
-        <AlertTitle className="text-center font-bold text-primary">
-          Heads up!
-        </AlertTitle>
-        <AlertDescription className="text-center">
-          Please note: Our login and sign up functionality is currently
-          undergoing improvements and may not be fully operational. We apologize
-          for any inconvenience this may cause. Feel free to click the login
-          button to explore other areas of our project. Thank you for your
-          understanding.
-        </AlertDescription>
-      </Alert>
       <div className="m-auto flex max-h-screen max-w-screen-2xl">
         <Lottie
           className=" hidden w-[40%] bg-black/15 lg:block"
