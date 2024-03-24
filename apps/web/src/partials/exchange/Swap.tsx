@@ -145,7 +145,7 @@ export default function Swap() {
   }, [isConfirming, isConfirmed, buyError]);
 
   return (
-    <div className="mx-auto my-8 flex max-w-md flex-col items-center space-y-6 rounded-xl border border-card bg-transparent p-6 ">
+    <div className="mx-auto my-8 flex w-full flex-col items-center space-y-6 rounded-xl border border-card bg-transparent p-6 ">
       <div className="flex items-center justify-between self-stretch">
         <h2 className="text-lg font-semibold">Buy Tokens</h2>
         <TooltipProvider>

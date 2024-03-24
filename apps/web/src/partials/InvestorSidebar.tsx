@@ -870,7 +870,7 @@ function InvestorSidebar() {
                         The value is derived from the expected total height of the element's content, including the line-height of the child text elements, any bottom margins between list items, and bottom padding applied from the SidebarLinkGroup element. */}
                         <ul
                           className={cn(
-                            "mt-1 h-20 pl-9 opacity-100 transition-all duration-150 ease-in-out",
+                            "mt-1 h-10 pl-9 opacity-100 transition-all duration-150 ease-in-out",
                             {
                               "invisible h-0 opacity-0": !open,
                             },
@@ -895,7 +895,7 @@ function InvestorSidebar() {
                               </span>
                             </NavLink>
                           </li>
-                          <li className="mb-1 last:mb-0">
+                          {/* <li className="mb-1 last:mb-0">
                             <NavLink
                               to="/profile/connect-wallet"
                               className={({
@@ -932,7 +932,7 @@ function InvestorSidebar() {
                                 Withdrawals
                               </span>
                             </NavLink>
-                          </li>
+                          </li> */}
                         </ul>
                       </div>
                     </React.Fragment>
