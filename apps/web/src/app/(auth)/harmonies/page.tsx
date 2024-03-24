@@ -97,10 +97,10 @@ function Page() {
           </div>
           <div className="relative space-y-4">
             <h1 className="mb-1 text-2xl font-bold text-foreground/80 md:text-3xl">
-              Discover Trending Tokens, <br />
+              Discover Trending Harmonies, <br />
             </h1>
             <p className="text-muted-foreground">
-              Explore and Invest in Specific Tokens
+              Explore and Invest in Specific Harmonies
             </p>
             <div className="flex gap-4">
               <button className="w-36 rounded-lg border border-white bg-inherit p-2">

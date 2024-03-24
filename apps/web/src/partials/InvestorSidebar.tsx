@@ -364,7 +364,7 @@ function InvestorSidebar() {
                 }}
               </SidebarLinkGroup>
               {/* Portfolio */}
-              <SidebarLinkGroup
+              {/* <SidebarLinkGroup
                 activecondition={pathname.includes("portfolio")}
               >
                 {(handleClick, open) => {
@@ -407,7 +407,7 @@ function InvestorSidebar() {
                               Portfolio
                             </span>
                           </div>
-                          {/* Icon */}
+                          Icon 
                           <div className="ml-2 flex shrink-0">
                             <svg
                               className={`ml-1 h-2 w-2 shrink-0 fill-current text-muted-foreground ${open && "rotate-180"}`}
@@ -419,8 +419,6 @@ function InvestorSidebar() {
                         </div>
                       </a>
                       <div className="lg:hidden lg:sidebar-expanded:block 2xl:block">
-                        {/* The height of this <ul> element is carefully calculated to ensure a smooth transition effect when toggling visibility. 
-                        The value is derived from the expected total height of the element's content, including the line-height of the child text elements, any bottom margins between list items, and bottom padding applied from the SidebarLinkGroup element. */}
                         <ul
                           className={cn(
                             "mt-1 h-[8.5rem] pl-9 opacity-100 transition-all duration-150 ease-in-out",
@@ -529,7 +527,7 @@ function InvestorSidebar() {
                     </React.Fragment>
                   );
                 }}
-              </SidebarLinkGroup>
+              </SidebarLinkGroup> */}
               {/* Exchange */}
               <SidebarLinkGroup activecondition={pathname.includes("exchange")}>
                 {(handleClick, open) => {
