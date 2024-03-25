@@ -3,6 +3,7 @@ import { useSidebarStore } from "@/store/sidebar.store";
 import SearchModal from "@/components/ModalSearch";
 import Notifications from "@/components/DropdownNotifications";
 import ConnectButton from "@/components/ConnectButton";
+import AnnouncementBar from "@/components/AnnouncementBar";
 
 function Header() {
   const sidebarOpen = useSidebarStore((state) => state.isOpen);
@@ -10,7 +11,8 @@ function Header() {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
 
   return (
-    <header className="dark:bg-surface sticky top-0 z-30 border-b border-card/65 bg-white">
+    <header className="sticky top-0 z-30 border-b border-card/65 bg-white dark:bg-surface">
+      <AnnouncementBar />
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="-mb-px flex h-16 items-center justify-between">
           {/* Header: Left side */}
