@@ -23,21 +23,134 @@ import {
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { config } from "@/providers/web3";
-import { abi } from "@/abis/ArtistTokenFactory";
+import { abi as artistTokenFactoryAbi } from "@/abis/ArtistTokenFactory";
+import {
+  useAccount,
+  useWriteContract,
+  useWaitForTransactionReceipt,
+} from "wagmi";
+import { getAccount } from "@wagmi/core";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
+import { useToast } from "@/components/ui/use-toast";
+import { CgSpinner } from "react-icons/cg";
 
 function Page() {
-  // state to handle form data
   const [formData, setFormData] = useState({
     name: "",
     symbol: "",
-    initialSupply: "",
+    supply: "",
     artist: "",
     spotify: "",
   });
+  const [hasViewedCompletedTransaction, setHasViewedCompletedTransaction] =
+    useState(false);
+  const [opendialog, setOpendialog] = useState(false);
+
+  const { isConnected } = useAccount();
+  const { openConnectModal, connectModalOpen } = useConnectModal();
+  const { toast } = useToast();
+
+  // const handleDialog = (value: React.SetStateAction<boolean>) => {
+  //   if (connectModalOpen) {
+  //     setOpendialog(true);
+  //   } else {
+  //     setOpendialog(value);
+  //   }
+  // };
+  useEffect(() => {
+    if (connectModalOpen) {
+      setOpendialog(false);
+    }
+  }, [connectModalOpen]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const wagmiContractConfig = {
+    address: process.env
+      .NEXT_PUBLIC_ARTIST_TOKEN_SMART_CONTRACT_ADDRESS as `0x${string}`,
+    abi: artistTokenFactoryAbi,
+  };
+  const {
+    data: hash,
+    error: buyError,
+    isPending,
+    writeContract,
+  } = useWriteContract();
+  const { isLoading: isConfirming, isSuccess: isConfirmed } =
+    useWaitForTransactionReceipt({
+      hash,
+    });
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form submitted");
+    if (isConnected) {
+      if (!hasViewedCompletedTransaction && isConfirmed) {
+        window.open(
+          `https://sepolia.arbiscan.io/tx/${hash}`,
+          "_blank",
+          "noopener,noreferrer",
+        );
+        setHasViewedCompletedTransaction(true);
+      } else {
+        const { connector } = getAccount(config);
+        writeContract?.({
+          ...wagmiContractConfig,
+          functionName: "createToken",
+          connector,
+          args: [
+            formData.name,
+            formData.symbol,
+            BigInt(formData.supply),
+            formData.artist,
+            formData.spotify,
+          ],
+        });
+      }
+    } else {
+      openConnectModal?.();
+    }
   };
+
+  useEffect(() => {
+    if (isConfirming) {
+      toast({
+        title: "Transaction Pending",
+        description:
+          "Your transaction has been submitted. Waiting for confirmation...",
+      });
+    }
+
+    if (isConfirmed) {
+      toast({
+        title: "Transaction Confirmed",
+        description: "Your transaction has been successfully confirmed.",
+      });
+    }
+
+    if (buyError) {
+      toast({
+        title: "Transaction Error",
+        description: "An error occurred during the transaction.",
+      });
+    }
+  }, [isConfirming, isConfirmed, buyError]);
+
+  useEffect(() => {
+    if (isConfirmed && !opendialog) {
+      setFormData({
+        name: "",
+        symbol: "",
+        supply: "",
+        artist: "",
+        spotify: "",
+      });
+    }
+  }, [opendialog, isConfirmed]);
   return (
     <main className="m-auto mb-6 w-full max-w-[1500px]">
       <div className="m-auto mt-8 flex w-[98%] flex-row flex-wrap justify-between">
@@ -74,7 +187,7 @@ function Page() {
             <h2 className="text-2xl">0.0840 ETP</h2>
             <div className="flex flex-wrap items-center justify-start gap-5 min-[370px]:flex-nowrap">
               {/* <Button className="w-40">Claim your Token</Button> */}
-              <Dialog>
+              <Dialog open={opendialog} onOpenChange={setOpendialog}>
                 <DialogTrigger className="">
                   <Button className="w-40">Create New Token</Button>
                 </DialogTrigger>
@@ -83,12 +196,21 @@ function Page() {
                     <DialogTitle>Create your Token</DialogTitle>
                     <DialogDescription>
                       <form className="my-8" onSubmit={handleSubmit}>
+                        <div></div>
+                        {buyError && (
+                          <div className="mx-auto mb-4 h-32 max-w-md overflow-y-scroll break-words rounded-lg bg-card p-4 text-red-500">
+                            {buyError.message}
+                          </div>
+                        )}
                         <LabelInputContainer className="mb-4">
                           <Label htmlFor="name">Token Name</Label>
                           <Input
-                            id="text"
+                            id="name"
+                            name="name"
                             placeholder="Enter name of Token"
                             type="text"
+                            value={formData.name}
+                            onChange={handleChange}
                             required
                           />
                         </LabelInputContainer>
@@ -97,8 +219,11 @@ function Page() {
                             <Label htmlFor="symbol">Token Symbol</Label>
                             <Input
                               id="symbol"
-                              placeholder="ETP"
+                              name="symbol"
+                              placeholder="ART"
                               type="text"
+                              value={formData.symbol}
+                              onChange={handleChange}
                               required
                             />
                           </LabelInputContainer>
@@ -106,28 +231,65 @@ function Page() {
                             <Label htmlFor="supply">Initial Supply</Label>
                             <Input
                               id="supply"
-                              placeholder="20"
+                              name="supply"
+                              placeholder="21000000"
                               type="number"
+                              value={formData.supply}
+                              onChange={handleChange}
                               required
                             />
                           </LabelInputContainer>
                         </div>
                         <LabelInputContainer className="mb-4">
-                          <Label htmlFor="text">Spotify</Label>
+                          <Label htmlFor="text">Spotify Link</Label>
                           <Input
-                            id="type"
-                            placeholder="Enter your Spotify name"
+                            id="spotify"
+                            name="spotify"
+                            placeholder="Enter your Spotify link"
                             type="text"
+                            value={formData.spotify}
+                            onChange={handleChange}
                             required
                           />
                         </LabelInputContainer>
-                        <button
+                        <Button
+                          type="submit"
+                          variant="outline"
+                          size="sm"
+                          className="w-full py-2 text-white"
+                          disabled={isPending || isConfirming}
+                        >
+                          {isConnected ? (
+                            isPending ? (
+                              <div className="inline-flex items-center gap-4">
+                                <CgSpinner className="h-4 w-4 animate-spin" />{" "}
+                                Confirm In Your Wallet...
+                              </div>
+                            ) : isConfirming ? (
+                              <div className="inline-flex items-center gap-4">
+                                <CgSpinner className="h-4 w-4 animate-spin" />{" "}
+                                Submitting...
+                              </div>
+                            ) : !hasViewedCompletedTransaction &&
+                              isConfirmed ? (
+                              <div className="inline-flex items-center gap-4">
+                                View Transaction
+                              </div>
+                            ) : (
+                              "Create Token"
+                            )
+                          ) : (
+                            "Connect Wallet"
+                          )}
+                          <BottomGradient />
+                        </Button>
+                        {/* <button
                           className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
                           type="submit"
                         >
                           Create
                           <BottomGradient />
-                        </button>
+                        </button> */}
                         <div className="my-8 h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-700" />
                       </form>
                     </DialogDescription>
