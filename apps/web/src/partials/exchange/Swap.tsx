@@ -169,7 +169,9 @@ export default function Swap() {
       <div className="self-stretch">
         <div className="mb-4">
           {buyError && (
-            <div className="mb-2 text-red-500">{buyError.message}</div>
+            <div className="mx-auto mb-4 h-32 overflow-y-scroll break-words rounded-lg bg-card p-4 text-red-500">
+              {buyError.message}
+            </div>
           )}
           <label className="block text-sm font-medium text-white/80">
             You pay
