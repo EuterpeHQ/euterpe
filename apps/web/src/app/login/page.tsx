@@ -3,9 +3,20 @@ import Link from "next/link";
 import Lottie from "lottie-react";
 import BoyLottie from "@/assets/animations/boy2.json";
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
+import AnnouncementBar from "@/components/AnnouncementBar";
 export default function page() {
   return (
     <>
+      <AnnouncementBar>
+        <div>
+          <p className="text-sm">
+            <Link href="/discover" className="text-primary">
+              Click here to log in.
+            </Link>
+            &nbsp;(Authentication features coming soon!)
+          </p>
+        </div>
+      </AnnouncementBar>
       <div className="m-auto flex max-h-screen max-w-screen-2xl">
         <Lottie
           className=" hidden w-[40%] bg-black/15 lg:block"
