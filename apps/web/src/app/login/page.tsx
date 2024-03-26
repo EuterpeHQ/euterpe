@@ -10,7 +10,7 @@ export default function page() {
       <AnnouncementBar>
         <div>
           <p className="text-sm">
-            <Link href="/discover" className="text-primary">
+            <Link href="/onboarding" className="text-primary">
               Click here to log in.
             </Link>
             &nbsp;(Authentication features coming soon!)
