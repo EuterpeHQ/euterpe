@@ -2,6 +2,7 @@ import Hero from "@/partials/landing/Hero";
 import Harmonies from "@/partials/landing/Harmonies";
 import TopMusicians from "@/partials/landing/TopMusicians";
 import Spacer from "@/components/ui/spacer";
+import PlumesAI from "@/partials/landing/PlumesAI";
 
 export default function Page() {
   return (
@@ -12,6 +13,8 @@ export default function Page() {
       <TopMusicians />
       <Spacer size={100} />
       <Harmonies />
+      <Spacer size={100} />
+      <PlumesAI />
       <Spacer size={80} />
     </main>
   );
