@@ -160,7 +160,7 @@ function Page() {
 
         <div className="relative space-y-4">
           <h1 className="mb-1 text-2xl font-bold text-foreground/80 md:text-3xl">
-            Discover Digital Art, <br />
+            Discover Harmonies, <br />
           </h1>
           <p className="text-muted-foreground">
             Manage and Sell your Specific Harmonies
