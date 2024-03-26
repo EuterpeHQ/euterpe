@@ -29,7 +29,7 @@ export function ChatList({
 
   return (
     <div className="relative flex h-full w-full flex-col overflow-y-auto overflow-x-hidden">
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-background" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-background from-0% to-transparent to-70%" />
 
       <div
         ref={messagesContainerRef}
