@@ -4,7 +4,18 @@ import BoyLottie from "@/assets/animations/boy2.json";
 import Link from "next/link";
 import { CardContent } from "@/components/ui/card";
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
+import { useState } from "react";
+import { createClient } from "@supabase/supabase-js";
+import router from "next/router";
+// const supabase = createClient(supabase_url, anon_key);
+
 export default function page() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSignUp = async (e: any) => {
+    e.preventDefault(); // Prevent default form submission
+  };
   return (
     <>
       <div className=" m-auto flex max-h-screen max-w-screen-2xl gap-[4.5rem]">
@@ -31,7 +42,10 @@ export default function page() {
                 </span>
               </p>
             </div>
-            <form className="mx-auto mb-5 mt-4 w-[90%] space-y-6 sm:w-[80%] md:w-[60%] lg:w-[60%]">
+            <form
+              onSubmit={handleSignUp}
+              className="mx-auto mb-5 mt-4 w-[90%] space-y-6 sm:w-[80%] md:w-[60%] lg:w-[60%]"
+            >
               <div className="mb-5 flex flex-wrap justify-center gap-2">
                 <div className="flex w-[80%] justify-center  gap-6 rounded-lg bg-gray-700 p-2 text-sm md:w-[45%] md:gap-0">
                   <span className="flex">
@@ -74,6 +88,8 @@ export default function page() {
                   Your email
                 </label>
                 <input
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
                   type="email"
                   id="email"
                   className="shadow-sm-light block w-full rounded-lg border-gray-600 bg-gray-700 p-2.5 text-sm text-white placeholder-gray-400 shadow-sm focus:border-primary  focus:ring-primary"
@@ -90,20 +106,22 @@ export default function page() {
                 </label>
                 <input
                   type="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
                   id="password"
                   placeholder="password"
                   className="shadow-sm-light block w-full rounded-lg border-gray-600 bg-gray-700 p-2.5 text-sm text-white placeholder-gray-400 shadow-sm focus:border-primary  focus:ring-primary"
                   required
                 />
               </div>
-              <Link href="/onboarding">
-                <button
-                  type="submit"
-                  className="mt-5 w-full rounded-lg bg-white px-5 py-2.5 text-center text-sm font-medium text-black hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-blue-300"
-                >
-                  Sign Up
-                </button>
-              </Link>
+              {/* <Link href="/onboarding"> */}
+              <button
+                type="submit"
+                className="mt-5 w-full rounded-lg bg-white px-5 py-2.5 text-center text-sm font-medium text-black hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-blue-300"
+              >
+                Sign Up
+              </button>
+              {/* </Link> */}
               <div className="my-2 flex items-center justify-center">
                 <div className="w-full border-t border-gray-400"></div>
                 <div className="mx-4 text-gray-400">or</div>

@@ -17,7 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-function Page() {
+export default function Page() {
   return (
     <main>
       <div className="max-w-9xl mx-auto w-full px-4 py-8 sm:px-6 lg:px-8">
@@ -141,5 +141,3 @@ function Page() {
     </main>
   );
 }
-
-export default Page;

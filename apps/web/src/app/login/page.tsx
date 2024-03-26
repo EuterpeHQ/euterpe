@@ -4,7 +4,23 @@ import Lottie from "lottie-react";
 import BoyLottie from "@/assets/animations/boy2.json";
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 import AnnouncementBar from "@/components/AnnouncementBar";
+import { useRouter } from "next/navigation";
+import { useTransition } from "react";
+import { loginAction } from "../actions/users";
 export default function page() {
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+
+  const handleClickLoginButton = (formData: FormData) => {
+    startTransition(async () => {
+      const { errorMessage } = await loginAction(formData);
+      if (errorMessage) {
+        console.log(errorMessage);
+      } else {
+        router.push("/onboarding");
+      }
+    });
+  };
   return (
     <>
       <AnnouncementBar>
@@ -41,7 +57,10 @@ export default function page() {
                 </span>
               </p>
             </div>
-            <form className="mx-auto mb-5 mt-4 w-[90%] space-y-6 sm:w-[80%] md:w-[60%] lg:w-[50%]">
+            <form
+              action={handleClickLoginButton}
+              className="mx-auto mb-5 mt-4 w-[90%] space-y-6 sm:w-[80%] md:w-[60%] lg:w-[50%]"
+            >
               <div className="mb-5 flex flex-wrap justify-center gap-2">
                 <div className="flex w-[80%] justify-center  gap-6 rounded-lg bg-gray-700 p-2 text-sm md:w-[45%] md:gap-0">
                   <span className="flex">
@@ -88,6 +107,7 @@ export default function page() {
                   className="shadow-sm-light block w-full rounded-lg border-gray-600 bg-gray-700 p-2.5 text-sm text-white placeholder-gray-400 shadow-sm focus:border-primary  focus:ring-primary"
                   placeholder="name@euterpe.com"
                   required
+                  disabled={isPending}
                 />
               </div>
               <div className="mb-5">
@@ -103,16 +123,19 @@ export default function page() {
                   placeholder="password"
                   className="shadow-sm-light block w-full rounded-lg border-gray-600 bg-gray-700 p-2.5 text-sm text-white placeholder-gray-400 shadow-sm focus:border-primary  focus:ring-primary"
                   required
+                  disabled={isPending}
                 />
               </div>
-              <Link href="/onboarding">
-                <button
-                  type="submit"
-                  className="mt-5 w-full rounded-lg bg-white px-5 py-2.5 text-center text-sm font-medium text-black hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-blue-300"
-                >
-                  Login
-                </button>
-              </Link>
+              {/* <Link href="#"> */}
+              <button
+                type="submit"
+                className="mt-5 w-full rounded-lg bg-white px-5 py-2.5 text-center text-sm font-medium text-black hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                disabled={isPending}
+              >
+                {isPending ? "Logging in..." : "Login"}
+                {/* Login */}
+              </button>
+              {/* </Link> */}
               <div className="my-2 flex items-center justify-center">
                 <div className="w-full border-t border-gray-400"></div>
                 <div className="mx-4 text-gray-400">or</div>

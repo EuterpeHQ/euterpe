@@ -7,7 +7,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   console.log("Form submitted");
 };
-function Page() {
+export default function Page() {
   return (
     <div className="max-w-9xl mx-auto w-full px-4 py-8 sm:px-6 lg:px-8">
       {/* Change vector art */}
@@ -102,5 +102,3 @@ function Page() {
     </div>
   );
 }
-
-export default Page;
