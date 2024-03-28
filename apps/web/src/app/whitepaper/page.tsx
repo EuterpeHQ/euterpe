@@ -30,7 +30,7 @@ export default function page() {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <p className="mt-8 text-base text-gray-400">
+        <p className="mt-8 text-base text-muted-foreground">
           Page last updated: March 28th, 2024
         </p>
         <div className="flex flex-col items-center justify-center">
@@ -38,26 +38,26 @@ export default function page() {
             <h1 className="mt-10 text-4xl font-bold">
               <span className="text-primary">Euterpe</span> Whitepaper
             </h1>
-            <p className="text-gray-400">
+            <p className="text-muted-foreground">
               Euterpe is empowering artists and fans to shape the future of
               music, together.
             </p>
-            <p className="text-base">
+            <p className="text-base text-muted-foreground">
               In this document, we present a comprehensive overview of Euterpe,
               a groundbreaking Web3 platform revolutionizing the music industry
               through the power of blockchain technology and non-fungible tokens
               (NFTs).
             </p>
-            <em className="mb-20 text-base text-gray-400">
+            <em className="mb-20 text-base text-muted-foreground">
               We maintain this paper because it continues to serve as a useful
               reference and an accurate representation of Euterpe and its
               vision.
             </em>
             {/* About */}
             <h1 className="mt-10 text-2xl font-bold">
-              About <span>Euterpe</span>
+              <span className="text-primary">About</span> Euterpe
             </h1>
-            <p className="text-base">
+            <p className="text-base text-muted-foreground">
               Euterpe takes its name from the Greek muse of music, reflecting
               our mission to empower musicians and creators worldwide. At its
               core, Euterpe is a decentralized platform that connects musicians
@@ -68,9 +68,9 @@ export default function page() {
             </p>
             {/* Vision */}
             <h1 className="mt-10 text-2xl font-bold">
-              Our <span>Vision</span>
+              <span className="text-primary"> Our </span>Vision
             </h1>
-            <p className="text-base">
+            <p className="text-base text-muted-foreground">
               Our vision is to create a more equitable and transparent music
               industry where artists have greater control over their creative
               work and receive fair compensation for their contributions. By
@@ -82,13 +82,13 @@ export default function page() {
             </p>
             {/* Key features */}
             <h1 className="mt-10 text-2xl font-bold">
-              Key <span>Features</span>
+              <span className="text-primary">Key </span>Features
             </h1>
-            <p className="text-xl text-gray-400">
+            <p className="text-xl text-muted-foreground">
               Euterpe offers a wide range of features and functionalities
               designed to support artists and fans alike. These include:
             </p>
-            <ul className="list-disc space-y-8 text-base text-gray-400">
+            <ul className="list-disc space-y-8 text-base text-muted-foreground">
               <li className="">
                 Artist tokenization: Artists can tokenize their music and
                 creative work, allowing fans to invest in their favorite artists
@@ -117,14 +117,14 @@ export default function page() {
             <h1 className="mt-10 text-4xl font-bold">
               <span className="text-primary">Problem</span> Statement
             </h1>
-            <p className="text-base">
+            <p className="text-base text-muted-foreground">
               The current music industry is plagued by inefficiencies,
               inequities, and centralized control. Artists face numerous
               challenges in navigating the complex landscape of the industry,
               often finding themselves at the mercy of traditional record labels
               and intermediaries.
             </p>
-            <ul className="list-disc space-y-8 text-base text-gray-400">
+            <ul className="list-disc space-y-8 text-base text-muted-foreground">
               <li>
                 Centralized Control: Traditional record labels wield significant
                 power and control over artists, often dictating creative
@@ -169,7 +169,7 @@ export default function page() {
             <h1 className="mt-10 text-4xl font-bold">
               <span className="text-primary">Solution</span> Overview
             </h1>
-            <p className="text-base">
+            <p className="text-base text-muted-foreground">
               Euterpe offers a transformative solution to the challenges faced
               by artists in the music industry. By leveraging blockchain
               technology and non-fungible tokens (NFTs), Euterpe empowers
@@ -177,7 +177,7 @@ export default function page() {
               with their audience, and unlock new opportunities for growth and
               success.
             </p>
-            <ul className="list-disc space-y-8 text-base text-gray-400">
+            <ul className="list-disc space-y-8 text-base text-muted-foreground">
               <li>
                 Decentralized Platform: At the heart of Euterpe is a
                 decentralized platform that connects artists directly with their
@@ -227,14 +227,14 @@ export default function page() {
             <h1 className=" mt-10 text-4xl font-bold">
               <span className="text-primary">Technology</span> Overview
             </h1>
-            <p className="text-base">
+            <p className="text-base text-muted-foreground">
               Euterpe is powered by cutting-edge blockchain technology and
               leverages non-fungible tokens (NFTs) to create a decentralized
               platform for the music industry. In this section, we provide an
               overview of the key technologies and components that make Euterpe
               possible.
             </p>
-            <ul className="list-disc space-y-8 text-base text-gray-400">
+            <ul className="list-disc space-y-8 text-base text-muted-foreground">
               <li>
                 Blockchain Technology: Euterpe is built on a blockchain
                 infrastructure, providing a secure and immutable ledger for the
@@ -295,14 +295,14 @@ export default function page() {
             <h1 className="mt-10 text-4xl font-bold">
               <span className="text-primary">Use</span> Cases
             </h1>
-            <p className="text-base">
+            <p className="text-base text-muted-foreground">
               Euterpe offers a wide range of use cases for artists, fans, and
               investors, leveraging blockchain technology and non-fungible
               tokens (NFTs) to revolutionize the music industry. In this
               section, we explore some of the key use cases enabled by Euterpe's
               innovative platform.
             </p>
-            <ul className="list-disc space-y-8 text-base text-gray-400">
+            <ul className="list-disc space-y-8 text-base text-muted-foreground">
               <li>
                 Artist Tokenization Problem: Artists often struggle to secure
                 funding and financial support for their creative projects,
@@ -397,14 +397,14 @@ export default function page() {
             <h1 className="mt-10 text-4xl font-bold text-primary">
               Tokenomics
             </h1>
-            <p className="text-base">
+            <p className="text-base text-muted-foreground">
               Euterpe (Symbol: ETP) is the native utility token of the Euterpe
               platform. Designed to facilitate transactions, incentivize
               participation, and govern the ecosystem, ETP plays a central role
               in the operation and growth of the platform. Below, we provide an
               overview of the key aspects of Euterpe's tokenomics:
             </p>
-            <ul className="list-disc space-y-8 text-base text-gray-400">
+            <ul className="list-disc space-y-8 text-base text-muted-foreground">
               <li>
                 Token Supply and Distribution: ETP has a total supply of X
                 tokens, initially distributed through various channels including
@@ -441,7 +441,7 @@ export default function page() {
             <h1 className="mt-10 text-4xl font-bold text-primary">
               Governance
             </h1>
-            <p className="text-base">
+            <p className="text-base text-muted-foreground">
               Governance lies at the core of the Euterpe platform, empowering
               the community to shape the direction and evolution of the
               ecosystem. Through decentralized decision-making processes,
@@ -449,7 +449,7 @@ export default function page() {
               accountability, ensuring that the interests of all stakeholders
               are represented.
             </p>
-            <ul className="list-disc space-y-8 text-base text-gray-400">
+            <ul className="list-disc space-y-8 text-base text-muted-foreground">
               <li>
                 Voting Power The voting power of each ETP holder is determined
                 by factors such as token balance, staking duration, or other
@@ -477,14 +477,14 @@ export default function page() {
           {/* Roadmap */}
           <section className="w-full space-y-6 md:w-[80%]">
             <h1 className="mt-10 text-4xl font-bold text-primary">Roadmap</h1>
-            <p className="text-base">
+            <p className="text-base text-muted-foreground">
               The Euterpe roadmap outlines the strategic direction and
               milestones planned for the platform's development and growth. It
               serves as a guiding framework for the Euterpe team and community,
               providing a clear vision of the platform's future trajectory and
               the steps required to achieve its long-term objectives.
             </p>
-            <ul className="list-disc space-y-8 text-base text-gray-400">
+            <ul className="list-disc space-y-8 text-base text-muted-foreground">
               <li>
                 Current Milestones At present, Euterpe has successfully launched
                 its platform MVP and seeking key partnerships within the music
@@ -536,7 +536,7 @@ export default function page() {
           {/* Team */}
           <section className="w-full space-y-6 md:w-[80%]">
             <h1 className="mt-10 text-4xl font-bold text-primary">Team</h1>
-            <p className="text-base">
+            <p className="text-base text-muted-foreground">
               The success of Euterpe is Euterpe is driven by a dynamic duo
               dedicated to revolutionizing the music industry. They bring a
               diverse range of skills, expertise, and passion to the project.
@@ -544,7 +544,7 @@ export default function page() {
               united by a shared vision of revolutionizing the way artists and
               fans interact and support each other.
             </p>
-            <ul className="list-disc space-y-8 text-base text-gray-400">
+            <ul className="list-disc space-y-8 text-base text-muted-foreground">
               <li>
                 Tolu - CEO & Founder: As the CEO and founder of Euterpe, he
                 brings a wealth of entrepreneurial experience and technical
@@ -566,15 +566,15 @@ export default function page() {
           <section className="w-[80%] space-y-6">
             <h1 className="mt-10 text-4xl font-bold">
               <span className="text-primary">Partnerships </span> and
-              Colloaboration
+              Collaboration
             </h1>
-            <p className="text-base">
+            <p className="text-base text-muted-foreground">
               Partnerships and collaborations play a crucial role in the growth
               and success of the Euterpe platform. As we continue to innovate
               and disrupt the music industry, we are actively seeking strategic
               alliances with organizations that share our vision and values.
             </p>
-            <ul className="list-disc space-y-8 text-base text-gray-400">
+            <ul className="list-disc space-y-8 text-base text-muted-foreground">
               <li>
                 Current Status At present, Euterpe is in the process of
                 identifying potential partners and exploring collaboration
@@ -608,7 +608,7 @@ export default function page() {
             <h1 className="mt-10 text-4xl font-bold text-primary">
               Conclusion
             </h1>
-            <p className="text-base">
+            <p className="text-base text-muted-foreground">
               In conclusion, Euterpe stands at the forefront of innovation in
               the music industry, poised to revolutionize the way artists and
               fans interact and support each other. Through our decentralized
@@ -616,7 +616,7 @@ export default function page() {
               connect directly with their fans, and access the funding and
               support they need to succeed.
             </p>
-            <p className="text-base">
+            <p className="text-base text-muted-foreground">
               As we continue to evolve and grow, we remain committed to our
               mission of democratizing access to funding and support for artists
               worldwide. We believe that by leveraging the power of blockchain
@@ -624,7 +624,7 @@ export default function page() {
               create a more equitable and transparent music ecosystem where
               everyone has the opportunity to thrive.
             </p>
-            <p className="text-base">
+            <p className="text-base text-muted-foreground">
               We are grateful for the support of our community and partners as
               we embark on this journey together. Together, we will shape the
               future of music and create a world where artists are celebrated,
