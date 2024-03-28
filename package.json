@@ -22,6 +22,7 @@
     "packages/*"
   ],
   "dependencies": {
+    "@kinde-oss/kinde-auth-nextjs": "^2.2.1",
     "@lottiefiles/react-lottie-player": "^3.5.3",
     "@radix-ui/react-avatar": "^1.0.4"
   }

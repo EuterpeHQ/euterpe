@@ -2,6 +2,7 @@ import Spacer from "@/components/ui/spacer";
 import { FaUncharted } from "react-icons/fa6";
 import { TbCoins } from "react-icons/tb";
 import { HiOutlineSparkles } from "react-icons/hi2";
+import { url } from "inspector";
 
 const features = [
   {
@@ -64,14 +65,22 @@ function HowItWorks() {
               </dl>
             </div>
           </div>
-          <div className="flex items-start justify-end lg:order-first">
-            <img
+          <div
+            className="flex items-start justify-end lg:order-first"
+            style={{
+              backgroundImage: `url("/images/app.png")`,
+              backgroundPosition: "center",
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            {/* <img
               src="/images/app.png"
               alt="Product screenshot"
               className="aspect-[2432/1642] w-[48rem] max-w-none rounded-xl object-contain object-right-top shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem]"
               width={2432}
               height={1642}
-            />
+            /> */}
           </div>
         </div>
       </div>

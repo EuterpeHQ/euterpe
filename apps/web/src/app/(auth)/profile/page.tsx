@@ -2,7 +2,8 @@
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-
+import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import Link from "next/link";
 const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   console.log("Form submitted");
@@ -94,9 +95,12 @@ function Page() {
           <Button className=" bg-blue-300 font-semibold hover:bg-gray-400">
             Disconnect Wallet
           </Button>
+          {/* <Link href="/"> */}
           <Button className=" bg-red-700 font-semibold text-white hover:bg-gray-400">
-            Logout
+            <LogoutLink>Logout</LogoutLink>
+            {/* Logout */}
           </Button>
+          {/* </Link> */}
         </form>
       </div>
     </div>
