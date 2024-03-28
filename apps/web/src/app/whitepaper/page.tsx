@@ -12,11 +12,11 @@ import Footer from "@/partials/Footer";
 
 export default function page() {
   return (
-    <>
+    <section className=" m-auto max-h-screen max-w-[1500px]">
       <div className="mt-10 w-full text-center">
         <Logo />
       </div>
-      <main className="m-auto mb-10 w-[90%] text-2xl">
+      <main className="m-auto mb-10 w-[80%] text-2xl">
         <Breadcrumb className="mt-10 text-base">
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -88,7 +88,7 @@ export default function page() {
               Euterpe offers a wide range of features and functionalities
               designed to support artists and fans alike. These include:
             </p>
-            <ul className="list-disc space-y-8 text-gray-400">
+            <ul className="list-disc space-y-8 text-base text-gray-400">
               <li className="">
                 Artist tokenization: Artists can tokenize their music and
                 creative work, allowing fans to invest in their favorite artists
@@ -124,7 +124,7 @@ export default function page() {
               often finding themselves at the mercy of traditional record labels
               and intermediaries.
             </p>
-            <ul className="list-disc space-y-8 text-gray-400">
+            <ul className="list-disc space-y-8 text-base text-gray-400">
               <li>
                 Centralized Control: Traditional record labels wield significant
                 power and control over artists, often dictating creative
@@ -177,7 +177,7 @@ export default function page() {
               with their audience, and unlock new opportunities for growth and
               success.
             </p>
-            <ul className="list-disc space-y-8 text-gray-400">
+            <ul className="list-disc space-y-8 text-base text-gray-400">
               <li>
                 Decentralized Platform: At the heart of Euterpe is a
                 decentralized platform that connects artists directly with their
@@ -234,7 +234,7 @@ export default function page() {
               overview of the key technologies and components that make Euterpe
               possible.
             </p>
-            <ul className="list-disc space-y-8 text-gray-400">
+            <ul className="list-disc space-y-8 text-base text-gray-400">
               <li>
                 Blockchain Technology: Euterpe is built on a blockchain
                 infrastructure, providing a secure and immutable ledger for the
@@ -302,7 +302,7 @@ export default function page() {
               section, we explore some of the key use cases enabled by Euterpe's
               innovative platform.
             </p>
-            <ul className="list-disc space-y-8 text-gray-400">
+            <ul className="list-disc space-y-8 text-base text-gray-400">
               <li>
                 Artist Tokenization Problem: Artists often struggle to secure
                 funding and financial support for their creative projects,
@@ -404,7 +404,7 @@ export default function page() {
               in the operation and growth of the platform. Below, we provide an
               overview of the key aspects of Euterpe's tokenomics:
             </p>
-            <ul className="list-disc space-y-8 text-gray-400">
+            <ul className="list-disc space-y-8 text-base text-gray-400">
               <li>
                 Token Supply and Distribution: ETP has a total supply of X
                 tokens, initially distributed through various channels including
@@ -449,7 +449,7 @@ export default function page() {
               accountability, ensuring that the interests of all stakeholders
               are represented.
             </p>
-            <ul className="list-disc space-y-8 text-gray-400">
+            <ul className="list-disc space-y-8 text-base text-gray-400">
               <li>
                 Voting Power The voting power of each ETP holder is determined
                 by factors such as token balance, staking duration, or other
@@ -484,7 +484,7 @@ export default function page() {
               providing a clear vision of the platform's future trajectory and
               the steps required to achieve its long-term objectives.
             </p>
-            <ul className="list-disc space-y-8 text-gray-400">
+            <ul className="list-disc space-y-8 text-base text-gray-400">
               <li>
                 Current Milestones At present, Euterpe has successfully launched
                 its platform MVP and seeking key partnerships within the music
@@ -544,7 +544,7 @@ export default function page() {
               united by a shared vision of revolutionizing the way artists and
               fans interact and support each other.
             </p>
-            <ul className="list-disc space-y-8 text-gray-400">
+            <ul className="list-disc space-y-8 text-base text-gray-400">
               <li>
                 Tolu - CEO & Founder: As the CEO and founder of Euterpe, he
                 brings a wealth of entrepreneurial experience and technical
@@ -574,7 +574,7 @@ export default function page() {
               and disrupt the music industry, we are actively seeking strategic
               alliances with organizations that share our vision and values.
             </p>
-            <ul className="list-disc space-y-8 text-gray-400">
+            <ul className="list-disc space-y-8 text-base text-gray-400">
               <li>
                 Current Status At present, Euterpe is in the process of
                 identifying potential partners and exploring collaboration
@@ -608,7 +608,7 @@ export default function page() {
             <h1 className="mt-10 text-4xl font-bold text-primary">
               Conclusion
             </h1>
-            <p className="text-xl">
+            <p className="text-base">
               In conclusion, Euterpe stands at the forefront of innovation in
               the music industry, poised to revolutionize the way artists and
               fans interact and support each other. Through our decentralized
@@ -616,7 +616,7 @@ export default function page() {
               connect directly with their fans, and access the funding and
               support they need to succeed.
             </p>
-            <p className="text-xl">
+            <p className="text-base">
               As we continue to evolve and grow, we remain committed to our
               mission of democratizing access to funding and support for artists
               worldwide. We believe that by leveraging the power of blockchain
@@ -624,7 +624,7 @@ export default function page() {
               create a more equitable and transparent music ecosystem where
               everyone has the opportunity to thrive.
             </p>
-            <p className="text-xl">
+            <p className="text-base">
               We are grateful for the support of our community and partners as
               we embark on this journey together. Together, we will shape the
               future of music and create a world where artists are celebrated,
@@ -634,6 +634,6 @@ export default function page() {
         </div>
       </main>
       <Footer />
-    </>
+    </section>
   );
 }
