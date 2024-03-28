@@ -66,7 +66,7 @@ function HowItWorks() {
             </div>
           </div>
           <div
-            className="flex items-start justify-end lg:order-first"
+            className="flex items-start justify-end rounded-xl shadow-xl ring-1 ring-gray-400/10 lg:order-first"
             style={{
               backgroundImage: `url("/images/app.png")`,
               backgroundPosition: "center",
