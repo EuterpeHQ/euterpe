@@ -42,7 +42,7 @@ export default function page() {
               Euterpe is empowering artists and fans to shape the future of
               music, together.
             </p>
-            <p className="text-xl">
+            <p className="text-base">
               In this document, we present a comprehensive overview of Euterpe,
               a groundbreaking Web3 platform revolutionizing the music industry
               through the power of blockchain technology and non-fungible tokens
