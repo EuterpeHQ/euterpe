@@ -6,17 +6,22 @@ import Link from "next/link";
 import { GrMoney } from "react-icons/gr";
 import { randomInt } from "crypto";
 import Balancer from "react-wrap-balancer";
+import Image from "next/image";
+import HarmonyImage from "@/assets/images/lady-donli.jpeg";
 
 function Collection({ index }: { index: number }) {
   return (
     <div className="w-full max-w-sm p-4 md:max-w-xs lg:max-w-sm">
       <div className="h-full overflow-hidden rounded-xl bg-card p-6">
         <div className="relative mb-6 flex aspect-square w-full items-center justify-center overflow-hidden rounded-xl">
-          <img
-            src="https://www.morebranches.com/wp-content/uploads/2023/10/IMG_0850-scaled.jpg"
+          <Image
+            src={HarmonyImage}
             className="h-full w-full cursor-pointer rounded-xl object-cover object-bottom transition duration-200 hover:scale-105 hover:opacity-80"
             alt=""
             aria-hidden="true"
+            fill
+            placeholder="blur"
+            quality={100}
           />
         </div>
         <div className="mb-3 text-white">
