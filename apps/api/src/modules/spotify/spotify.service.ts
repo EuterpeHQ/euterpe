@@ -9,11 +9,11 @@ class SpotifyService {
   private tokenCache: NodeCache;
 
   constructor() {
-    this.clientId = process.env.SPOTIFY_CLIENT_ID!; // Ensure your Spotify client ID is set in the environment variables
-    this.clientSecret = process.env.SPOTIFY_CLIENT_SECRET!; // Ensure your Spotify client secret is set in the environment variables
+    this.clientId = process.env.SPOTIFY_CLIENT_ID!;
+    this.clientSecret = process.env.SPOTIFY_CLIENT_SECRET!;
     this.tokenUrl = "https://accounts.spotify.com/api/token";
     this.apiBaseUrl = "https://api.spotify.com/v1";
-    this.tokenCache = new NodeCache(); // Initialize cache for the access token
+    this.tokenCache = new NodeCache();
   }
 
   async getAccessToken() {
@@ -85,7 +85,7 @@ class SpotifyService {
       }
       const featuredArtist = transformArtistsData(artistsResponse);
 
-      return featuredArtist;
+      return { artists: featuredArtist };
     } catch (error) {
       console.error("Error fetching featured artists from Spotify:", error);
       throw new Error("Failed to fetch featured artists from Spotify");
