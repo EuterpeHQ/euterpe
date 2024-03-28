@@ -57,7 +57,7 @@ export default function page() {
             <h1 className="mt-10 text-2xl font-bold">
               About <span>Euterpe</span>
             </h1>
-            <p className="text-xl">
+            <p className="text-base">
               Euterpe takes its name from the Greek muse of music, reflecting
               our mission to empower musicians and creators worldwide. At its
               core, Euterpe is a decentralized platform that connects musicians
@@ -70,7 +70,7 @@ export default function page() {
             <h1 className="mt-10 text-2xl font-bold">
               Our <span>Vision</span>
             </h1>
-            <p className="text-xl">
+            <p className="text-base">
               Our vision is to create a more equitable and transparent music
               industry where artists have greater control over their creative
               work and receive fair compensation for their contributions. By
@@ -117,7 +117,7 @@ export default function page() {
             <h1 className="mt-10 text-4xl font-bold">
               <span className="text-primary">Problem</span> Statement
             </h1>
-            <p className="text-xl">
+            <p className="text-base">
               The current music industry is plagued by inefficiencies,
               inequities, and centralized control. Artists face numerous
               challenges in navigating the complex landscape of the industry,
@@ -169,7 +169,7 @@ export default function page() {
             <h1 className="mt-10 text-4xl font-bold">
               <span className="text-primary">Solution</span> Overview
             </h1>
-            <p className="text-xl">
+            <p className="text-base">
               Euterpe offers a transformative solution to the challenges faced
               by artists in the music industry. By leveraging blockchain
               technology and non-fungible tokens (NFTs), Euterpe empowers
