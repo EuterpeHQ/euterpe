@@ -33,9 +33,9 @@ export default function page() {
         <p className="mt-8 text-base text-gray-400">
           Page last updated: March 28th, 2024
         </p>
-        <section className="w-[80%] space-y-6">
+        <section className="w-full space-y-6 md:w-[80%]">
           <h1 className="mt-10 text-4xl font-bold">
-            <span>Euterpe</span> Whitepaper
+            <span className="text-primary">Euterpe</span> Whitepaper
           </h1>
           <p className="text-gray-400">
             Euterpe is empowering artists and fans to shape the future of music,
@@ -110,9 +110,9 @@ export default function page() {
           </ul>
         </section>
         {/* Problem Statement */}
-        <section className="w-[80%] space-y-6">
+        <section className="w-full space-y-6 md:w-[80%]">
           <h1 className="mt-10 text-4xl font-bold">
-            <span>Problem</span> Statement
+            <span className="text-primary">Problem</span> Statement
           </h1>
           <p className="text-xl">
             The current music industry is plagued by inefficiencies, inequities,
@@ -161,9 +161,9 @@ export default function page() {
           </ul>
         </section>
         {/* Solution overview */}
-        <section className="w-[80%] space-y-6">
+        <section className="w-full space-y-6 md:w-[80%]">
           <h1 className="mt-10 text-4xl font-bold">
-            <span>Solution</span> Overview
+            <span className="text-primary">Solution</span> Overview
           </h1>
           <p className="text-xl">
             Euterpe offers a transformative solution to the challenges faced by
@@ -217,9 +217,9 @@ export default function page() {
           </ul>
         </section>
         {/* Technology overview */}
-        <section className="w-[80%] space-y-6">
-          <h1 className="mt-10 text-4xl font-bold">
-            <span>Technology</span> Overview
+        <section className="w-full space-y-6 md:w-[80%]">
+          <h1 className=" mt-10 text-4xl font-bold">
+            <span className="text-primary">Technology</span> Overview
           </h1>
           <p className="text-xl">
             Euterpe is powered by cutting-edge blockchain technology and
@@ -285,9 +285,9 @@ export default function page() {
           </ul>
         </section>
         {/* use cases */}
-        <section className="w-[80%] space-y-6">
+        <section className="w-full space-y-6 md:w-[80%]">
           <h1 className="mt-10 text-4xl font-bold">
-            <span>Use</span> Cases
+            <span className="text-primary">Use</span> Cases
           </h1>
           <p className="text-xl">
             Euterpe offers a wide range of use cases for artists, fans, and
@@ -384,8 +384,8 @@ export default function page() {
           </ul>
         </section>
         {/* tokenomics */}
-        <section className="w-[80%] space-y-6">
-          <h1 className="mt-10 text-4xl font-bold">Tokenomics</h1>
+        <section className="w-full space-y-6 md:w-[80%]">
+          <h1 className="mt-10 text-4xl font-bold text-primary">Tokenomics</h1>
           <p className="text-xl">
             Euterpe (Symbol: ETP) is the native utility token of the Euterpe
             platform. Designed to facilitate transactions, incentivize
@@ -425,8 +425,8 @@ export default function page() {
           </ul>
         </section>
         {/* governance */}
-        <section className="w-[80%] space-y-6">
-          <h1 className="mt-10 text-4xl font-bold">Governance</h1>
+        <section className="w-full space-y-6 md:w-[80%]">
+          <h1 className="mt-10 text-4xl font-bold text-primary">Governance</h1>
           <p className="text-xl">
             Governance lies at the core of the Euterpe platform, empowering the
             community to shape the direction and evolution of the ecosystem.
@@ -460,8 +460,8 @@ export default function page() {
           </ul>
         </section>
         {/* Roadmap */}
-        <section className="w-[80%] space-y-6">
-          <h1 className="mt-10 text-4xl font-bold">Roadmap</h1>
+        <section className="w-full space-y-6 md:w-[80%]">
+          <h1 className="mt-10 text-4xl font-bold text-primary">Roadmap</h1>
           <p className="text-xl">
             The Euterpe roadmap outlines the strategic direction and milestones
             planned for the platform's development and growth. It serves as a
@@ -519,8 +519,8 @@ export default function page() {
           </ul>
         </section>
         {/* Team */}
-        <section className="w-[80%] space-y-6">
-          <h1 className="mt-10 text-4xl font-bold">Team</h1>
+        <section className="w-full space-y-6 md:w-[80%]">
+          <h1 className="mt-10 text-4xl font-bold text-primary">Team</h1>
           <p className="text-xl">
             The success of Euterpe is Euterpe is driven by a dynamic duo
             dedicated to revolutionizing the music industry. They bring a
@@ -549,7 +549,8 @@ export default function page() {
         {/* Partnership and collaboration */}
         <section className="w-[80%] space-y-6">
           <h1 className="mt-10 text-4xl font-bold">
-            Partnerships and Colloaboration
+            <span className="text-primary">Partnerships </span> and
+            Colloaboration
           </h1>
           <p className="text-xl">
             Partnerships and collaborations play a crucial role in the growth
@@ -586,8 +587,8 @@ export default function page() {
           </ul>
         </section>
         {/* Conclusions */}
-        <section className="w-[80%] space-y-6">
-          <h1 className="mt-10 text-4xl font-bold">Conclusion</h1>
+        <section className="w-full space-y-6 md:w-[80%]">
+          <h1 className="mt-10 text-4xl font-bold text-primary">Conclusion</h1>
           <p className="text-xl">
             In conclusion, Euterpe stands at the forefront of innovation in the
             music industry, poised to revolutionize the way artists and fans
