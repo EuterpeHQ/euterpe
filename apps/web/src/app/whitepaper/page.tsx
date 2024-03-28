@@ -227,7 +227,7 @@ export default function page() {
             <h1 className=" mt-10 text-4xl font-bold">
               <span className="text-primary">Technology</span> Overview
             </h1>
-            <p className="text-xl">
+            <p className="text-base">
               Euterpe is powered by cutting-edge blockchain technology and
               leverages non-fungible tokens (NFTs) to create a decentralized
               platform for the music industry. In this section, we provide an
@@ -295,7 +295,7 @@ export default function page() {
             <h1 className="mt-10 text-4xl font-bold">
               <span className="text-primary">Use</span> Cases
             </h1>
-            <p className="text-xl">
+            <p className="text-base">
               Euterpe offers a wide range of use cases for artists, fans, and
               investors, leveraging blockchain technology and non-fungible
               tokens (NFTs) to revolutionize the music industry. In this
@@ -397,7 +397,7 @@ export default function page() {
             <h1 className="mt-10 text-4xl font-bold text-primary">
               Tokenomics
             </h1>
-            <p className="text-xl">
+            <p className="text-base">
               Euterpe (Symbol: ETP) is the native utility token of the Euterpe
               platform. Designed to facilitate transactions, incentivize
               participation, and govern the ecosystem, ETP plays a central role
@@ -441,7 +441,7 @@ export default function page() {
             <h1 className="mt-10 text-4xl font-bold text-primary">
               Governance
             </h1>
-            <p className="text-xl">
+            <p className="text-base">
               Governance lies at the core of the Euterpe platform, empowering
               the community to shape the direction and evolution of the
               ecosystem. Through decentralized decision-making processes,
@@ -477,7 +477,7 @@ export default function page() {
           {/* Roadmap */}
           <section className="w-full space-y-6 md:w-[80%]">
             <h1 className="mt-10 text-4xl font-bold text-primary">Roadmap</h1>
-            <p className="text-xl">
+            <p className="text-base">
               The Euterpe roadmap outlines the strategic direction and
               milestones planned for the platform's development and growth. It
               serves as a guiding framework for the Euterpe team and community,
@@ -536,7 +536,7 @@ export default function page() {
           {/* Team */}
           <section className="w-full space-y-6 md:w-[80%]">
             <h1 className="mt-10 text-4xl font-bold text-primary">Team</h1>
-            <p className="text-xl">
+            <p className="text-base">
               The success of Euterpe is Euterpe is driven by a dynamic duo
               dedicated to revolutionizing the music industry. They bring a
               diverse range of skills, expertise, and passion to the project.
@@ -568,7 +568,7 @@ export default function page() {
               <span className="text-primary">Partnerships </span> and
               Colloaboration
             </h1>
-            <p className="text-xl">
+            <p className="text-base">
               Partnerships and collaborations play a crucial role in the growth
               and success of the Euterpe platform. As we continue to innovate
               and disrupt the music industry, we are actively seeking strategic
