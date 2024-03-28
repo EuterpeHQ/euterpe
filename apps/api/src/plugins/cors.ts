@@ -4,10 +4,14 @@ import cors from "@fastify/cors";
 export default fp(async (fastify) => {
   await fastify.register(cors, {
     origin: (origin, cb) => {
-      const euterpeDomainRegex = /^https:\/\/euterpe.*\.vercel\.app$/;
-      const localhostRegex = /^http:\/\/localhost:\d+$/;
+      if (process.env.NODE_ENV === "development") {
+        cb(null, true);
+        return;
+      }
       if (!origin) return;
-      if (euterpeDomainRegex.test(origin) || localhostRegex.test(origin)) {
+
+      const euterpeDomainRegex = /^https:\/\/euterpe.*\.vercel\.app$/;
+      if (euterpeDomainRegex.test(origin)) {
         cb(null, true);
       } else {
         cb(new Error("Not allowed by CORS"), false);
