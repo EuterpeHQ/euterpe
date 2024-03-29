@@ -6,10 +6,15 @@ type ArtistResponse = {
   artists: Artist[];
 };
 
+const apiUrl =
+  process.env.NODE_ENV === "production"
+    ? process.env.NEXT_PUBLIC_API_URL
+    : process.env.NEXT_PUBLIC_DEV_API_URL;
+
 async function fetchFeaturedArtists() {
   const response = await axios.get<{
     artists: Artist[];
-  }>(`${process.env.NEXT_PUBLIC_API_URL}/spotify/featured-artists`);
+  }>(`${apiUrl}/spotify/featured-artists`);
   return response.data;
 }
 
