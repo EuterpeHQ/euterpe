@@ -8,14 +8,10 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import Footer from "@/partials/Footer";
 
 export default function page() {
   return (
-    <section className=" m-auto max-h-screen max-w-[1500px]">
-      <div className="mt-10 w-full text-center">
-        <Logo />
-      </div>
+    <section className=" m-auto max-w-[1500px]">
       <main className="m-auto mb-10 w-[80%] text-2xl">
         <Breadcrumb className="mt-10 text-base">
           <BreadcrumbList>
@@ -633,7 +629,6 @@ export default function page() {
           </section>
         </div>
       </main>
-      <Footer />
     </section>
   );
 }
