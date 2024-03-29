@@ -6,6 +6,10 @@ import Image from "next/image";
 import { GenerativeModel, GoogleGenerativeAI } from "@google/generative-ai";
 import { Chat } from "@/components/ui/chat";
 import { Message, LoggedInUserData } from "@/components/ui/chat-types";
+import Balancer from "react-wrap-balancer";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { IoMusicalNotesOutline } from "react-icons/io5";
 
 function PlumesAI() {
   const plumesPersonality = `
@@ -205,17 +209,31 @@ I sometimes forget to reply, maybe it's because I'm shy or I want to hide when I
 
   return (
     <section className="container flex flex-col md:px-24">
-      <div className="flex flex-col gap-2">
-        <h2 className="text-3xl font-semibold">
-          Discover{" "}
-          <span className="text-primary underline underline-offset-4">
-            Plumes
-          </span>
-        </h2>
-        <p className="text-sm">
-          Plumes is our personal music curator who can help you discover new
-          musicians tailored to your taste.
-        </p>
+      <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-2">
+          <h2 className="text-3xl font-semibold">
+            Discover{" "}
+            <span className="text-primary underline underline-offset-4">
+              Plumes
+            </span>
+          </h2>
+          <p className="text-sm md:max-w-sm lg:max-w-md">
+            <Balancer>
+              Plumes is our personal music curator who can help you discover new
+              musicians tailored to your taste.
+            </Balancer>
+          </p>
+        </div>
+        <Button
+          className="hidden gap-4 md:inline-flex"
+          variant="outline"
+          asChild
+        >
+          <Link href="/playlist">
+            <IoMusicalNotesOutline className="h-[13px] w-[13px]" />
+            View Playlist
+          </Link>
+        </Button>
       </div>
       <Spacer size={40} />
       <div className="mx-auto grid h-[48rem] grid-cols-1 gap-8 md:h-80 md:grid-cols-5 lg:h-96">
