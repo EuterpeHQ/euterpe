@@ -2,6 +2,7 @@ import { join } from "path";
 import AutoLoad, { AutoloadPluginOptions } from "@fastify/autoload";
 import { FastifyPluginAsync, FastifyServerOptions } from "fastify";
 import modules from "./modules";
+import FastifySwagger from "@fastify/swagger";
 
 export interface AppOptions
   extends FastifyServerOptions,
@@ -13,6 +14,10 @@ const app: FastifyPluginAsync<AppOptions> = async (
   fastify,
   opts
 ): Promise<void> => {
+  await fastify.register(FastifySwagger);
+  await fastify.register(require("@scalar/fastify-api-reference"), {
+    routePrefix: "/docs",
+  });
   void fastify.register(AutoLoad, {
     dir: join(__dirname, "plugins"),
     options: opts,
