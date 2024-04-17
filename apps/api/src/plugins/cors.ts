@@ -4,16 +4,15 @@ import cors from "@fastify/cors";
 export default fp(async (fastify) => {
   await fastify.register(cors, {
     origin: (origin, cb) => {
-      if (process.env.NODE_ENV === "development") {
+      if (process.env.APP_ENV === "development") {
         cb(null, "*");
-        return;
       }
       if (!origin) return cb(null, false);
 
       let domainRE = new RegExp("");
-      if (process.env.NODE_ENV === "production") {
+      if (process.env.APP_ENV === "production") {
         domainRE = /^https:\/\/([a-z0-9]+\.)*euterpe\.app$/;
-      } else if (process.env.NODE_ENV === "staging") {
+      } else if (process.env.APP_ENV === "staging") {
         domainRE = /^https:\/\/euterpe.*\.vercel\.app$/;
       }
 
