@@ -28,7 +28,8 @@
     "fastify": "^4.26.1",
     "fastify-cli": "^6.1.1",
     "fastify-plugin": "^4.0.0",
-    "node-cache": "^5.1.2"
+    "node-cache": "^5.1.2",
+    "rimraf": "^5.0.5"
   },
   "devDependencies": {
     "@types/node": "^20.4.4",
@@ -37,7 +38,6 @@
     "fastify-overview": "^3.9.0",
     "fastify-overview-ui": "^2.2.5",
     "fastify-tsconfig": "^2.0.0",
-    "rimraf": "^5.0.5",
     "ts-node": "^10.4.0",
     "typescript": "^5.2.2"
   }

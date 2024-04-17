@@ -4,7 +4,7 @@ import Fastify from "fastify";
 import corsPlugin from "../../src/plugins/cors";
 
 test("CORS allows all origins in development", async (t) => {
-  process.env.NODE_ENV = "development";
+  process.env.APP_ENV = "development";
   const fastify = Fastify();
   await fastify.register(corsPlugin);
   await fastify.ready();
@@ -19,7 +19,7 @@ test("CORS allows all origins in development", async (t) => {
 });
 
 test("CORS policy for staging", async (t) => {
-  process.env.NODE_ENV = "staging";
+  process.env.APP_ENV = "staging";
   const fastify = Fastify();
   await fastify.register(corsPlugin);
   await fastify.ready();
@@ -49,7 +49,7 @@ test("CORS policy for staging", async (t) => {
 });
 
 test("CORS policy for production", async (t) => {
-  process.env.NODE_ENV = "production";
+  process.env.APP_ENV = "production";
   const fastify = Fastify();
   await fastify.register(corsPlugin);
   await fastify.ready();
