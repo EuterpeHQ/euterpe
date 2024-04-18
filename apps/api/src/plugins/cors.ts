@@ -6,6 +6,7 @@ export default fp(async (fastify) => {
     origin: (origin, cb) => {
       if (process.env.APP_ENV === "development") {
         cb(null, "*");
+        return;
       }
       if (!origin) return cb(null, false);
 
