@@ -4,16 +4,7 @@ import Lottie from "lottie-react";
 import BoyLottie from "@/assets/animations/boy2.json";
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 import AnnouncementBar from "@/components/AnnouncementBar";
-import {
-  RegisterLink,
-  LoginLink,
-} from "@kinde-oss/kinde-auth-nextjs/components";
 export default function page() {
-  // const [email, setEmail] = useState("");
-
-  // const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setEmail(e.target.value);
-  // };
   return (
     <>
       <AnnouncementBar>
