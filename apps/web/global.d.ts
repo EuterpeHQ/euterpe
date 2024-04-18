@@ -1,7 +1,7 @@
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      APP_ENV: "development" | "staging" | "production";
+      NEXT_PUBLIC_APP_ENV: "development" | "staging" | "production";
       NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID: string;
       NEXT_PUBLIC_EXCHANGE_SMART_CONTRACT_ADDRESS: string;
       NEXT_PUBLIC_ARTIST_TOKEN_SMART_CONTRACT_ADDRESS: string;
