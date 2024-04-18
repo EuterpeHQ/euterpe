@@ -2,8 +2,6 @@
 import Lottie from "lottie-react";
 import BoyLottie from "@/assets/animations/boy2.json";
 import Link from "next/link";
-import { CardContent } from "@/components/ui/card";
-import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 import AnnouncementBar from "@/components/AnnouncementBar";
 export default function page() {
   return (
