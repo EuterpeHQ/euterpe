@@ -5,9 +5,20 @@ import Link from "next/link";
 import { CardContent } from "@/components/ui/card";
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 import { RegisterLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import AnnouncementBar from "@/components/AnnouncementBar";
 export default function page() {
   return (
     <>
+      <AnnouncementBar>
+        <div>
+          <p className="text-sm">
+            <Link href="/onboarding" className="text-primary">
+              Click here to log in.
+            </Link>
+            &nbsp;(Authentication features coming soon!)
+          </p>
+        </div>
+      </AnnouncementBar>
       <div className=" m-auto flex max-h-screen max-w-screen-2xl gap-[4.5rem]">
         <Lottie
           className="hidden h-screen w-[40%] bg-black/15 lg:block"
