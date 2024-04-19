@@ -2,12 +2,20 @@
 import Lottie from "lottie-react";
 import BoyLottie from "@/assets/animations/boy2.json";
 import Link from "next/link";
-import { CardContent } from "@/components/ui/card";
-import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
-import { RegisterLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import AnnouncementBar from "@/components/AnnouncementBar";
 export default function page() {
   return (
     <>
+      <AnnouncementBar>
+        <div>
+          <p className="text-sm">
+            <Link href="/onboarding" className="text-primary">
+              Click here to log in.
+            </Link>
+            &nbsp;(Authentication features coming soon!)
+          </p>
+        </div>
+      </AnnouncementBar>
       <div className=" m-auto flex max-h-screen max-w-screen-2xl gap-[4.5rem]">
         <Lottie
           className="hidden h-screen w-[40%] bg-black/15 lg:block"
@@ -16,13 +24,13 @@ export default function page() {
           autoplay
         />
         <div className="m-auto flex w-[90%] flex-col items-center justify-center   md:h-screen md:w-[80%] lg:m-0 lg:w-[50%]">
-          <header className="mb-0 mt-60 flex flex-wrap justify-center gap-2 lg:mt-16">
+          <header className="mb-0 mt-20 flex flex-wrap justify-center gap-2 lg:mt-16">
             <img className=" size-10" src="./logo/logo.png" alt="logo" />
             <h2 className="mb-0 text-center text-4xl font-bold text-white">
               Euterpe
             </h2>
           </header>
-          <main className="m-auto mt-32 flex w-full flex-col">
+          <main className="m-auto mt-10 flex w-full flex-col">
             <div className="flex flex-col flex-wrap items-center justify-center space-y-3">
               <h3 className="text-xl font-bold">Create an Account</h3>
               <p className="mb-2">
@@ -32,7 +40,7 @@ export default function page() {
                 </span>
               </p>
             </div>
-            <form className="mx-auto mb-5 mt-12 w-[90%] space-y-6 sm:w-[80%] md:w-[60%] lg:w-[60%]">
+            <form className="mx-auto mb-5 mt-6 w-[90%] space-y-6 sm:w-[80%] md:w-[60%] lg:w-[60%]">
               <div className="mb-5 flex flex-wrap justify-center gap-2">
                 <div className="flex w-[80%] justify-center  gap-6 rounded-lg bg-gray-700 p-2 text-sm md:w-[45%] md:gap-0">
                   <span className="flex">
@@ -67,7 +75,7 @@ export default function page() {
                 </div>
               </div>
 
-              {/* <div className="mb-5">
+              <div className="mb-5">
                 <label
                   htmlFor="email"
                   className="mb-2 block text-sm font-medium text-white"
@@ -81,8 +89,8 @@ export default function page() {
                   placeholder="name@euterpe.com"
                   required
                 />
-              </div> */}
-              {/* <div className="mb-5">
+              </div>
+              <div className="mb-5">
                 <label
                   htmlFor="password"
                   className="mb-2 block text-sm font-medium text-white"
@@ -96,18 +104,15 @@ export default function page() {
                   className="shadow-sm-light block w-full rounded-lg border-gray-600 bg-gray-700 p-2.5 text-sm text-white placeholder-gray-400 shadow-sm focus:border-primary  focus:ring-primary"
                   required
                 />
-              </div> */}
-              {/* <Link href="/onboarding"> */}
-              <button
-                type="submit"
-                className="mt-5 w-full rounded-lg bg-white px-5 py-2.5 text-center text-sm font-medium text-black hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-blue-300"
-              >
-                <RegisterLink postLoginRedirectURL="/onboarding">
-                  Sign up
-                </RegisterLink>
-                {/* Sign Up */}
-              </button>
-              {/* </Link> */}
+              </div>
+              <Link href="/onboarding">
+                <button
+                  type="submit"
+                  className="mt-5 w-full rounded-lg bg-white px-5 py-2.5 text-center text-sm font-medium text-black hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                >
+                  Sign Up
+                </button>
+              </Link>
               <div className="my-2 flex items-center justify-center">
                 <div className="w-full border-t border-gray-400"></div>
                 <div className="mx-4 text-gray-400">or</div>
