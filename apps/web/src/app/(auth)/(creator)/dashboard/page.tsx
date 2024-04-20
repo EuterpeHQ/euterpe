@@ -16,12 +16,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
-import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
 function Page() {
-  const { isAuthenticated, isLoading } = useKindeBrowserClient();
-  if (isLoading) return <div>Loading...</div>;
-  return isAuthenticated ? (
+  return (
     <main>
       <div className="max-w-9xl mx-auto w-full px-4 py-8 sm:px-6 lg:px-8">
         <NotificationBanner />
@@ -142,10 +138,6 @@ function Page() {
         </section>
       </div>
     </main>
-  ) : (
-    <div>
-      You have to <LoginLink>Login</LoginLink> to see this page
-    </div>
   );
 }
 
