@@ -22,29 +22,26 @@ import Link from "next/link";
 import { useFeaturedArtists } from "@/hooks/useFeaturedArtist";
 import { Artist } from "@/entities";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 
-function RankBadge({ rank }: { rank: number }) {
+function PriceBadge({ price }: { price: string }) {
   return (
-    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-neutral-800 font-federant text-xs text-white transition-all duration-200 group-hover:bg-neutral-800 md:bg-black/20">
-      {rank}
+    <div className="flex items-center justify-center rounded-md bg-accent px-2 font-federant text-xs text-white transition-all duration-200 group-hover:bg-accent">
+      {price} ETP
     </div>
   );
 }
 
 type ProfileCardProps = {
   artist: Artist;
-  rank: number;
 };
 
-function ProfileCard({ artist, rank }: ProfileCardProps) {
+function ProfileCard({ artist }: ProfileCardProps) {
   return (
     <Link href={artist.link} target="_blank" rel="noopener noreferrer">
-      <Card className="group flex h-full w-full cursor-pointer flex-col justify-between overflow-hidden border border-primary/20 bg-black/15 outline-none transition-all duration-200 md:hover:bg-primary/10 md:hover:outline md:hover:outline-offset-2 md:hover:outline-primary/20">
+      <Card className="group flex h-full w-full cursor-pointer flex-col overflow-hidden border border-primary/20 bg-transparent shadow-none outline-none transition-all duration-200 md:border-none md:hover:bg-black/10">
         <CardContent className="relative flex items-center justify-center p-0 md:p-4">
-          <div className="absolute inset-2 z-10">
-            <RankBadge rank={rank} />
-          </div>
-          <Avatar className="h-full w-full rounded-none md:h-24 md:w-24 md:rounded-full">
+          <Avatar className="h-full w-full rounded-none outline-none transition-all duration-200 md:h-36 md:w-36 md:rounded-full">
             <AvatarImage
               className="h-full w-full object-cover"
               src={artist.image}
@@ -66,19 +63,13 @@ function ProfileCard({ artist, rank }: ProfileCardProps) {
           </Avatar>
         </CardContent>
         <CardHeader className="p-4 text-sm md:p-0 md:pb-4 md:text-center">
-          <CardTitle>{artist.name}</CardTitle>
-          <CardDescription>
-            <span>Token Price: </span>
-
-            <span className="font-federant text-white">
-              {(artist.popularity / 1000).toFixed(3)}
-              <span className="tracking-widest"> ETP</span>
-            </span>
-          </CardDescription>
+          <div className="flex flex-col gap-y-4 md:flex-row md:items-center md:justify-evenly">
+            <CardTitle className="font-medium text-muted-foreground">
+              {artist.name}
+            </CardTitle>
+            <PriceBadge price={(artist.popularity / 1000).toFixed(3)} />
+          </div>
         </CardHeader>
-        <CardFooter className="flex flex-col items-start justify-end md:hidden">
-          <div className="mb-4 h-px w-full bg-primary/20" />
-        </CardFooter>
       </Card>
     </Link>
   );
@@ -107,6 +98,8 @@ function SkeletonProfileCard() {
 
 function TopMusicians() {
   const { data, isLoading } = useFeaturedArtists();
+  const lg = useBreakpoint("lg");
+  const numberOfArtists = lg ? 18 : 12;
 
   function getCurrentMonth() {
     const monthNames = [
@@ -152,14 +145,14 @@ function TopMusicians() {
       </div>
       <Spacer size={40} />
       <div className="container flex justify-center">
-        <div className="hidden gap-5 md:grid md:grid-cols-[repeat(3,minmax(220px,220px))] lg:grid-cols-[repeat(4,minmax(240px,240px))]">
+        <div className="hidden gap-0 md:grid md:grid-cols-[repeat(4,minmax(auto,auto))] lg:grid-cols-[repeat(6,minmax(auto,auto))]">
           {isLoading
-            ? [...Array(12)].map((_, i) => <SkeletonProfileCard key={i} />)
+            ? [...Array(numberOfArtists)].map((_, i) => (
+                <SkeletonProfileCard key={i} />
+              ))
             : data?.artists
-                .slice(0, 12)
-                .map((artist, i) => (
-                  <ProfileCard key={i} artist={artist} rank={i + 1} />
-                ))}
+                .slice(0, numberOfArtists)
+                .map((artist, i) => <ProfileCard key={i} artist={artist} />)}
         </div>
       </div>
       <div className="flex flex-col items-center gap-6 overflow-hidden scroll-smooth md:hidden">
@@ -174,7 +167,7 @@ function TopMusicians() {
               ? [...Array(12)].map((_, i) => <SkeletonProfileCard key={i} />)
               : data?.artists.slice(0, 12).map((artist, i) => (
                   <CarouselItem className="aspect-[320/404] max-w-xs" key={i}>
-                    <ProfileCard artist={artist} rank={i + 1} />
+                    <ProfileCard artist={artist} />
                   </CarouselItem>
                 ))}
           </CarouselContent>
