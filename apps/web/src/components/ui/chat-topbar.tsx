@@ -47,17 +47,21 @@ export default function ChatTopbar({ selectedUser }: ChatTopbarProps) {
       <div>
         <TooltipProvider>
           <Tooltip>
-            <TooltipTrigger>
-              <Button
-                className={cn(
-                  buttonVariants({ variant: "ghost", size: "icon" }),
-                  "w-9 p-2.5",
-                  "dark:bg-surface dark:text-muted-foreground dark:hover:text-white",
-                )}
-              >
+            {/* <Button>
                 <Info size={20} className="text-muted-foreground" />
-              </Button>
-            </TooltipTrigger>
+              </Button> */}
+            <Button
+              className={cn(
+                buttonVariants({ variant: "ghost", size: "icon" }),
+                "w-9 p-2.5",
+                "dark:bg-surface dark:text-muted-foreground dark:hover:text-white",
+              )}
+              asChild
+            >
+              <TooltipTrigger>
+                <Info size={20} className="text-muted-foreground" />
+              </TooltipTrigger>
+            </Button>
             <TooltipContent>
               <p className="text-xs">
                 Plumes is still under development,
