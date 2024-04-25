@@ -22,7 +22,6 @@ import Link from "next/link";
 import { useFeaturedArtists } from "@/hooks/useFeaturedArtist";
 import { Artist } from "@/entities";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 function PriceBadge({ price }: { price: string }) {
   return (
@@ -64,7 +63,7 @@ function ProfileCard({ artist }: ProfileCardProps) {
         </CardContent>
         <CardHeader className="p-4 text-sm md:p-0 md:pb-4 md:text-center">
           <div className="flex flex-col gap-y-4 md:flex-row md:items-center md:justify-evenly">
-            <CardTitle className="font-medium text-muted-foreground">
+            <CardTitle className="font-normal text-muted-foreground">
               {artist.name}
             </CardTitle>
             <PriceBadge price={(artist.popularity / 1000).toFixed(3)} />
@@ -77,29 +76,22 @@ function ProfileCard({ artist }: ProfileCardProps) {
 
 function SkeletonProfileCard() {
   return (
-    <Card className="mx-2 flex h-full flex-col justify-between overflow-hidden bg-black/15 md:mx-0">
+    <Card className="mx-2 flex h-full flex-col justify-between overflow-hidden bg-transparent md:mx-0 md:shadow-none">
       <CardContent className="relative flex items-center justify-center p-0 md:p-4">
-        <Skeleton className="h-80 w-72 rounded-none bg-card md:h-24 md:w-24 md:rounded-full" />
+        <Skeleton className="h-80 w-72 rounded-none bg-card md:h-36 md:w-36 md:rounded-full" />
       </CardContent>
-      <CardHeader className="h-full w-full space-y-1 p-4 text-sm md:p-0 md:px-8 md:pb-4 md:text-center">
-        <CardTitle>
-          <Skeleton className="inline-flex h-3 w-2/5 justify-center bg-card" />
-        </CardTitle>
-        <CardDescription>
-          <Skeleton className="inline-flex h-3 w-full justify-center bg-card" />
-        </CardDescription>
+      <CardHeader className="p-4 text-sm md:p-0 md:pb-4 md:text-center">
+        <div className="flex flex-col gap-y-4 md:flex-row md:items-center md:justify-evenly">
+          <Skeleton className="inline-flex h-3 w-1/3 justify-center bg-card" />
+          <Skeleton className="inline-flex h-3 w-full justify-center bg-card md:w-2/5" />
+        </div>
       </CardHeader>
-      <CardFooter className="flex flex-col items-start justify-end md:hidden">
-        <div className="h-px w-full bg-card" />
-      </CardFooter>
     </Card>
   );
 }
 
 function TopMusicians() {
   const { data, isLoading } = useFeaturedArtists();
-  const lg = useBreakpoint("lg");
-  const numberOfArtists = lg ? 18 : 12;
 
   function getCurrentMonth() {
     const monthNames = [
@@ -125,12 +117,14 @@ function TopMusicians() {
       <div className="container flex items-center justify-between md:px-24">
         <div className="flex flex-col gap-2">
           <h2 className="text-3xl font-semibold">
-            Top Musicians{" "}
+            Featured Artists{" "}
             <span className="text-primary underline underline-offset-4">
               {getCurrentMonth()}
             </span>
           </h2>
-          <p className="text-sm">Discover this month's top musical talents.</p>
+          <p className="text-sm">
+            Discover and empower independent artists worldwide.
+          </p>
         </div>
         <Button
           className="hidden gap-4 md:inline-flex"
@@ -143,15 +137,20 @@ function TopMusicians() {
           </Link>
         </Button>
       </div>
-      <Spacer size={40} />
+      <Spacer size={48} />
       <div className="container flex justify-center">
-        <div className="hidden gap-0 md:grid md:grid-cols-[repeat(4,minmax(auto,auto))] lg:grid-cols-[repeat(6,minmax(auto,auto))]">
+        <div className="hidden gap-0 lg:grid lg:grid-cols-6">
           {isLoading
-            ? [...Array(numberOfArtists)].map((_, i) => (
-                <SkeletonProfileCard key={i} />
-              ))
+            ? [...Array(18)].map((_, i) => <SkeletonProfileCard key={i} />)
             : data?.artists
-                .slice(0, numberOfArtists)
+                .slice(0, 18)
+                .map((artist, i) => <ProfileCard key={i} artist={artist} />)}
+        </div>
+        <div className="hidden gap-0 md:grid md:grid-cols-4 lg:hidden">
+          {isLoading
+            ? [...Array(12)].map((_, i) => <SkeletonProfileCard key={i} />)
+            : data?.artists
+                .slice(0, 12)
                 .map((artist, i) => <ProfileCard key={i} artist={artist} />)}
         </div>
       </div>
