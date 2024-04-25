@@ -40,23 +40,6 @@ function Hero() {
               Launch App
             </Link>
           </Button>
-          <div className="flex w-full gap-6 lg:gap-12">
-            <div className="text-lg font-light">
-              <strong className="font-federant">20,000,000 +</strong>
-              <br />
-              Market Cap
-            </div>
-            <div className="text-lg font-light">
-              <strong className="font-federant">334,000 +</strong>
-              <br />
-              NFTs
-            </div>
-            <div className="text-lg font-light">
-              <strong className="font-federant">1,000,000 +</strong>
-              <br />
-              Artists
-            </div>
-          </div>
         </div>
       </div>
       <div className="">
