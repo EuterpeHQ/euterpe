@@ -2,7 +2,7 @@
 
 import { beforeEach, describe, expect, it } from "vitest";
 import { act, renderHook } from "@testing-library/react";
-import { useSidebarStore } from "../sidebar.store";
+import { useSidebarStore } from "../../providers/store/sidebar.store";
 
 class LocalStorageMock implements Storage {
   private store: Record<string, string>;
@@ -37,51 +37,27 @@ class LocalStorageMock implements Storage {
   }
 }
 
-// // Mock localStorage
-// const localStorageMock = (() => {
-//   let store = {};
-//   return {
-//     getItem(key) {
-//       return store[key] || null;
-//     },
-//     setItem(key, value) {
-//       store[key] = value.toString();
-//     },
-//     clear() {
-//       store = {};
-//     },
-//   };
-// })();
-
-// Object.defineProperty(window, "localStorage", {
-//   value: new LocalStorageMock(),
-// });
-
 Object.defineProperty(window, "localStorage", {
   value: new LocalStorageMock(),
 });
 
-// Reset localStorage for each test
 beforeEach(() => {
   localStorage.clear();
-  localStorage.setItem("test", "test toole");
 });
 
 describe("useSidebarStore", () => {
   it("should initialize with the correct default state", () => {
-    const { result } = renderHook(() => useSidebarStore());
+    const { result } = renderHook(() => useSidebarStore((state) => state));
     expect(result.current.isOpen).toBe(false);
     expect(result.current.isExpanded).toBe(false);
   });
 
   it("should toggle sidebar open state through the store", () => {
-    const { result } = renderHook(() => useSidebarStore());
-    // Toggle isOpen state
+    const { result } = renderHook(() => useSidebarStore((state) => state));
     act(() => {
       result.current.setIsOpen(true);
     });
     expect(result.current.isOpen).toBe(true);
-    // Toggle back
     act(() => {
       result.current.setIsOpen(false);
     });
@@ -89,13 +65,11 @@ describe("useSidebarStore", () => {
   });
 
   it("should toggle sidebar expanded state through the store", () => {
-    const { result } = renderHook(() => useSidebarStore());
-    // Toggle isExpanded state
+    const { result } = renderHook(() => useSidebarStore((state) => state));
     act(() => {
       result.current.setIsExpanded(true);
     });
     expect(result.current.isExpanded).toBe(true);
-    // Toggle back
     act(() => {
       result.current.setIsExpanded(false);
     });
@@ -103,9 +77,8 @@ describe("useSidebarStore", () => {
   });
 
   it("should persist expanded state in localStorage", () => {
-    const { result } = renderHook(() => useSidebarStore());
+    const { result } = renderHook(() => useSidebarStore((state) => state));
 
-    // Set isExpanded to true
     act(() => {
       result.current.setIsExpanded(true);
     });
