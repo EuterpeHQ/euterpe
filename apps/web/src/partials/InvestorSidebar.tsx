@@ -79,12 +79,6 @@ function InvestorSidebar() {
   const trigger = useRef<HTMLButtonElement>(null);
   const sidebar = useRef<HTMLDivElement>(null);
 
-  //   const storedSidebarExpanded = localStorage.getItem("sidebar-expanded");
-  //   const [sidebarExpanded, setSidebarExpanded] = useState(
-  //     storedSidebarExpanded === null ? false : storedSidebarExpanded === "true",
-  //   );
-
-  // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }: { target: any }) => {
       if (!sidebar.current || !trigger.current) return;
@@ -100,7 +94,6 @@ function InvestorSidebar() {
     return () => document.removeEventListener("click", clickHandler);
   });
 
-  // close if the esc key is pressed
   useEffect(() => {
     const keyHandler = (event: KeyboardEvent) => {
       if (!sidebarOpen || event.key !== "Escape") return;
@@ -111,8 +104,6 @@ function InvestorSidebar() {
   });
 
   useEffect(() => {
-    // localStorage.setItem("sidebar-expanded", sidebarExpanded);
-    console.log("sidebarExpanded", sidebarExpanded);
     let delay: NodeJS.Timeout;
     if (sidebarExpanded) {
       delay = setTimeout(() => {
