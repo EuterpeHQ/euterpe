@@ -3,7 +3,7 @@
 import React from "react";
 import Sidebar from "@/partials/CreatorSidebar";
 import InvestorSidebar from "@/partials/InvestorSidebar";
-import { useSidebarStore } from "@/store/sidebar.store";
+import { useSidebarStore } from "@/providers/store/sidebar.store";
 import { DashboardLoader } from "@/components/Loader";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";

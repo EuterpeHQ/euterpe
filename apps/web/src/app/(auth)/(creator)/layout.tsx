@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useSidebarStore } from "@/store/sidebar.store";
+import { useSidebarStore } from "@/providers/store/sidebar.store";
 
 function Layout({
   children,
