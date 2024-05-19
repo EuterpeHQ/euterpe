@@ -19,10 +19,10 @@ function Layout({
   const mode = useSidebarStore((state) => state.mode);
   const hasHydrated = useSidebarStore((state) => state._hasHydrated);
 
-  if (!hasHydrated) {
-    return <DashboardLoader isDone={hasHydrated} />;
-    return <>Loading...</>;
-  }
+  // if (!hasHydrated) {
+  //   return <DashboardLoader isDone={hasHydrated} />;
+  //   return <>Loading...</>;
+  // }
   return (
     <div className={cn("flex h-screen overflow-hidden", inter.className)}>
       {mode === "creator" ? <Sidebar /> : <InvestorSidebar />}

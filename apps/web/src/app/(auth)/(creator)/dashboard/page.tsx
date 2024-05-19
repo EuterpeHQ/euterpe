@@ -49,8 +49,8 @@ function Page() {
                   <svg
                     fill="none"
                     stroke="currentColor"
-                    stroke-Linecap="round"
-                    stroke-Linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     strokeWidth="2"
                     className="mb-3 inline-block h-12 w-12 text-primary"
                     viewBox="0 0 24 24"

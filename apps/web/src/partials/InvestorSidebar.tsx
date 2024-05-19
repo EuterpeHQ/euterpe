@@ -113,11 +113,16 @@ function InvestorSidebar() {
   useEffect(() => {
     // localStorage.setItem("sidebar-expanded", sidebarExpanded);
     console.log("sidebarExpanded", sidebarExpanded);
+    let delay: NodeJS.Timeout;
     if (sidebarExpanded) {
-      document.querySelector("body")?.classList.add("sidebar-expanded");
+      delay = setTimeout(() => {
+        document.querySelector("body")?.classList.add("sidebar-expanded");
+      }, 5);
     } else {
       document.querySelector("body")?.classList.remove("sidebar-expanded");
     }
+
+    return () => clearTimeout(delay);
   }, [sidebarExpanded]);
 
   const mode = useSidebarStore((state) => state.mode);
@@ -191,7 +196,7 @@ function InvestorSidebar() {
               </span>
               <Dialog open={opendialog} onOpenChange={setOpendialog}>
                 <div className="items-center gap-2 whitespace-nowrap lg:hidden lg:sidebar-expanded:inline-flex  2xl:inline-flex ">
-                  <DialogTrigger>
+                  <DialogTrigger className="bg-card" asChild>
                     <Switch
                       id="user-mode"
                       checked={switchChecked}
