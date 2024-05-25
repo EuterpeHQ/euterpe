@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSidebarStore } from "@/store/sidebar.store";
+import { useSidebarStore } from "@/providers/store/sidebar.store";
 import SearchModal from "@/components/ModalSearch";
 import Notifications from "@/components/DropdownNotifications";
 import ConnectButton from "@/components/ConnectButton";

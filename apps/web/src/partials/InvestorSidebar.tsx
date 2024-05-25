@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { useSidebarStore } from "@/store/sidebar.store";
+import { useSidebarStore } from "@/providers/store/sidebar.store";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { UrlObject } from "url";
@@ -79,12 +79,6 @@ function InvestorSidebar() {
   const trigger = useRef<HTMLButtonElement>(null);
   const sidebar = useRef<HTMLDivElement>(null);
 
-  //   const storedSidebarExpanded = localStorage.getItem("sidebar-expanded");
-  //   const [sidebarExpanded, setSidebarExpanded] = useState(
-  //     storedSidebarExpanded === null ? false : storedSidebarExpanded === "true",
-  //   );
-
-  // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }: { target: any }) => {
       if (!sidebar.current || !trigger.current) return;
@@ -100,7 +94,6 @@ function InvestorSidebar() {
     return () => document.removeEventListener("click", clickHandler);
   });
 
-  // close if the esc key is pressed
   useEffect(() => {
     const keyHandler = (event: KeyboardEvent) => {
       if (!sidebarOpen || event.key !== "Escape") return;
@@ -111,13 +104,16 @@ function InvestorSidebar() {
   });
 
   useEffect(() => {
-    // localStorage.setItem("sidebar-expanded", sidebarExpanded);
-    console.log("sidebarExpanded", sidebarExpanded);
+    let delay: NodeJS.Timeout;
     if (sidebarExpanded) {
-      document.querySelector("body")?.classList.add("sidebar-expanded");
+      delay = setTimeout(() => {
+        document.querySelector("body")?.classList.add("sidebar-expanded");
+      }, 5);
     } else {
       document.querySelector("body")?.classList.remove("sidebar-expanded");
     }
+
+    return () => clearTimeout(delay);
   }, [sidebarExpanded]);
 
   const mode = useSidebarStore((state) => state.mode);
@@ -191,7 +187,7 @@ function InvestorSidebar() {
               </span>
               <Dialog open={opendialog} onOpenChange={setOpendialog}>
                 <div className="items-center gap-2 whitespace-nowrap lg:hidden lg:sidebar-expanded:inline-flex  2xl:inline-flex ">
-                  <DialogTrigger>
+                  <DialogTrigger className="bg-card" asChild>
                     <Switch
                       id="user-mode"
                       checked={switchChecked}

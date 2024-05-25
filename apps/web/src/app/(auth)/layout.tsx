@@ -3,7 +3,7 @@
 import React from "react";
 import Sidebar from "@/partials/CreatorSidebar";
 import InvestorSidebar from "@/partials/InvestorSidebar";
-import { useSidebarStore } from "@/store/sidebar.store";
+import { useSidebarStore } from "@/providers/store/sidebar.store";
 import { DashboardLoader } from "@/components/Loader";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
@@ -19,10 +19,10 @@ function Layout({
   const mode = useSidebarStore((state) => state.mode);
   const hasHydrated = useSidebarStore((state) => state._hasHydrated);
 
-  if (!hasHydrated) {
-    return <DashboardLoader isDone={hasHydrated} />;
-    return <>Loading...</>;
-  }
+  // if (!hasHydrated) {
+  //   return <DashboardLoader isDone={hasHydrated} />;
+  //   return <>Loading...</>;
+  // }
   return (
     <div className={cn("flex h-screen overflow-hidden", inter.className)}>
       {mode === "creator" ? <Sidebar /> : <InvestorSidebar />}
