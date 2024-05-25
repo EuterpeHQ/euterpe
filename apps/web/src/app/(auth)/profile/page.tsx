@@ -11,6 +11,7 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { Input } from "@/components/ui/input";
+import Withdrawls from "./Withdrawls";
 
 // props
 // change password modal
@@ -472,6 +473,32 @@ function Page() {
             </form>
           </>
         )}
+        {/* section for withdrawls */}
+        {activeSection === "withdrawls" && (
+          <>
+            <div className="w-full ">
+              <h1 className="mt-10 flex flex-row items-center justify-start gap-x-2 text-2xl text-white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-link-45deg h-8 w-8 text-primary underline"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z" />
+                  <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z" />
+                </svg>
+                Withdrawls
+              </h1>
+              <p className="ms-1.5 mt-4 w-full md:w-[70%]">
+                Withdraw your funds at ease!
+              </p>
+              {/* form */}
+              <Withdrawls />
+            </div>
+          </>
+        )}
         {/* section for privacy */}
         {activeSection === "privacy" && (
           <>
@@ -490,7 +517,7 @@ function Page() {
                 </svg>
                 Privacy Preferences
               </h1>
-              <p className="ms-1.5 mt-4 w-[70%]">
+              <p className="ms-1.5 mt-4 w-full md:w-[70%]">
                 Hi there, we don't want to keep any info that you're not
                 comfortable sharing. We want our users to have 100% control of
                 their informmation 100% of the time. Toggle below what you would
@@ -500,102 +527,184 @@ function Page() {
               {/* form */}
               <form onSubmit={handleSubmit} className="mt-10 w-full p-1.5">
                 <div className="mb-6 grid gap-6 md:grid-cols-2">
-                  <div>
-                    <label
-                      htmlFor="spotify"
-                      className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-                    >
-                      Spotify
-                    </label>
-
-                    <input
-                      type="text"
-                      id="first_name"
-                      className="block w-full rounded-lg border border-gray-300 p-2.5 text-sm text-gray-900 shadow focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-background dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                      placeholder="https:dennismarrel//spotify.com"
-                      required
-                    />
+                  <div className="flex flex-row items-center justify-start gap-x-3 border-b border-b-muted-foreground py-2">
+                    <div className="flex  w-[85%] flex-row items-center justify-start gap-x-3 ">
+                      <div className="hidden h-10 w-10 items-center justify-center rounded-full border border-primary p-2 md:flex">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          className="bi bi-google h-8 w-8"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
+                        </svg>
+                      </div>
+                      <div className="w-full">
+                        <h2 className="font-semibold text-white">
+                          Google Authentication
+                        </h2>
+                        <p className="text-sm text-muted-foreground md:text-base">
+                          Used for Withdrawls and Security Modifications
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex w-[20%] items-center justify-center">
+                      <button className="w-20 rounded-lg border border-primary p-1.5 font-semibold text-primary md:w-40 md:p-2 md:px-4">
+                        Enable
+                      </button>
+                    </div>
                   </div>
-                  <div>
-                    <label
-                      htmlFor="last_name"
-                      className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-                    >
-                      Apple Music
-                    </label>
-
-                    <input
-                      type="text"
-                      id="color_temp"
-                      className="block w-full rounded-lg border border-gray-300 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-background dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                      placeholder="https://dennismarrel.amazonmusic.com"
-                      required
-                    />
+                  {/*  */}
+                  <div className="flex flex-row items-center justify-start gap-x-3 border-b border-b-muted-foreground py-2">
+                    <div className="flex  w-[85%] flex-row items-center justify-start gap-x-3 ">
+                      <div className="hidden h-10 w-10 items-center justify-center rounded-full border border-primary p-2 md:flex">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          className="bi bi-google h-8 w-8"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
+                        </svg>
+                      </div>
+                      <div className="w-full">
+                        <h2 className="font-semibold text-white">
+                          Google Authentication
+                        </h2>
+                        <p className="text-sm text-muted-foreground md:text-base">
+                          Used for Withdrawls and Security Modifications
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex w-[20%] items-center justify-center">
+                      <button className="w-20 rounded-lg border border-primary p-1.5 font-semibold text-primary md:w-40 md:p-2 md:px-4">
+                        Enable
+                      </button>
+                    </div>
                   </div>
-                  <div>
-                    <label
-                      htmlFor="Other_names"
-                      className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-                    >
-                      Youtube Music
-                    </label>
-
-                    <input
-                      type="text"
-                      id="yt"
-                      className="block w-full rounded-lg border border-gray-300 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-background dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                      placeholder="https://pluto@youtubemusic.com"
-                      required
-                    />
+                  {/*  */}
+                  <div className="flex flex-row items-center justify-start gap-x-3 border-b border-b-muted-foreground py-2">
+                    <div className="flex  w-[85%] flex-row items-center justify-start gap-x-3 ">
+                      <div className="hidden h-10 w-10 items-center justify-center rounded-full border border-primary p-2 md:flex">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          className="bi bi-google h-8 w-8"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
+                        </svg>
+                      </div>
+                      <div className="w-full">
+                        <h2 className="font-semibold text-white">
+                          Google Authentication
+                        </h2>
+                        <p className="text-sm text-muted-foreground md:text-base">
+                          Used for Withdrawls and Security Modifications
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex w-[20%] items-center justify-center">
+                      <button className="w-20 rounded-lg border border-primary p-1.5 font-semibold text-primary md:w-40 md:p-2 md:px-4">
+                        Enable
+                      </button>
+                    </div>
                   </div>
-
-                  <div>
-                    <label
-                      htmlFor="color temperature"
-                      className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-                    >
-                      Sound Cloud
-                    </label>
-                    <input
-                      required
-                      type="text"
-                      name=""
-                      id="soundcloud"
-                      placeholder="https://pluto@soundcloud.com"
-                      className=" block w-full rounded-lg border border-gray-300 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-background dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                    />
+                  {/*  */}
+                  <div className="flex flex-row items-center justify-start gap-x-3 border-b border-b-muted-foreground py-2">
+                    <div className="flex  w-[85%] flex-row items-center justify-start gap-x-3 ">
+                      <div className="hidden h-10 w-10 items-center justify-center rounded-full border border-primary p-2 md:flex">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          className="bi bi-google h-8 w-8"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
+                        </svg>
+                      </div>
+                      <div className="w-full">
+                        <h2 className="font-semibold text-white">
+                          Google Authentication
+                        </h2>
+                        <p className="text-sm text-muted-foreground md:text-base">
+                          Used for Withdrawls and Security Modifications
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex w-[20%] items-center justify-center">
+                      <button className="w-20 rounded-lg border border-primary p-1.5 font-semibold text-primary md:w-40 md:p-2 md:px-4">
+                        Enable
+                      </button>
+                    </div>
                   </div>
-                  <div>
-                    <label
-                      htmlFor="color temperature"
-                      className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-                    >
-                      TIDAL
-                    </label>
-                    <input
-                      required
-                      type="text"
-                      name=""
-                      id="tidal"
-                      placeholder="https://dennismarrel@tidal.com"
-                      className=" block w-full rounded-lg border border-gray-300 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-background dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                    />
+                  {/*  */}
+                  <div className="flex flex-row items-center justify-start gap-x-3 border-b border-b-muted-foreground py-2">
+                    <div className="flex  w-[85%] flex-row items-center justify-start gap-x-3 ">
+                      <div className="hidden h-10 w-10 items-center justify-center rounded-full border border-primary p-2 md:flex">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          className="bi bi-google h-8 w-8"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
+                        </svg>
+                      </div>
+                      <div className="w-full">
+                        <h2 className="font-semibold text-white">
+                          Google Authentication
+                        </h2>
+                        <p className="text-sm text-muted-foreground md:text-base">
+                          Used for Withdrawls and Security Modifications
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex w-[20%] items-center justify-center">
+                      <button className="w-20 rounded-lg border border-primary p-1.5 font-semibold text-primary md:w-40 md:p-2 md:px-4">
+                        Enable
+                      </button>
+                    </div>
                   </div>
-                  <div>
-                    <label
-                      htmlFor="color temperature"
-                      className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-                    >
-                      Google Play Music
-                    </label>
-                    <input
-                      required
-                      type="text"
-                      name=""
-                      id="soundcloud"
-                      placeholder="https://pluto@googleplay.com"
-                      className=" block w-full rounded-lg border border-gray-300 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-background dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                    />
+                  {/*  */}
+                  <div className="flex flex-row items-center justify-start gap-x-3 border-b border-b-muted-foreground py-2">
+                    <div className="flex  w-[85%] flex-row items-center justify-start gap-x-3 ">
+                      <div className="hidden h-10 w-10 items-center justify-center rounded-full border border-primary p-2 md:flex">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          className="bi bi-google h-8 w-8"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
+                        </svg>
+                      </div>
+                      <div className="w-full">
+                        <h2 className="font-semibold text-white">
+                          Google Authentication
+                        </h2>
+                        <p className="text-sm text-muted-foreground md:text-base">
+                          Used for Withdrawls and Security Modifications
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex w-[20%] items-center justify-center">
+                      <button className="w-20 rounded-lg border border-primary p-1.5 font-semibold text-primary md:w-40 md:p-2 md:px-4">
+                        Enable
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <div className="mt-6 flex justify-center">
@@ -603,7 +712,7 @@ function Page() {
                     type="submit"
                     className="focus: m-auto mx-auto mt-10 w-full rounded-full bg-primary p-3 px-5 py-2.5 text-center text-sm  font-bold  text-white focus:outline-none md:w-[40%]"
                   >
-                    Update Socials
+                    Update Settings
                   </button>
                 </div>
               </form>
