@@ -70,6 +70,10 @@ const config = {
           DEFAULT: "hsl(var(--surface))",
           foreground: "hsl(var(--surface-foreground))",
         },
+        surfaceVariant: {
+          DEFAULT: "hsl(var(--surfaceVariant))",
+          foreground: "hsl(var(--surfaceVariant-foreground))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
