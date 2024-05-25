@@ -7,6 +7,7 @@ export type Artist = {
 };
 
 export type ArtistToken = {
+  owner: `0x${string}`;
   address: `0x${string}`;
   name: string;
   symbol: string;

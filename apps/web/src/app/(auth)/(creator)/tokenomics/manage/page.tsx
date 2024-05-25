@@ -76,6 +76,7 @@ function Page() {
             symbol: token[1].result!,
             value: "0",
             totalSupply: formatEther(token[2].result!),
+            owner: address,
             artistName: token[3].result!,
           });
         }
