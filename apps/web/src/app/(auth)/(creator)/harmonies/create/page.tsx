@@ -1,6 +1,6 @@
 "use client";
 import NotificationBanner from "@/partials/NotificationBanner";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -30,11 +30,17 @@ import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
 import Link from "next/link";
 import { CoinLottie } from "@/components/Lotties";
 import HarmonyImage from "@/assets/images/lady-donli.jpeg";
+import CollectionModal from "../components/CollectionModal";
 
-function Collection({ index }: { index: number }) {
+interface CollectionProps {
+  index: number;
+  openModal: (index: number) => void;
+}
+
+function Collection({ index, openModal }: CollectionProps) {
   return (
-    <div className="w-full max-w-sm p-2 md:max-w-xs  lg:max-w-[350px]">
-      <div className="h-full overflow-hidden rounded-xl bg-card p-6">
+    <div className="w-full max-w-sm p-2 md:max-w-xs lg:max-w-[350px]">
+      <div className="h-full overflow-hidden rounded-xl bg-card p-6" onClick={() => openModal(index)}>
         <div className="relative mb-6 flex aspect-square w-full items-center justify-center overflow-hidden rounded-xl">
           <Image
             src={HarmonyImage}
@@ -97,6 +103,8 @@ function Collection({ index }: { index: number }) {
     </div>
   );
 }
+
+
 type ProfileCardProps = {
   rank: number;
 };
@@ -150,6 +158,20 @@ function ProfileCard({ rank }: ProfileCardProps) {
   );
 }
 function Page() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCollection, setSelectedCollection] = useState<number | null>(
+    null,
+  );
+
+  const openModal = (index: number) => {
+    setSelectedCollection(index);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedCollection(null);
+  };
   return (
     <main>
       <div className="max-w-9xl mx-auto w-full px-4 py-8 sm:px-6 lg:px-8">
@@ -220,14 +242,22 @@ function Page() {
               <section className="mt-10 w-full">
                 <div className="-m-4 flex flex-wrap justify-center border-primary px-5">
                   {[...Array(3)].map((_, index) => (
-                    <Collection key={index} index={index + 1} />
+                    // <Collection key={index} index={index + 1} />
+                    <Collection key={index} index={index + 1} openModal={openModal} />
                   ))}
+                
                 </div>
               </section>
             </div>
           </div>
         </div>
       </div>
+      {isModalOpen && selectedCollection !== null && (
+                    <CollectionModal
+                      index={selectedCollection}
+                      onClose={closeModal}
+                    />
+                  )}
     </main>
   );
 }
