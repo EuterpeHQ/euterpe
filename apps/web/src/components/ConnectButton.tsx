@@ -148,7 +148,7 @@ function ConnectButton({ align }: { align?: "left" | "right" }) {
 
             {/* @ts-expect-error */}
             <Transition
-              className={`dark:bg-surface absolute top-full z-10 mt-1 min-w-44 origin-top-right overflow-hidden rounded border border-slate-200 bg-white py-1.5 shadow-lg dark:border-card/65 ${align === "right" ? "right-0" : "left-0"}`}
+              className={`absolute top-full z-10 mt-1 min-w-44 origin-top-right overflow-hidden rounded border border-slate-200 bg-white py-1.5 shadow-lg dark:border-card/65 dark:bg-surface ${align === "right" ? "right-0" : "left-0"}`}
               show={dropdownOpen}
               enter="transition ease-out duration-200 transform"
               enterStart="opacity-0 -translate-y-2"

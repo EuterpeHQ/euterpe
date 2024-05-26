@@ -11,7 +11,7 @@ function Layout({
   const setMode = useSidebarStore((state) => state.setMode);
   setMode("investor");
 
-  return <div>{children}</div>;
+  return <>{children}</>;
 }
 
 export default Layout;

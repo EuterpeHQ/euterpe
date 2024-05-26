@@ -47,11 +47,10 @@ const connectors = connectorsForWallets(
 );
 
 export const config = createConfig({
-  chains: [arbitrum, arbitrumSepolia],
+  chains: [arbitrumSepolia],
   connectors: connectors,
   ssr: true,
   transports: {
-    [arbitrum.id]: http("https://arb1.arbitrum.io/rpc"),
     [arbitrumSepolia.id]: http("https://sepolia-rollup.arbitrum.io/rpc"),
   },
 });
