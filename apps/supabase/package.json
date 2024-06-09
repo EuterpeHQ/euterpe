@@ -1,0 +1,21 @@
+{
+  "name": "supabase",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "supabase test db && echo && vitest run",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@supabase/supabase-js": "^2.43.4",
+    "@types/node": "^20.14.2",
+    "dotenv": "^16.4.5",
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0"
+  }
+}
