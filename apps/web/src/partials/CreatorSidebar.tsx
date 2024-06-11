@@ -442,7 +442,7 @@ function Sidebar() {
                               }
                             >
                               <span className="text-sm font-normal duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                                Manage Tokens
+                                Token
                               </span>
                             </NavLink>
                           </li>

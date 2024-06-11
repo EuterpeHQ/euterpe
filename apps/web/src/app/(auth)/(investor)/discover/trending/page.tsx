@@ -6,19 +6,6 @@ import Link from "next/link";
 function Page() {
   return (
     <>
-      <Alert className="border bg-red-700 shadow-md">
-        <ExclamationTriangleIcon className="mt-4 h-4 w-4" />
-        <AlertTitle className="text-center font-bold text-primary">
-          Heads up!
-        </AlertTitle>
-        <AlertDescription className="text-center">
-          Please note: This page is still under construction and may not be
-          fully functional yet, please visit our other pages like-{" "}
-          <Link href="/exchange/" className="text-primary underline">
-            Click me
-          </Link>
-        </AlertDescription>
-      </Alert>
       <div className="max-w-9xl mx-auto w-full px-4 py-8 sm:px-6 lg:px-8">
         <div className="relative mb-8 overflow-hidden rounded-sm bg-card sm:p-6">
           <div
