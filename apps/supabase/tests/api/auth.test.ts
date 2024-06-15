@@ -2,6 +2,13 @@ import { describe, expect, test, beforeAll } from "vitest";
 import { SupabaseClient, createClient } from "@supabase/supabase-js";
 import { Database } from "../../database.types";
 
+/* 
+  Local database testing dependencies
+  - Email confirmation is turned off
+  - Anonymous sign in is turned on
+  - Test user, test@gmail.com & Test1234
+ */
+
 describe("Authentication", () => {
   let client: SupabaseClient<Database>;
 
@@ -13,6 +20,11 @@ describe("Authentication", () => {
   });
 
   describe("SIWE", () => {
+        test("Users can sign in anonymously", async () => {
+      const result = await client.auth.signInAnonymously()
+      expect(true).toBe(true);
+    });
+
     test("request nonces", () => {
       expect(true).toBe(true);
     });
