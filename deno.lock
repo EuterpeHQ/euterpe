@@ -1,0 +1,34 @@
+{
+  "version": "3",
+  "redirects": {
+    "https://esm.sh/@supabase/functions-js/src/edge-runtime.d.ts": "https://esm.sh/@supabase/functions-js@2.4.1/src/edge-runtime.d.ts",
+    "https://esm.sh/@supabase/functions-js@2.4.1/src/edge-runtime.d.ts": "https://esm.sh/v135/@supabase/functions-js@2.4.1/src/edge-runtime.d.ts",
+    "https://esm.sh/@supabase/supabase-js@2": "https://esm.sh/@supabase/supabase-js@2.43.5"
+  },
+  "remote": {
+    "https://esm.sh/@supabase/supabase-js@2.43.5": "4f96e50d8b88b84cb6a1794b9830173f8d10df853f9458de7cbfc1d416107f7d",
+    "https://esm.sh/v135/@supabase/auth-js@2.64.2/denonext/auth-js.mjs": "f87ccfa4e23123f7ab122f814fa37ce26c00457a3e32cea718a726d72fec1f37",
+    "https://esm.sh/v135/@supabase/functions-js@2.4.1/denonext/functions-js.mjs": "c7cb8535aa4c37b3b537c0129f978030d0ee022b99a83a110e9d80662d2cdc0a",
+    "https://esm.sh/v135/@supabase/node-fetch@2.6.15/denonext/node-fetch.mjs": "efad00ea3d4cbe1bee688836ef75339d49a1981bc5728a13e9ad5f26791d5efb",
+    "https://esm.sh/v135/@supabase/postgrest-js@1.15.5/denonext/postgrest-js.mjs": "ec1f09c71a528b71b3219dd9d738ac26fd19aedc9491764bb2f410c1cf9e5639",
+    "https://esm.sh/v135/@supabase/realtime-js@2.9.5/denonext/realtime-js.mjs": "a8648545237fed582a2a01d72d2d9ed9fa28b6adbcba8a844c58cc90d526760d",
+    "https://esm.sh/v135/@supabase/storage-js@2.6.0/denonext/storage-js.mjs": "1571b6f7bff0aeb20d2df2cbc3064921fe2959788c28805388b65722b824a0e6",
+    "https://esm.sh/v135/@supabase/supabase-js@2.43.5/denonext/supabase-js.mjs": "8d436a898ed7d195a2be0f0293f13584176cf8025846a3934d537ba67393a812",
+    "https://esm.sh/v135/bufferutil@4.0.8/denonext/bufferutil.mjs": "60a4618cbd1a5cb24935c55590b793d4ecb33862357d32e1d4614a0bbb90947f",
+    "https://esm.sh/v135/node-gyp-build@4.6.1/denonext/node-gyp-build.mjs": "5d28b312f145a6cb2ec0dbdd80a7d34c0e0e6b5dcada65411d8bcff6c8991cc6",
+    "https://esm.sh/v135/utf-8-validate@6.0.3/denonext/utf-8-validate.mjs": "410c48d66840e987e474a4849cd25829817415cedd25466280effb1287d05aa5",
+    "https://esm.sh/v135/ws@8.17.0/denonext/ws.mjs": "098384c6d6b787c4074dae8141a61bfa93a271ccb699b4b426c75141c9ef5560"
+  },
+  "workspace": {
+    "packageJson": {
+      "dependencies": [
+        "npm:@lottiefiles/react-lottie-player@^3.5.3",
+        "npm:@radix-ui/react-avatar@^1.0.4",
+        "npm:@repo/eslint-config",
+        "npm:@repo/typescript-config",
+        "npm:prettier@^3.2.5",
+        "npm:turbo@latest"
+      ]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "imports": {
+    "viem": "npm:viem@2.14.2",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2",
+    "ethers": "npm:ethers@6.13.0",
+    "fast-jwt": "npm:fast-jwt",
+    "uuid": "npm:uuid",
+    "crypto": "jsr:@std/crypto"
+  }
+}

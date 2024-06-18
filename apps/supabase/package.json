@@ -17,5 +17,10 @@
     "dotenv": "^16.4.5",
     "typescript": "^5.4.5",
     "vitest": "^1.6.0"
+  },
+  "dependencies": {
+    "ethers": "^6.13.0",
+    "fast-jwt": "^4.0.1",
+    "uuid": "^10.0.0"
   }
 }
