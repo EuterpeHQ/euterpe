@@ -11,7 +11,11 @@ import { WagmiProvider } from "wagmi";
 import { createConfig, http } from "@wagmi/core";
 import { arbitrum, arbitrumSepolia } from "wagmi/chains";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import { connectorsForWallets } from "@rainbow-me/rainbowkit";
+import {
+  connectorsForWallets,
+  createAuthenticationAdapter,
+  RainbowKitAuthenticationProvider,
+} from "@rainbow-me/rainbowkit";
 import {
   rainbowWallet,
   walletConnectWallet,
@@ -22,6 +26,39 @@ import {
   safeWallet,
   injectedWallet,
 } from "@rainbow-me/rainbowkit/wallets";
+import { SiweMessage } from "siwe";
+import { getNonce, verifySignature } from "@/actions/auth";
+
+const authenticationAdapter = createAuthenticationAdapter({
+  getNonce: async () => {
+    const nonce = await getNonce();
+    console.log("nonce", nonce);
+    return nonce;
+  },
+  createMessage: ({ nonce, address, chainId }) => {
+    return new SiweMessage({
+      domain: window.location.host,
+      address,
+      statement: "Sign in with Ethereum to the app.",
+      uri: window.location.origin,
+      version: "1",
+      chainId,
+      nonce,
+    });
+  },
+  getMessageBody: ({ message }) => {
+    return message.prepareMessage();
+  },
+  verify: async ({ message, signature }) => {
+    const result = await verifySignature(message, signature);
+
+    console.log("verify", result);
+    return false;
+  },
+  signOut: async () => {
+    await fetch("/api/logout");
+  },
+});
 
 const connectors = connectorsForWallets(
   [
@@ -89,16 +126,21 @@ export function Web3Provider({ children }: { children: React.ReactNode }) {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider
-          appInfo={{
-            appName: "Euterpe",
-            learnMoreUrl: "https://euterpe.vercel.app/learn/defi-for-artists",
-            disclaimer: Disclaimer,
-          }}
-          theme={customTheme}
+        <RainbowKitAuthenticationProvider
+          adapter={authenticationAdapter}
+          status={"unauthenticated"}
         >
-          {children}
-        </RainbowKitProvider>
+          <RainbowKitProvider
+            appInfo={{
+              appName: "Euterpe",
+              learnMoreUrl: "https://euterpe.vercel.app/learn/defi-for-artists",
+              disclaimer: Disclaimer,
+            }}
+            theme={customTheme}
+          >
+            {children}
+          </RainbowKitProvider>
+        </RainbowKitAuthenticationProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );
