@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import Sidebar from "@/partials/CreatorSidebar";
-import InvestorSidebar from "@/partials/InvestorSidebar";
+import ArtistSidebar from "@/partials/ArtistSidebar";
+import FanSidebar from "@/partials/FanSidebar";
 import { useSidebarStore } from "@/providers/store/sidebar.store";
 import { DashboardLoader } from "@/components/Loader";
 import { Inter } from "next/font/google";
@@ -25,7 +25,7 @@ function Layout({
   // }
   return (
     <div className={cn("flex h-screen overflow-hidden", inter.className)}>
-      {mode === "creator" ? <Sidebar /> : <InvestorSidebar />}
+      {mode === "creator" ? <ArtistSidebar /> : <FanSidebar />}
       <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
         <Header />
         {children}
