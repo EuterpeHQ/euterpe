@@ -22,6 +22,7 @@ import { BiBullseye } from "react-icons/bi";
 import { IoInfiniteOutline } from "react-icons/io5";
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlinePeopleAlt } from "react-icons/md";
+import { Badge } from "@/components/ui/badge";
 
 type Url = string | UrlObject;
 
@@ -235,7 +236,7 @@ function FanSidebar() {
           </button>
           {/* Logo */}
           <NavLink to="/" className="block">
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center gap-2">
               <Logomark className="h-auto w-8" />
               <p
                 className={cn(
@@ -247,6 +248,7 @@ function FanSidebar() {
               >
                 Euterpe
               </p>
+              <Badge variant="outline">Beta</Badge>
             </div>
           </NavLink>
         </div>
