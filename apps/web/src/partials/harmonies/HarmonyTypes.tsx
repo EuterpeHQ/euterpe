@@ -2,6 +2,7 @@ import React from "react";
 import Spacer from "@/components/ui/spacer";
 import { useToast } from "@/components/ui/use-toast";
 import { useCreateHarmonyStore } from "@/providers/store/createHarmony.store";
+import { useStepper } from "@/components/stepper";
 import { BsPiggyBank } from "react-icons/bs";
 import { FaYoutube } from "react-icons/fa";
 import { IconType } from "react-icons";
