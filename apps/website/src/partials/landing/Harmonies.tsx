@@ -39,7 +39,7 @@ function Collection({ index }: { index: number }) {
               <CoinLottie />
             </div>
             <div className="w-5"></div>
-            <p className="font-federant">0.041 ETP</p>
+            <p className="font-federant">0.041 EUT</p>
           </div>
           <div className="flex items-center text-muted-foreground">
             <svg

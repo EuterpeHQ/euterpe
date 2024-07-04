@@ -20,13 +20,13 @@ import {
 import { BsBarChart } from "react-icons/bs";
 import Link from "next/link";
 import { useFeaturedArtists } from "@/hooks/useFeaturedArtist";
-import { Artist } from "@/entities";
+import { Artist } from "@/types/entities";
 import { Skeleton } from "@/components/ui/skeleton";
 
 function PriceBadge({ price }: { price: string }) {
   return (
     <div className="flex items-center justify-center rounded-md bg-accent px-2 font-federant text-xs text-white transition-all duration-200 group-hover:bg-accent">
-      {price} ETP
+      {price} EUT
     </div>
   );
 }

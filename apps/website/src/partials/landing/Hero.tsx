@@ -54,7 +54,7 @@ function Hero() {
               </div>
               <div className="z-10 -ml-2 flex items-center">$0.03</div>
             </CardTitle>
-            <CardDescription>Euterpe (ETP)</CardDescription>
+            <CardDescription>Euterpe (EUT)</CardDescription>
           </CardHeader>
         </Card>
       </div>
