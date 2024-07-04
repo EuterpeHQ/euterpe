@@ -1,150 +1,44 @@
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import Image from "next/image";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardFooter,
-} from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { CoinLottie } from "@/components/Lotties";
+import HarmonyCard from "@/partials/harmonies/HarmonyCard";
+import { getArtistHarmonies } from "@/blockchain/harmony.interaction";
+import { useQuery } from "@tanstack/react-query";
+import { useToast } from "@/components/ui/use-toast";
+import Spacer from "@/components/ui/spacer";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import HarmonyImage from "@/assets/images/lady-donli.jpeg";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import HarmonyCreationStepper from "@/partials/harmonies/HarmonyCreationStepper";
 
-function Collection({ index }: { index: number }) {
-  return (
-    <div className="w-full max-w-sm p-2 md:max-w-xs  lg:max-w-[350px]">
-      <div className="h-full overflow-hidden rounded-xl bg-card p-6">
-        <div className="relative mb-6 flex aspect-square w-full items-center justify-center overflow-hidden rounded-xl">
-          <Image
-            src={HarmonyImage}
-            className="h-full w-full cursor-pointer rounded-xl object-cover object-bottom transition duration-200 hover:scale-105 hover:opacity-80"
-            alt=""
-            aria-hidden="true"
-            fill
-            placeholder="blur"
-            quality={100}
-          />
-        </div>
-        <div className="mb-3 text-white">
-          <h3 className="text-lg">Ensemble #{29 + index}</h3>
-        </div>
-        <div className="mb-4 text-muted-foreground">
-          <p>
-            A 5% chance to earn 1% of every 1000 streams on our{" "}
-            <span className="italic">Pan African Rockstar</span> Album
-          </p>
-        </div>
-        <div className="mb-4 flex justify-between">
-          <div className="relative flex items-center text-primary">
-            <div className="absolute -left-4">
-              <CoinLottie />
-            </div>
-            <div className="w-5"></div>
-            <p className="font-federant">0.041 ETP</p>
-          </div>
-          <div className="flex items-center text-muted-foreground">
-            <svg
-              className="mr-2"
-              width="17"
-              height="17"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M8.305 2.007a6.667 6.667 0 1 0 0 13.334 6.667 6.667 0 0 0 0-13.334Zm2.667 7.334H8.305a.667.667 0 0 1-.667-.667V6.007a.667.667 0 0 1 1.334 0v2h2a.667.667 0 0 1 0 1.334Z"
-                fill="#8BACD9"
-              />
-            </svg>
-            {/* <p>{index * randomInt(1, 10)} days left</p> */}
-          </div>
-        </div>
-        <div className="mb-4 h-px bg-primary/20" />
-        <div className="flex items-center">
-          <img
-            className="h-8 w-8 rounded-full"
-            src="https://github.com/mwororokevin/nft-preview-card-component/blob/master/images/image-avatar.png?raw=true"
-            alt=""
-          />
-          <div className="ml-4 text-muted-foreground">
-            <span>Created by</span>
-            <span className="cursor-pointer whitespace-nowrap text-white hover:text-primary">
-              {" "}
-              Lady Donli
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-type ProfileCardProps = {
-  rank: number;
-};
-
-function ProfileCard({ rank }: ProfileCardProps) {
-  return (
-    <Card className="group flex h-80 w-full cursor-pointer flex-col justify-between overflow-hidden border border-primary/20 bg-black/15 outline-none transition-all duration-200 md:hover:bg-primary/10 md:hover:outline md:hover:outline-offset-2 md:hover:outline-primary/20">
-      <CardContent className="relative flex items-center justify-center p-0 md:p-4">
-        <div className="h-40 w-full">
-          <Avatar className="h-full w-full rounded-none">
-            <AvatarImage
-              className="h-full w-full rounded-lg"
-              src="/images/skull.webp"
-            />
-            <AvatarFallback className="relative bg-black/5">
-              <svg
-                className="absolute left-1/2 h-full w-full -translate-x-1/2 text-black/20"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
-            </AvatarFallback>
-          </Avatar>
-        </div>
-      </CardContent>
-
-      <CardHeader className="p-4 text-sm md:p-0 md:pb-4 md:text-center">
-        <p className="text-primary">Ticket Harmony</p>
-        <CardTitle>Description</CardTitle>
-        <p>
-          Artist: <span>Selena Gomez</span>
-        </p>
-        <CardDescription>
-          <span>Token Price: </span>
-          <span className="font-federant text-white">
-            {(rank / 3).toFixed(2)}
-            <span className="tracking-widest"> ETP</span>
-          </span>
-        </CardDescription>
-      </CardHeader>
-      <CardFooter className="flex flex-col items-start justify-end md:hidden">
-        <div className="mb-4 h-px w-full bg-primary/20" />
-      </CardFooter>
-    </Card>
-  );
-}
 function Page() {
+  const { toast } = useToast();
+  const { isPending, error, data } = useQuery({
+    queryKey: ["getArtistTokens"],
+    queryFn: getArtistHarmonies,
+  });
+
+  useEffect(() => {
+    if (error) {
+      toast({
+        title: "Failed to Load Data",
+        description: error.message,
+      });
+    }
+  }, [error]);
+
   return (
     <>
       <div className="max-w-9xl mx-auto w-full px-4 py-8 sm:px-6 lg:px-8">
-        <div className="relative mb-8 overflow-hidden rounded-sm bg-card sm:p-6">
+        <div className="relative overflow-hidden rounded-sm bg-card sm:p-6">
           <div
-            className="pointer-events-none absolute right-0 top-0 -mt-4  hidden xl:block"
+            className="pointer-events-none absolute right-0 top-0 -mt-20  hidden xl:block"
             aria-hidden="true"
           >
             <Image
@@ -168,34 +62,45 @@ function Page() {
           </div>
           <div className="relative space-y-4">
             <h1 className="mb-1 text-2xl font-bold text-foreground/80 md:text-3xl">
-              Discover Trending Harmonies, <br />
+              Create your Harmonies
+              <br />
             </h1>
             <p className="text-muted-foreground">
-              Explore and Invest in Specific Harmonies
+              Enable different types of Harmonies
             </p>
-            <div className="flex gap-4">
-              <button className="w-36 rounded-lg border border-white bg-inherit p-2">
-                Explore
-              </button>
-              <button className="w-36 rounded-lg border border-white bg-inherit p-2">
-                Invest
-              </button>
-            </div>
           </div>
         </div>
-        {/*  */}
-        {/* Display top harmonies with cards */}
       </div>
-      {/* <section className=" mt-56 flex  w-full flex-col items-center justify-center space-y-5 rounded-lg"> */}
-      <div className=" h-auto w-full rounded-lg p-6 lg:w-full">
-        <div className="my-4 flex flex-wrap items-center justify-between gap-y-4">
-          <h1 className="text-2xl">Popular Harmonies</h1>
+      <div className="h-full w-full rounded-lg p-6 lg:w-full">
+        <div className="flex w-full justify-between">
+          <h1 className="text-xl font-semibold text-foreground">Harmonies</h1>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline">Create Harmony</Button>
+            </SheetTrigger>
+            <SheetContent className="sm:max-w-4xl">
+              <SheetHeader>
+                <SheetTitle>Create new Harmony</SheetTitle>
+                <Spacer size={24} />
+              </SheetHeader>
+              <HarmonyCreationStepper />
+            </SheetContent>
+          </Sheet>
         </div>
-        <section className="mt-10 w-full">
+        <Spacer size={128} />
+        <section className="my-auto mt-10 w-full">
           <div className="-m-4 flex flex-wrap justify-center border-primary px-5">
-            {[...Array(9)].map((_, index) => (
-              <Collection key={index} index={index + 1} />
-            ))}
+            {data?.length === 0 ? (
+              <div className="flex flex-col items-center justify-center">
+                <p className="mt-4 text-muted-foreground">
+                  You don't have any harmonies yet, Create one.
+                </p>
+              </div>
+            ) : (
+              <div className="-m-4 flex flex-wrap justify-center border-primary px-5">
+                {data?.map((harmony, index) => <HarmonyCard key={index} />)}
+              </div>
+            )}
           </div>
         </section>
       </div>

@@ -15,3 +15,9 @@ export type ArtistToken = {
   totalSupply: string;
   artistName: string;
 };
+
+export type HarmonyCategory = {
+  name: string;
+  description: string;
+  image: string;
+};
