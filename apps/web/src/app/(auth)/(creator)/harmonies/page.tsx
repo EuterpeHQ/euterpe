@@ -15,7 +15,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import HarmonyCategories from "@/partials/harmonies/HarmonyCategories";
 import HarmonyCreationStepper from "@/partials/harmonies/HarmonyCreationStepper";
 
 function Page() {
