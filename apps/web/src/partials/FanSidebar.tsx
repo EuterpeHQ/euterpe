@@ -248,7 +248,7 @@ function FanSidebar() {
               >
                 Euterpe
               </p>
-              <Badge variant="outline">Beta</Badge>
+              <Badge variant="outline">Pre-Alpha</Badge>
             </div>
           </NavLink>
         </div>
