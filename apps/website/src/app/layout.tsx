@@ -27,13 +27,7 @@ export default function RootLayout({
           <AnnouncementBar>
             <div>
               <p className="text-sm">
-                Support Euterpe at &nbsp;
-                <Link
-                  href="https://explorer.gitcoin.co/#/round/42161/23/51"
-                  className="text-primary"
-                >
-                  GG20 🎉🎉
-                </Link>
+                Euterpe's Pre-Alpha Release is Coming in August! &nbsp;🚀
               </p>
             </div>
           </AnnouncementBar>
