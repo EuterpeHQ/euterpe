@@ -35,7 +35,11 @@ function Hero() {
             their journey and share in their achievements.
           </p>
           <Button className="w-full gap-4 md:w-fit" asChild>
-            <Link href="/onboarding" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="https://euterpe.app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <HiOutlineRocketLaunch className="h-4 w-4" />
               Launch App
             </Link>
