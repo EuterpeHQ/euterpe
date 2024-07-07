@@ -59,7 +59,7 @@ function HarmonyTypes() {
     {
       name: "Fees",
       description:
-        "Share a portion of transaction fees with your fans as a reward.",
+        "Share a portion of sales and transaction fees with your fans.",
       icon: MdAttachMoney,
       enabled: true,
       badges: ["Popular"],

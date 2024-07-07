@@ -79,7 +79,7 @@ function HarmonyCategories() {
     },
     {
       name: "Merch",
-      description: "Offer your fans discounted merchandise to support you.",
+      description: "Offer your fans free and discounted merchandise.",
       image: "@/assets/icons/dollar.png",
     },
     {
