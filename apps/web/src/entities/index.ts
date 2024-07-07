@@ -1,3 +1,5 @@
+import { IconType } from "react-icons";
+
 export type Artist = {
   id: string;
   name: string;
@@ -20,4 +22,12 @@ export type HarmonyCategory = {
   name: string;
   description: string;
   image: string;
+};
+
+export type HarmonyType = {
+  name: string;
+  description: string;
+  icon: IconType;
+  enabled: boolean;
+  badges: string[];
 };
