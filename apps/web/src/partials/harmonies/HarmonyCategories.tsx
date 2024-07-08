@@ -17,10 +17,10 @@ function CategoryCard(props: CategoryCardProps) {
   );
   const { nextStep } = useStepper();
 
-  const enabledCategories = ["Revenue"];
+  const enabledCategories = ["Revenue", "Exclusive"];
   const enabled = enabledCategories.includes(props.name);
   const handleClick = () => {
-    if (enabled) {
+    if (true) {
       setHarmonyCategory(props.name);
       nextStep();
     } else {
@@ -53,15 +53,15 @@ function InfoCard() {
     <div className="mb-4 flex items-center justify-center gap-4 rounded-md border-2 border-orange-400 bg-orange-400/10 p-3">
       <InfoCircledIcon />
       <p className="text-sm">
-        Only the Revenue harmonies are functional. We are working on improving
-        and adding more harmonies.
+        Please note that only two harmonies are currently enabled. We are
+        working to make all harmonies available.
       </p>
     </div>
   );
 }
 
 function HarmonyCategories() {
-  const categories = [
+  const categories: HarmonyCategory[] = [
     {
       name: "Revenue",
       description: "Share revenue and royalties with your fans.",
@@ -73,7 +73,7 @@ function HarmonyCategories() {
       image: "@/assets/icons/favourite.png",
     },
     {
-      name: "Interaction",
+      name: "Interactive",
       description: "Enable your fans to interact and engage with you directly.",
       image: "@/assets/icons/dollar.png",
     },
@@ -83,7 +83,7 @@ function HarmonyCategories() {
       image: "@/assets/icons/dollar.png",
     },
     {
-      name: "Physical Experiences",
+      name: "Experience",
       description: "Provide unique physical experiences for your fans.",
       image: "@/assets/icons/dollar.png",
     },
