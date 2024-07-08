@@ -19,14 +19,10 @@ function Layout({
     <main className="bg-black">
      <Nav/>
       <Spacer size={40} />
-      {/* <div className="w-full text-center">
-        <Logo />
-      </div> */}
       <Spacer size={80} />
       {children}
       {/* <Spacer size={100} /> */}
       <Spacer size={100} />
-      {/* <Footer /> */}
     </main>
 
     </>

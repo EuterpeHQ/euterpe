@@ -78,51 +78,9 @@ function Collection({ index }: { index: number }) {
 
 function Harmonies() {
   return (
-    // <section className="">
-    //   <div className="container mx-auto flex items-center justify-between px-7 md:px-24">
-    //     <div className="flex flex-col gap-2">
-    //       <h2 className="text-3xl font-semibold md:max-w-sm lg:max-w-md">
-    //         Invest In Secure and Decentralized{" "}
-    //         <span className="text-primary underline underline-offset-4">
-    //           Harmonies
-    //         </span>
-    //       </h2>
-    //       <p className="text-sm md:max-w-sm lg:max-w-md">
-    //         <Balancer>
-    //           Harmonies house a collection of one or more NFTs that legally bind
-    //           an investor to certain rewards.
-    //         </Balancer>
-    //       </p>
-    //     </div>
-    //     <Button
-    //       className="hidden gap-4 md:inline-flex"
-    //       variant="outline"
-    //       asChild
-    //     >
-    //       <Link href="/login">
-    //         <GrMoney className="h-[13px] w-[13px]" />
-    //         See More
-    //       </Link>
-    //     </Button>
-    //   </div>
-    //   <Spacer size={40} />
-    //   <div className="container -m-4 mx-auto flex flex-wrap justify-center px-5">
-    //     {[...Array(3)].map((_, index) => (
-    //       <Collection key={index} index={index + 1} />
-    //     ))}
-    //   </div>
-    //   <div className="container inline-flex pt-6 md:hidden">
-    //     <Button className="w-full gap-4" variant="outline" asChild>
-    //       <Link href="/login">
-    //         <GrMoney className="h-[13px] w-[13px]" />
-    //         See More
-    //       </Link>
-    //     </Button>
-    //   </div>
-    // </section>
     <section className="w-[92%] m-auto border-b border-b-[#020403] py-6 flex flex-col md:flex-row justify-between items-start gap-y-4 p-2 px-8 my-4 mt-10">
     <div className="flex flex-col gap-y-4 ">
-      <h2 className="font-aeonik  text-6xl">
+      <h2 className="font-aeonik text-wrap text-3xl md:text-6xl">
         Invest In Secure <br /> and Decentralized <br />
         <span className="text-[#B8FF5B]">Harmonies</span>
       </h2>
@@ -151,7 +109,7 @@ function Harmonies() {
     </div>
     {/* image */}
     <div
-      className=" p-4 w-full md:w-[38%] h-[750px]"
+      className=" p-4 w-full w-[20%] h-[400px] md:w-[38%] md:h-[750px]"
       style={{
         backgroundImage: 'url("/images/invest.png")',
         backgroundSize: "cover",
