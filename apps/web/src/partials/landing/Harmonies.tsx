@@ -78,48 +78,88 @@ function Collection({ index }: { index: number }) {
 
 function Harmonies() {
   return (
-    <section className="">
-      <div className="container mx-auto flex items-center justify-between px-7 md:px-24">
-        <div className="flex flex-col gap-2">
-          <h2 className="text-3xl font-semibold md:max-w-sm lg:max-w-md">
-            Invest In Secure and Decentralized{" "}
-            <span className="text-primary underline underline-offset-4">
-              Harmonies
-            </span>
-          </h2>
-          <p className="text-sm md:max-w-sm lg:max-w-md">
-            <Balancer>
-              Harmonies house a collection of one or more NFTs that legally bind
-              an investor to certain rewards.
-            </Balancer>
-          </p>
-        </div>
-        <Button
-          className="hidden gap-4 md:inline-flex"
-          variant="outline"
-          asChild
-        >
-          <Link href="/login">
-            <GrMoney className="h-[13px] w-[13px]" />
-            See More
-          </Link>
-        </Button>
+    // <section className="">
+    //   <div className="container mx-auto flex items-center justify-between px-7 md:px-24">
+    //     <div className="flex flex-col gap-2">
+    //       <h2 className="text-3xl font-semibold md:max-w-sm lg:max-w-md">
+    //         Invest In Secure and Decentralized{" "}
+    //         <span className="text-primary underline underline-offset-4">
+    //           Harmonies
+    //         </span>
+    //       </h2>
+    //       <p className="text-sm md:max-w-sm lg:max-w-md">
+    //         <Balancer>
+    //           Harmonies house a collection of one or more NFTs that legally bind
+    //           an investor to certain rewards.
+    //         </Balancer>
+    //       </p>
+    //     </div>
+    //     <Button
+    //       className="hidden gap-4 md:inline-flex"
+    //       variant="outline"
+    //       asChild
+    //     >
+    //       <Link href="/login">
+    //         <GrMoney className="h-[13px] w-[13px]" />
+    //         See More
+    //       </Link>
+    //     </Button>
+    //   </div>
+    //   <Spacer size={40} />
+    //   <div className="container -m-4 mx-auto flex flex-wrap justify-center px-5">
+    //     {[...Array(3)].map((_, index) => (
+    //       <Collection key={index} index={index + 1} />
+    //     ))}
+    //   </div>
+    //   <div className="container inline-flex pt-6 md:hidden">
+    //     <Button className="w-full gap-4" variant="outline" asChild>
+    //       <Link href="/login">
+    //         <GrMoney className="h-[13px] w-[13px]" />
+    //         See More
+    //       </Link>
+    //     </Button>
+    //   </div>
+    // </section>
+    <section className="w-[92%] m-auto border-b border-b-[#020403] py-6 flex flex-col md:flex-row justify-between items-start gap-y-4 p-2 px-8 my-4 mt-10">
+    <div className="flex flex-col gap-y-4 ">
+      <h2 className="font-aeonik  text-6xl">
+        Invest In Secure <br /> and Decentralized <br />
+        <span className="text-[#B8FF5B]">Harmonies</span>
+      </h2>
+      <p className="font-mono text-sm font-thin text-[#CDCDCD]">
+        Harmonies house a collection of one or more NFTs that <br /> legally
+        bind an investor to certain rewards.
+      </p>
+      <div className=" block">
+        <button className="flex justify-start items-center gap-x-2 font-mono bg-[#B8FF5B] text-black px-4 p-2 rounded-full border-none">
+          Learn more
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            className="w-5 h-5 bi bi-arrow-right-short"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"
+            />
+          </svg>
+        </button>
       </div>
-      <Spacer size={40} />
-      <div className="container -m-4 mx-auto flex flex-wrap justify-center px-5">
-        {[...Array(3)].map((_, index) => (
-          <Collection key={index} index={index + 1} />
-        ))}
-      </div>
-      <div className="container inline-flex pt-6 md:hidden">
-        <Button className="w-full gap-4" variant="outline" asChild>
-          <Link href="/login">
-            <GrMoney className="h-[13px] w-[13px]" />
-            See More
-          </Link>
-        </Button>
-      </div>
-    </section>
+    </div>
+    {/* image */}
+    <div
+      className=" p-4 w-full md:w-[38%] h-[750px]"
+      style={{
+        backgroundImage: 'url("/images/invest.png")',
+        backgroundSize: "cover",
+        backgroundPosition: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+    ></div>
+  </section>
   );
 }
 
