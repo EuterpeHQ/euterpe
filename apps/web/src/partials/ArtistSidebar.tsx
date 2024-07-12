@@ -23,6 +23,7 @@ import { IoInfiniteOutline } from "react-icons/io5";
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlinePeopleAlt } from "react-icons/md";
 import { Badge } from "@/components/ui/badge";
+import { AiOutlineAppstore } from "react-icons/ai";
 
 type Url = string | UrlObject;
 
@@ -131,6 +132,11 @@ function ArtistSidebar() {
       name: "Harmonies",
       to: "/harmonies",
       icon: <IoInfiniteOutline className="h-5 w-5" />,
+    },
+    {
+      name: "Apps",
+      to: "/apps",
+      icon: <AiOutlineAppstore className="h-5 w-5" />,
     },
   ];
 
