@@ -12,7 +12,7 @@ export default fp(async (fastify) => {
 
       let domainRE = new RegExp("");
       if (process.env.APP_ENV === "production") {
-        domainRE = /^https:\/\/([a-z0-9]+\.)*euterpe\.app$/;
+        domainRE = /^https:\/\/([a-z0-9]+\.)*euterpe\.(app|finance)$/;
       } else if (process.env.APP_ENV === "staging") {
         domainRE = /^https:\/\/euterpe.*\.vercel\.app$/;
       }
