@@ -9,8 +9,12 @@ import { ArtistToken as ArtistTokenProps } from "@/entities";
 import { readContract, readContracts } from "@wagmi/core";
 import { config } from "@/providers/web3";
 import { formatEther } from "viem";
+import NotificationBanner from "@/partials/NotificationBanner";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ManageToken from "@/partials/token/ManageToken";
 
 function Page() {
+  const [activeTab, setActiveTab] = useState("overview");
   const { address } = useAccount();
   const [artistToken, setArtistToken] = useState<ArtistTokenProps | null>(null);
 
@@ -90,9 +94,29 @@ function Page() {
   }, [address]);
 
   return (
-    <>
-      {artistToken ? <ArtistToken {...artistToken} /> : <CreateArtistToken />}
-    </>
+    <div className="max-w-9xl mx-auto w-full px-4 py-8 sm:px-6 lg:px-8">
+      <NotificationBanner />
+      <Tabs defaultValue="overview" onValueChange={setActiveTab}>
+        <TabsList>
+          <TabsTrigger value="overview">Asset Profile</TabsTrigger>
+          <TabsTrigger value="manage">Manage</TabsTrigger>
+        </TabsList>
+        <TabsContent
+          value="overview"
+          hidden={"overview" !== activeTab}
+          forceMount
+        >
+          {artistToken ? (
+            <ArtistToken {...artistToken} />
+          ) : (
+            <CreateArtistToken />
+          )}
+        </TabsContent>
+        <TabsContent value="manage" hidden={"manage" !== activeTab} forceMount>
+          <ManageToken />
+        </TabsContent>
+      </Tabs>
+    </div>
   );
 }
 

@@ -155,8 +155,8 @@ export default function Page() {
                 Secure, Decentralized Live Event Ticketing
               </div>
               <div className="mb-8">
-                <span className="cursor-pointer rounded-full bg-white px-3 py-1 text-xs font-bold uppercase text-blue-500">
-                  Connect
+                <span className="cursor-pointer rounded-full bg-primary px-3 py-1 text-xs font-bold uppercase text-background">
+                  Connected
                 </span>
               </div>
               <div className="border-grey-darker mb-10 border-b"></div>

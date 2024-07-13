@@ -21,12 +21,17 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { LuExternalLink } from "react-icons/lu";
+import Link from "next/link";
+import Spacer from "@/components/ui/spacer";
 
 function ArtistToken(props: ArtistTokenProps) {
   return (
-    <main className="mx-auto mb-6 w-full max-w-[1500px]">
-      <div className="mx-auto mt-8 flex w-[98%] flex-col flex-wrap">
-        <h2 className="mb-4 text-2xl font-semibold">Token</h2>
+    <main className="w-full max-w-5xl">
+      <Spacer size={28} />
+      <div className="flex flex-col">
+        <h2 className="text-lg font-semibold">Your Token</h2>
+        <Spacer size={12} />
         <div className="flex flex-col-reverse gap-2 md:flex-row">
           <div className="flex flex-col gap-2">
             <TokenDisplayCard {...props} />
@@ -61,19 +66,19 @@ function TokenDisplayCard(props: ArtistTokenProps) {
         </div>
         <div>
           <p className="text-xs text-muted-foreground">Market Cap</p>
-          <p className="text-xs font-medium">$126M</p>
+          <p className="text-xs font-medium">$126k</p>
         </div>
       </div>
       <div className="flex gap-4">
-        <div className="bg-surfaceVariant rounded-md px-6 py-2">
+        <div className="rounded-md bg-surfaceVariant px-6 py-2">
           <p className="text-center text-xs text-muted-foreground">5m</p>
           <p className="text-center text-xs font-bold text-green-400">+3.90%</p>
         </div>
-        <div className="bg-surfaceVariant rounded-md px-6 py-2">
+        <div className="rounded-md bg-surfaceVariant px-6 py-2">
           <p className="text-center text-xs text-muted-foreground">1H</p>
           <p className="text-center text-xs font-bold text-red-400">-1.64%</p>
         </div>
-        <div className="bg-surfaceVariant rounded-md px-6 py-2">
+        <div className="rounded-md bg-surfaceVariant px-6 py-2">
           <p className="text-center text-xs text-muted-foreground">24H</p>
           <p className="text-center text-xs font-bold text-green-400">
             +12.81%
@@ -89,7 +94,16 @@ function TokenMetrics(props: ArtistTokenProps) {
     <div className="inline-flex w-full flex-col justify-center gap-4 rounded-lg border-[0.5px] border-card/65 bg-surface px-6 py-4">
       <div className="flex justify-between">
         <p className="text-sm text-muted-foreground">Address</p>
-        <p className="ml-2 text-sm">{formatAddress(props.address)}</p>
+        <div className="flex items-center gap-2">
+          <p className="ml-2 text-sm">{formatAddress(props.address)} </p>
+          <Link
+            href={`https://arbiscan.io/token/${props.address}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <LuExternalLink className="h-3 w-3 cursor-pointer text-muted-foreground" />
+          </Link>
+        </div>
       </div>
       <div className="flex justify-between">
         <p className="text-sm text-muted-foreground">Total Supply</p>
@@ -129,7 +143,7 @@ function TokenChart(props: ArtistTokenProps) {
       <div className="flex justify-between">
         <div
           onClick={handleChart}
-          className="bg-surfaceVariant flex w-fit cursor-pointer items-center gap-1 rounded-md border-[0.5px] border-card/65 p-1.5 text-xs"
+          className="flex w-fit cursor-pointer items-center gap-1 rounded-md border-[0.5px] border-card/65 bg-surfaceVariant p-1.5 text-xs"
         >
           <div className="px-2 py-0.5">24H</div>
           <div className="px-2 py-0.5">1W</div>
@@ -171,6 +185,7 @@ function TokenChart(props: ArtistTokenProps) {
             dot={false}
             stroke="#c1ff7050"
             fill="#4a5c33"
+            isAnimationActive={false}
           />
           <XAxis dataKey="Date" interval={150} />
           <YAxis />

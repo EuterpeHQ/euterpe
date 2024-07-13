@@ -25,6 +25,8 @@ import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { useToast } from "@/components/ui/use-toast";
 import { CgSpinner } from "react-icons/cg";
 import Balancer from "react-wrap-balancer";
+import Spacer from "@/components/ui/spacer";
+import { HiOutlineRocketLaunch } from "react-icons/hi2";
 
 function CreateArtistToken() {
   const [formData, setFormData] = useState({
@@ -146,11 +148,12 @@ function CreateArtistToken() {
 
   return (
     <div className="mb-6 flex h-1/2 w-full max-w-[1500px] flex-col items-center justify-center gap-4">
+      <Spacer size={96} />
       <Image height={88} width={88} src="/icons/token.png" alt="token" />
-      <h2 className="text-lg font-semibold leading-tight">
+      <h2 className="font-semibold leading-tight text-muted-foreground">
         Launch your artist token
       </h2>
-      <p className="max-w-md text-center leading-snug text-muted-foreground">
+      <p className="-mt-2 max-w-md text-center text-sm leading-snug text-muted-foreground">
         <Balancer>
           Gain independence and earn directly through your fans with your own
           artist token.
@@ -158,7 +161,10 @@ function CreateArtistToken() {
       </p>
       <Dialog open={opendialog} onOpenChange={setOpendialog}>
         <DialogTrigger asChild>
-          <Button className="w-40">Create New Token</Button>
+          <Button size="sm" className="gap-2">
+            <HiOutlineRocketLaunch className="h-4 w-4" />
+            Launch Token
+          </Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>

@@ -65,7 +65,9 @@ function Page() {
           <h1 className="text-xl font-semibold text-foreground">Harmonies</h1>
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="outline">Create Harmony</Button>
+              <Button size="sm" variant="outline">
+                Create Harmony
+              </Button>
             </SheetTrigger>
             <SheetContent className="sm:max-w-4xl">
               <SheetHeader>
