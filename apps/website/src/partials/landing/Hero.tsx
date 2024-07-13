@@ -36,7 +36,7 @@ function Hero() {
           </p>
           <Button className="w-full gap-4 md:w-fit" asChild>
             <Link
-              href="https://euterpe.app"
+              href="https://app.euterpe.finance"
               target="_blank"
               rel="noopener noreferrer"
             >
