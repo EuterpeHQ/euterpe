@@ -156,9 +156,6 @@ function ArtistSidebar() {
   const setSidebarOpen = useSidebarStore((state) => state.setIsOpen);
   const sidebarExpanded = useSidebarStore((state) => state.isExpanded);
   const setSidebarExpanded = useSidebarStore((state) => state.setIsExpanded);
-  const setMode = useSidebarStore((state) => state.setMode);
-
-  const pathname = usePathname();
 
   const trigger = useRef<HTMLButtonElement>(null);
   const sidebar = useRef<HTMLDivElement>(null);
@@ -199,10 +196,6 @@ function ArtistSidebar() {
 
     return () => clearTimeout(delay);
   }, [sidebarExpanded]);
-
-  const mode = useSidebarStore((state) => state.mode);
-  const [switchChecked, setSwitchChecked] = useState(true);
-  const [opendialog, setOpendialog] = useState(false);
 
   return (
     <div>
@@ -255,7 +248,12 @@ function ArtistSidebar() {
               >
                 Euterpe
               </p>
-              <Badge variant="outline">Pre-Alpha</Badge>
+              <Badge
+                variant="outline"
+                className={cn("text-nowrap", !sidebarExpanded && "hidden")}
+              >
+                Pre-Alpha
+              </Badge>
             </div>
           </NavLink>
         </div>
@@ -270,50 +268,9 @@ function ArtistSidebar() {
               >
                 •••
               </span>
-              <Dialog open={opendialog} onOpenChange={setOpendialog}>
-                <div className="items-center gap-2 whitespace-nowrap lg:hidden lg:sidebar-expanded:inline-flex  2xl:inline-flex ">
-                  <DialogTrigger className="bg-card" asChild>
-                    <Switch
-                      id="user-mode"
-                      checked={switchChecked}
-                      disabled={false}
-                    />
-                  </DialogTrigger>
-                  Artist Mode
-                </div>
-                <DialogContent className="w-fit max-w-full">
-                  <DialogHeader>
-                    <DialogTitle>Switch to Fan Mode?</DialogTitle>
-                    <DialogDescription>
-                      <div className="flex flex-nowrap justify-center gap-10 px-2 pt-6">
-                        <SelectUserModeOption
-                          alt="Artist"
-                          text="I'm ready to elevate my career and engage with my fans like never before."
-                          image="/images/music-boy.png"
-                          className={cn({
-                            "bg-primary/10 md:outline md:outline-offset-2 md:outline-primary/20":
-                              mode === "creator",
-                          })}
-                          onClick={() => setOpendialog(false)}
-                        />
-                        <Link href="/home">
-                          <SelectUserModeOption
-                            alt="Fan"
-                            text=" I'm excited to support innovative artists and grow my portfolio in
-            the music industry."
-                            image="/images/investor.png"
-                            className={cn({
-                              "bg-primary/10 md:outline md:outline-offset-2 md:outline-primary/20":
-                                mode === "investor",
-                            })}
-                            onClick={() => setMode("investor")}
-                          />
-                        </Link>
-                      </div>
-                    </DialogDescription>
-                  </DialogHeader>
-                </DialogContent>
-              </Dialog>
+              <div className="whitespace-nowrap lg:hidden lg:sidebar-expanded:inline-flex 2xl:inline-flex">
+                Artist Mode
+              </div>
             </h3>
             <ul className="mt-3">
               {sidebarItems.map((item) => (
