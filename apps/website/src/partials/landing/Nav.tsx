@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Nav() {
@@ -19,9 +20,9 @@ export default function Nav() {
           <p>About Us</p>
         </div>
         <div className="hidden md:block">
-          <button className="font-mono font-semibold bg-primary text-black px-4 p-2 rounded-full border border-primary">
+          <Link href="/onboarding" className="font-mono font-semibold bg-primary text-black px-4 p-2 rounded-full border border-primary">
             Get Started
-          </button>
+          </Link>
         </div>
         <div className="md:hidden">
           <button onClick={toggleMenu} className="font-mono text-white">
@@ -48,7 +49,9 @@ export default function Nav() {
            className="bg-primary text-black px-4 p-2 rounded-full border-none mt-4"
            onClick={toggleMenu}
          >
+          <Link href="/onboarding">
            Get Started
+          </Link>
          </button>
        </div>
      </div>
