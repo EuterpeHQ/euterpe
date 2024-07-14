@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
 
 interface VerticalTabsProps {
   children: React.ReactElement[];
@@ -9,6 +10,7 @@ interface VerticalTabsProps {
 interface VerticalTabProps {
   value: string;
   title: string;
+  badge?: string;
   activeTab?: string;
   onClick?: () => void;
   children: React.ReactNode;
@@ -16,10 +18,16 @@ interface VerticalTabProps {
 
 export const VerticalTabs: React.FC<VerticalTabsProps> = ({ children }) => {
   const [activeTab, setActiveTab] = useState(children[0].props.value);
+  const childrenCount = React.Children.count(children);
+  const heightPerTabItem = 45;
+  const tabsHeight = childrenCount * heightPerTabItem;
 
   return (
     <div className="flex">
-      <div className="flex w-1/4 gap-2 p-4 pl-0">
+      <div
+        className="flex w-1/4 gap-2 p-4 pl-0"
+        style={{ height: `${tabsHeight}px` }}
+      >
         <Separator orientation="vertical" />
         <ul className="space-y-2 text-sm text-muted-foreground">
           {React.Children.map(children, (child) => (
@@ -29,8 +37,11 @@ export const VerticalTabs: React.FC<VerticalTabsProps> = ({ children }) => {
               })}
               onClick={() => setActiveTab(child.props.value)}
             >
-              <div>
-                <p>{child.props.title}</p>
+              <div className="flex items-center gap-2">
+                <p>{child.props.title}</p>{" "}
+                {child.props.badge && (
+                  <Badge variant="outline">{child.props.badge}</Badge>
+                )}
               </div>
             </li>
           ))}

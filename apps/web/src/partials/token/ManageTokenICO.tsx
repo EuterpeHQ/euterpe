@@ -35,7 +35,7 @@ export default function ManageTokenICO() {
       <div className="flex items-center gap-2">
         <h2 className="text-lg font-semibold">Launch an ICO</h2>
 
-        <Badge variant="outline">Beta</Badge>
+        {/* <Badge variant="outline">Beta</Badge> */}
       </div>
       <p className="max-w-xl text-sm text-muted-foreground">
         <Balancer>
@@ -73,7 +73,7 @@ function ICOForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
           name="deposit"
@@ -143,7 +143,9 @@ function ICOForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Save</Button>
+        <Button size="sm" type="submit">
+          Save
+        </Button>
       </form>
     </Form>
   );
