@@ -19,7 +19,7 @@ export default function ManageToken() {
         <Tab value="transfers" title="Allocations">
           <ManageTokenAllocations />
         </Tab>
-        <Tab value="ico" title="ICO" badge="New">
+        <Tab value="ico" title="Presale" badge="New">
           <ManageTokenICO />
         </Tab>
         <Tab value="integrations" title="Integrations">
