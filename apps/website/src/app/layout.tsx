@@ -5,6 +5,13 @@ import Spacer from "@/components/ui/spacer";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import { AppProvider } from "@/providers/app";
 import Nav from "@/partials/landing/Nav";
+import Footer from "@/partials/Footer";
+import Harmonies from "@/partials/landing/Harmonies";
+import Hero from "@/partials/landing/Hero";
+import PlumesAI from "@/partials/landing/PlumesAI";
+import Revolutionary from "@/partials/landing/Reveloutionary";
+import TopMusicians from "@/partials/landing/TopMusicians";
+// import Hero from "@/partials/landing/Hero";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,9 +38,21 @@ export default function RootLayout({
           </AnnouncementBar>
           <Nav/>
           <Spacer size={80} />
-          {children}
-          {/* <Spacer size={100} /> */}
-          {/* <Footer /> */}
+          {/* {children} */}
+          <main className="bg-black">
+          <Hero />
+          <Spacer size={100} />
+          <TopMusicians />
+          <Spacer size={100} />
+          <Harmonies />
+          <Spacer size={100} />
+          {/* <HowItWorks /> */}
+          <Spacer size={100} />
+          <PlumesAI />
+          <Revolutionary/>
+          <Footer/>
+          </main>
+      
         </AppProvider>
       </body>
     </html>

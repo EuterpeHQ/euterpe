@@ -8,6 +8,8 @@ import Footer from "@/partials/landing/Footer";
 import Revolutionary from "@/partials/landing/Reveloutionary";
 
 export default function Page() {
+ 
+
   return (
     <main className="bg-black">
     <Hero />
