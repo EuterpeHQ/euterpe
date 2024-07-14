@@ -24,7 +24,7 @@ export default function Page() {
 
   return (
     <div
-      className="flex h-screen w-screen items-center justify-center bg-[url('/images/listening.jpg')] bg-cover bg-fixed bg-center bg-center"
+      className="flex h-screen w-screen items-center justify-center bg-cover bg-fixed bg-center bg-center"
       style={{
         backgroundImage: `linear-gradient(hsl(var(--secondary)/ 0.4), rgba(135, 80, 156, 0.2)), url('/images/horizon.jpg')`,
       }}
