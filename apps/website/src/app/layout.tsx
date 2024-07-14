@@ -7,6 +7,7 @@ import { Logo } from "@/components/Logo";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Link from "next/link";
 import { AppProvider } from "@/providers/app";
+import Nav from "@/partials/landing/Nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,15 +32,16 @@ export default function RootLayout({
               </p>
             </div>
           </AnnouncementBar>
-          <Spacer size={40} />
-          <div className="w-full text-center">
+          {/* <Spacer size={40} /> */}
+          <Nav/>
+          {/* <div className="w-full text-center">
             <Logo />
-          </div>
+          </div> */}
           <Spacer size={80} />
           {children}
-          <Spacer size={100} />
-          <Spacer size={100} />
-          <Footer />
+          {/* <Spacer size={100} /> */}
+          {/* <Spacer size={100} /> */}
+          {/* <Footer /> */}
         </AppProvider>
       </body>
     </html>
