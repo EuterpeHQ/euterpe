@@ -1,15 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { HeroLottie, CoinLottie } from "../../components/Lotties";
 import Link from "next/link";
-import { HiOutlineRocketLaunch } from "react-icons/hi2";
 
 function Hero() {
   return (
@@ -22,7 +13,7 @@ function Hero() {
       support their journey and share in their achievements.
     </p>
     <div className=" block">
-      <button className="flex justify-start items-center gap-x-2 font-mono bg-[#B8FF5B] text-black px-4 p-2 rounded-full border-none">
+      <Link href="/onboarding" className="flex justify-start items-center gap-x-2 font-mono bg-[#B8FF5B] text-black px-4 p-2 rounded-full border-none">
         Get Started
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +28,7 @@ function Hero() {
             d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"
           />
         </svg>
-      </button>
+      </Link>
     </div>
   </main>
   );
