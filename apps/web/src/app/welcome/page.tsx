@@ -84,6 +84,9 @@ export default function Page() {
           <ConnectButton />
         )}
       </div>
+      <div className="absolute bottom-0 left-0 right-0 flex h-6 items-center justify-center bg-gradient-to-r from-[hsl(var(--secondary))]/40 to-[rgba(135,80,156,0.5)]">
+        <p className="text-xs">&copy; 2024 Euterpe. All Rights Reserved.</p>
+      </div>
     </div>
   );
 }
