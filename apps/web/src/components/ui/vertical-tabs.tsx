@@ -4,6 +4,7 @@ import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 
 interface VerticalTabsProps {
+  defaultValue?: string;
   children: React.ReactElement[];
 }
 
@@ -16,8 +17,13 @@ interface VerticalTabProps {
   children: React.ReactNode;
 }
 
-export const VerticalTabs: React.FC<VerticalTabsProps> = ({ children }) => {
-  const [activeTab, setActiveTab] = useState(children[0].props.value);
+export const VerticalTabs: React.FC<VerticalTabsProps> = ({
+  defaultValue,
+  children,
+}) => {
+  const [activeTab, setActiveTab] = useState(
+    defaultValue || children[0].props.value,
+  );
   const childrenCount = React.Children.count(children);
   const heightPerTabItem = 45;
   const tabsHeight = childrenCount * heightPerTabItem;

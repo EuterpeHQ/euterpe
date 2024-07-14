@@ -12,7 +12,7 @@ export default function ManageToken() {
   return (
     <div className="w-full max-w-5xl">
       <Spacer size={28} />
-      <VerticalTabs>
+      <VerticalTabs defaultValue="ico">
         <Tab value="overview" title="General">
           <ManageTokenGeneral />
         </Tab>
