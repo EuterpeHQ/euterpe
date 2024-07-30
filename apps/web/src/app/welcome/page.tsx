@@ -1,128 +1,108 @@
 "use client";
 import React, { useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardFooter,
-} from "@/components/ui/card";
-import ConnectButton from "@/components/ConnectButton";
-import { useAccount } from "wagmi";
+import { ConnectButton } from "@/partials/welcome/ConnectButton";
 import { cn } from "@/lib/utils";
-import { useRouter } from "next/navigation";
-import { useSidebarStore } from "@/providers/store/sidebar.store";
-import Image from "next/image";
-import Balancer from "react-wrap-balancer";
+import Image, { StaticImageData } from "next/image";
 
 export default function Page() {
-  const { isConnected } = useAccount();
-  const [mode, setMode] = useState<"artist" | "fan">("fan");
-  const setModeInStore = useSidebarStore((state) => state.setMode);
-  const router = useRouter();
+  const [mode, setMode] = useState<"artist" | "fan">("artist");
 
   return (
     <div
-      className="flex h-screen w-screen items-center justify-center bg-cover bg-fixed bg-center bg-center"
+      className="h-screen w-screen overflow-hidden bg-cover bg-fixed bg-center"
       style={{
-        backgroundImage: `linear-gradient(hsl(var(--secondary)/ 0.4), rgba(135, 80, 156, 0.2)), url('/images/horizon.jpg')`,
+        backgroundImage: `url('https://images.pexels.com/photos/213207/pexels-photo-213207.jpeg')`,
       }}
     >
-      <div className="flex w-full max-w-3xl flex-col items-center justify-center gap-6 rounded-3xl border border-border bg-background p-10 shadow-2xl">
-        <h1 className="text-center text-xl font-bold md:text-4xl">
-          Welcome to Euterpe
-        </h1>
-        <p className="-mt-4 max-w-lg text-center text-sm text-muted-foreground md:text-sm">
-          <Balancer>
-            Discover tomorrow's music stars today. Support their journey and
-            earn alongside them.
-          </Balancer>
-        </p>
-        <div className="flex flex-wrap justify-center gap-10">
-          <div
-            className={cn(
-              "scale-100 cursor-pointer opacity-100 transition-all duration-200",
-              mode !== "artist" && "scale-90",
-            )}
-            onClick={() => setMode("artist")}
-          >
-            <SelectOption
-              type="Artist"
-              text="Independently fund your music with a dedicated fanbase"
-              img="/icons/musician.png"
-              selected={mode === "artist"}
-            />
+      <div className="flex h-full w-full flex-col items-center justify-end backdrop-blur-sm sm:justify-center">
+        <div className="mb-8 flex w-[97%] flex-col items-center justify-center gap-8 rounded-3xl border border-[#313131] bg-[#282828] p-12 shadow-xl sm:mx-0 sm:mb-0 sm:w-fit sm:rounded-[40px]">
+          <div className="flex flex-col items-center gap-2">
+            <h1 className="text-center text-3xl font-semibold text-white">
+              Welcome to Euterpe
+            </h1>
+            <p className="w-80 text-center text-sm leading-snug text-[#D0D0D0]">
+              Discover tomorrow's music stars today. Support their journey and
+              earn alongside them.
+            </p>
           </div>
-          <div
-            className={cn(
-              "scale-100 cursor-pointer opacity-100 transition-all duration-200",
-              mode !== "fan" && "scale-90",
-            )}
-            onClick={() => setMode("fan")}
-          >
-            <SelectOption
-              type="Fan"
-              text="Rally behind your favorite music artists and earn rewards"
-              img="/icons/music-lover.png"
-              selected={mode === "fan"}
-            />
-          </div>
-        </div>
 
-        {isConnected ? (
-          <div
-            className="mx-auto flex w-36 cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border border-primary bg-primary/5 p-4 text-primary"
-            onClick={() => {
-              setModeInStore(mode === "artist" ? "creator" : "investor");
-              router.push(mode === "artist" ? "/dashboard" : "/home");
-            }}
-          >
-            <p className="text-sm font-bold">Enter</p>
+          <div className="flex justify-center gap-4">
+            <UserCard
+              title="I'm an Artist"
+              description="Independently fund your music with a dedicated fanbase"
+              image="/images/artist-user.png"
+              selected={mode === "artist"}
+              onClick={() => setMode("artist")}
+            />
+            <UserCard
+              title="I'm a Fan"
+              description="Rally behind your favorite music artists and earn rewards"
+              image="/images/fan-user.png"
+              selected={mode === "fan"}
+              onClick={() => setMode("fan")}
+            />
           </div>
-        ) : (
-          <ConnectButton />
-        )}
-      </div>
-      <div className="absolute bottom-0 left-0 right-0 flex h-6 items-center justify-center bg-gradient-to-r from-[hsl(var(--secondary))]/40 to-[rgba(135,80,156,0.5)]">
-        <p className="text-xs">&copy; 2024 Euterpe. All Rights Reserved.</p>
+          <ConnectButton userType={mode} />
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 flex h-6 items-center justify-center bg-gradient-to-r from-[hsl(var(--secondary))]/40 to-[hsl(var(--secondary))]/40">
+          <p className="text-xs">&copy; 2024 Euterpe. All Rights Reserved.</p>
+        </div>
       </div>
     </div>
   );
 }
 
-interface SelectOptionProps {
-  type: string;
-  text: String;
-  img: any;
+type UserCardProps = React.HTMLAttributes<HTMLDivElement> & {
+  title: string;
+  description: string;
+  image: string | StaticImageData;
   selected?: boolean;
-}
-function SelectOption({ type, text, img, selected }: SelectOptionProps) {
+};
+
+function UserCard({
+  title,
+  description,
+  image,
+  selected,
+  ...props
+}: UserCardProps) {
   return (
-    <Card
-      className={cn(
-        "group flex h-[230px] w-[230px] cursor-pointer flex-col justify-center overflow-hidden border border-primary/20 bg-black/15 outline-none transition-all duration-200 md:hover:bg-primary/10 ",
-        selected && "md:bg-primary/10",
-      )}
-    >
-      <CardContent className="relative flex items-center justify-center p-0 md:p-4">
+    <div {...props}>
+      <div
+        className={cn(
+          "hidden aspect-square w-[220px] cursor-pointer flex-col items-center gap-4 rounded-3xl border-[0.5px] border-[#313131] bg-[#1E1E1E] p-5 sm:flex",
+          selected && "border-primary bg-primary/5",
+        )}
+      >
         <Image
-          src={img}
-          alt={type}
-          width={100}
-          height={100}
+          src={image}
+          alt={title}
+          width={110}
+          height={110}
           className="h-24 w-24 object-contain"
         />
-      </CardContent>
-      <CardHeader className="p-4 text-sm md:p-0 md:pb-4 md:text-center">
-        <CardTitle className="text-primary">{type}</CardTitle>
-        <CardDescription>
-          <span>{text}</span>
-        </CardDescription>
-      </CardHeader>
-      <CardFooter className="flex flex-col items-start justify-end md:hidden">
-        <div className="mb-4 h-px w-full bg-primary/20" />
-      </CardFooter>
-    </Card>
+        <div className="flex flex-col items-center gap-1.5">
+          <h1 className="text-base font-semibold text-primary">{title}</h1>
+          <p className="text-center text-xs text-[#DCDCDC]">{description}</p>
+        </div>
+      </div>
+      <div className="flex h-full w-full cursor-pointer flex-col items-center gap-2 sm:hidden">
+        <div
+          className={cn(
+            "flex h-full w-full max-w-sm cursor-pointer items-center justify-center rounded-full border-[0.5px] border-[#313131] bg-[#1E1E1E] p-4",
+            selected && "border-primary bg-primary/5",
+          )}
+        >
+          <Image
+            src={image}
+            alt={title}
+            width={110}
+            height={110}
+            className="object-contain"
+          />
+        </div>
+        <h1 className="text-base font-semibold text-primary">{title}</h1>
+      </div>
+    </div>
   );
 }

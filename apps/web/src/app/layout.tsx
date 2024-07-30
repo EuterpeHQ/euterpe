@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { Federant } from "next/font/google";
+import { Urbanist, Azeret_Mono, Federant } from "next/font/google";
 import "./globals.css";
 import { AppProvider } from "@/providers/app";
 import { cn } from "@/lib/utils";
 
-const inter = Inter({ subsets: ["latin"] });
+const urbanist = Urbanist({ subsets: ["latin"], variable: "--font-urbanist" });
+const azeret = Azeret_Mono({ subsets: ["latin"], variable: "--font-azeret" });
 const federant = Federant({
   weight: ["400"],
   subsets: ["latin"],
@@ -24,7 +24,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(inter.className, federant.variable)}>
+      <body
+        className={cn(
+          urbanist.className,
+          urbanist.variable,
+          azeret.variable,
+          federant.variable,
+        )}
+      >
         <AppProvider>{children}</AppProvider>
       </body>
     </html>

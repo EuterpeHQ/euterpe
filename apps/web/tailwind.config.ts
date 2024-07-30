@@ -17,7 +17,8 @@ const config = {
   prefix: "",
   theme: {
     fontFamily: {
-      inter: ["var(--font-inter)"],
+      urbanist: ["var(--font-urbanist)"],
+      azeret: ["var(--font-azeret)"],
       federant: ["var(--font-federant)"],
     },
     container: {
