@@ -1,6 +1,6 @@
 import Hero from "@/partials/landing/Hero";
 import Harmonies from "@/partials/landing/Harmonies";
-import TopMusicians from "@/partials/landing/TopMusicians";
+import FeaturedArtists from "@/partials/landing/FeaturedArtists";
 import Spacer from "@/components/ui/spacer";
 import PlumesAI from "@/partials/landing/PlumesAI";
 import HowItWorks from "@/partials/landing/HowItWorks";
@@ -12,7 +12,7 @@ export default function Page() {
     <>
       <Hero />
       <Spacer size={100} />
-      <TopMusicians />
+      <FeaturedArtists />
       <Spacer size={100} />
       <Harmonies />
       <Spacer size={100} />
