@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
+import "./globals.css";
 import localFont from "next/font/local";
 import { Azeret_Mono } from "next/font/google";
-import "./globals.css";
-import Spacer from "@/components/ui/spacer";
 import { AppProvider } from "@/providers/app";
-import Navbar from "@/partials/landing/Navbar";
-import Footer from "@/partials/Footer";
-import Harmonies from "@/partials/landing/Harmonies";
-import Hero from "@/partials/landing/Hero";
-import PlumesAI from "@/partials/landing/PlumesAI";
-import Revolutionary from "@/partials/landing/Reveloutionary";
-import TopMusicians from "@/partials/landing/TopMusicians";
+import Navbar from "@/partials/Navbar";
 import { cn } from "@/lib/utils";
 
 const azeret = Azeret_Mono({ subsets: ["latin"], variable: "--font-azeret" });
@@ -64,20 +57,7 @@ export default function RootLayout({
       >
         <AppProvider>
           <Navbar />
-          {/* {children} */}
-          <main className="bg-black">
-            <Hero />
-            <Spacer size={100} />
-            <TopMusicians />
-            <Spacer size={100} />
-            <Harmonies />
-            <Spacer size={100} />
-            {/* <HowItWorks /> */}
-            <Spacer size={100} />
-            <PlumesAI />
-            <Revolutionary />
-            <Footer />
-          </main>
+          {children}
         </AppProvider>
       </body>
     </html>

@@ -26,9 +26,9 @@ export default function Navbar() {
           <p className="font-axiforma text-xs">Pre-Alpha Release is Coming🎉</p>
         </div>
       </AnnouncementBar>
-      <div className="sm:px-6 lg:px-8 relative flex h-[3.25rem] w-full flex-row items-center justify-between border-y-[0.5px] border-[#313131] bg-black/[0.85] p-2 px-4 text-lg">
+      <div className="relative flex h-[3.25rem] w-full flex-row items-center justify-between border-y-[0.5px] border-[#313131] bg-black/[0.85] p-2 px-4 text-lg sm:px-6 lg:px-8">
         <h1 className="font-aeonik font-medium">Euterpe.</h1>
-        <div className="sm:flex hidden flex-row gap-x-20 text-[0.688rem]">
+        <div className="hidden flex-row gap-x-20 text-[0.688rem] sm:flex">
           {navigation.map((item) => (
             <Link
               key={item.name}
@@ -42,7 +42,7 @@ export default function Navbar() {
             </Link>
           ))}
         </div>
-        <div className="sm:block hidden">
+        <div className="hidden sm:block">
           <Button size="sm" asChild>
             <Link
               href="https://app.euterpe.finance"
@@ -53,7 +53,7 @@ export default function Navbar() {
             </Link>
           </Button>
         </div>
-        <div className="sm:hidden absolute inset-y-0 right-0 flex items-center">
+        <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
           <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none group-data-[open]:hidden">
             <span className="absolute -inset-0.5" />
             <span className="sr-only">Open main menu</span>
@@ -66,10 +66,10 @@ export default function Navbar() {
       </div>
 
       <DisclosurePanel
-        className="sm:hidden fixed inset-y-0 right-0 z-50 flex h-screen w-full items-center justify-center bg-background/90 transition duration-200 ease-out data-[closed]:opacity-0"
+        className="fixed inset-y-0 right-0 z-50 flex h-screen w-full items-center justify-center bg-background/90 transition duration-200 ease-out data-[closed]:opacity-0 sm:hidden"
         transition
       >
-        <div className="sm:hidden absolute right-0 top-0 flex items-center">
+        <div className="absolute right-0 top-0 flex items-center sm:hidden">
           <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 pt-11 text-muted-foreground focus:outline-none">
             <span className="absolute -inset-0.5" />
             <span className="sr-only">Open main menu</span>

@@ -8,21 +8,19 @@ import Footer from "@/partials/landing/Footer";
 import Revolutionary from "@/partials/landing/Reveloutionary";
 
 export default function Page() {
- 
-
   return (
-    <main className="bg-black">
-    <Hero />
-    <Spacer size={100} />
-    <TopMusicians />
-    <Spacer size={100} />
-    <Harmonies />
-    <Spacer size={100} />
-    {/* <HowItWorks /> */}
-    <Spacer size={100} />
-    <PlumesAI />
-    <Revolutionary/>
-    <Footer/>
-  </main>
+    <>
+      <Hero />
+      <Spacer size={100} />
+      <TopMusicians />
+      <Spacer size={100} />
+      <Harmonies />
+      <Spacer size={100} />
+      {/* <HowItWorks /> */}
+      <Spacer size={100} />
+      <PlumesAI />
+      <Revolutionary />
+      <Footer />
+    </>
   );
 }
