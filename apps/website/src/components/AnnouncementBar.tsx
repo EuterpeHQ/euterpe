@@ -4,11 +4,11 @@ import { InfoCircledIcon } from "@radix-ui/react-icons";
 function AnnouncementBar({ children }: { children?: React.ReactNode }) {
   return (
     <div
-      className="sticky top-0 z-50 bg-black px-4 py-3 text-white/90 shadow-md bg-announcement-gradient"
+      className="border-b-[0.8px] border-[#313131] bg-black bg-announcement-gradient p-2 shadow-[0_1.5px_0_0_rgba(255,255,255,0.24)] backdrop-blur-xl"
       role="alert"
     >
       <div className="flex w-full items-start justify-center gap-x-2 text-sm md:items-center">
-        <InfoCircledIcon className="h-4 w-4" />
+        <InfoCircledIcon className="h-3 w-3" />
         {children || "Add custom announcement message"}
       </div>
     </div>

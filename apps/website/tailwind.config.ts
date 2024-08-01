@@ -11,8 +11,9 @@ const config = {
   prefix: "",
   theme: {
     fontFamily: {
-      inter: ["var(--font-inter)"],
-      federant: ["var(--font-federant)"],
+      azeret: ["var(--font-azeret)"],
+      axiforma: ["var(--font-axiforma)"],
+      aeonik: ["var(--font-aeonik)"],
     },
     container: {
       center: true,
@@ -22,15 +23,18 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        xs: "425px",
+      },
       backgroundImage: {
-        'announcement-gradient': 'linear-gradient(to right, #BDFF001A, #E11DE71A)',
+        "announcement-gradient":
+          "linear-gradient(to right, #BDFF001A, #E11DE71A)",
       },
       boxShadow: {
         input: `0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)`,
       },
 
       colors: {
-        
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -87,10 +91,19 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        shimmer: {
+          from: {
+            backgroundPosition: "0 0",
+          },
+          to: {
+            backgroundPosition: "-200% 0",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        shimmer: "shimmer 2s linear infinite",
       },
     },
   },
