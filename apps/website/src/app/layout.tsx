@@ -16,6 +16,11 @@ const axiforma = localFont({
 const aeonik = localFont({
   src: [
     {
+      path: "../assets/fonts/Aeonik-Light.otf",
+      weight: "300",
+      style: "normal",
+    },
+    {
       path: "../assets/fonts/Aeonik-Regular.otf",
       weight: "400",
       style: "normal",

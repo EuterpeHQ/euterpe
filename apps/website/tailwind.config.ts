@@ -65,7 +65,7 @@ const config = {
           foreground: "hsl(var(--popover-foreground))",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
+          DEFAULT: "hsl(0deg 100% 100% / 5%)",
           foreground: "hsl(var(--card-foreground))",
         },
         surface: {

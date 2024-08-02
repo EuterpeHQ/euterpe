@@ -148,7 +148,7 @@ const secondRow = artists.slice(artists.length / 2);
 
 export function ArtistsMarquee() {
   return (
-    <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden md:shadow-xl">
+    <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden">
       <Marquee pauseOnHover className="[--duration:20s] [--gap:0.75rem]">
         {firstRow.map((artist) => (
           <ArtistCard key={artist.name} {...artist} />
