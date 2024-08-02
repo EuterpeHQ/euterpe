@@ -10,6 +10,7 @@ import Balancer from "react-wrap-balancer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { IoMusicalNotesOutline } from "react-icons/io5";
+import ArrowRightIcon from "@/assets/icons/arrow-right.png";
 
 function PlumesAI() {
   const plumesPersonality = `
@@ -208,48 +209,39 @@ I sometimes forget to reply, maybe it's because I'm shy or I want to hide when I
   };
 
   return (
-    <section className="container flex flex-col md:px-24">
-      <div className="flex items-center justify-between">
-        <div className="flex flex-col gap-2">
-          <h2 className="text-3xl font-semibold">
-            Discover{" "}
-            <span className="text-primary underline underline-offset-4">
-              Plumes
-            </span>
-          </h2>
-          <p className="text-sm md:max-w-sm lg:max-w-md">
-            <Balancer>
+    <section className="border-t border-t-[0.5px] border-border/80 px-8 pb-10 md:px-10">
+      <Spacer size={64} />
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-6">
+            <h1 className="max-w-md font-aeonik text-6xl/[56px] tracking-[-0.06em]">
+              {" "}
+              Discover music with{" "}
+              <span className="font-medium text-primary">Plumes</span>
+            </h1>
+            <p className="max-w-lg text-sm text-muted-foreground">
               Plumes is our personal music curator who can help you discover new
               musicians tailored to your taste.
-            </Balancer>
-          </p>
-        </div>
-        <Button
-          className="hidden gap-4 md:inline-flex"
-          variant="outline"
-          asChild
-        >
-          <Link href="/playlist">
-            <IoMusicalNotesOutline className="h-[13px] w-[13px]" />
-            View Playlist
-          </Link>
-        </Button>
-      </div>
-      <Spacer size={40} />
-      <div className="mx-auto grid h-[48rem] grid-cols-1 gap-8 md:h-80 md:grid-cols-5 lg:h-96">
-        <div className="col-span-2">
-          <div className="relative aspect-[23/32] h-full">
-            <Image
-              src="/images/plumes.webp"
-              alt="art"
-              className="rounded-xl object-cover"
-              fill
-              quality={100}
-            />
+            </p>
           </div>
+          <Button className="w-full max-w-sm text-xs sm:w-fit" asChild>
+            <Link
+              href="https://euterpe.finance/resources"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Watch demo
+              <Image
+                src={ArrowRightIcon}
+                alt="Right Arrow Icon"
+                width={24}
+                height={24}
+                className="ml-1"
+              />
+            </Link>
+          </Button>
         </div>
-
-        <div className="relative col-span-3 h-full overflow-y-scroll">
+        <div className="relative h-[500px] overflow-y-scroll bg-card">
           <Chat
             messages={userData[0].messages}
             selectedUser={userData[0]}

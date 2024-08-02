@@ -20,7 +20,7 @@ export const TopbarIcons = [{ icon: Info }];
 
 export default function ChatTopbar({ selectedUser }: ChatTopbarProps) {
   return (
-    <div className="flex h-20 w-full items-center justify-between p-4">
+    <div className="flex h-20 w-full items-center justify-between border-b-[0.5px] p-4">
       <div className="flex items-center gap-2">
         <div className="h-full rounded-full border border-primary bg-transparent p-0.5">
           <Avatar className="flex items-center justify-center">
@@ -38,7 +38,7 @@ export default function ChatTopbar({ selectedUser }: ChatTopbarProps) {
           <span className="font-medium text-muted-foreground">
             {selectedUser.name}
           </span>
-          <span className="text-xs text-muted-foreground">
+          <span className="text-[0.625rem] text-muted-foreground">
             You can talk to me about anything music
           </span>
         </div>

@@ -117,10 +117,10 @@ export default function ChatBottombar({
             onKeyDown={handleKeyPress}
             onChange={handleInputChange}
             name="message"
-            placeholder="Your message..."
-            className=" flex h-9 w-full resize-none items-center overflow-hidden bg-background"
+            placeholder="Ask me something..."
+            className="flex h-9 w-full resize-none items-center overflow-hidden bg-card"
           ></Input>
-          <div className="absolute bottom-0.5 right-2  "></div>
+          <div className="absolute bottom-0.5 right-2"></div>
         </motion.div>
 
         {message.trim() ? (
