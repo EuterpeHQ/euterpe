@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import Spacer from "@/components/ui/spacer";
 import CoinIcon from "@/assets/icons/coin.png";

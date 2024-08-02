@@ -1,99 +1,141 @@
+/* NOTE: CSS backdrop blur filter glitches and flickers on scroll,
+ *       images are used for the blur effect as a workaround */
+
+import React from "react";
 import Spacer from "@/components/ui/spacer";
-import { FaUncharted } from "react-icons/fa6";
-import { TbCoins } from "react-icons/tb";
-import { HiOutlineSparkles } from "react-icons/hi2";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { FaRegNewspaper } from "react-icons/fa6";
+import ArtistTokenIcon from "@/assets/icons/artist-token-feature.svg";
+import HarmonyIcon from "@/assets/icons/harmony-feature.svg";
+import PlumesIcon from "@/assets/icons/plumes-feature.svg";
+import Image, { StaticImageData } from "next/image";
 import Balancer from "react-wrap-balancer";
+import OrangeBlurryBlob from "@/assets/images/orange-blurry-blob.svg";
 
 const features = [
   {
-    name: "Every Artist is a unique cryptocurrency.",
+    title: "Every Artist is a unique cryptocurrency.",
     description:
       "Fans support their favourite artists as tradable cryptocurrencies that can be bought and sold, driving success in a decentralized marketplace.",
-    icon: TbCoins,
+    icon: ArtistTokenIcon,
   },
   {
-    name: "Harmonies unlock shared benefits for fans.",
+    title: "Harmonies unlock shared benefits for fans.",
     description:
       "Fans share rewards, royalties, and unique benefits linked to their favorite artists using NFTs bound by legal agreements and secure blockchain contracts.",
-    icon: FaUncharted,
+    icon: HarmonyIcon,
   },
   {
-    name: "Plumes scans for millions of Artists.",
+    title: "Plumes scans for millions of Artists.",
     description:
       "Plumes is a decentralized AI (dAI) that democratizes artists spotlighting and discovery without preferential treatment, giving independent artists a platform to rise and reach dedicated fans.",
-    icon: HiOutlineSparkles,
+    icon: PlumesIcon,
   },
 ];
 
 function HowItWorks() {
   return (
-    <div className="overflow-hidden bg-background py-8 sm:py-16">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          <div className="flex flex-col gap-2">
-            <h2 className="text-3xl font-semibold">
-              How{" "}
-              <span className="text-primary underline underline-offset-4">
-                Euterpe
-              </span>{" "}
-              Works
-            </h2>
-            <p className="text-sm md:max-w-sm lg:max-w-md">
-              <Balancer>
-                Learn How Euterpe's DeFi platform helps music creators get
-                funding and connect to fans.
-              </Balancer>
-            </p>
-          </div>
-          <Button
-            className="hidden gap-4 md:inline-flex"
-            variant="outline"
-            asChild
-          >
-            <Link href="/whitepaper">
-              <FaRegNewspaper className="h-[13px] w-[13px]" />
-              Read More
-            </Link>
-          </Button>
+    <section className="border-t border-t-[0.5px] px-10">
+      <Spacer size={64} />
+      <div className="flex flex-col items-center gap-12">
+        <div className="flex max-w-lg flex-col gap-4">
+          <h1 className="text-center font-aeonik text-6xl font-medium tracking-[-0.06rem]">
+            How it works
+          </h1>
+          <p className="text-center text-muted-foreground">
+            Learn How Euterpe's De-Fi platform helps music creators get funding
+            and connect to fans.
+          </p>
         </div>
-
-        <Spacer size={40} />
-        <div className="mx-auto grid max-w-2xl grid-cols-1 place-items-center gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-          <div className="lg:ml-auto lg:pl-4 lg:pt-4">
-            <div className="lg:max-w-lg">
-              <dl className="mt-0 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
-                {features.map((feature) => (
-                  <div key={feature.name} className="relative pl-9">
-                    <dt className="inline font-semibold text-white/80">
-                      <feature.icon
-                        className="absolute left-1 top-1 h-5 w-5 text-sm text-primary"
-                        aria-hidden="true"
-                      />
-                      {feature.name}
-                    </dt>{" "}
-                    <br />
-                    <dd className="inline text-muted-foreground">
-                      {feature.description}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </div>
-          <div className=" order-first flex aspect-[16/9] items-start justify-end overflow-hidden rounded-xl shadow-xl ring-1 ring-gray-400/10">
-            <img
-              src="/images/vector-art.jpg"
-              alt="Product screenshot"
-              className=" aspect-[16/9] w-full max-w-none rounded-xl object-cover object-center"
-              width={2432}
-              height={1642}
-            />
-          </div>
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+          <ArtistTokenFeatureCard />
+          <HarmonyFeatureCard />
+          <PlumesFeatureCard />
         </div>
       </div>
+    </section>
+  );
+}
+
+type FeatureCardProps = {
+  title: string;
+  description: string;
+  icon: string | StaticImageData;
+};
+
+function FeatureCard({ title, description, icon }: FeatureCardProps) {
+  return (
+    <div className="flex h-full w-full flex-1 flex-col gap-16 bg-white/[0.01] p-8">
+      <div className="">
+        <Spacer size={100} />
+        <Image src={icon} alt={title} className="h-20 w-20" />
+      </div>
+      <div>
+        <div className="flex flex-col gap-6">
+          <h3 className="font-aeonik text-3xl/[32px] tracking-[-0.06rem]">
+            <Balancer>{title}</Balancer>
+          </h3>
+          <p className="text-xs font-light tracking-[-0.04rem] text-[#A5A5A5]">
+            {description}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ArtistTokenFeatureCard() {
+  return (
+    <div className="relative overflow-hidden border-[0.8px] bg-card shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]">
+      <Image
+        src={OrangeBlurryBlob}
+        alt="Orange blurry blob"
+        className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 object-cover opacity-30 blur-lg"
+        width={500}
+        height={500}
+      />
+      {/* <div className="bg-[radial-gradient(169.40%_89.55%_at_94.76%_6.29%,rgba(0,0,0,0.40)_0%,rgba(255,255,255,0.00)_100%) absolute bottom-24 right-20 h-16 w-16 rounded-full bg-[#FC8D27] blur-3xl" /> */}
+      {/* <div className="blu absolute left-20 top-24 h-1 w-4 -rotate-45 rounded-full bg-[#FC8D27] blur-[60px]" />
+      <div className="absolute right-16 top-28 h-1 w-4 -rotate-45 rounded-full bg-[#FC8D27] blur-[60px]" />
+      <div className="absolute bottom-20 left-8 h-1 w-4 -rotate-45 rounded-full bg-[#FC8D27] blur-[60px]" />
+      <div className="absolute bottom-24 right-16 h-6 w-7 -rotate-45 rounded-full bg-[#FC8D27] blur-[55px]" /> */}
+      <FeatureCard {...features[0]} />
+    </div>
+  );
+}
+
+function HarmonyFeatureCard() {
+  return (
+    <div className="relative overflow-hidden border-[0.8px] bg-card shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]">
+      <Image
+        src={OrangeBlurryBlob}
+        alt="Orange blurry blob"
+        className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 object-cover opacity-30 blur-lg"
+        width={500}
+        height={500}
+      />
+      {/* <div className="absolute left-20 top-24 h-1 w-4 -rotate-45 rounded-full bg-[#FC8D27]" />
+      <div className="absolute right-36 top-20 h-3.5 w-6 rotate-45 rounded-full bg-[#FC8D27]" />
+      <div className="absolute bottom-20 left-8 h-1 w-4 -rotate-45 rounded-full bg-[#FC8D27]" />
+      <div className="absolute bottom-24 right-16 h-1 w-4 -rotate-45 rounded-full bg-[#FC8D27]" /> */}
+      <FeatureCard {...features[1]} />
+    </div>
+  );
+}
+
+function PlumesFeatureCard() {
+  return (
+    <div className="relative overflow-hidden border-[0.8px] bg-card shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]">
+      <Image
+        src={OrangeBlurryBlob}
+        alt="Orange blurry blob"
+        className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 object-cover opacity-30 blur-lg"
+        width={500}
+        height={500}
+      />
+      {/* <div className="absolute left-20 top-28 h-1 w-4 -rotate-45 rounded-full bg-[#FC8D27]" />
+      <div className="absolute right-24 top-44 h-1 w-4 -rotate-45 rounded-full bg-[#FC8D27]" />
+      <div className="absolute bottom-16 left-12 h-3.5 w-6 rotate-45 rounded-full bg-[#FC8D27]" />
+      <div className="absolute bottom-24 right-24 h-1 w-4 -rotate-45 rounded-full bg-[#FC8D27]" /> */}
+      <FeatureCard {...features[2]} />
     </div>
   );
 }

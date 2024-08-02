@@ -16,7 +16,7 @@ export default function Page() {
       <Spacer size={100} />
       <Harmonies />
       <Spacer size={100} />
-      {/* <HowItWorks /> */}
+      <HowItWorks />
       <Spacer size={100} />
       <PlumesAI />
       <Revolutionary />
