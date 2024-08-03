@@ -12,7 +12,7 @@ export default function Revolutionary() {
   return (
     <section className="w-full px-10">
       <Spacer size={64} />
-      <div className="relative flex h-96 w-full flex-col items-center justify-center gap-8 rounded-xl bg-primary">
+      <div className="relative flex h-96 w-full flex-col items-center justify-center gap-8 overflow-hidden rounded-xl bg-primary p-4">
         <h2 className="text-center font-aeonik text-4xl font-medium tracking-[-0.06em] text-background md:text-5xl lg:text-6xl/[56px]">
           <Balancer>
             Join Euterpe's revolutionary De-Fi platform and help shape the
@@ -59,6 +59,7 @@ export default function Revolutionary() {
           className="absolute bottom-0 left-1/2 block h-full rotate-0 lg:hidden"
         />
       </div>
+      <Spacer size={64} />
     </section>
   );
 }
