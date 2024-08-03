@@ -5,7 +5,7 @@ import Spacer from "@/components/ui/spacer";
 import PlumesAI from "@/partials/landing/PlumesAI";
 import HowItWorks from "@/partials/landing/HowItWorks";
 import Footer from "@/partials/landing/Footer";
-import Revolutionary from "@/partials/landing/Reveloutionary";
+import Revolutionary from "@/partials/landing/Revolutionary";
 
 export default function Page() {
   return (
