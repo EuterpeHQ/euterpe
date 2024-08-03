@@ -6,10 +6,8 @@ import Image from "next/image";
 import { GenerativeModel, GoogleGenerativeAI } from "@google/generative-ai";
 import { Chat } from "@/components/ui/chat";
 import { Message, LoggedInUserData } from "@/components/ui/chat-types";
-import Balancer from "react-wrap-balancer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { IoMusicalNotesOutline } from "react-icons/io5";
 import ArrowRightIcon from "@/assets/icons/arrow-right.png";
 
 function PlumesAI() {
