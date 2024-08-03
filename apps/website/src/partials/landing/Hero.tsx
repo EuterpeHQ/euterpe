@@ -7,8 +7,8 @@ import Spacer from "@/components/ui/spacer";
 
 function Hero() {
   return (
-    <main className="flex h-[480px] w-full flex-col items-center justify-center gap-y-7 border-b-[0.5px] border-b-[#313131] px-4 sm:h-[560px] md:h-[634px] md:px-0">
-      <h2 className="w-full text-center font-aeonik text-5xl font-medium tracking-[-0.06em] xs:w-[420px] sm:w-[640px] sm:text-7xl md:w-[840px] md:text-8xl/[80px]">
+    <main className="flex h-[480px] w-full flex-col items-center justify-center gap-y-7 px-4 sm:h-[560px] md:h-[634px] md:px-0">
+      <h2 className="w-full text-center font-aeonik text-5xl font-medium tracking-[-0.06em] xs:w-[420px] sm:w-[640px] sm:text-7xl md:w-[840px] md:text-[6.25rem]/[80px]">
         Invest in your favorite artists, Earn Royalties and more
       </h2>
       <p className="hidden max-w-[539px] text-center text-sm/4 tracking-[-0.02em] text-muted-foreground md:block">
@@ -24,7 +24,7 @@ function Hero() {
           rel="noreferrer"
           target="_blank"
         >
-          Launch App
+          Launch app
           <Image
             src={ArrowRightIcon}
             alt="Right Arrow Icon"

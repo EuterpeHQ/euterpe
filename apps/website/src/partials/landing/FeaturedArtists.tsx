@@ -31,8 +31,9 @@ function FeaturedArtists() {
   }
 
   return (
-    <section>
-      <div className="container flex flex-col gap-2 md:px-24">
+    <section className="border-t border-t-[0.5px] border-border/80">
+      <Spacer size={64} />
+      <div className="flex flex-col gap-2 px-10">
         <h2 className="font-aeonik text-3xl font-bold">Featured Artists</h2>
         <p className="font-extralight text-muted-foreground">
           {getCurrentMonth()} {getCurrentYear()}

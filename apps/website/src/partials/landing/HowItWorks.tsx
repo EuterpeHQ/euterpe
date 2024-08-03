@@ -33,7 +33,7 @@ const features = [
 
 function HowItWorks() {
   return (
-    <section className="border-t border-t-[0.5px] px-10">
+    <section className="border-t border-t-[0.5px] border-border/80 px-10">
       <Spacer size={64} />
       <div className="flex flex-col items-center gap-12">
         <div className="flex max-w-lg flex-col gap-4">

@@ -26,7 +26,7 @@ export default function Navbar() {
           <p className="font-axiforma text-xs">Pre-Alpha Release is Coming🎉</p>
         </div>
       </AnnouncementBar>
-      <div className="relative flex h-[3.25rem] w-full flex-row items-center justify-between border-y-[0.5px] border-[#313131] bg-black/[0.85] p-2 px-4 text-lg sm:px-6 lg:px-8">
+      <div className="relative flex h-[3.25rem] w-full flex-row items-center justify-between border-y-[0.5px] border-[#313131] bg-black/[0.85] p-2 px-4 text-lg sm:px-6 lg:px-10">
         <h1 className="font-aeonik font-medium">Euterpe.</h1>
         <div className="hidden flex-row gap-x-20 text-[0.688rem] sm:flex">
           {navigation.map((item) => (
@@ -49,7 +49,7 @@ export default function Navbar() {
               rel="noreferrer"
               target="_blank"
             >
-              Launch App
+              Launch app
             </Link>
           </Button>
         </div>

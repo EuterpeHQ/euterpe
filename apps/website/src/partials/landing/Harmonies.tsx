@@ -11,7 +11,7 @@ import ArrowRightIcon from "@/assets/icons/arrow-right.png";
 
 function Harmonies() {
   return (
-    <section className="border-t border-t-[0.5px] px-8 md:px-24">
+    <section className="border-t border-t-[0.5px] border-border/80 px-10">
       <Spacer size={64} />
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         <div className="flex flex-col gap-8">
