@@ -40,7 +40,10 @@ interface CollectionProps {
 function Collection({ index, openModal }: CollectionProps) {
   return (
     <div className="w-full max-w-sm p-2 md:max-w-xs lg:max-w-[350px]">
-      <div className="h-full overflow-hidden rounded-xl bg-card p-6" onClick={() => openModal(index)}>
+      <div
+        className="h-full overflow-hidden rounded-xl bg-card p-6"
+        onClick={() => openModal(index)}
+      >
         <div className="relative mb-6 flex aspect-square w-full items-center justify-center overflow-hidden rounded-xl">
           <Image
             src={HarmonyImage}
@@ -67,7 +70,7 @@ function Collection({ index, openModal }: CollectionProps) {
               <CoinLottie />
             </div>
             <div className="w-5"></div>
-            <p className="font-federant">0.041 ETP</p>
+            <p className="font-federant">0.042 ETP</p>
           </div>
           <div className="flex items-center text-muted-foreground">
             <svg
@@ -103,7 +106,6 @@ function Collection({ index, openModal }: CollectionProps) {
     </div>
   );
 }
-
 
 type ProfileCardProps = {
   rank: number;
@@ -243,9 +245,12 @@ function Page() {
                 <div className="-m-4 flex flex-wrap justify-center border-primary px-5">
                   {[...Array(3)].map((_, index) => (
                     // <Collection key={index} index={index + 1} />
-                    <Collection key={index} index={index + 1} openModal={openModal} />
+                    <Collection
+                      key={index}
+                      index={index + 1}
+                      openModal={openModal}
+                    />
                   ))}
-                
                 </div>
               </section>
             </div>
@@ -253,11 +258,8 @@ function Page() {
         </div>
       </div>
       {isModalOpen && selectedCollection !== null && (
-                    <CollectionModal
-                      index={selectedCollection}
-                      onClose={closeModal}
-                    />
-                  )}
+        <CollectionModal index={selectedCollection} onClose={closeModal} />
+      )}
     </main>
   );
 }

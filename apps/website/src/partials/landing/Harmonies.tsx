@@ -90,7 +90,7 @@ const harmonies = [
     artist: "Catching Flies",
     description:
       "A 5% chance to earn 1% of every 1000 streams on our Pan African Rockstar Album",
-    price: "0.041",
+    price: "0.042",
     image: "/images/harmony-1.png",
     avatar: "/images/catching-flies.png",
     expires: "18 days",
@@ -100,7 +100,7 @@ const harmonies = [
     artist: "Catching Flies",
     description:
       "A 5% chance to earn 1% of every 1000 streams on our Pan African Rockstar Album",
-    price: "0.041",
+    price: "0.042",
     image: "/images/harmony-2.png",
     avatar: "/images/catching-flies.png",
     expires: "54 days",
@@ -110,7 +110,7 @@ const harmonies = [
     artist: "Catching Flies",
     description:
       "A 5% chance to earn 1% of every 1000 streams on our Pan African Rockstar Album",
-    price: "0.041",
+    price: "0.042",
     image: "/images/harmony-3.png",
     avatar: "/images/catching-flies.png",
     expires: "217 days",
@@ -120,7 +120,7 @@ const harmonies = [
     artist: "Catching Flies",
     description:
       "A 5% chance to earn 1% of every 1000 streams on our Pan African Rockstar Album",
-    price: "0.041",
+    price: "0.042",
     image: "/images/harmony-4.png",
     avatar: "/images/catching-flies.png",
     expires: "122 days",

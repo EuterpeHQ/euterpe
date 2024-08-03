@@ -83,62 +83,62 @@ const ArtistCard = ({
 const artists = [
   {
     name: "Matt Ryder",
-    price: "0.041 EUT",
+    price: "0.042 EUT",
     image: "/images/matt-ryder.png",
   },
   {
     name: "Siv Jakobsen",
-    price: "0.041 EUT",
+    price: "0.042 EUT",
     image: "/images/siv-jakobsen.png",
   },
   {
     name: "Henry Green",
-    price: "0.041 EUT",
+    price: "0.042 EUT",
     image: "/images/henry-green.png",
   },
   {
     name: "Far Caspian",
-    price: "0.041 EUT",
+    price: "0.042 EUT",
     image: "/images/far-caspian.png",
   },
   {
     name: "Parra for Cuva",
-    price: "0.041 EUT",
+    price: "0.042 EUT",
     image: "/images/parra-for-cuva.png",
   },
   {
     name: "Flow Clark",
-    price: "0.041 EUT",
+    price: "0.042 EUT",
     image: "/images/flow-clark.png",
   },
   {
     name: "Alex Lustig",
-    price: "0.041 EUT",
+    price: "0.042 EUT",
     image: "/images/alex-lustig.png",
   },
   {
     name: "Jesse James Solomon",
-    price: "0.041 EUT",
+    price: "0.042 EUT",
     image: "/images/jesse-james-solomon.png",
   },
   {
     name: "TSHA",
-    price: "0.041 EUT",
+    price: "0.042 EUT",
     image: "/images/tsha.png",
   },
   {
     name: "Mont Duamel",
-    price: "0.041 EUT",
+    price: "0.042 EUT",
     image: "/images/mont-duamel.png",
   },
   {
     name: "Astrid S",
-    price: "0.041 EUT",
+    price: "0.042 EUT",
     image: "/images/astrid-s.png",
   },
   {
     name: "Xander.",
-    price: "0.041 EUT",
+    price: "0.042 EUT",
     image: "/images/xander.png",
   },
 ];
