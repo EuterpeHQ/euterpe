@@ -38,7 +38,7 @@ export default function ChatTopbar({ selectedUser }: ChatTopbarProps) {
           <span className="font-medium text-muted-foreground">
             {selectedUser.name}
           </span>
-          <span className="text-[0.625rem] text-muted-foreground">
+          <span className="text-[0.688rem] text-muted-foreground">
             You can talk to me about anything music
           </span>
         </div>

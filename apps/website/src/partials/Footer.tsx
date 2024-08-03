@@ -1,201 +1,302 @@
-import React from "react";
 import Link from "next/link";
-import { Logo } from "@/components/Logo";
+import Spacer from "@/components/ui/spacer";
+import { Separator } from "@/components/ui/separator";
+import { MdEmail } from "react-icons/md";
+import { RiInstagramFill } from "react-icons/ri";
 
-const navigation = {
-  explore: [
-    { name: "Discover Artists", href: "/discover" },
-    { name: "Exchange", href: "/exchange" },
-    { name: "Harmonies", href: "/harmonies" },
-    { name: "Create Artist Token", href: "/tokenomics/manage" },
-  ],
-  resources: [
-    { name: "Investing Guides", href: "/investing-guides" },
-    { name: "DeFi for Artists", href: "/defi-for-artists" },
-    { name: "Token Basics", href: "/token-basics" },
-    { name: "FAQs", href: "/faqs" },
-  ],
-  about: [
-    { name: "Our Mission", href: "/whitepaper" },
-    { name: "Whitepaper", href: "/whitepaper" },
-    { name: "Announcements", href: "#footer" },
-    { name: "Careers", href: "#footer" },
-    { name: "Collaborate with Us", href: "#footer" },
-  ],
-  legal: [
-    { name: "Prove Token Ownership", href: "#footer" },
-    { name: "User Agrement", href: "#footer" },
-    { name: "Privacy Policy", href: "#footer" },
-    { name: "Terms and Conditions", href: "#footer" },
-  ],
-  social: [
-    {
-      name: "Email",
-      href: "mailto:tolugbesan@gmail.com",
-      icon: (props: React.SVGProps<SVGSVGElement>) => (
-        <svg
-          fill="currentColor"
-          viewBox="0 0 15 15"
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6"
-          {...props}
-        >
-          <path
-            d="M1 2C0.447715 2 0 2.44772 0 3V12C0 12.5523 0.447715 13 1 13H14C14.5523 13 15 12.5523 15 12V3C15 2.44772 14.5523 2 14 2H1ZM1 3L14 3V3.92494C13.9174 3.92486 13.8338 3.94751 13.7589 3.99505L7.5 7.96703L1.24112 3.99505C1.16621 3.94751 1.0826 3.92486 1 3.92494V3ZM1 4.90797V12H14V4.90797L7.74112 8.87995C7.59394 8.97335 7.40606 8.97335 7.25888 8.87995L1 4.90797Z"
-            fillRule="evenodd"
-            clipRule="evenodd"
-          ></path>
-        </svg>
-      ),
-    },
-    {
-      name: "X",
-      href: "https://x.com/persecutepower",
-      icon: (props: React.SVGProps<SVGSVGElement>) => (
-        <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-          <path d="M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3H3.2002L10.0765 13.0074L3.2002 21H4.75404L10.7663 14.0113L15.5685 21H20.8131L13.6819 10.6218H13.6823ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z" />
-        </svg>
-      ),
-    },
-    {
-      name: "GitHub",
-      href: "https://github.com/Tolu1/euterpe",
-      icon: (props: React.SVGProps<SVGSVGElement>) => (
-        <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-          <path
-            fillRule="evenodd"
-            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-            clipRule="evenodd"
-          />
-        </svg>
-      ),
-    },
-  ],
-};
+const exploreNavItems = [
+  {
+    name: "Discover Artists",
+    href: "#footer",
+    target: "_self",
+  },
+  {
+    name: "New Releases",
+    href: "#footer",
+    target: "_self",
+  },
+  {
+    name: "Trending Tracks",
+    href: "#footer",
+    target: "_self",
+  },
+  {
+    name: "Genre Spaces",
+    href: "#footer",
+    target: "_self",
+  },
+];
 
-function Footer() {
+const listenNavItems = [
+  {
+    name: "Comforting Habits",
+    href: "https://songwhip.com/bunmi/comforting-habits",
+    target: "_blank",
+  },
+  { name: "Playlist Curation", href: "/playlists", target: "_self" },
+  { name: "Mood Mixes", href: "#footer", target: "_self" },
+  { name: "Artist Radio", href: "#footer", target: "_self" },
+];
+
+const tokenNavItems = [
+  {
+    name: "Buy EUT",
+    href: "https://app.euterpe.finance/exchange",
+    target: "_self",
+  },
+  {
+    name: "Create Artist Token",
+    href: "https://app.euterpe.finance/token",
+    target: "_self",
+  },
+  {
+    name: "Verify Token Ownership",
+    href: "https://app.euterpe.finance/verify-token",
+    target: "_self",
+  },
+];
+
+const harmoniesNavItems = [
+  {
+    name: "Harmony of the Week",
+    href: "#footer",
+    target: "_self",
+  },
+  {
+    name: "Create a Harmony",
+    href: "/harmonies",
+    target: "_self",
+  },
+  {
+    name: "Propose New Harmony",
+    href: "#footer",
+    target: "_self",
+  },
+  {
+    name: "Guidelines",
+    href: "#footer",
+    target: "_self",
+  },
+  {
+    name: "Trends",
+    href: "#footer",
+    target: "_self",
+  },
+];
+
+const plumesNavItems = [
+  {
+    name: "AI Recommendations",
+    href: "#footer",
+    target: "_self",
+  },
+  {
+    name: "Run Token Simulation",
+    href: "#footer",
+    target: "_self",
+  },
+];
+
+const resourceNavItems = [
+  {
+    name: "Help Center",
+    href: "#footer",
+    target: "_self",
+  },
+  {
+    name: "Docs",
+    href: "#footer",
+    target: "_self",
+  },
+  {
+    name: "FAQs",
+    href: "#footer",
+    target: "_self",
+  },
+];
+
+const learnNavItems = [
+  {
+    name: "Investing Guides",
+    href: "#footer",
+    target: "_self",
+  },
+  {
+    name: "DeFi for Artists",
+    href: "#footer",
+    target: "_self",
+  },
+  {
+    name: "Token Basics",
+    href: "#footer",
+    target: "_self",
+  },
+];
+
+const companyNavItems = [
+  {
+    name: "Our Mission",
+    href: "#footer",
+    target: "_self",
+  },
+  {
+    name: "Position Paper",
+    href: "#footer",
+    target: "_self",
+  },
+  {
+    name: "Announcements",
+    href: "#footer",
+    target: "_self",
+  },
+  {
+    name: "Careers",
+    href: "#footer",
+    target: "_self",
+  },
+  {
+    name: "Collaborate with Us",
+    href: "#footer",
+    target: "_self",
+  },
+];
+
+const legalNavItems = [
+  {
+    name: "Terms of Service",
+    href: "#footer",
+    target: "_self",
+  },
+  {
+    name: "Privacy Policy",
+    href: "#footer",
+    target: "_self",
+  },
+
+  {
+    name: "User Agreement",
+    href: "#footer",
+    target: "_self",
+  },
+];
+
+export default function Footer() {
   return (
-    <footer
-      id="footer"
-      className="bg-black/15"
-      aria-labelledby="footer-heading"
-    >
-      <h2 id="footer-heading" className="sr-only">
-        Footer
-      </h2>
-      <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
-        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-          <div className=" space-y-8">
-            <Link href="/" className="inline-flex">
-              <Logo />
-            </Link>
-            <p className="text-sm leading-6 text-gray-300">
-              Euterpe is empowering artists and fans to shape the future of
-              music, together.
-            </p>
-            <div className="flex space-x-6">
-              {navigation.social.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-500 hover:text-gray-400"
-                >
-                  <span className="sr-only">{item.name}</span>
-                  <item.icon className="h-6 w-6" aria-hidden="true" />
-                </a>
-              ))}
-            </div>
+    <footer id="footer">
+      <Spacer size={64} />
+      <div className="mx-auto w-full max-w-6xl px-10">
+        <div className="grid grid-cols-2 gap-4 py-6 md:grid-cols-5 md:gap-0 lg:py-8">
+          <div className="flex flex-col gap-10">
+            <NavGroup title="Explore" items={exploreNavItems} />
+            <NavGroup title="Listen" items={listenNavItems} />
           </div>
-          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-            <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <h3 className="text-xs font-semibold leading-6 text-white/80">
-                  Explore
-                </h3>
-                <ul role="list" className="mt-6 space-y-4">
-                  {navigation.explore.map((item) => (
-                    <li key={item.name}>
-                      <a
-                        href={item.href}
-                        className="text-sm leading-6 text-gray-300 hover:text-primary"
-                      >
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-10 md:mt-0">
-                <h3 className="text-xs font-semibold leading-6 text-white/80">
-                  Resources
-                </h3>
-                <ul role="list" className="mt-6 space-y-4">
-                  {navigation.resources.map((item) => (
-                    <li key={item.name}>
-                      <a
-                        href={item.href}
-                        className="text-sm leading-6 text-gray-300 hover:text-primary"
-                      >
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <h3 className="text-xs font-semibold leading-6 text-white/80">
-                  About
-                </h3>
-                <ul role="list" className="mt-6 space-y-4">
-                  {navigation.about.map((item) => (
-                    <li key={item.name}>
-                      <a
-                        href={item.href}
-                        className="text-sm leading-6 text-gray-300 hover:text-primary"
-                      >
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-10 md:mt-0">
-                <h3 className="text-xs font-semibold leading-6 text-white/80">
-                  Legal
-                </h3>
-                <ul role="list" className="mt-6 space-y-4">
-                  {navigation.legal.map((item) => (
-                    <li key={item.name}>
-                      <a
-                        href={item.href}
-                        className="text-sm leading-6 text-gray-300 hover:text-primary"
-                      >
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+          <div className="flex flex-col gap-10">
+            <NavGroup title="Token" items={tokenNavItems} />
+            <NavGroup title="Harmonies" items={harmoniesNavItems} />
+            <NavGroup title="Resources" items={resourceNavItems} />
           </div>
+          <div className="flex flex-col gap-10">
+            <NavGroup title="Plumes" items={plumesNavItems} />
+            <NavGroup title="Learn" items={learnNavItems} />
+          </div>
+          <NavGroup title="Company" items={companyNavItems} />
+          <NavGroup title="Legal" items={legalNavItems} />
         </div>
-        <div className="mt-16 border-t border-white/10 pt-8 text-center sm:mt-20 lg:mt-24">
-          <p className="text-xs leading-5 text-muted-foreground">
-            &copy; 2024{" "}
-            <a
-              href="https://x.com/persecutepower"
-              className="hover:text-primary"
-            >
-              Euterpe
-            </a>
-            . All rights reserved.
-          </p>
+        <Separator className="h-[0.4px]" />
+        <div className="w-full px-4 py-6 md:flex md:items-center md:justify-between">
+          <span className="font-pulp text-[0.688rem] font-extralight text-muted-foreground sm:text-center">
+            © 2024 <a href="#">Euterpe</a>. All Rights Reserved.
+          </span>
+          <SocialLinks />
         </div>
       </div>
     </footer>
   );
 }
 
-export default Footer;
+type NavGroupProps = {
+  title: string;
+  items: {
+    name: string;
+    href: string;
+    target: string;
+  }[];
+};
+
+function NavGroup({ title, items }: NavGroupProps) {
+  return (
+    <div className="">
+      <h3 className="text-xs font-medium capitalize text-primary">{title}</h3>
+      <div className="mt-3 space-y-3">
+        {items.map((item) => (
+          <div key={item.name}>
+            <Link
+              href={item.href}
+              target={item.target}
+              rel="noopener noreferrer"
+              className="text-xs text-muted-foreground"
+            >
+              {item.name}
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function SocialLinks() {
+  return (
+    <div className="mt-4 flex items-center space-x-5 sm:justify-center md:mt-0 rtl:space-x-reverse">
+      <a
+        href="https://x.com/euterpehq/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-muted-foreground hover:text-primary"
+      >
+        <svg
+          className="h-4 w-4"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 17"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        <span className="sr-only">Twitter page</span>
+      </a>
+      <a
+        href="https://www.instagram.com/euterpehq"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-muted-foreground hover:text-primary"
+      >
+        <RiInstagramFill className="h-4 w-4" />
+        <span className="sr-only">Instagram account</span>
+      </a>
+      {/* <a href="" className="text-muted-foreground hover:text-primary">
+        <svg
+          className="h-4 w-4"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 21 16"
+        >
+          <path d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z" />
+        </svg>
+        <span className="sr-only">Discord community</span>
+      </a> */}
+      <a
+        href="mailto:tolugbesan@gmail.com"
+        className="text-muted-foreground hover:text-primary"
+      >
+        <MdEmail className="h-4 w-4" />
+        <span className="sr-only">Email address</span>
+      </a>
+    </div>
+  );
+}

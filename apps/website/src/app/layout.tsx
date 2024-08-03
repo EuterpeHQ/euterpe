@@ -40,6 +40,12 @@ const aeonik = localFont({
   variable: "--font-aeonik",
 });
 
+const pulp = localFont({
+  src: "../assets/fonts/PulpDisplay-ExtraLight.woff2",
+  display: "swap",
+  variable: "--font-pulp",
+});
+
 export const metadata: Metadata = {
   title: "Euterpe",
   description: "Earn with the Artists you love.",
@@ -58,6 +64,7 @@ export default function RootLayout({
           azeret.variable,
           axiforma.variable,
           aeonik.variable,
+          pulp.variable,
         )}
       >
         <AppProvider>

@@ -14,6 +14,7 @@ const config = {
       azeret: ["var(--font-azeret)"],
       axiforma: ["var(--font-axiforma)"],
       aeonik: ["var(--font-aeonik)"],
+      pulp: ["var(--font-pulp)"],
     },
     container: {
       center: true,
