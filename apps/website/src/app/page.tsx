@@ -6,12 +6,17 @@ import PlumesAI from "@/partials/landing/PlumesAI";
 import HowItWorks from "@/partials/landing/HowItWorks";
 import Footer from "@/partials/Footer";
 import Revolutionary from "@/partials/landing/Revolutionary";
+import { AuroraBackground } from "@/components/aceternity/aurora-background";
 
 export default function Page() {
   return (
     <>
-      <Hero />
-      <Spacer size={100} />
+      <AuroraBackground className="h-fit">
+        <div className="w-full bg-background">
+          <Hero />
+          <Spacer size={100} />
+        </div>
+      </AuroraBackground>
       <FeaturedArtists />
       <Spacer size={100} />
       <Harmonies />

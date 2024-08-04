@@ -118,8 +118,8 @@ export default function ChatBottombar({
             onChange={handleInputChange}
             name="message"
             placeholder="Ask me something..."
-            className="flex h-9 w-full resize-none items-center overflow-hidden bg-card text-xs"
-          ></Input>
+            className="flex h-9 w-full resize-none items-center overflow-hidden text-xs"
+          />
           <div className="absolute bottom-0.5 right-2"></div>
         </motion.div>
 

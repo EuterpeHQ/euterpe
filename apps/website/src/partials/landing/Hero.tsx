@@ -3,11 +3,9 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import ArrowRightIcon from "@/assets/icons/arrow-right.png";
-import Spacer from "@/components/ui/spacer";
-
 function Hero() {
   return (
-    <main className="flex h-[480px] w-full flex-col items-center justify-center gap-y-7 px-4 sm:h-[560px] md:h-[634px] md:px-0">
+    <main className="relative flex h-[480px] w-full flex-col items-center justify-center gap-y-7 px-4 text-foreground sm:h-[560px] md:h-[634px] md:px-0">
       <h2 className="w-full text-center font-aeonik text-5xl font-medium tracking-[-0.06em] xs:w-[420px] sm:w-[640px] sm:text-7xl md:w-[840px] md:text-[6.25rem]/[80px]">
         Invest in your favorite artists, Earn Royalties and more
       </h2>
