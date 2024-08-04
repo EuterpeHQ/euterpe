@@ -207,7 +207,16 @@ export default function Footer() {
           <span className="font-pulp text-[0.688rem] font-extralight text-muted-foreground sm:text-center">
             © 2024 <a href="#">Euterpe</a>. All Rights Reserved.
           </span>
-          <SocialLinks />
+          <div className="flex items-center gap-4">
+            <SocialLinks />
+
+            <Link
+              href="/credits"
+              className="font-pulp text-[0.688rem] font-extralight text-muted-foreground hover:underline hover:underline-offset-2 sm:text-center"
+            >
+              Credits
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
