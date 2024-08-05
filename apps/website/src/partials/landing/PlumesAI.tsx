@@ -223,11 +223,7 @@ I sometimes forget to reply, maybe it's because I'm shy or I want to hide when I
             </p>
           </div>
           <Button className="w-full max-w-sm text-xs sm:w-fit" asChild>
-            <Link
-              href="https://euterpe.finance/resources"
-              rel="noreferrer"
-              target="_blank"
-            >
+            <Link href="/resources" rel="noreferrer" target="_blank">
               Watch demo
               <Image
                 src={ArrowRightIcon}

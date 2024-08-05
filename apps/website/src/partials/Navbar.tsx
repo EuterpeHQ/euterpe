@@ -1,3 +1,4 @@
+"use client";
 import {
   Disclosure,
   DisclosureButton,
@@ -8,14 +9,16 @@ import { cn } from "@/lib/utils";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
 
 const navigation = [
   { name: "Explore", href: "#", current: false },
-  { name: "Resources", href: "#", current: false },
+  { name: "Resources", href: "/resources", current: false },
   { name: "About Us", href: "#", current: false },
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   return (
     <Disclosure
       as="nav"
@@ -27,7 +30,9 @@ export default function Navbar() {
         </div>
       </AnnouncementBar>
       <div className="relative flex h-[3.25rem] w-full flex-row items-center justify-between border-y-[0.5px] border-[#313131] bg-black/[0.85] p-2 px-4 text-lg sm:px-6 lg:px-10">
-        <h1 className="font-aeonik font-medium">Euterpe.</h1>
+        <Link href="/">
+          <h1 className="font-aeonik font-medium">Euterpe.</h1>
+        </Link>
         <div className="hidden flex-row gap-x-20 text-[0.688rem] sm:flex">
           {navigation.map((item) => (
             <Link
@@ -35,7 +40,7 @@ export default function Navbar() {
               href={item.href}
               aria-current={item.current ? "page" : undefined}
               className={cn(
-                item.current ? "text-primary" : "hover:text-primary",
+                item.href === pathname ? "text-primary" : "hover:text-primary",
               )}
             >
               {item.name}

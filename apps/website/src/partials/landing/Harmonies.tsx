@@ -27,11 +27,7 @@ function Harmonies() {
             </p>
           </div>
           <Button className="w-full max-w-sm text-xs sm:w-fit" asChild>
-            <Link
-              href="https://euterpe.finance/resources"
-              rel="noreferrer"
-              target="_blank"
-            >
+            <Link href="/resources">
               Learn more
               <Image
                 src={ArrowRightIcon}
