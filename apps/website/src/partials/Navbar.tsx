@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 
 const navigation = [
-  { name: "Explore", href: "#", current: false },
+  { name: "Position Paper", href: "#", current: false },
   { name: "Resources", href: "/resources", current: false },
   { name: "About Us", href: "#", current: false },
 ];
