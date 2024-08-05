@@ -154,7 +154,7 @@ const fanData = [
   },
   {
     category: "Article",
-    title: "Plumes Automates 5% of Activity on Euterpe",
+    title: "Bringing Smart Finance to everyone",
     src: "https://i.pinimg.com/564x/c7/51/48/c75148d8ff9319ea1016f21d6462abaa.jpg",
     content: <DummyContent />,
   },
