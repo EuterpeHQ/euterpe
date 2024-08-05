@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import React from "react";
 import { Carousel, Card } from "@/components/aceternity/tall-cards-carousel";
@@ -9,6 +8,11 @@ import { Button } from "@/components/ui/button";
 import LineArtLeftImage from "@/assets/images/line-art-left.svg";
 import LineArtRightImage from "@/assets/images/line-art-right.svg";
 import GreenArrowRightIcon from "@/assets/icons/green-arrow-right.png";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Resources",
+};
 
 export default function Page() {
   const artistCards = artistData.map((card, index) => (

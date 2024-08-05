@@ -47,8 +47,12 @@ const pulp = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Euterpe",
-  description: "Earn with the Artists you love.",
+  title: {
+    template: "%s | Euterpe",
+    default: "Euterpe",
+  },
+  description:
+    "Euterpe connects you with rising musicians, allowing you to support their journey and share in their achievements.",
 };
 
 export default function RootLayout({

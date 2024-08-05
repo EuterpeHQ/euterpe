@@ -5,17 +5,19 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import ArrowRightIcon from "@/assets/icons/arrow-right.png";
 import { useRouter } from "next/navigation";
+
 function NotFound() {
   const router = useRouter();
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-5">
+      <title>Not Found | Euterpe</title>
       <div className="flex items-center gap-3">
         <h1 className="font-aeonik text-3xl font-medium text-muted-foreground">
           404
         </h1>
         <Separator orientation="vertical" className="h-10" />
         <p className="text-sm text-muted-foreground">
-          This page does not exist.
+          This page could not be found.
         </p>
       </div>
       <Button
