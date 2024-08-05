@@ -4,7 +4,6 @@ import FeaturedArtists from "@/partials/landing/FeaturedArtists";
 import Spacer from "@/components/ui/spacer";
 import PlumesAI from "@/partials/landing/PlumesAI";
 import HowItWorks from "@/partials/landing/HowItWorks";
-import Footer from "@/partials/Footer";
 import Revolutionary from "@/partials/landing/Revolutionary";
 import { AuroraBackground } from "@/components/aceternity/aurora-background";
 
@@ -25,7 +24,6 @@ export default function Page() {
       <Spacer size={100} />
       <PlumesAI />
       <Revolutionary />
-      <Footer />
     </>
   );
 }

@@ -68,8 +68,10 @@ export default function RootLayout({
         )}
       >
         <AppProvider>
-          <Navbar />
-          {children}
+          <div className="flex min-h-screen flex-col">
+            <Navbar />
+            {children}
+          </div>
         </AppProvider>
       </body>
     </html>

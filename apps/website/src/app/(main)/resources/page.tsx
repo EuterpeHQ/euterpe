@@ -94,35 +94,30 @@ const artistData = [
     category: "Article",
     title: "Empowering 5,000 Music Artists",
     src: "https://i.pinimg.com/564x/9e/7f/94/9e7f94361ba601097f50657a73024402.jpg",
-
     content: <DummyContent />,
   },
   {
     category: "Article",
     title: "Piecemeal DeFi for Musicians",
     src: "https://i.pinimg.com/564x/0a/ec/2f/0aec2f08ff39e335b2e50a92720cc5c5.jpg",
-
     content: <DummyContent />,
   },
   {
     category: "Video",
     title: "The Art of Creative Freedom",
     src: "https://i.pinimg.com/564x/30/4e/7e/304e7ec7d195ea7fe7addc8ced757245.jpg",
-
     content: <DummyContent />,
   },
   {
     category: "Webinar",
     title: "Towards a Killer Token Launch",
     src: "https://i.pinimg.com/564x/6d/a6/86/6da686e70ebcc916bea1776ef0d3a55f.jpg",
-
     content: <DummyContent />,
   },
   {
     category: "Fundraiser",
     title: "Record Label Codependency",
     src: "https://i.pinimg.com/564x/78/0a/0e/780a0ed7dd9750046e7d6dbb962c1b41.jpg",
-
     content: <DummyContent />,
   },
 ];
