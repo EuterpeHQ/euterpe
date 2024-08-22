@@ -34,7 +34,7 @@ export function HarmonyCard({
       />
       <div className="flex flex-col gap-1.5">
         <h3 className="text-[0.813rem] text-primary">{name}</h3>
-        <p className="text-[0.625rem] font-extralight text-muted-foreground">
+        <p className="line-clamp-3 text-[0.625rem] font-extralight text-muted-foreground">
           {description}
         </p>
         <div className="flex items-center">

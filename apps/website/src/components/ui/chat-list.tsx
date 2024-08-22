@@ -75,9 +75,10 @@ export function ChatList({
                     />
                   </Avatar>
                 )}
-                <span className="max-w-xs break-words rounded-sm bg-primary/10 px-3 py-2 text-xs">
-                  {message.message}
-                </span>
+                <span
+                  className="max-w-xs break-words rounded-sm bg-primary/10 px-3 py-2 text-xs"
+                  dangerouslySetInnerHTML={{ __html: message.message }}
+                />
                 {message.name !== selectedUser.name && (
                   <Avatar className="flex items-center justify-center">
                     <AvatarImage

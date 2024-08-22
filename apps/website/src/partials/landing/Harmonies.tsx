@@ -16,14 +16,14 @@ function Harmonies() {
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-6">
-            <h1 className="max-w-md font-aeonik text-6xl/[56px] tracking-[-0.06em]">
+            <h1 className="max-w-md font-aeonik text-5xl/[48px] tracking-[-0.06em] md:text-6xl/[56px]">
               {" "}
-              Invest In Secure and Decentralized{" "}
+              Streaming Is Flawed, So We Created{" "}
               <span className="font-medium text-primary">Harmonies</span>
             </h1>
             <p className="max-w-lg text-sm text-muted-foreground">
-              Harmonies house a collection of one or more NFTs that legally bind
-              an investor to certain rewards.
+              Harmonies allow artists to exchange revenue, royalties and rewards
+              for support from their most loyal fans.
             </p>
           </div>
           <Button className="w-full max-w-sm text-xs sm:w-fit" asChild>
@@ -45,45 +45,10 @@ function Harmonies() {
   );
 }
 
-const ArtistCard = ({
-  image,
-  name,
-  price,
-}: {
-  image: string;
-  name: string;
-  price: string;
-}) => {
-  return (
-    <figure
-      className={cn(
-        "relative flex w-52 cursor-pointer flex-col items-center gap-5 overflow-hidden border-[1px] border-border/70 bg-background p-4 hover:bg-primary/5",
-      )}
-    >
-      <img
-        className="rounded-full"
-        width="140"
-        height="140"
-        alt=""
-        src={image}
-      />
-      <div className="flex flex-col items-center gap-2">
-        <figcaption className="text-sm font-semibold dark:text-white">
-          {name}
-        </figcaption>
-        <blockquote className="flex items-center text-xs font-semibold text-primary">
-          <Image src={CoinIcon} alt="coin icon" className="mr-1 w-2.5" />
-          {price}
-        </blockquote>
-      </div>
-    </figure>
-  );
-};
-
 const harmonies = [
   {
     name: "Anemoia",
-    artist: "Catching Flies",
+    artist: "Lady Donli",
     description:
       "A 5% chance to earn 1% of every 1000 streams on our Pan African Rockstar Album",
     price: "0.042",
@@ -95,7 +60,7 @@ const harmonies = [
     name: "Hypnagogia",
     artist: "Catching Flies",
     description:
-      "A 5% chance to earn 1% of every 1000 streams on our Pan African Rockstar Album",
+      "Join us backstage at our next concert and receive a personalized merch pack",
     price: "0.042",
     image: "/images/harmony-2.png",
     avatar: "/images/catching-flies.png",
@@ -103,9 +68,9 @@ const harmonies = [
   },
   {
     name: "Nostalgia",
-    artist: "Catching Flies",
+    artist: "London Grammar",
     description:
-      "A 5% chance to earn 1% of every 1000 streams on our Pan African Rockstar Album",
+      "Recieve 2% of our concert ticket sales from The Greatest Love Arena tour 2024",
     price: "0.042",
     image: "/images/harmony-3.png",
     avatar: "/images/catching-flies.png",
@@ -113,9 +78,9 @@ const harmonies = [
   },
   {
     name: "Synesthesia",
-    artist: "Catching Flies",
+    artist: "The Chainsmokers",
     description:
-      "A 5% chance to earn 1% of every 1000 streams on our Pan African Rockstar Album",
+      "Be the first to hear exclusive, unreleased tracks before anyone else does",
     price: "0.042",
     image: "/images/harmony-4.png",
     avatar: "/images/catching-flies.png",

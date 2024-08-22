@@ -14,19 +14,19 @@ const features = [
   {
     title: "Every Artist is a unique cryptocurrency.",
     description:
-      "Fans support their favourite artists as tradable cryptocurrencies that can be bought and sold, driving success in a decentralized marketplace.",
+      "Fans support their favourite artists using tradable cryptocurrencies that can be bought and sold, creating new revenue streams for artists via transaction fees.",
     icon: ArtistTokenIcon,
   },
   {
-    title: "Harmonies unlock shared benefits for fans.",
+    title: "Harmonies unlock revenue sharing for Fans.",
     description:
-      "Fans share rewards, royalties, and unique benefits linked to their favorite artists using NFTs bound by legal agreements and secure blockchain contracts.",
+      "Artists can offer revenue, royalties, and rewards linked to their music through NFTs, smart contracts, and legal agreements on the blockchain.",
     icon: HarmonyIcon,
   },
   {
-    title: "Plumes scans for millions of Artists.",
+    title: "Plumes empowers millions of emerging Artists.",
     description:
-      "Plumes is a decentralized AI (dAI) that democratizes artists spotlighting and discovery without preferential treatment, giving independent artists a platform to rise and reach dedicated fans.",
+      "With Plumes as your AI companion, focusing on Music comes first. Artists and fans can navigate through Euterpe with personalized AI-powered assistance.",
     icon: PlumesIcon,
   },
 ];
@@ -40,9 +40,9 @@ function HowItWorks() {
           <h1 className="text-center font-aeonik text-6xl font-medium tracking-[-0.06rem]">
             How it works
           </h1>
-          <p className="text-center text-muted-foreground">
-            Learn How Euterpe's De-Fi platform helps music creators get funding
-            and connect to fans.
+          <p className="text-center text-sm text-muted-foreground">
+            Learn how Euterpe uses DeFi to empower artists with financial and
+            creative independence.
           </p>
         </div>
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
@@ -70,8 +70,24 @@ function FeatureCard({ title, description, icon }: FeatureCardProps) {
       </div>
       <div>
         <div className="flex flex-col gap-6">
-          <h3 className="font-aeonik text-3xl/[32px] tracking-[-0.06rem]">
-            <Balancer>{title}</Balancer>
+          <h3 className="flex-wrap-reverse font-aeonik text-3xl/[32px] tracking-[-0.06rem]">
+            <Balancer>
+              {(() => {
+                const charLimit = 20;
+                let splitIndex = charLimit;
+                while (splitIndex > 0 && title[splitIndex] !== " ") {
+                  splitIndex--;
+                }
+                if (splitIndex === 0) splitIndex = charLimit;
+                const firstPart = title.slice(0, splitIndex).trim();
+                const restPart = title.slice(splitIndex).trim();
+                return (
+                  <>
+                    {firstPart} <br /> {restPart}
+                  </>
+                );
+              })()}
+            </Balancer>
           </h3>
           <p className="text-xs font-light tracking-[-0.04rem] text-[#A5A5A5]">
             {description}

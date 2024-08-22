@@ -8,36 +8,37 @@ import Balancer from "react-wrap-balancer";
 import LineArtLeftImage from "@/assets/images/line-art-left.svg";
 import LineArtRightImage from "@/assets/images/line-art-right.svg";
 
-export default function Revolutionary() {
+export default function CTA() {
   return (
     <section className="w-full px-10">
-      <Spacer size={64} />
       <div className="relative flex h-96 w-full flex-col items-center justify-center gap-8 overflow-hidden rounded-lg bg-primary p-4">
-        <h2 className="text-center font-aeonik text-4xl font-medium tracking-[-0.06em] text-background md:text-5xl lg:text-6xl/[56px]">
-          <Balancer>
-            Join Euterpe's revolutionary DeFi platform and help shape the future
-            of music
-          </Balancer>
-        </h2>
-        <Button
-          className="w-full max-w-sm bg-background text-xs text-primary hover:bg-background/90 sm:w-fit"
-          asChild
-        >
-          <Link
-            href="https://app.euterpe.finance"
-            rel="noreferrer"
-            target="_blank"
+        <div className="z-10 flex flex-col items-center gap-8">
+          <h2 className="text-center font-aeonik text-4xl font-medium tracking-[-0.06em] text-background md:text-5xl lg:text-6xl/[56px]">
+            <Balancer>
+              Discover artistic freedom, financial control, and creative
+              independence with DeFi.
+            </Balancer>
+          </h2>
+          <Button
+            className="w-full max-w-sm bg-background text-xs text-primary hover:bg-background/90 sm:w-fit"
+            asChild
           >
-            Launch app
-            <Image
-              src={GreenArrowRightIcon}
-              alt="Right Arrow Icon"
-              width={24}
-              height={24}
-              className="ml-1"
-            />
-          </Link>
-        </Button>
+            <Link
+              href="https://app.euterpe.finance"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Launch app
+              <Image
+                src={GreenArrowRightIcon}
+                alt="Right Arrow Icon"
+                width={24}
+                height={24}
+                className="ml-1"
+              />
+            </Link>
+          </Button>
+        </div>
         <Image
           src={LineArtLeftImage}
           alt="Line Art"
@@ -59,7 +60,6 @@ export default function Revolutionary() {
           className="absolute bottom-0 left-1/2 block h-full rotate-0 lg:hidden"
         />
       </div>
-      <Spacer size={64} />
     </section>
   );
 }

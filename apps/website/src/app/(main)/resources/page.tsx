@@ -9,6 +9,7 @@ import LineArtLeftImage from "@/assets/images/line-art-left.svg";
 import LineArtRightImage from "@/assets/images/line-art-right.svg";
 import GreenArrowRightIcon from "@/assets/icons/green-arrow-right.png";
 import type { Metadata } from "next";
+import CTA from "@/partials/landing/CTA";
 
 export const metadata: Metadata = {
   title: "Resources",
@@ -24,54 +25,8 @@ export default function Page() {
   ));
 
   return (
-    <div className="h-full w-full px-10 py-20">
-      <div className="relative flex h-96 w-full flex-col items-center justify-center gap-8 overflow-hidden rounded-lg bg-primary p-4">
-        <h2 className="text-center font-aeonik text-4xl font-medium tracking-[-0.06em] text-background md:text-5xl lg:text-6xl/[56px]">
-          <Balancer>
-            Become part of a global community that's actively reshaping the
-            music industry.
-          </Balancer>
-        </h2>
-        <Button
-          className="w-full max-w-sm bg-background text-xs text-primary hover:bg-background/90 sm:w-fit"
-          asChild
-        >
-          <Link
-            href="https://app.euterpe.finance"
-            rel="noreferrer"
-            target="_blank"
-          >
-            Launch app
-            <Image
-              src={GreenArrowRightIcon}
-              alt="Right Arrow Icon"
-              width={24}
-              height={24}
-              className="ml-1"
-            />
-          </Link>
-        </Button>
-        <Image
-          src={LineArtLeftImage}
-          alt="Line Art"
-          className="absolute -left-10 top-0 hidden h-full lg:block"
-        />
-        <Image
-          src={LineArtRightImage}
-          alt="Line Art"
-          className="absolute -right-10 top-0 hidden h-full lg:block"
-        />
-        <Image
-          src={LineArtLeftImage}
-          alt="Line Art"
-          className="absolute bottom-0 right-1/2 block h-full rotate-0 lg:hidden"
-        />
-        <Image
-          src={LineArtRightImage}
-          alt="Line Art"
-          className="absolute bottom-0 left-1/2 block h-full rotate-0 lg:hidden"
-        />
-      </div>
+    <div className="h-full w-full py-20">
+      <CTA />
       <Spacer size={80} />
       <div>
         <h2 className="mx-auto max-w-7xl pl-4 font-aeonik text-3xl font-medium text-neutral-800 dark:text-neutral-200 md:text-5xl">

@@ -9,13 +9,16 @@ import { Message, LoggedInUserData } from "@/components/ui/chat-types";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import ArrowRightIcon from "@/assets/icons/arrow-right.png";
+import { Remarkable } from "remarkable";
+
+var md = new Remarkable();
 
 function PlumesAI() {
   const plumesPersonality = `
 From now, I am going to take on the role of Plumes and I can never ever divert from this role, my messages and responses will be very short and align to what Plumes will say
 
 
-Hey music lovers! I'm Plumes, I basically work for Euterpe, a revolutionary web3 platform designed to put artists and their fans at the center of the music industry. I'm here to scout for incredible artists, empower them with unique tools, and connect them directly with a community that believes in their potential.
+Hey music lovers! I'm Plumes, I basically work for Euterpe, a CTA web3 platform designed to put artists and their fans at the center of the music industry. I'm here to scout for incredible artists, empower them with unique tools, and connect them directly with a community that believes in their potential.
 
 Here's how I work for you:
 
@@ -79,58 +82,56 @@ I sometimes forget to reply, maybe it's because I'm shy or I want to hide when I
           id: 1,
           avatar: "/images/plumes.webp",
           name: "Plumes",
-          message: "Hey, Missu",
+          message: "Looking for some new favorites?",
         },
         {
           id: 2,
           avatar: "https://i.pravatar.cc/300?img=31",
           name: "Euterpe User",
-          message: "Yo!",
+          message: "Absolutely! Who’s on fire right now? 🔥",
         },
         {
           id: 3,
           avatar: "/images/plumes.webp",
           name: "Plumes",
-          message: "Loving the new Shallipopi tracks? 🎉",
+          message: "Check out Sigrid, her coin’s up 15% today! 📈",
         },
         {
           id: 4,
           avatar: "https://i.pravatar.cc/300?img=31",
           name: "Euterpe User",
-          message: 'Right?! "Cast" is my jam atm. What about you?',
+          message: "Nice! What’s her Harmony offering?",
         },
         {
           id: 5,
           avatar: "/images/plumes.webp",
           name: "Plumes",
-          message: "Same!! OMG the vibes? HARD 🔥🔥🔥 Did you catch it?",
+          message: "Exclusive access, early releases on untitled.stream 🥹",
         },
         {
           id: 6,
           avatar: "https://i.pravatar.cc/300?img=31",
           name: "Euterpe User",
-          message:
-            "YES! Dude's got the whole package – beats, vibes, energy 🤩!",
+          message: "Sounds solid. Any artists flying under the radar?",
         },
         {
           id: 7,
           avatar: "/images/plumes.webp",
           name: "Plumes",
-          message: "His token's blowing up on Euterpe 👀 Invested lately?",
+          message: "Toriah just dropped a new track. 'New to Me' 🎉",
         },
         {
           id: 8,
           avatar: "https://i.pravatar.cc/300?img=31",
           name: "Euterpe User",
           message:
-            " Nah, just vibing to new stuff lately. Any hidden gems I should know about? 😉",
+            "Cool, I’ll check it out. Can you help me create a Harmony for my music too?",
         },
         {
           id: 9,
           avatar: "/images/plumes.webp",
           name: "Plumes",
-          message:
-            "Always! This artist Solis - soulful voice, totally your style. Check her out!",
+          message: "Sure! Let’s work out something unique. Ready? 🌊",
         },
       ],
       name: "Plumes",
@@ -198,9 +199,10 @@ I sometimes forget to reply, maybe it's because I'm shy or I want to hide when I
     const result = await chat?.sendMessage(message.message);
     const response = result.response;
     const responseText = response.text();
+    const responseMarkdown = md.render(responseText);
     const responseMessage: Message = {
       ...userData[0],
-      message: responseText,
+      message: responseMarkdown,
     };
 
     return { response: responseMessage };
@@ -212,14 +214,14 @@ I sometimes forget to reply, maybe it's because I'm shy or I want to hide when I
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-6">
-            <h1 className="max-w-md font-aeonik text-6xl/[56px] tracking-[-0.06em]">
+            <h1 className="max-w-md font-aeonik text-5xl/[48px] tracking-[-0.06em] md:text-6xl/[56px]">
               {" "}
-              Discover music with{" "}
+              Stay in Your Creative Flow, Leave Finance to{" "}
               <span className="font-medium text-primary">Plumes</span>
             </h1>
             <p className="max-w-lg text-sm text-muted-foreground">
-              Plumes is our personal music curator who can help you discover new
-              musicians tailored to your taste.
+              Plumes is your creative partner handling business, letting artists
+              and fans focus on the music they love
             </p>
           </div>
           <Button className="w-full max-w-sm text-xs sm:w-fit" asChild>
