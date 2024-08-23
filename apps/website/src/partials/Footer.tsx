@@ -345,7 +345,7 @@ function SocialLinks() {
         <span className="sr-only">Discord community</span>
       </a> */}
       <a
-        href="mailto:tolugbesan@gmail.com"
+        href="mailto:team@euterpe.finance"
         className="text-muted-foreground hover:text-primary"
       >
         <MdEmail className="h-4 w-4" />
