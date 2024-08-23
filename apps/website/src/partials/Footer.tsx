@@ -1,8 +1,12 @@
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
 import Spacer from "@/components/ui/spacer";
 import { Separator } from "@/components/ui/separator";
 import { MdEmail } from "react-icons/md";
 import { RiInstagramFill } from "react-icons/ri";
+import { Credits } from "@/partials/Credits";
+import { TbSquareRoundedX } from "react-icons/tb";
 
 const exploreNavItems = [
   {
@@ -180,7 +184,35 @@ const legalNavItems = [
   },
 ];
 
+const loadingStates = [
+  {
+    text: "Buying a condo",
+  },
+  {
+    text: "Travelling in a flight",
+  },
+  {
+    text: "Meeting Tyler Durden",
+  },
+  {
+    text: "He makes soap",
+  },
+  {
+    text: "We goto a bar",
+  },
+  {
+    text: "Start a fight",
+  },
+  {
+    text: "We like it",
+  },
+  {
+    text: "Welcome to F**** C***",
+  },
+];
+
 export default function Footer() {
+  const [loading, setLoading] = useState(false);
   return (
     <footer id="footer">
       <Spacer size={64} />
@@ -210,15 +242,28 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <SocialLinks />
 
-            <Link
-              href="/credits"
-              className="font-pulp text-[0.688rem] font-extralight text-muted-foreground hover:underline hover:underline-offset-2 sm:text-center"
+            <div
+              className="cursor-pointer font-pulp text-[0.688rem] font-extralight text-muted-foreground hover:underline hover:underline-offset-2 sm:text-center"
+              onClick={() => setLoading(true)}
             >
               Credits
-            </Link>
+            </div>
           </div>
         </div>
       </div>
+      <Credits
+        loadingStates={loadingStates}
+        loading={loading}
+        duration={2000}
+      />
+      {loading && (
+        <button
+          className="fixed right-4 top-4 z-[120] text-black dark:text-white"
+          onClick={() => setLoading(false)}
+        >
+          <TbSquareRoundedX className="h-6 w-6" />
+        </button>
+      )}
     </footer>
   );
 }

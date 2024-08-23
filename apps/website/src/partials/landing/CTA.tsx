@@ -15,7 +15,7 @@ export default function CTA() {
         <div className="z-10 flex flex-col items-center gap-8">
           <h2 className="text-center font-aeonik text-4xl font-medium tracking-[-0.06em] text-background md:text-5xl lg:text-6xl/[56px]">
             <Balancer>
-              Discover artistic freedom, financial control, and creative
+              Discover music freedom, equitable finance, and creative
               independence with DeFi.
             </Balancer>
           </h2>
