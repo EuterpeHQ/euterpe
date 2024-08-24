@@ -1,3 +1,5 @@
+"use client";
+import React, { useState, useEffect } from "react";
 import Hero from "@/partials/landing/Hero";
 import Harmonies from "@/partials/landing/Harmonies";
 import FeaturedArtists from "@/partials/landing/FeaturedArtists";
@@ -6,10 +8,19 @@ import PlumesAI from "@/partials/landing/PlumesAI";
 import HowItWorks from "@/partials/landing/HowItWorks";
 import CTA from "@/partials/landing/CTA";
 import { AuroraBackground } from "@/components/aceternity/aurora-background";
+import JoinWaitlist from "@/partials/JoinWaitlist";
 
 export default function Page() {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setOpen(true);
+    }, 20000);
+  }, []);
   return (
     <>
+      <JoinWaitlist open setOpen={setOpen} />
       <AuroraBackground className="h-fit">
         <div className="w-full bg-background">
           <Hero />

@@ -117,6 +117,30 @@ const config = {
             backgroundPosition: "350% 50%, 350% 50%",
           },
         },
+        sparkle: {
+          "0%, 100%": { opacity: "0.75", scale: "0.9" },
+          "50%": { opacity: "1", scale: "1" },
+        },
+        shake: {
+          "0%": {
+            transform: "translateX(30px)",
+          },
+          "20%": {
+            transform: "translateX(-30px)",
+          },
+          "40%": {
+            transform: "translateX(15px)",
+          },
+          "60%": {
+            transform: "translateX(-15px)",
+          },
+          "80%": {
+            transform: "translateX(8px)",
+          },
+          "100%": {
+            transform: "translateX(0px)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -125,10 +149,17 @@ const config = {
         marquee: "marquee var(--duration) linear infinite",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
         aurora: "aurora 60s linear infinite",
+        sparkle: "sparkle 2s ease-in-out infinite",
+        shake: "shake 0.4s ease-out 1",
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), addVariablesForColors],
+  plugins: [
+    require("tailwindcss-animate"),
+    addVariablesForColors,
+    addAnimationDelayClasses,
+    addAnimationEasingClasses,
+  ],
 } satisfies Config;
 
 function addVariablesForColors({ addBase, theme }: any) {
@@ -140,5 +171,27 @@ function addVariablesForColors({ addBase, theme }: any) {
   addBase({
     ":root": newVars,
   });
+}
+
+function addAnimationDelayClasses({ matchUtilities, theme }: any) {
+  matchUtilities(
+    {
+      "animate-delay": (value: string) => ({
+        animationDelay: value,
+      }),
+    },
+    { values: theme("transitionDelay") },
+  );
+}
+
+function addAnimationEasingClasses({ matchUtilities, theme }: any) {
+  matchUtilities(
+    {
+      "animate-ease": (value: string) => ({
+        animationTimingFunction: value,
+      }),
+    },
+    { values: theme("transitionTimingFunction") },
+  );
 }
 export default config;
