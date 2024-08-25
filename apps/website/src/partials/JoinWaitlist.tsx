@@ -1,55 +1,66 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import JoinWaitlistButton from "@/components/animata/button/join-waitlist-button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { toast } from "@/components/ui/use-toast";
 import { cn } from "@/lib/utils";
-import { CgSpinner } from "react-icons/cg";
-import Image from "next/image";
 import TopologyImage from "@/assets/images/topology-1.svg";
 import Balancer from "react-wrap-balancer";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
+import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { useMediaQuery } from "usehooks-ts";
+import { RxCross2 } from "react-icons/rx";
+import Link from "next/link";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function JoinWaitlist({
   open,
   setOpen,
 }: {
-  open?: boolean;
-  setOpen?: (open: boolean) => void;
+  open: boolean;
+  setOpen: (open: boolean) => void;
 }) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
     <>
-      <DesktopWaitlist open={open} onOpenChange={setOpen} />
-      <MobileWaitlist open={isDesktop ? false : open} onOpenChange={setOpen} />
+      <DesktopWaitlist open={open} setOpen={setOpen} />
+      <MobileWaitlist open={isDesktop ? false : open} setOpen={setOpen} />
     </>
   );
 }
 
 function DesktopWaitlist({
   open,
-  onOpenChange,
+  setOpen,
 }: {
-  open?: boolean;
-  onOpenChange?: (open: boolean) => void;
+  open: boolean;
+  setOpen: (open: boolean) => void;
 }) {
+  const modal = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const clickHandler = ({ target }: { target: any }) => {
+      if (!modal.current) return;
+      if (!open || modal.current.contains(target)) return;
+      setOpen(false);
+    };
+    document.addEventListener("click", clickHandler);
+    return () => document.removeEventListener("click", clickHandler);
+  });
+
+  useEffect(() => {
+    const keyHandler = (event: KeyboardEvent) => {
+      if (!open || event.key !== "Escape") return;
+      setOpen(false);
+    };
+    document.addEventListener("keydown", keyHandler);
+    return () => document.removeEventListener("keydown", keyHandler);
+  });
+
   return (
     <AnimatePresence mode="wait">
       {open && (
@@ -65,14 +76,21 @@ function DesktopWaitlist({
           }}
           className="fixed inset-0 z-50 hidden h-full w-full items-center justify-center bg-black/80 md:flex"
         >
-          <div className="relative hidden w-[32rem] flex-col items-center justify-center gap-8 overflow-hidden rounded-[40px] rounded-lg border border-[#313131] bg-black/90 p-8 shadow-xl md:flex">
+          <div
+            ref={modal}
+            className="relative hidden w-[32rem] flex-col items-center justify-center gap-8 overflow-hidden rounded-[40px] rounded-lg border border-[#313131] bg-black/90 p-8 shadow-xl md:flex"
+          >
             <div
               className="absolute inset-0 h-full w-full bg-black/90 bg-center opacity-[0.07]"
               style={{
                 backgroundImage: `url(${TopologyImage.src})`,
               }}
             />
-            <div className="z-10 flex flex-col items-center gap-8">
+            <div className="reddit z-10 flex flex-col items-center gap-8">
+              <RxCross2
+                className="absolute right-5 top-5 h-6 w-6 cursor-pointer text-[#A5A5A5]"
+                onClick={() => setOpen(false)}
+              />
               <h1 className="text-center font-aeonik text-[3.25rem]/[3rem] font-semibold tracking-[-0.06rem]">
                 <Balancer>Want to know when we launch?</Balancer>
               </h1>
@@ -83,6 +101,19 @@ function DesktopWaitlist({
                 </Balancer>
               </p>
               <SubscribeForm />
+              <div className="-mt-8 flex gap-1 text-center font-pulp text-[0.813rem] font-light tracking-[-0.04rem] text-[#A5A5A5]">
+                Follow
+                <Link
+                  href="https://x.com/euterpehq/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline hover:underline-offset-2"
+                >
+                  @euterpehq{" "}
+                </Link>
+                on <FaXTwitter className="h-4 w-4" />
+                for the latest updates
+              </div>
             </div>
           </div>
         </motion.div>
@@ -93,14 +124,14 @@ function DesktopWaitlist({
 
 function MobileWaitlist({
   open,
-  onOpenChange,
+  setOpen,
 }: {
-  open?: boolean;
-  onOpenChange?: (open: boolean) => void;
+  open: boolean;
+  setOpen: (open: boolean) => void;
 }) {
   return (
     <div className="block md:hidden">
-      <Drawer open={open} onOpenChange={onOpenChange}>
+      <Drawer open={open} onOpenChange={setOpen}>
         <DrawerContent className="block md:hidden">
           <div className="relative flex w-full flex-col items-center justify-center gap-8 overflow-hidden rounded-[40px] rounded-lg bg-black/90 p-8 shadow-xl">
             <div
@@ -120,6 +151,7 @@ function MobileWaitlist({
                 </Balancer>
               </p>
               <SubscribeForm />
+              <p>Follow @ClewHQ on f for updates</p>
             </div>
           </div>
         </DrawerContent>
@@ -134,6 +166,7 @@ function SubscribeForm() {
   });
   const [isShaking, setIsShaking] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitted, setisSubmitted] = useState(false);
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -158,10 +191,12 @@ function SubscribeForm() {
       setIsShaking(true);
     } else {
       console.log(JSON.stringify(data));
+      setisSubmitted(false);
       setIsLoading(true);
       setTimeout(() => {
         setIsLoading(false);
         console.log("success");
+        setisSubmitted(true);
       }, 3000);
     }
   }
@@ -193,7 +228,7 @@ function SubscribeForm() {
             </FormItem>
           )}
         />
-        <JoinWaitlistButton isLoading={isLoading} />
+        <JoinWaitlistButton isLoading={isLoading} isSubmitted={isSubmitted} />
       </form>
     </Form>
   );

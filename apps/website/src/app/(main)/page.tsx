@@ -11,16 +11,16 @@ import { AuroraBackground } from "@/components/aceternity/aurora-background";
 import JoinWaitlist from "@/partials/JoinWaitlist";
 
 export default function Page() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
       setOpen(true);
-    }, 20000);
+    }, 10000);
   }, []);
   return (
     <>
-      <JoinWaitlist open setOpen={setOpen} />
+      <JoinWaitlist open={open} setOpen={setOpen} />
       <AuroraBackground className="h-fit">
         <div className="w-full bg-background">
           <Hero />

@@ -2,11 +2,9 @@ import { useEffect, useMemo, useState } from "react";
 import { Sparkle } from "lucide-react";
 import { loadFull } from "tsparticles";
 import { IoHourglassOutline } from "react-icons/io5";
-
 import type { ISourceOptions } from "@tsparticles/engine";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { cn } from "@/lib/utils";
-import { CgSpinner } from "react-icons/cg";
 
 const options: ISourceOptions = {
   key: "star",
@@ -120,8 +118,10 @@ const options: ISourceOptions = {
 
 export default function JoinWaitlistButton({
   isLoading,
+  isSubmitted,
 }: {
   isLoading?: boolean;
+  isSubmitted?: boolean;
 }) {
   const [particleState, setParticlesReady] = useState<"loaded" | "ready">();
   const [isHovering, setIsHovering] = useState(false);
@@ -141,20 +141,21 @@ export default function JoinWaitlistButton({
 
   return (
     <button
-      className="group relative my-8 w-full overflow-hidden rounded-full bg-gradient-to-r from-primary/20 via-primary/30 via-40% to-[#FC8D27]/30 p-1 text-white backdrop-blur-lg transition-transform hover:scale-110 active:scale-105"
+      className="group relative my-8 w-full overflow-hidden rounded-full bg-gradient-to-r from-primary/20 via-primary/30 via-40% to-[#FC8D27]/30 p-1 text-white backdrop-blur-lg transition-transform duration-200 hover:scale-110 active:scale-105"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
       <div className="relative flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary/30 via-primary/40 via-40% to-[#FC8D27] px-4 py-2 text-white">
         <IoHourglassOutline
           className={cn(
-            "size-6 fill-white",
+            "size-6 fill-white animate-ease-linear",
             isLoading
-              ? "animate-ease-out animate-delay-500 animate-spin"
-              : "animate-ease-in-out -translate-y-0.5 animate-sparkle",
+              ? "animation-delay-500 animate-spin animate-ease-out"
+              : "-translate-y-0.5 animate-sparkle",
+            isSubmitted ? "animate-none" : "",
           )}
         />
-        <span className="font-semibold">Join Waitlist</span>
+        <span className="font-semibold">Join waitlist</span>
       </div>
       {/* {!!particleState && (
         <Particles
