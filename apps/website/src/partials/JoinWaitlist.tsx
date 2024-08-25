@@ -15,6 +15,9 @@ import { useMediaQuery } from "usehooks-ts";
 import { RxCross2 } from "react-icons/rx";
 import Link from "next/link";
 import { FaXTwitter } from "react-icons/fa6";
+import { useFormspark } from "@formspark/use-formspark";
+
+const FORMSPARK_FORM_ID = "x4K2BPMRB";
 
 export default function JoinWaitlist({
   open,
@@ -151,7 +154,19 @@ function MobileWaitlist({
                 </Balancer>
               </p>
               <SubscribeForm />
-              <p>Follow @ClewHQ on f for updates</p>
+              <div className="-mt-8 flex gap-1 text-center font-pulp text-[0.813rem] font-light tracking-[-0.04rem] text-[#A5A5A5]">
+                Follow
+                <Link
+                  href="https://x.com/euterpehq/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline hover:underline-offset-2"
+                >
+                  @euterpehq{" "}
+                </Link>
+                on <FaXTwitter className="h-4 w-4" />
+                for the latest updates
+              </div>
             </div>
           </div>
         </DrawerContent>
@@ -165,14 +180,16 @@ function SubscribeForm() {
     email: z.string().email(),
   });
   const [isShaking, setIsShaking] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSubmitted, setisSubmitted] = useState(false);
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       email: "",
     },
   });
+  const [submit, submitting] = useFormspark({
+    formId: FORMSPARK_FORM_ID,
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const { errors } = form.formState;
 
@@ -186,18 +203,13 @@ function SubscribeForm() {
     setTimeout(() => setIsShaking(false), 200);
   }
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
     if (errors.email) {
       setIsShaking(true);
     } else {
-      console.log(JSON.stringify(data));
-      setisSubmitted(false);
-      setIsLoading(true);
-      setTimeout(() => {
-        setIsLoading(false);
-        console.log("success");
-        setisSubmitted(true);
-      }, 3000);
+      setIsSubmitted(false);
+      await submit({ email: data.email });
+      setIsSubmitted(true);
     }
   }
 
@@ -228,7 +240,10 @@ function SubscribeForm() {
             </FormItem>
           )}
         />
-        <JoinWaitlistButton isLoading={isLoading} isSubmitted={isSubmitted} />
+        <JoinWaitlistButton
+          isSubmitting={submitting}
+          isSubmitted={isSubmitted}
+        />
       </form>
     </Form>
   );

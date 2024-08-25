@@ -117,10 +117,10 @@ const options: ISourceOptions = {
 };
 
 export default function JoinWaitlistButton({
-  isLoading,
+  isSubmitting,
   isSubmitted,
 }: {
-  isLoading?: boolean;
+  isSubmitting?: boolean;
   isSubmitted?: boolean;
 }) {
   const [particleState, setParticlesReady] = useState<"loaded" | "ready">();
@@ -149,7 +149,7 @@ export default function JoinWaitlistButton({
         <IoHourglassOutline
           className={cn(
             "size-6 fill-white animate-ease-linear",
-            isLoading
+            isSubmitting
               ? "animation-delay-500 animate-spin animate-ease-out"
               : "-translate-y-0.5 animate-sparkle",
             isSubmitted ? "animate-none" : "",

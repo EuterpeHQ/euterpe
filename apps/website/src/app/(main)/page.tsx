@@ -11,7 +11,7 @@ import { AuroraBackground } from "@/components/aceternity/aurora-background";
 import JoinWaitlist from "@/partials/JoinWaitlist";
 
 export default function Page() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
