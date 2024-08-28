@@ -68,7 +68,7 @@ const artistData = [
     content: <DummyContent />,
   },
   {
-    category: "Webinar",
+    category: "Live Stream",
     title: "Towards a Killer Token Launch",
     src: "https://i.pinimg.com/564x/6d/a6/86/6da686e70ebcc916bea1776ef0d3a55f.jpg",
     content: <DummyContent />,
@@ -102,7 +102,7 @@ const fanData = [
     content: <DummyContent />,
   },
   {
-    category: "Webinar",
+    category: "Live Stream",
     title: "How To Support Smaller Artists",
     src: "https://i.pinimg.com/564x/fa/c5/88/fac58809636dbc8d5652d8546898055f.jpg",
     content: <DummyContent />,

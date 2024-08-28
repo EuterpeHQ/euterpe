@@ -135,7 +135,7 @@ function MobileWaitlist({
   return (
     <div className="block md:hidden">
       <Drawer open={open} onOpenChange={setOpen}>
-        <DrawerContent className="block md:hidden">
+        <DrawerContent className="flex md:hidden">
           <div className="relative flex w-full flex-col items-center justify-center gap-8 overflow-hidden rounded-[40px] rounded-lg bg-black/90 p-8 shadow-xl">
             <div
               className="absolute inset-0 h-full w-full bg-black/90 bg-center opacity-[0.07]"
