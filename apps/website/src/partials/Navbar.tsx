@@ -4,7 +4,7 @@ import {
   DisclosureButton,
   DisclosurePanel,
 } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { cn } from "@/lib/utils";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Link from "next/link";
@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 
 const navigation = [
-  { name: "Position Paper", href: "#", current: false },
+  { name: "Position Paper", href: "/position-paper", current: false },
   { name: "Resources", href: "/resources", current: false },
   { name: "About Us", href: "#", current: false },
 ];

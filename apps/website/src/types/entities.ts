@@ -5,3 +5,11 @@ export type Artist = {
   link: string;
   popularity: number;
 };
+
+export type Article = {
+  slug: string;
+  title: string;
+  image: string;
+  author: string;
+  date: string;
+};
