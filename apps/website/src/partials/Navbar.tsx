@@ -10,6 +10,8 @@ import AnnouncementBar from "@/components/AnnouncementBar";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
+import ArrowRightIcon from "@/assets/icons/arrow-right.png";
+import Image from "next/image";
 
 const navigation = [
   { name: "Position Paper", href: "/position-paper", current: false },
@@ -55,6 +57,13 @@ export default function Navbar() {
               target="_blank"
             >
               Launch app
+              <Image
+                src={ArrowRightIcon}
+                alt="Right Arrow Icon"
+                width={20}
+                height={20}
+                className="ml-1"
+              />
             </Link>
           </Button>
         </div>
