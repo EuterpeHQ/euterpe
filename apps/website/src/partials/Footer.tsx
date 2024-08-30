@@ -240,15 +240,15 @@ export default function Footer() {
           <span className="font-pulp text-[0.688rem] font-extralight text-muted-foreground sm:text-center">
             © 2024 <a href="#">Euterpe</a>. All Rights Reserved.
           </span>
-          <div className="flex items-center gap-4">
+          <div className="mt-4 flex items-center gap-4 md:mt-0">
             <SocialLinks />
 
-            <div
-              className="cursor-pointer font-pulp text-[0.688rem] font-extralight text-muted-foreground hover:underline hover:underline-offset-2 sm:text-center"
+            <p
+              className="-mb-1 cursor-pointer font-pulp text-[0.688rem] font-extralight leading-none text-muted-foreground hover:underline hover:underline-offset-2 sm:text-center"
               onClick={() => setLoading(true)}
             >
               Credits
-            </div>
+            </p>
           </div>
         </div>
       </div>
@@ -302,7 +302,7 @@ function NavGroup({ title, items }: NavGroupProps) {
 
 function SocialLinks() {
   return (
-    <div className="mt-4 flex items-center space-x-5 sm:justify-center md:mt-0 rtl:space-x-reverse">
+    <div className="flex items-center space-x-5 sm:justify-center rtl:space-x-reverse">
       <a
         href="https://x.com/euterpehq/"
         target="_blank"
