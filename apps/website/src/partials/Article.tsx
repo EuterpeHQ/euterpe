@@ -6,8 +6,8 @@ import Image from "next/image";
 export default function Article(props: Article) {
   return (
     <div className="flex flex-col px-10">
-      <div className="flex py-16">
-        <div className="mr-16 flex w-1/2 items-center">
+      <div className="flex flex-col gap-8 py-16 md:flex-row md:gap-0">
+        <div className="flex w-full items-center md:mr-16 md:w-1/2">
           <div className="flex max-w-[30rem] flex-col items-start justify-center gap-16">
             <h1 className="font-aeonik text-7xl font-medium leading-[1.2] tracking-[-0.04em]">
               <Balancer>{props.title}</Balancer>
@@ -32,7 +32,7 @@ export default function Article(props: Article) {
             </div>
           </div>
         </div>
-        <div className="relative aspect-[645/367] w-1/2 overflow-hidden rounded-lg">
+        <div className="relative aspect-[645/367] w-full overflow-hidden rounded-lg md:w-1/2">
           <Image
             src={props.image}
             alt={props.title}
@@ -42,7 +42,7 @@ export default function Article(props: Article) {
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-2xl flex-col gap-8 py-16 font-aeonik">
+      <div className="mx-auto flex max-w-2xl flex-col gap-8 py-8 font-aeonik md:py-16">
         <p className="font-aeonik text-base tracking-[-0.04em] text-muted-foreground">
           In an era where traditional methods of artistic support are rapidly
           evolving, the rise of decentralized finance (DeFi) presents a
