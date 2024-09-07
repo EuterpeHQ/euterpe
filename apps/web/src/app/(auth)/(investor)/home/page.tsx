@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import Swap from "@/partials/exchange/Swap";
 import { RiTokenSwapFill } from "react-icons/ri";
 import { FaSpotify } from "react-icons/fa6";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Info } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -13,6 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import {  Tooltip,TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 
 type Activity = {
   id: number;
@@ -45,6 +46,87 @@ export default function Page() {
                   </SelectContent>
                 </Select>
           </div>
+          {/* chart */}
+          <div className="mt-6 w-full h-[300px] border-2 border-secondary"></div>
+        </section>
+        <section className="flex gap-x-10 justify-between items-center mt-10 w-full h-[300px] border-2 border-primary">
+          {/* top tokens */}
+          <div className="w-[50%] border-2 border-orange-400 h-[300px]">
+            <section className="flex justify-between items-center">
+              <div className="flex justify-start items-center gap-x-4">
+              <h3>Top Tokens</h3>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <div className=" flex items-center gap-1">
+                    <Info size={14} className="text-muted-foreground" />
+                  
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="text-xs">
+                    We're actively developing the top tokens
+                    <br /> for artist. Stay tuned!
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+          </TooltipProvider>
+              </div>
+              <h2 className="hover:underline flex justify-stary items-center gap-x-2 text-sm text-primary">See all <ChevronRight size={15}/> </h2>
+            </section>
+          </div>
+          <div className="w-[50%] border-2 border-orange-400 h-[300px]">
+          <section className="flex justify-between items-center">
+              <div className="flex justify-start items-center gap-x-4">
+              <h3>Greed Index</h3>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <div className=" flex items-center gap-1">
+                    <Info size={14} className="text-muted-foreground" />
+                  
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="text-xs">
+                    We're actively developing the top tokens
+                    <br /> for artist. Stay tuned!
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+          </TooltipProvider>
+              </div>
+              <h2 className="hover:underline flex justify-stary items-center gap-x-2 text-sm text-primary">See all <ChevronRight size={15}/> </h2>
+            </section>
+          </div>
+        </section>
+
+        {/* receent activiteis */}
+        <section className="flex gap-x-10 justify-between  mt-10 w-full h-[300px] border-2 border-primary">
+        <div className="w-full">
+        <section className="flex justify-between items-center">
+              <div className="flex justify-start items-center gap-x-4">
+              <h3>Recent Activities</h3>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <div className=" flex items-center gap-1">
+                    <Info size={14} className="text-muted-foreground" />
+                  
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="text-xs">
+                    We're actively working.
+                    <br /> Stay tuned!
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+          </TooltipProvider>
+              </div>
+              <h2 className="hover:underline flex justify-stary items-center gap-x-2 text-sm text-primary">See all <ChevronRight size={15}/> </h2>
+            </section>
+        </div>
         </section>
         {/* <Summary /> */}
         {/* <Actions /> */}
