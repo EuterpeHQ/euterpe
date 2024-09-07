@@ -74,6 +74,23 @@ export default function Page() {
               </div>
               <h2 className="hover:underline flex justify-stary items-center gap-x-2 text-sm text-primary">See all <ChevronRight size={15}/> </h2>
             </section>
+            {/* token */}
+            <div className="flex justify-between items-center mt-4 w-full border-2 border-blue-400 h-[70px]">
+              <div className="flex justify-start items-center gap-x-3">
+                  <div className="w-14 h-14 border-2 rounded-full"></div>
+                  <div className="">
+                    <h5>Stella</h5>
+                    <h5 className="text-sm text-gray-600">STE</h5>
+                  </div>
+              </div>
+              <div className=" p-2 border">
+                vector chart
+              </div>
+              <div className="">
+                <h5>$0.4531</h5>
+                <h5 className="text-green-500">26,66%</h5>
+              </div>
+            </div>
           </div>
           <div className="w-[50%] border-2 border-orange-400 h-[300px]">
           <section className="flex justify-between items-center">
