@@ -50,9 +50,9 @@ export default function Page() {
           {/* chart */}
           <div className="mt-6 w-full h-[300px] border-2 border-secondary"></div>
         </section>
-        <section className="flex gap-x-10 justify-between items-center mt-10 w-full h-[300px] border-2 border-primary">
+        <section className="flex gap-x-2 justify-between items-center mt-10 w-full h-[300px] border-2 border-primary">
           {/* top tokens */}
-          <div className="w-[50%] border-2 border-orange-400 h-[300px]">
+          <div className="w-[50%] py-4 rounded-lg shadow-md">
             <section className="flex justify-between items-center">
               <div className="flex justify-start items-center gap-x-4">
               <h3>Top Tokens</h3>
@@ -76,7 +76,7 @@ export default function Page() {
               <h2 className="hover:underline flex justify-stary items-center gap-x-2 text-sm text-primary">See all <ChevronRight size={15}/> </h2>
             </section>
             {/* token */}
-            <div className="flex justify-between items-center mt-4 w-full hover:border px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
+            <div className="flex justify-between items-center mt-8 w-full hover:border px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
               <div className="flex justify-start items-center gap-x-3">
                   <div className="w-14 h-14 rounded-full">
                     <Image src="/images/token-logo.jpg" alt="token-logo" width={100} height={100} className="rounded-full"/>
