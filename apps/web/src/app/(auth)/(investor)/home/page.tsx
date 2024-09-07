@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import Swap from "@/partials/exchange/Swap";
 import { RiTokenSwapFill } from "react-icons/ri";
 import { FaSpotify } from "react-icons/fa6";
-import { ChevronRight, Info } from "lucide-react";
+import { ChevronRight, ChevronUp, Info, TrendingDown, TrendingUp } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import {  Tooltip,TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
+import Image from "next/image";
 
 type Activity = {
   id: number;
@@ -75,20 +76,58 @@ export default function Page() {
               <h2 className="hover:underline flex justify-stary items-center gap-x-2 text-sm text-primary">See all <ChevronRight size={15}/> </h2>
             </section>
             {/* token */}
-            <div className="flex justify-between items-center mt-4 w-full border-2 border-blue-400 h-[70px]">
+            <div className="flex justify-between items-center mt-4 w-full hover:border px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
               <div className="flex justify-start items-center gap-x-3">
-                  <div className="w-14 h-14 border-2 rounded-full"></div>
+                  <div className="w-14 h-14 rounded-full">
+                    <Image src="/images/token-logo.jpg" alt="token-logo" width={100} height={100} className="rounded-full"/>
+                  </div>
                   <div className="">
                     <h5>Stella</h5>
                     <h5 className="text-sm text-gray-600">STE</h5>
                   </div>
               </div>
-              <div className=" p-2 border">
-                vector chart
+              <div className="">
+              <TrendingUp className="text-green-500" size={40} />
+              </div>
+              <div className="flex flex-col">
+                <h5 className="ms-2">$0.4531</h5>
+                <h5 className="text-sm  gap-x-1 flex justify-start items-center text-green-500"><ChevronUp size={15} /> 26,66%</h5>
+              </div>
+            </div>
+            <div className="flex justify-between items-center mt-4 w-full hover:border px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
+              <div className="flex justify-start items-center gap-x-3">
+                  <div className="w-14 h-14 rounded-full">
+                    <Image src="/images/token-logo.jpg" alt="token-logo" width={100} height={100} className="rounded-full"/>
+                  </div>
+                  <div className="">
+                    <h5>Ethereum</h5>
+                    <h5 className="text-sm text-gray-600">ETH</h5>
+                  </div>
               </div>
               <div className="">
-                <h5>$0.4531</h5>
-                <h5 className="text-green-500">26,66%</h5>
+              <TrendingUp className="text-green-500" size={40} />
+              </div>
+              <div className="flex flex-col">
+                <h5 className="ms-2">$968.80</h5>
+                <h5 className="text-sm  gap-x-1 flex justify-start items-center text-green-500"><ChevronUp size={15} /> 26,66%</h5>
+              </div>
+            </div>
+            <div className="flex justify-between items-center mt-4 w-full hover:border px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
+              <div className="flex justify-start items-center gap-x-3">
+                  <div className="w-14 h-14 rounded-full">
+                    <Image src="/images/token-logo.jpg" alt="token-logo" width={100} height={100} className="rounded-full"/>
+                  </div>
+                  <div className="">
+                    <h5>Solana</h5>
+                    <h5 className="text-sm text-gray-600">SOL</h5>
+                  </div>
+              </div>
+              <div className="">
+              <TrendingDown className="text-red-500" size={40} />
+              </div>
+              <div className="flex flex-col">
+                <h5 className="ms-2">$132.23</h5>
+                <h5 className="text-sm  gap-x-1 flex justify-start items-center text-red-500"><ChevronUp size={15} /> 26,66%</h5>
               </div>
             </div>
           </div>
@@ -119,9 +158,9 @@ export default function Page() {
         </section>
 
         {/* receent activiteis */}
-        <section className="flex gap-x-10 justify-between  mt-10 w-full h-[300px] border-2 border-primary">
+        <section className="flex gap-x-10 justify-between  mt-10 w-full rounded-lg py-4 shadow-md">
         <div className="w-full">
-        <section className="flex justify-between items-center">
+            <section className="px-4 flex justify-between items-center">
               <div className="flex justify-start items-center gap-x-4">
               <h3>Recent Activities</h3>
             <TooltipProvider>
@@ -143,7 +182,53 @@ export default function Page() {
               </div>
               <h2 className="hover:underline flex justify-stary items-center gap-x-2 text-sm text-primary">See all <ChevronRight size={15}/> </h2>
             </section>
+            <div className="flex justify-between items-center mt-8 w-full hover:border px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
+              <div className="flex justify-start items-center gap-x-3">
+                  <div className="w-14 h-14 rounded-full">
+                    <Image src="/images/token-logo.jpg" alt="token-logo" width={100} height={100} className="rounded-full"/>
+                  </div>
+                  <div className="">
+                    <h5 className="flex justify-start items-center gap-x-2"><span className="w-2 h-2 rounded-full bg-green-400"></span>Oxle8....d533</h5>
+                    <h5 className="text-sm text-green-400">Completed</h5>
+                  </div>
+              </div>
+              <div className="flex flex-col">
+                <h5 className="ms-2">+3.2888980823ETH</h5>
+                <h5 className="ml-auto text-sm  gap-x-1 flex justify-start items-center text-muted">-10288.96USD</h5>
+              </div>
+            </div>
+            <div className="flex justify-between items-center mt-4 w-full hover:border px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
+              <div className="flex justify-start items-center gap-x-3">
+                  <div className="w-14 h-14 rounded-full">
+                    <Image src="/images/token-logo.jpg" alt="token-logo" width={100} height={100} className="rounded-full"/>
+                  </div>
+                  <div className="">
+                    <h5 className="flex justify-start items-center gap-x-2"><span className="w-2 h-2 rounded-full bg-green-400"></span>Oxle8....d533</h5>
+                    <h5 className="text-sm text-yellow-400">Pending</h5>
+                  </div>
+              </div>
+              <div className="flex flex-col">
+                <h5 className="ms-2">-1.2399980823ETH</h5>
+                <h5 className="ml-auto text-sm  gap-x-1 flex justify-start items-center text-muted">-10288.96USD</h5>
+              </div>
+            </div>
+            <div className="flex justify-between items-center mt-4 w-full hover:border px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
+              <div className="flex justify-start items-center gap-x-3">
+                  <div className="w-14 h-14 rounded-full">
+                    <Image src="/images/token-logo.jpg" alt="token-logo" width={100} height={100} className="rounded-full"/>
+                  </div>
+                  <div className="">
+                    <h5 className="flex justify-start items-center gap-x-2"><span className="w-2 h-2 rounded-full bg-green-400"></span>Oxle8....d533</h5>
+                    <h5 className="text-sm text-green-400">Completed</h5>
+                  </div>
+              </div>
+              <div className="flex flex-col">
+                <h5 className="ms-2">+3.2888980823ETH</h5>
+                <h5 className="ml-auto text-sm  gap-x-1 flex justify-start items-center text-muted">-10288.96USD</h5>
+              </div>
+            </div>
         </div>
+        
         </section>
         {/* <Summary /> */}
         {/* <Actions /> */}
