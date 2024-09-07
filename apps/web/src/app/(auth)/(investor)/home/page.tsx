@@ -5,6 +5,14 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import Swap from "@/partials/exchange/Swap";
 import { RiTokenSwapFill } from "react-icons/ri";
 import { FaSpotify } from "react-icons/fa6";
+import { ChevronRight } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 type Activity = {
   id: number;
@@ -21,9 +29,25 @@ export default function Page() {
   return (
     <main>
       <div className="max-w-9xl mx-auto w-full px-4 py-8 sm:px-6 lg:px-8">
-        <NotificationBanner />
-        <Summary />
-        <Actions />
+        {/* <NotificationBanner /> */}
+        {/* users dashboard */}
+        <section className="w-full h-[400px] border-2 border-primary">
+          <div className="flex justify-between items-center">
+            <h2 className="flex justify-stary items-center gap-x-3 text-lg font-semibold">Balance <ChevronRight size={20}/> </h2>
+              <Select>
+                  <SelectTrigger className="w-[120px]">
+                    <SelectValue placeholder="All time" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-muted">
+                    <SelectItem value="light">Last 7days</SelectItem>
+                    <SelectItem value="dark">Last month</SelectItem>
+                    <SelectItem value="system">Last year</SelectItem>
+                  </SelectContent>
+                </Select>
+          </div>
+        </section>
+        {/* <Summary /> */}
+        {/* <Actions /> */}
       </div>
     </main>
   );
