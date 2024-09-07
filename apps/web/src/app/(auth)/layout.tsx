@@ -5,11 +5,8 @@ import ArtistSidebar from "@/partials/ArtistSidebar";
 import FanSidebar from "@/partials/FanSidebar";
 import { useSidebarStore } from "@/providers/store/sidebar.store";
 import { DashboardLoader } from "@/components/Loader";
-import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Header from "@/partials/Header";
-
-const inter = Inter({ weight: ["300", "700"], subsets: ["latin"] });
 
 function Layout({
   children,
@@ -24,7 +21,7 @@ function Layout({
   //   return <>Loading...</>;
   // }
   return (
-    <div className={cn("flex h-screen overflow-hidden", inter.className)}>
+    <div className={cn("flex h-screen overflow-hidden")}>
       {mode === "creator" ? <ArtistSidebar /> : <FanSidebar />}
       <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
         <Header />

@@ -13,20 +13,6 @@ function Header() {
 
   return (
     <header className="sticky top-0 z-30 border-b border-card/65 bg-white dark:bg-surface">
-      <AnnouncementBar>
-        <div>
-          <p className="text-sm">
-            Ready to launch your music career?&nbsp;
-            <Link href="/tokenomics/manage" className="text-primary">
-              Create your unique artist token.
-            </Link>
-            &nbsp;&nbsp;Explore a new world of music investment&nbsp;
-            <Link href="/exchange" className="text-primary">
-              Buy ETP.
-            </Link>
-          </p>
-        </div>
-      </AnnouncementBar>
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="-mb-px flex h-16 items-center justify-between">
           {/* Header: Left side */}
