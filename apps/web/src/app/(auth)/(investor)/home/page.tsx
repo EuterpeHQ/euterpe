@@ -1,20 +1,12 @@
 "use client";
 import React, { useState } from "react";
 
-import NotificationBanner from "@/partials/NotificationBanner";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import Swap from "@/partials/exchange/Swap";
 import { RiTokenSwapFill } from "react-icons/ri";
 import { FaSpotify } from "react-icons/fa6";
 import { ChevronRight, ChevronUp, Info, TrendingDown, TrendingUp } from "lucide-react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 import {  Tooltip,TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import Image from "next/image";
 import { Area, AreaChart, CartesianGrid, XAxis, PieChart, Pie, Cell } from "recharts";
@@ -34,7 +26,7 @@ import {
 } from "@/components/ui/chart";
 import CoinIcon from "@/assets/icons/coin-vertical.svg";
 
-export const description = "An interactive area chart";
+// export const description = "An interactive area chart";
 import {
   Card,
   CardContent,
