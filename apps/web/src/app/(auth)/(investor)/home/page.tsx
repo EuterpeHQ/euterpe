@@ -43,6 +43,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { TbArrowNarrowDown, TbArrowNarrowUp } from "react-icons/tb";
 
 const chartData = [
   { date: "2024-04-01", desktop: 222, mobile: 150 },
@@ -343,7 +344,7 @@ export default function Page() {
               <h2 className="hover:underline flex justify-stary items-center gap-x-2 text-sm text-primary">See all <ChevronRight size={15}/> </h2>
             </section>
             {/* token */}
-            <div className="flex justify-between items-center mt-8 w-full hover:border px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
+            <div className="flex justify-between items-center mt-8 w-full hover:bg-primary/5 px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
               <div className="flex justify-start items-center gap-x-3">
                   <div className="w-14 h-14 rounded-full">
               <Image src={CoinIcon} alt="coin" className="rounded-full" width={50} height={50} />
@@ -363,7 +364,7 @@ export default function Page() {
                 <h5 className="text-sm  gap-x-1 flex justify-start items-center text-green-500"><ChevronUp size={15} /> 26,66%</h5>
               </div>
             </div>
-            <div className="flex justify-between items-center mt-4 w-full hover:border px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
+            <div className="flex justify-between items-center mt-4 w-full hover:bg-primary/5 px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
               <div className="flex justify-start items-center gap-x-3">
                   <div className="w-14 h-14 rounded-full">
               <Image src={CoinIcon} alt="coin" className="rounded-full" width={50} height={50} />
@@ -383,7 +384,7 @@ export default function Page() {
                 <h5 className="text-sm  gap-x-1 flex justify-start items-center text-green-500"><ChevronUp size={15} /> 26,66%</h5>
               </div>
             </div>
-            <div className="flex justify-between items-center mt-4 w-full hover:border px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
+            <div className="flex justify-between items-center mt-4 w-full hover:bg-primary/5 px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
               <div className="flex justify-start items-center gap-x-3">
                   <div className="w-14 h-14 rounded-full">
               <Image src={CoinIcon} alt="coin" className="rounded-full" width={50} height={50} />
@@ -460,7 +461,7 @@ export default function Page() {
         </section>
 
         {/* receent activiteis */}
-        <section className="flex gap-x-10 justify-between  mt-10 w-full rounded-lg py-4 shadow-md">
+        <section className="flex gap-x-10 justify-between  mt-10 w-full rounded-lg py-4 shadow-md  shadow-md rounded-[16px] border-[0.5px] bg-white/[0.02] px-4">
         <div className="w-full">
             <section className="px-4 flex justify-between items-center">
               <div className="flex justify-start items-center gap-x-4">
@@ -484,12 +485,13 @@ export default function Page() {
               </div>
               <h2 className="hover:underline flex justify-stary items-center gap-x-2 text-sm text-primary">See all <ChevronRight size={15}/> </h2>
             </section>
-            <div className="flex justify-between items-center mt-8 w-full hover:border px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
+            <div className="flex justify-between items-center mt-8 w-full hover:bg-primary/5 px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
               <div className="flex justify-start items-center gap-x-3">
-                  <div className="w-14 h-14 rounded-full">
-              <Image src={CoinIcon} alt="coin" className="rounded-full" width={50} height={50} />
-
-                    {/* <Image src="/images/token-logo.jpg" alt="token-logo" width={100} height={100} className="rounded-full"/> */}
+                  <div className="w-10 h-18 rounded-full">
+                  <div className="flex justify-center items-center bg-[#2a323f] rounded-xl p-1"
+                >
+            <TbArrowNarrowUp className="h-9  w-6 rotate-45 text-[#125cc4]" />
+                 </div>
                   </div>
                   <div className="">
                     <h5 className="flex justify-start items-center gap-x-2"><span className="w-2 h-2 rounded-full bg-green-400"></span>Oxle8....d533</h5>
@@ -497,16 +499,17 @@ export default function Page() {
                   </div>
               </div>
               <div className="flex flex-col">
-                <h5 className="ms-2">+3.2888980823ETH</h5>
-                <h5 className="ml-auto text-sm  gap-x-1 flex justify-start items-center text-muted">-10288.96USD</h5>
+                <h5 className="flex justify-start items-center gap-x-2 ms-2">+3.2888980823ETH <span><div className="h-3 w-3 rounded-full bg-white/5" /></span></h5>
+                <h5 className="ml-auto text-sm  flex justify-start items-center gap-x-2 text-muted">-10288.96USD  <span><div className="h-3 w-3 rounded-full bg-white/5" /></span></h5>
               </div>
             </div>
-            <div className="flex justify-between items-center mt-4 w-full hover:border px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
+            <div className="flex justify-between items-center mt-8 w-full hover:bg-primary/5 px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
               <div className="flex justify-start items-center gap-x-3">
-                  <div className="w-14 h-14 rounded-full">
-              <Image src={CoinIcon} alt="coin" className="rounded-full" width={50} height={50} />
-
-                    {/* <Image src="/images/token-logo.jpg" alt="token-logo" width={100} height={100} className="rounded-full"/> */}
+                  <div className="w-10 h-18 rounded-full">
+                  <div className="flex justify-center items-center bg-[#3b3343] rounded-xl p-1"
+                >
+            <TbArrowNarrowDown className="h-9  w-6 rotate-45 text-[#b980da]" />
+                 </div>
                   </div>
                   <div className="">
                     <h5 className="flex justify-start items-center gap-x-2"><span className="w-2 h-2 rounded-full bg-green-400"></span>Oxle8....d533</h5>
@@ -514,16 +517,17 @@ export default function Page() {
                   </div>
               </div>
               <div className="flex flex-col">
-                <h5 className="ms-2">-1.2399980823ETH</h5>
-                <h5 className="ml-auto text-sm  gap-x-1 flex justify-start items-center text-muted">-10288.96USD</h5>
+                <h5 className="flex justify-start items-center gap-x-2 ms-2">+3.2888980823ETH <span><div className="h-3 w-3 rounded-full bg-white/5" /></span></h5>
+                <h5 className="ml-auto text-sm  flex justify-start items-center gap-x-2 text-muted">-10288.96USD  <span><div className="h-3 w-3 rounded-full bg-white/5" /></span></h5>
               </div>
             </div>
-            <div className="flex justify-between items-center mt-4 w-full hover:border px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
+            <div className="flex justify-between items-center mt-8 w-full hover:bg-primary/5 px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
               <div className="flex justify-start items-center gap-x-3">
-                  <div className="w-14 h-14 rounded-full">
-              <Image src={CoinIcon} alt="coin" className="rounded-full" width={50} height={50} />
-
-                    {/* <Image src="/images/token-logo.jpg" alt="token-logo" width={100} height={100} className="rounded-full"/> */}
+                  <div className="w-10 h-18 rounded-full">
+                  <div className="flex justify-center items-center bg-[#2a323f] rounded-xl p-1"
+                >
+            <TbArrowNarrowUp className="h-9  w-6 rotate-45 text-[#125cc4]" />
+                 </div>
                   </div>
                   <div className="">
                     <h5 className="flex justify-start items-center gap-x-2"><span className="w-2 h-2 rounded-full bg-green-400"></span>Oxle8....d533</h5>
@@ -531,8 +535,8 @@ export default function Page() {
                   </div>
               </div>
               <div className="flex flex-col">
-                <h5 className="ms-2">+3.2888980823ETH</h5>
-                <h5 className="ml-auto text-sm  gap-x-1 flex justify-start items-center text-muted">-10288.96USD</h5>
+                <h5 className="flex justify-start items-center gap-x-2 ms-2">+3.2888980823ETH <span><div className="h-3 w-3 rounded-full bg-white/5" /></span></h5>
+                <h5 className="ml-auto text-sm  flex justify-start items-center gap-x-2 text-muted">-10288.96USD  <span><div className="h-3 w-3 rounded-full bg-white/5" /></span></h5>
               </div>
             </div>
         </div>
