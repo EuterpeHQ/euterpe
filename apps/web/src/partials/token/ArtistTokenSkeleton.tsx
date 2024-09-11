@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import TokenOverview from "@/partials/token/TokenOverview";
-import ManageToken from "@/partials/token/ManageToken";
+import TokenOverviewSkeleton from "@/partials/token/TokenOverviewSkeleton";
 import { ArtistToken as ArtistTokenProps } from "@/entities";
 
-function ArtistToken(props: ArtistTokenProps) {
+function ArtistTokenSkeleton() {
   const [activeTab, setActiveTab] = useState("overview");
 
   return (
@@ -32,13 +31,13 @@ function ArtistToken(props: ArtistTokenProps) {
         hidden={"overview" !== activeTab}
         forceMount
       >
-        <TokenOverview {...props} />
+        <TokenOverviewSkeleton />
       </TabsContent>
       <TabsContent value="manage" hidden={"manage" !== activeTab} forceMount>
-        <ManageToken />
+        <></>
       </TabsContent>
     </Tabs>
   );
 }
 
-export default ArtistToken;
+export default ArtistTokenSkeleton;

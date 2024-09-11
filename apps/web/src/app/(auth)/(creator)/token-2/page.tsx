@@ -18,6 +18,7 @@ function Page() {
   const [artistToken, setArtistToken] = useState<ArtistTokenProps | null>(null);
 
   const fetchArtistToken = async () => {
+    setIsLoading(true);
     const tokenAddresses = [];
 
     const count = await readContract(config, {
@@ -84,18 +85,14 @@ function Page() {
           });
         }
       }
+      setIsLoading(false);
       return artistToken;
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
-    const fetchArtistTokenAsync = async () => {
-      setIsLoading(true);
-      await fetchArtistToken();
-      setIsLoading(false);
-    };
-
-    fetchArtistTokenAsync();
+    fetchArtistToken();
   }, [address]);
 
   return (
@@ -103,13 +100,8 @@ function Page() {
       <h2 className="py-6 font-azeret text-2xl font-medium tracking-[-0.06rem]">
         Token
       </h2>
-      {isLoading ? (
-        <ArtistTokenSkeleton />
-      ) : artistToken ? (
-        <ArtistToken {...artistToken} />
-      ) : (
-        <NoArtistToken />
-      )}
+      {isLoading && <ArtistTokenSkeleton />}
+      {!isLoading && <>{artistToken ? <NoArtistToken /> : <NoArtistToken />}</>}
     </div>
   );
 }

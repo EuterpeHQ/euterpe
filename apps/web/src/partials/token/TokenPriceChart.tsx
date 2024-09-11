@@ -63,10 +63,10 @@ export default function TokenPriceChart() {
   });
 
   return (
-    <Card className="rounded-[16px] border-[0.5px] bg-white/[0.02] md:h-96">
+    <Card className="h-full rounded-[16px] border-[0.5px] bg-white/[0.02]">
       <CardHeader className="flex items-center gap-2 space-y-0 border-b py-6 sm:flex-row">
         <div className="grid flex-1 gap-1 text-center sm:text-left">
-          <CardTitle>Token Performance</CardTitle>
+          <CardTitle>Token Price</CardTitle>
           <CardDescription>
             See token performance across different periods
           </CardDescription>
@@ -123,7 +123,7 @@ export default function TokenPriceChart() {
       <CardContent className="px-5 pt-4 sm:pt-6">
         <ChartContainer
           config={chartConfig}
-          className="aspect-auto h-[250px] w-full"
+          className="aspect-auto h-[400px] w-full"
         >
           <AreaChart data={filteredData}>
             <defs>
