@@ -16,7 +16,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ChevronRight, ChevronUp, Info, TrendingDown, TrendingUp } from "lucide-react";
+import { ChevronRight, ChevronUp, Info, RefreshCcw, TrendingDown, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const chartData = [
@@ -131,7 +131,7 @@ function Page() {
   return (
    <main>
    <div className="max-w-9xl mx-auto w-full px-4 py-8 sm:px-6 lg:px-8">
-    <div className="flex justify-start items-center gap-x-8">
+    <div className="flex justify-start items-center gap-x-2">
     <Dashboard/>
     <BestBuy/>
     </div>
@@ -268,6 +268,27 @@ function Dashboard() {
 function BestBuy() {
   return (
 <>
+<section className="w-[32%] rounded-[16px] border-[0.5px] bg-white/[0.02] md:h-[390px] px-3 py-4 -mt-4 shadow-none">
+  <div className="flex justify-between items-center">
+
+  <h2>Best to buy</h2>
+  <div className="cursor-pointer w-8 h-8 rounded-md border border-primary flex justify-center items-center">
+  <RefreshCcw size={15} />
+  </div>
+  </div>
+  <h2 className="text-gray-400 mt-2 flex justify-start items-end gap-x-3 text-4xl font-semibold">
+  $3,200<span className="-ms-2 text-muted">.80</span></h2>
+  <div>
+    <h2 className="flex justify-start items-center gap-x-2">Ethereum <span className="text-muted font-semibold">ETH</span><h5 className="text-sm -ms-2 flex gap-x-1 justify-start items-center text-green-500">
+              <ChevronUp size={15} /> 85.66%
+            </h5></h2>
+
+  </div>
+  <section className="flex justify-start items-center gap-x-2 my-3">
+    <button className="rounded-full p-2 px-8 py-1 border border-2">Smart trade</button>
+    <button className="rounded-full p-2 px-8 py-1 border border-2">Set Alert</button>
+  </section>
+</section>
 </>
   )
 }
