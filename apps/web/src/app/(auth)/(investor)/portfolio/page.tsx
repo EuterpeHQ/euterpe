@@ -16,7 +16,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ChevronRight, ChevronUp, Info, RefreshCcw, TrendingDown, TrendingUp } from "lucide-react";
+import { ChevronRight, ChevronUp, DollarSign, Info, MoveUpRight, RefreshCcw, TrendingDown, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {  Tooltip,TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import  Image from "next/image";
@@ -143,7 +143,7 @@ function Page() {
     </div>
     <div className="flex justify-start items-center gap-x-2">
     <Assets/>
-    <BestBuy/>
+    <Summary/>
     </div>
     </section>
     </main>
@@ -278,10 +278,10 @@ function Dashboard() {
 function BestBuy() {
   return (
 <>
-<section className="w-[32%] rounded-[16px] border-[0.5px] bg-white/[0.02] md:h-[390px] px-3 py-4 -mt-4 shadow-none">
+<section className="w-[30%] rounded-[16px] border-[0.5px] bg-white/[0.02] md:h-[390px] px-3 py-4 -mt-4 shadow-none">
   <div className="flex justify-between items-center">
 
-  <h2>Best to buy</h2>
+  <h2 className="text-lg">Best to buy</h2>
   <div className="cursor-pointer w-8 h-8 rounded-md border border-primary flex justify-center items-center">
   <RefreshCcw size={15} />
   </div>
@@ -383,5 +383,72 @@ function Assets() {
               </section>
             </section>
     </section>
+  )
+}
+function Summary() {
+  return (
+<>
+<section className="w-[30%] rounded-[16px] border-[0.5px] bg-white/[0.02] md:h-[385px] px-3 py-4 shadow-none">
+  <div className="flex justify-between items-center">
+    <h2 className="text-lg">Summary</h2>
+  </div>
+  <h2 className="text-gray-400 mt-2 flex justify-start items-end gap-x-3 text-4xl font-semibold">
+  $ 3,200<span className="-ms-2 text-muted">.80</span></h2>
+
+  <div className="flex my-6 justify-start items-center gap-x-4 w-full">
+  <div className="w-12 h-12 bg-blue-300/20  rounded-full flex justify-center items-center">
+  <DollarSign color="blue" size={25} /></div>
+  <div className="flex-1">
+    <h2 className="text-2xl">$ 3,326.18</h2>
+    <div className="flex justify-between  items-center">
+      <h2 className="text-muted">Available to trade</h2>
+            <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <div className=" flex items-center gap-1">
+                      <Info size={14} className="text-muted-foreground" />
+                    
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p className="text-xs">
+                      We're actively developing these assets.
+                      <br /> Stay tuned!
+                    </p>
+                  </TooltipContent>
+                </Tooltip>
+            </TooltipProvider>
+    </div>
+  </div>
+  </div>
+  <div className="flex my-6 justify-start items-center gap-x-4 w-full">
+  <div className="w-12 h-12 bg-primary/20 opacity-65 rounded-full flex justify-center items-center">
+  <MoveUpRight  color="green" size={25} /></div>
+  <div className="flex-1">
+    <h2 className="text-2xl">$ 3,326.18</h2>
+    <div className="flex justify-between  items-center">
+      <h2 className="text-muted">Available cash out</h2>
+            <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <div className=" flex items-center gap-1">
+                      <Info size={14} className="text-muted-foreground" />
+                    
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p className="text-xs">
+                      We're actively developing these assets.
+                      <br /> Stay tuned!
+                    </p>
+                  </TooltipContent>
+                </Tooltip>
+            </TooltipProvider>
+    </div>
+  </div>
+  </div>
+    <button className="hover:bg-primary/25 mt-6 w-full rounded-full p-2 px-8 py-2 bg-muted">Cash Out</button>
+</section>
+</>
   )
 }
