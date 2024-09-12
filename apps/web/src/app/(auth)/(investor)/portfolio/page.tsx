@@ -18,6 +18,12 @@ import {
 } from "@/components/ui/card";
 import { ChevronRight, ChevronUp, Info, RefreshCcw, TrendingDown, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
+import {  Tooltip,TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
+import  Image from "next/image";
+import CoinIcon from "@/assets/icons/coin-vertical.svg";
+
+
+
 
 const chartData = [
   { date: "2024-04-01", desktop: 222, mobile: 150 },
@@ -130,12 +136,16 @@ const chartConfig = {
 function Page() {
   return (
    <main>
-   <div className="max-w-9xl mx-auto w-full px-4 py-8 sm:px-6 lg:px-8">
+   <section className="max-w-9xl mx-auto w-full px-4 py-8 sm:px-6 lg:px-8">
     <div className="flex justify-start items-center gap-x-2">
     <Dashboard/>
     <BestBuy/>
     </div>
+    <div className="flex justify-start items-center gap-x-2">
+    <Assets/>
+    <BestBuy/>
     </div>
+    </section>
     </main>
   )
 }
@@ -290,5 +300,88 @@ function BestBuy() {
   </section>
 </section>
 </>
+  )
+}
+
+function Assets() {
+  return (
+    <section className="w-[70%] pb-10 rounded-[16px] border-[0.5px] bg-white/[0.02] px-3 md:h-96">
+        <div className="mt-4 ms-1.5 flex justify-start items-center gap-x-4">
+              <h2 className="text-lg">All assets</h2>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <div className=" flex items-center gap-1">
+                    <Info size={14} className="text-muted-foreground" />
+                  
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="text-xs">
+                    We're actively developing these assets.
+                    <br /> Stay tuned!
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+          </TooltipProvider>
+              </div>
+            {/* assets */}
+            <section className="mt-6">
+              <section className="flex border-b text-muted text-lg font-semibold">
+                <div className="w-[30%] p-2">Name</div>
+                <div className="w-[30%] p-2">Balance</div>
+                <div className="w-[30%] p-2">USD</div>
+                <div className="w-[30%] p-2"></div>
+              </section>
+              <section className="flex justify-start items-center border-b">
+                <div className="w-[30%] p-2 flex justify-start items-center gap-x-1 text-lg">
+                <Image src={CoinIcon} alt="coin" className="rounded-full" width={25} height={25} />
+                <h3>DRC</h3>
+                </div>
+                <div className="w-[30%] p-2 text-lg">$1,236 <span className="text-gray-400">.88</span></div>
+                <div className="w-[30%] p-2 text-lg text-gray-400">$0.185578</div>
+                <div className="w-[30%] p-2 flex justify-start items-center gap-x-2">
+                  <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Buy</button>
+                  <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Send</button>
+                </div>
+              </section>
+              <section className="flex justify-start items-center border-b">
+                <div className="w-[30%] p-2 flex justify-start items-center gap-x-1 text-lg">
+                <Image src={CoinIcon} alt="coin" className="rounded-full" width={25} height={25} />
+                <h3>ETH</h3>
+                </div>
+                <div className="w-[30%] p-2 text-lg">$3,236 <span className="text-gray-400">.88</span></div>
+                <div className="w-[30%] p-2 text-lg text-gray-400">$0.185578</div>
+                <div className="w-[30%] p-2 flex justify-start items-center gap-x-2">
+                  <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Buy</button>
+                  <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Send</button>
+                </div>
+              </section>
+              <section className="flex justify-start items-center border-b">
+                <div className="w-[30%] p-2 flex justify-start items-center gap-x-1 text-lg">
+                <Image src={CoinIcon} alt="coin" className="rounded-full" width={25} height={25} />
+                <h3>SOL</h3>
+                </div>
+                <div className="w-[30%] p-2 text-lg">$8,236 <span className="text-gray-400">.88</span></div>
+                <div className="w-[30%] p-2 text-lg text-gray-400">$0.185578</div>
+                <div className="w-[30%] p-2 flex justify-start items-center gap-x-2">
+                  <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Buy</button>
+                  <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Send</button>
+                </div>
+              </section>
+              <section className="flex justify-start items-center border-b">
+                <div className="w-[30%] p-2 flex justify-start items-center gap-x-1 text-lg">
+                <Image src={CoinIcon} alt="coin" className="rounded-full" width={25} height={25} />
+                <h3>XRP</h3>
+                </div>
+                <div className="w-[30%] p-2 text-lg">$1,236 <span className="text-gray-400">.88</span></div>
+                <div className="w-[30%] p-2 text-lg text-gray-400">$0.185578</div>
+                <div className="w-[30%] p-2 flex justify-start items-center gap-x-2">
+                  <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Buy</button>
+                  <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Send</button>
+                </div>
+              </section>
+            </section>
+    </section>
   )
 }
