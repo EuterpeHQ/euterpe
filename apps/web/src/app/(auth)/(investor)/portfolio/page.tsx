@@ -137,11 +137,11 @@ function Page() {
   return (
    <main>
    <section className="max-w-9xl mx-auto w-full px-4 py-8 sm:px-6 lg:px-8">
-    <div className="flex justify-start items-center gap-x-2">
+    <div className="gap-y-6 flex flex-col lg:flex-row justify-start items-center gap-x-2">
     <Dashboard/>
     <BestBuy/>
     </div>
-    <div className="flex justify-start items-center gap-x-2">
+    <div className="mt-6 lg:mt-0 gap-y-6 flex flex-col lg:flex-row justify-start items-center gap-x-2">
     <Assets/>
     <Summary/>
     </div>
@@ -169,7 +169,7 @@ function Dashboard() {
     return date >= now;
   });
   return (
-<section className="w-[70%] pb-10">
+<section className="w-full lg:w-[70%] pb-10">
 {/* chart */}
 <div className="mt-6 w-full">
   <Card className="rounded-[16px] border-[0.5px] bg-white/[0.02] md:h-96">
@@ -278,7 +278,7 @@ function Dashboard() {
 function BestBuy() {
   return (
 <>
-<section className="w-[30%] rounded-[16px] border-[0.5px] bg-white/[0.02] md:h-[390px] px-3 py-4 -mt-4 shadow-none">
+<section className="w-full lg:w-[30%] rounded-[16px] border-[0.5px] bg-white/[0.02] md:h-[390px] px-3 py-4 -mt-4 shadow-none">
   <div className="flex justify-between items-center">
 
   <h2 className="text-lg">Best to buy</h2>
@@ -294,9 +294,9 @@ function BestBuy() {
             </h5></h2>
 
   </div>
-  <section className="flex justify-start items-center gap-x-2 my-3">
-    <button className="rounded-full p-2 px-8 py-1 border border-2">Smart trade</button>
-    <button className="rounded-full p-2 px-8 py-1 border border-2">Set Alert</button>
+  <section className="flex-wrap gap-y-3  flex justify-start items-center gap-x-2 my-3">
+    <button className="hover:bg-primary/25 w-full sm:w-fit rounded-full p-2 px-8 py-1 border">Smart trade</button>
+    <button className="hover:bg-primary/25 w-full sm:w-fit rounded-full p-2 px-8 py-1 border">Set Alert</button>
   </section>
 </section>
 </>
@@ -305,7 +305,7 @@ function BestBuy() {
 
 function Assets() {
   return (
-    <section className="w-[70%] pb-10 rounded-[16px] border-[0.5px] bg-white/[0.02] px-3 md:h-96">
+    <section className="w-full lg:w-[70%] pb-10 rounded-[16px] border-[0.5px] bg-white/[0.02] px-3 lg:h-96">
         <div className="mt-4 ms-1.5 flex justify-start items-center gap-x-4">
               <h2 className="text-lg">All assets</h2>
             <TooltipProvider>
@@ -333,49 +333,49 @@ function Assets() {
                 <div className="w-[30%] p-2">USD</div>
                 <div className="w-[30%] p-2"></div>
               </section>
-              <section className="flex justify-start items-center border-b">
-                <div className="w-[30%] p-2 flex justify-start items-center gap-x-1 text-lg">
+              <section className="flex-wrap md:flex-nowrap flex justify-start items-center border-b">
+                <div className="w-[30%] p-2 flex justify-start items-center gap-x-1 text-base sm:text-lg">
                 <Image src={CoinIcon} alt="coin" className="rounded-full" width={25} height={25} />
                 <h3>DRC</h3>
                 </div>
-                <div className="w-[30%] p-2 text-lg">$1,236 <span className="text-gray-400">.88</span></div>
-                <div className="w-[30%] p-2 text-lg text-gray-400">$0.185578</div>
+                <div className="w-[30%] p-2 text-base sm:text-lg">$1,236 <span className="text-gray-400">.88</span></div>
+                <div className="w-[30%] p-2 text-base sm:text-lg text-gray-400">$0.185578</div>
                 <div className="w-[30%] p-2 flex justify-start items-center gap-x-2">
                   <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Buy</button>
                   <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Send</button>
                 </div>
               </section>
-              <section className="flex justify-start items-center border-b">
-                <div className="w-[30%] p-2 flex justify-start items-center gap-x-1 text-lg">
+              <section className="flex-wrap md:flex-nowrap flex justify-start items-center border-b">
+                <div className="w-[30%] p-2 flex justify-start items-center gap-x-1 text-base sm:text-lg">
                 <Image src={CoinIcon} alt="coin" className="rounded-full" width={25} height={25} />
                 <h3>ETH</h3>
                 </div>
-                <div className="w-[30%] p-2 text-lg">$3,236 <span className="text-gray-400">.88</span></div>
-                <div className="w-[30%] p-2 text-lg text-gray-400">$0.185578</div>
+                <div className="w-[30%] p-2 text-base sm:text-lg">$3,236 <span className="text-gray-400">.88</span></div>
+                <div className="w-[30%] p-2 text-base sm:text-lg text-gray-400">$0.185578</div>
                 <div className="w-[30%] p-2 flex justify-start items-center gap-x-2">
                   <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Buy</button>
                   <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Send</button>
                 </div>
               </section>
-              <section className="flex justify-start items-center border-b">
-                <div className="w-[30%] p-2 flex justify-start items-center gap-x-1 text-lg">
+              <section className="flex-wrap md:flex-nowrap flex justify-start items-center border-b">
+                <div className="w-[30%] p-2 flex justify-start items-center gap-x-1 text-base sm:text-lg">
                 <Image src={CoinIcon} alt="coin" className="rounded-full" width={25} height={25} />
                 <h3>SOL</h3>
                 </div>
-                <div className="w-[30%] p-2 text-lg">$8,236 <span className="text-gray-400">.88</span></div>
-                <div className="w-[30%] p-2 text-lg text-gray-400">$0.185578</div>
+                <div className="w-[30%] p-2 text-base sm:text-lg">$1,236 <span className="text-gray-400">.88</span></div>
+                <div className="w-[30%] p-2 text-base sm:text-lg text-gray-400">$0.185578</div>
                 <div className="w-[30%] p-2 flex justify-start items-center gap-x-2">
                   <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Buy</button>
                   <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Send</button>
                 </div>
               </section>
-              <section className="flex justify-start items-center border-b">
-                <div className="w-[30%] p-2 flex justify-start items-center gap-x-1 text-lg">
+              <section className="flex-wrap md:flex-nowrap flex justify-start items-center border-b">
+                <div className="w-[30%] p-2 flex justify-start items-center gap-x-1 text-base sm:text-lg">
                 <Image src={CoinIcon} alt="coin" className="rounded-full" width={25} height={25} />
                 <h3>XRP</h3>
                 </div>
-                <div className="w-[30%] p-2 text-lg">$1,236 <span className="text-gray-400">.88</span></div>
-                <div className="w-[30%] p-2 text-lg text-gray-400">$0.185578</div>
+                <div className="w-[30%] p-2 text-base sm:text-lg">$1,236 <span className="text-gray-400">.88</span></div>
+                <div className="w-[30%] p-2 text-base sm:text-lg text-gray-400">$0.185578</div>
                 <div className="w-[30%] p-2 flex justify-start items-center gap-x-2">
                   <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Buy</button>
                   <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Send</button>
@@ -388,7 +388,7 @@ function Assets() {
 function Summary() {
   return (
 <>
-<section className="w-[30%] rounded-[16px] border-[0.5px] bg-white/[0.02] md:h-[385px] px-3 py-4 shadow-none">
+<section className="w-full lg:w-[30%] rounded-[16px] border-[0.5px] bg-white/[0.02] md:h-[385px] px-3 py-4 shadow-none">
   <div className="flex justify-between items-center">
     <h2 className="text-lg">Summary</h2>
   </div>
