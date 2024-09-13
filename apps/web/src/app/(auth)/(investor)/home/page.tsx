@@ -36,6 +36,8 @@ import {
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { TbArrowNarrowDown, TbArrowNarrowUp } from "react-icons/tb";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const chartData = [
   { date: "2024-04-01", desktop: 222, mobile: 150 },
@@ -174,6 +176,12 @@ export default function Page() {
     now.setDate(now.getDate() - daysToSubtract);
     return date >= now;
   });
+
+  const router = useRouter()
+
+  const seeAllToken = () => {
+    router.push("/explore")
+  }
 
   return (
     <main>
@@ -333,7 +341,9 @@ export default function Page() {
               </Tooltip>
           </TooltipProvider>
               </div>
-              <h2 className="hover:underline flex justify-stary items-center gap-x-2 text-sm text-primary">See all <ChevronRight size={15}/> </h2>
+             
+             <h2 onClick={seeAllToken} className="hover:underline cursor-pointer flex justify-stary items-center gap-x-2 text-sm text-primary">See all <ChevronRight size={15}/> </h2>
+              
             </section>
             {/* token */}
             <div className="flex justify-between items-center mt-8 w-full hover:bg-primary/5 px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
