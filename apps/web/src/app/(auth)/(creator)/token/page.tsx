@@ -16,6 +16,7 @@ function Page() {
   const { address } = useAccount();
   const [isLoading, setIsLoading] = useState(true);
   const [artistToken, setArtistToken] = useState<ArtistTokenProps | null>(null);
+  const [isTokenCreated, setIsTokenCreated] = useState(false);
 
   const fetchArtistToken = async () => {
     const tokenAddresses = [];
@@ -91,12 +92,13 @@ function Page() {
   useEffect(() => {
     const fetchArtistTokenAsync = async () => {
       setIsLoading(true);
+      setArtistToken(null);
       await fetchArtistToken();
       setIsLoading(false);
     };
 
     fetchArtistTokenAsync();
-  }, [address]);
+  }, [address, isTokenCreated]);
 
   return (
     <div className="max-w-9xl mx-auto flex h-full w-full flex-col px-5 pb-5">
@@ -108,7 +110,9 @@ function Page() {
       ) : artistToken ? (
         <ArtistToken {...artistToken} />
       ) : (
-        <NoArtistToken />
+        <NoArtistToken
+          onTokenCreated={() => setIsTokenCreated((prev) => !prev)}
+        />
       )}
     </div>
   );

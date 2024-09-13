@@ -19,6 +19,7 @@ const config = {
     fontFamily: {
       urbanist: ["var(--font-urbanist)"],
       azeret: ["var(--font-azeret)"],
+      aeonik: ["var(--font-aeonik)"],
       federant: ["var(--font-federant)"],
     },
     container: {
