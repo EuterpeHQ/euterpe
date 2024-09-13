@@ -8,7 +8,6 @@ function DropdownNotifications({ align }: { align: "left" | "right" }) {
   const trigger = useRef<HTMLButtonElement>(null);
   const dropdown = useRef<HTMLDivElement>(null);
 
-  // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }: { target: any }) => {
       if (!dropdown.current || !trigger.current) return;
@@ -24,7 +23,6 @@ function DropdownNotifications({ align }: { align: "left" | "right" }) {
     return () => document.removeEventListener("click", clickHandler);
   });
 
-  // close if the esc key is pressed
   useEffect(() => {
     const keyHandler = (event: KeyboardEvent) => {
       if (!dropdownOpen || event.key !== "Escape") return;
@@ -38,14 +36,14 @@ function DropdownNotifications({ align }: { align: "left" | "right" }) {
     <div className="relative inline-flex">
       <button
         ref={trigger}
-        className={`flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-card/65 dark:hover:bg-card ${dropdownOpen && "bg-slate-200"}`}
+        className={`flex h-6 w-6 items-center justify-center rounded-full border-[0.5px] bg-slate-100 hover:bg-slate-200 dark:bg-card/65 dark:hover:bg-card ${dropdownOpen && "bg-slate-200"}`}
         aria-haspopup="true"
         onClick={() => setDropdownOpen(!dropdownOpen)}
         aria-expanded={dropdownOpen}
       >
         <span className="sr-only">Notifications</span>
         <svg
-          className="h-4 w-4"
+          className="h-3 w-3"
           viewBox="0 0 16 16"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -63,7 +61,7 @@ function DropdownNotifications({ align }: { align: "left" | "right" }) {
 
       {/* @ts-expect-error */}
       <Transition
-        className={`dark:bg-surface absolute top-full z-10 -mr-48 mt-1 min-w-80 origin-top-right overflow-hidden rounded border border-slate-200 bg-white py-1.5 shadow-lg dark:border-card/65 sm:mr-0 ${align === "right" ? "right-0" : "left-0"}`}
+        className={`absolute top-full z-10 -mr-48 mt-1 min-w-80 origin-top-right overflow-hidden rounded border border-slate-200 bg-white py-1.5 shadow-lg dark:border-card/65 dark:bg-surface sm:mr-0 ${align === "right" ? "right-0" : "left-0"}`}
         show={dropdownOpen}
         enter="transition ease-out duration-200 transform"
         enterStart="opacity-0 -translate-y-2"

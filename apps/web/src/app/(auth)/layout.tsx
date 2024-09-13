@@ -21,11 +21,13 @@ function Layout({
   //   return <>Loading...</>;
   // }
   return (
-    <div className={cn("flex h-screen overflow-hidden")}>
-      {mode === "creator" ? <ArtistSidebar /> : <FanSidebar />}
-      <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-        <Header />
-        {children}
+    <div className={cn("flex h-screen flex-col overflow-hidden")}>
+      <Header />
+      <div className={cn("flex")}>
+        {mode === "creator" ? <ArtistSidebar /> : <FanSidebar />}
+        <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
+          {children}
+        </div>
       </div>
     </div>
   );

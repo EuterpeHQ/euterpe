@@ -235,12 +235,11 @@ function ArtistSidebar() {
             </svg>
           </button>
           {/* Logo */}
-          <NavLink to="/" className="block">
+          <NavLink to="/" className="block lg:hidden">
             <div className="flex items-center justify-center gap-2">
-              <Logomark className="h-auto w-8" />
               <p
                 className={cn(
-                  "ml-2 text-base font-semibold opacity-0 transition duration-150",
+                  "ml-2 text-sm font-bold opacity-0 transition duration-150",
                   {
                     "opacity-100": sidebarExpanded,
                   },
@@ -250,7 +249,7 @@ function ArtistSidebar() {
               </p>
               <Badge
                 variant="outline"
-                className={cn("text-nowrap", !sidebarExpanded && "hidden")}
+                className="text-nowrap font-azeret text-[0.563rem]"
               >
                 Pre-Alpha
               </Badge>
