@@ -1,28 +1,40 @@
+"use client";
+import React, { useState } from "react";
 import { ArtistToken as ArtistTokenProps } from "@/entities";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Switch } from "@/components/ui/switch";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import TokenGoLive from "@/partials/token/TokenGoLive";
 
-export default function TokenDisplayCard(props: ArtistTokenProps) {
+export default function TokenProfileCard(props: ArtistTokenProps) {
+  const [checked, setChecked] = useState(false);
   return (
     <div className="flex flex-col rounded-[16px] border-[0.5px] bg-white/[0.02] px-4 py-6">
-      <div className="flex flex-col gap-3">
-        <div className="flex flex-row items-center gap-2">
-          <Avatar className="bg-[#FFAE65]">
-            <AvatarImage
-              src="https://api.dicebear.com/9.x/notionists/svg?seed=Felix"
-              alt="avatar"
-            />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-          <div className="flex flex-col gap-2">
-            <h2 className="font-bold leading-none">{props.name}</h2>
-            <h2 className="text-xs font-medium uppercase leading-none text-muted-foreground">
-              {props.symbol}
-            </h2>
+      <div className="flex flex-row items-start justify-between">
+        <div className="flex flex-col gap-3">
+          <div className="flex flex-row items-center gap-2">
+            <Avatar className="bg-[#FFAE65]">
+              <AvatarImage
+                src="https://api.dicebear.com/9.x/notionists/svg?seed=Felix"
+                alt="avatar"
+              />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+            <div className="flex flex-col gap-2">
+              <h2 className="font-bold leading-none">{props.name}</h2>
+              <h2 className="text-xs font-medium uppercase leading-none text-muted-foreground">
+                {props.symbol}
+              </h2>
+            </div>
           </div>
+          <p className="w-fit bg-primary/10 px-2 py-1.5 text-xs text-primary">
+            7.156k Holders
+          </p>
         </div>
-        <p className="w-fit bg-primary/10 px-2 py-1.5 text-xs text-primary">
-          7.156k Holders
-        </p>
+        <div className="flex gap-2 text-xs font-medium">
+          <Switch checked={checked} onCheckedChange={setChecked} />
+          <p>Live</p>
+        </div>
       </div>
 
       <div className="mt-4 flex gap-[58px]">
@@ -71,6 +83,11 @@ export default function TokenDisplayCard(props: ArtistTokenProps) {
           </div>
         </div>
       </div>
+      <Dialog open={checked} onOpenChange={setChecked}>
+        <DialogContent>
+          <TokenGoLive onTokenGoLive={() => setChecked(true)} />
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

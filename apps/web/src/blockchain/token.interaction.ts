@@ -1,9 +1,16 @@
 import { ArtistToken } from "@/entities";
 import { abi as artistTokenFactoryAbi } from "@/abis/ArtistTokenFactory";
 import { abi as artistTokenAbi } from "@/abis/ArtistToken";
-import { readContract, readContracts } from "@wagmi/core";
+import { abi as exchangeAbi } from "@/abis/Exchange";
+import {
+  readContract,
+  readContracts,
+  writeContract,
+  waitForTransactionReceipt,
+} from "@wagmi/core";
 import { config } from "@/providers/web3";
-import { formatEther } from "viem";
+import { formatEther, parseEther } from "viem";
+import type { BaseError, WriteContractErrorType } from "@wagmi/core";
 
 /**
  * [KNOWN ERROR]
@@ -81,4 +88,57 @@ export async function getArtistTokens() {
   }
 
   return tokens;
+}
+
+export async function getArtistTokenByArtistAddress(
+  artistAddress: `0x${string}`,
+) {
+  const tokens = await getArtistTokens();
+  return tokens.find((token) => token.owner === artistAddress);
+}
+
+export async function approveTokenForListing(tokenAddress: `0x${string}`) {
+  try {
+    const amount = parseEther("900000");
+    const hash = await writeContract(config, {
+      address: tokenAddress,
+      abi: artistTokenAbi,
+      functionName: "approve",
+      args: [
+        process.env
+          .NEXT_PUBLIC_EXCHANGE_SMART_CONTRACT_ADDRESS as `0x${string}`,
+        amount,
+      ],
+    });
+
+    await waitForTransactionReceipt(config, {
+      hash,
+    });
+
+    return { data: hash, error: null };
+  } catch (error) {
+    return { data: null, error: error as WriteContractErrorType };
+  }
+}
+
+export async function listArtistToken(tokenAddress: `0x${string}`) {
+  try {
+    const amount = parseEther("900000");
+    const price = parseEther("0.0001");
+    const hash = await writeContract(config, {
+      address: process.env
+        .NEXT_PUBLIC_EXCHANGE_SMART_CONTRACT_ADDRESS as `0x${string}`,
+      abi: exchangeAbi,
+      functionName: "listToken",
+      args: [tokenAddress, amount, price],
+    });
+
+    await waitForTransactionReceipt(config, {
+      hash,
+    });
+
+    return { data: hash, error: null };
+  } catch (error) {
+    return { data: null, error: error as WriteContractErrorType };
+  }
 }
