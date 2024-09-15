@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import Swap from "@/partials/exchange/Swap";
-import { RiTokenSwapFill } from "react-icons/ri";
-import { FaSpotify } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
+//import { RiTokenSwapFill } from "react-icons/ri";
+//import { FaSpotify } from "react-icons/fa6";
 import { ChevronRight, ChevronUp, Info, TrendingDown, TrendingUp } from "lucide-react";
 import {  Tooltip,TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import Image from "next/image";
@@ -155,6 +156,7 @@ const activities: Activity[] = [
   { id: 2, description: "Connected Spotify account", time: "1 day ago" },
 ];
 
+
 // Colors for the pie chart slices
 const COLORS = ["#1eab1a", "#87491b"];
 export default function Page() {
@@ -253,10 +255,10 @@ function Dashboard() {
     <h2 className="flex justify-start items-center gap-x-3 text-xl font-semibold">Balance <ChevronRight size={20}/> </h2>
     </CardTitle>
     <CardDescription>
-    <h2 className="mt-2 flex justify-start items-end gap-x-3 text-5xl font-semibold">$3,200<span className="-ms-2 text-muted">.80</span>
+    <div className="mt-2 flex justify-start items-end gap-x-3 text-5xl font-semibold">$3,200<span className="-ms-2 text-muted">.80</span>
     <h5 className="text-sm  -ms-2 flex gap-x-1 justify-start items-center text-green-500"><ChevronUp size={15} /> 85,66%</h5>
     
-    </h2>
+    </div>
       
     </CardDescription>
   </div>
@@ -377,6 +379,12 @@ function Dashboard() {
 }
 
 function TopToken() {
+  const router = useRouter()
+
+const seeAllToken = () => {
+  router.push("/explore")
+}
+
   return (
     <>
       <section className="flex justify-between items-center flex-wrap">
@@ -399,7 +407,7 @@ function TopToken() {
               </Tooltip>
           </TooltipProvider>
               </div>
-              <h2 className="hover:underline cursor-pointer flex justify-stary items-center gap-x-2 text-sm text-primary">See all <ChevronRight size={15}/> </h2>
+              <h2 onClick={seeAllToken} className="hover:underline cursor-pointer flex justify-stary items-center gap-x-2 text-sm text-primary">See all <ChevronRight size={15}/> </h2>
             </section>
        <div className="flex justify-between items-center mt-8 w-full hover:bg-primary/5 px-4 py-2 hover:cursor-pointer rounded-xl hover:shaodow-md  h-[70px]">
               <div className="flex justify-start items-center gap-x-3">
