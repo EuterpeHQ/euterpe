@@ -4,6 +4,7 @@ import SearchModal from "@/components/ModalSearch";
 import Notifications from "@/components/DropdownNotifications";
 import ConnectButton from "@/components/ConnectButton";
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 
 function Header() {
   const sidebarOpen = useSidebarStore((state) => state.isOpen);
@@ -14,7 +15,9 @@ function Header() {
     <header className="sticky top-0 z-30 flex h-[3.25rem] items-center justify-between bg-white/[0.02] px-6 py-3 shadow-[0px_0.5px_0px_0px_#313131]">
       <div className="flex">
         <div className="hidden items-center gap-2 lg:flex">
-          <h2 className="text-sm font-bold">Euterpe</h2>
+          <Link href="/">
+            <h2 className="text-sm font-bold">Euterpe</h2>
+          </Link>
           <Badge
             variant="outline"
             className="text-nowrap font-azeret text-[0.563rem]"
