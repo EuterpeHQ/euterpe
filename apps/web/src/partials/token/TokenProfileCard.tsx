@@ -1,13 +1,48 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ArtistToken as ArtistTokenProps } from "@/entities";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Switch } from "@/components/ui/switch";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import TokenGoLive from "@/partials/token/TokenGoLive";
+import { getTokenStatus } from "@/blockchain/token.interaction";
 
 export default function TokenProfileCard(props: ArtistTokenProps) {
-  const [checked, setChecked] = useState(false);
+  const [isLive, setIsLive] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [openDialog, setOpenDialog] = useState(false);
+
+  useEffect(() => {
+    async function fetchTokenStatus() {
+      try {
+        setIsLoading(true);
+        const status = await getTokenStatus(props.address);
+        console.log("status", status);
+        setIsLive(status);
+      } catch (error) {
+        console.error("Error fetching token status:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchTokenStatus();
+  }, [props.address]);
+
+  const handleSwitchChange = (value: boolean) => {
+    if (isLive) {
+      return;
+    }
+    if (value) {
+      setOpenDialog(true);
+    }
+  };
+
+  const handleTokenGoLiveSuccess = () => {
+    setOpenDialog(false);
+    setIsLive(true);
+  };
+
   return (
     <div className="flex flex-col rounded-[16px] border-[0.5px] bg-white/[0.02] px-4 py-6">
       <div className="flex flex-row items-start justify-between">
@@ -32,7 +67,12 @@ export default function TokenProfileCard(props: ArtistTokenProps) {
           </p>
         </div>
         <div className="flex gap-2 text-xs font-medium">
-          <Switch checked={checked} onCheckedChange={setChecked} />
+          <Switch
+            className="disabled:opacity-100"
+            checked={isLive}
+            onCheckedChange={handleSwitchChange}
+            disabled={isLive}
+          />
           <p>Live</p>
         </div>
       </div>
@@ -83,9 +123,9 @@ export default function TokenProfileCard(props: ArtistTokenProps) {
           </div>
         </div>
       </div>
-      <Dialog open={checked} onOpenChange={setChecked}>
+      <Dialog open={openDialog} onOpenChange={setOpenDialog}>
         <DialogContent>
-          <TokenGoLive onTokenGoLive={() => setChecked(true)} />
+          <TokenGoLive onTokenGoLive={handleTokenGoLiveSuccess} />
         </DialogContent>
       </Dialog>
     </div>

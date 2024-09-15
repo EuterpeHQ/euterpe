@@ -13,7 +13,7 @@ export default function TokenMetricsCard(props: ArtistTokenProps) {
         <div className="flex items-center gap-2">
           <p className="ml-2 text-xs">{formatAddress(props.address)} </p>
           <Link
-            href={`https://arbiscan.io/token/${props.address}`}
+            href={`https://sepolia.arbiscan.io/token/${props.address}`}
             target="_blank"
             rel="noreferrer"
           >

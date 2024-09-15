@@ -142,3 +142,27 @@ export async function listArtistToken(tokenAddress: `0x${string}`) {
     return { data: null, error: error as WriteContractErrorType };
   }
 }
+
+export async function getTokenStatus(tokenAddress: `0x${string}`) {
+  const totalListings = await readContract(config, {
+    abi: exchangeAbi,
+    address: process.env
+      .NEXT_PUBLIC_EXCHANGE_SMART_CONTRACT_ADDRESS as `0x${string}`,
+    functionName: "getListingsCount",
+  });
+
+  for (let i = 0n; i < totalListings; i++) {
+    const listing = await readContract(config, {
+      abi: exchangeAbi,
+      address: process.env
+        .NEXT_PUBLIC_EXCHANGE_SMART_CONTRACT_ADDRESS as `0x${string}`,
+      functionName: "listings",
+      args: [i],
+    });
+    if (listing[1] === tokenAddress) {
+      return true;
+    }
+  }
+
+  return false;
+}
