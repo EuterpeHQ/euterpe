@@ -166,3 +166,102 @@ export async function getTokenStatus(tokenAddress: `0x${string}`) {
 
   return false;
 }
+
+export async function buyArtistToken(
+  tokenAddress: `0x${string}`,
+  value: string,
+) {
+  try {
+    const totalListings = await readContract(config, {
+      abi: exchangeAbi,
+      address: process.env
+        .NEXT_PUBLIC_EXCHANGE_SMART_CONTRACT_ADDRESS as `0x${string}`,
+      functionName: "getListingsCount",
+    });
+
+    for (let i = 0n; i < totalListings; i++) {
+      const listing = await readContract(config, {
+        abi: exchangeAbi,
+        address: process.env
+          .NEXT_PUBLIC_EXCHANGE_SMART_CONTRACT_ADDRESS as `0x${string}`,
+        functionName: "listings",
+        args: [i],
+      });
+
+      if (listing[1] === tokenAddress) {
+        const valueFormatted = parseEther(value);
+        const hash = await writeContract(config, {
+          address: process.env
+            .NEXT_PUBLIC_EXCHANGE_SMART_CONTRACT_ADDRESS as `0x${string}`,
+          abi: exchangeAbi,
+          functionName: "buyToken",
+          args: [i],
+          value: valueFormatted,
+        });
+
+        await waitForTransactionReceipt(config, { hash });
+
+        return { data: hash, error: null };
+      }
+    }
+
+    throw new Error("Token not listed on the exchange");
+  } catch (error) {
+    return { data: null, error: error as WriteContractErrorType };
+  }
+}
+
+export async function sendArtistToken(
+  tokenAddress: `0x${string}`,
+  to: `0x${string}`,
+  amount: string,
+) {
+  try {
+    const amountFormatted = parseEther(amount);
+    const hash = await writeContract(config, {
+      address: tokenAddress,
+      abi: artistTokenAbi,
+      functionName: "transfer",
+      args: [to, amountFormatted],
+    });
+
+    await waitForTransactionReceipt(config, {
+      hash,
+    });
+
+    return { data: hash, error: null };
+  } catch (error) {
+    return { data: null, error: error as WriteContractErrorType };
+  }
+}
+
+export async function getTokenAssets(fanAddress: `0x${string}`) {
+  const tokens: {
+    tokenAddress: `0x${string}`;
+    balance: string;
+    name: string;
+    symbol: string;
+  }[] = [];
+
+  const allTokens = await getArtistTokens();
+
+  for (const token of allTokens) {
+    const balance = await readContract(config, {
+      abi: artistTokenAbi,
+      address: token.address as `0x${string}`,
+      functionName: "balanceOf",
+      args: [fanAddress],
+    });
+
+    if (balance > 0n) {
+      tokens.push({
+        tokenAddress: token.address as `0x${string}`,
+        balance: formatEther(balance),
+        name: token.name,
+        symbol: token.symbol,
+      });
+    }
+  }
+
+  return tokens;
+}
