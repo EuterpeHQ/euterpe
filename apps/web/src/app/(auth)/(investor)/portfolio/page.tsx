@@ -1,5 +1,5 @@
-"use client"
-import React, { useState } from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import {
   ChartConfig,
   ChartContainer,
@@ -16,15 +16,30 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ChevronRight, ChevronUp, DollarSign, Info, MoveUpRight, RefreshCcw, TrendingDown, TrendingUp } from "lucide-react";
+import {
+  ChevronRight,
+  ChevronUp,
+  DollarSign,
+  Info,
+  MoveUpRight,
+  RefreshCcw,
+  TrendingDown,
+  TrendingUp,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
-import {  Tooltip,TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
-import  Image from "next/image";
+import {
+  Tooltip,
+  TooltipProvider,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
+import Image from "next/image";
 import CoinIcon from "@/assets/icons/coin-vertical.svg";
 import { useRouter } from "next/navigation";
-
-
-
+import { useAccount } from "wagmi";
+import { useQuery } from "@tanstack/react-query";
+import { getTokenAssets } from "@/blockchain/token.interaction";
+import Link from "next/link";
 
 const chartData = [
   { date: "2024-04-01", desktop: 222, mobile: 150 },
@@ -136,24 +151,22 @@ const chartConfig = {
 
 function Page() {
   return (
-   <main>
-   <section className="max-w-9xl mx-auto w-full px-4 py-8 sm:px-6 lg:px-8">
-    <div className="gap-y-6 flex flex-col lg:flex-row justify-start items-center gap-x-2">
-    <Dashboard/>
-    <BestBuy/>
-    </div>
-    <div className="mt-6 lg:mt-0 gap-y-6 flex flex-col lg:flex-row justify-start items-center gap-x-2">
-    <Assets/>
-    <Summary/>
-    </div>
-    </section>
+    <main>
+      <section className="max-w-9xl mx-auto w-full px-4 py-8 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center justify-start gap-x-2 gap-y-6 lg:flex-row">
+          <Dashboard />
+          <BestBuy />
+        </div>
+        <div className="mt-6 flex flex-col items-center justify-start gap-x-2 gap-y-6 lg:mt-0 lg:flex-row">
+          <Assets />
+          <Summary />
+        </div>
+      </section>
     </main>
-  )
+  );
 }
 
 export default Page;
-
-
 
 function Dashboard() {
   const [timeRange, setTimeRange] = useState("90d");
@@ -170,249 +183,262 @@ function Dashboard() {
     return date >= now;
   });
   return (
-<section className="w-full lg:w-[70%] pb-10">
-{/* chart */}
-<div className="mt-6 w-full">
-  <Card className="rounded-[16px] border-[0.5px] bg-white/[0.02] md:h-96">
-    <CardHeader className="flex items-center gap-2 space-y-0 border-b py-6 sm:flex-row">
-      <div className="grid flex-1 gap-1 text-center sm:text-left">
-        <CardTitle className="">
-          <h2 className="flex justify-start items-center gap-x-3 text-xl font-semibold">
-            Balance <ChevronRight size={20} />
-          </h2>
-        </CardTitle>
-        <CardDescription>
-          <h2 className="mt-2 flex justify-start items-end gap-x-3 text-5xl font-semibold">
-            $3,200<span className="-ms-2 text-muted">.80</span>
-            <h5 className="text-sm -ms-2 flex gap-x-1 justify-start items-center text-green-500">
-              <ChevronUp size={15} /> 85.66%
-            </h5>
-          </h2>
-        </CardDescription>
-      </div>
+    <section className="w-full pb-10 lg:w-[70%]">
+      {/* chart */}
+      <div className="mt-6 w-full">
+        <Card className="rounded-[16px] border-[0.5px] bg-white/[0.02] md:h-96">
+          <CardHeader className="flex items-center gap-2 space-y-0 border-b py-6 sm:flex-row">
+            <div className="grid flex-1 gap-1 text-center sm:text-left">
+              <CardTitle className="">
+                <h2 className="flex items-center justify-start gap-x-3 text-xl font-semibold">
+                  Balance <ChevronRight size={20} />
+                </h2>
+              </CardTitle>
+              <CardDescription>
+                <h2 className="mt-2 flex items-end justify-start gap-x-3 text-5xl font-semibold">
+                  $0<span className="-ms-2 text-muted">.00</span>
+                  <h5 className="-ms-2 flex items-center justify-start gap-x-1 text-sm text-green-500">
+                    <ChevronUp size={15} /> 85.66%
+                  </h5>
+                </h2>
+              </CardDescription>
+            </div>
 
-      <div className="flex w-fit cursor-pointer items-center gap-2 rounded-lg border-[0.5px] bg-background p-1.5 font-azeret text-[0.688rem] sm:ml-auto">
-        <div
-          className={cn(
-            "px-2 py-0.5",
-            timeRange === "7d" && "rounded-sm bg-primary/5"
-          )}
-          onClick={() => setTimeRange("7d")}
-        >
-          1W
-        </div>
-        <div
-          className={cn(
-            "px-2 py-0.5",
-            timeRange === "30d" && "rounded-sm bg-primary/5"
-          )}
-          onClick={() => setTimeRange("30d")}
-        >
-          1M
-        </div>
-        <div
-          className={cn(
-            "px-2 py-0.5",
-            timeRange === "90d" && "rounded-sm bg-primary/5"
-          )}
-          onClick={() => setTimeRange("90d")}
-        >
-          3M
-        </div>
+            <div className="flex w-fit cursor-pointer items-center gap-2 rounded-lg border-[0.5px] bg-background p-1.5 font-azeret text-[0.688rem] sm:ml-auto">
+              <div
+                className={cn(
+                  "px-2 py-0.5",
+                  timeRange === "7d" && "rounded-sm bg-primary/5",
+                )}
+                onClick={() => setTimeRange("7d")}
+              >
+                1W
+              </div>
+              <div
+                className={cn(
+                  "px-2 py-0.5",
+                  timeRange === "30d" && "rounded-sm bg-primary/5",
+                )}
+                onClick={() => setTimeRange("30d")}
+              >
+                1M
+              </div>
+              <div
+                className={cn(
+                  "px-2 py-0.5",
+                  timeRange === "90d" && "rounded-sm bg-primary/5",
+                )}
+                onClick={() => setTimeRange("90d")}
+              >
+                3M
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent className="px-5 pt-4 sm:pt-6">
+            <ChartContainer
+              config={chartConfig}
+              className="aspect-auto h-[250px] w-full"
+            >
+              <BarChart data={filteredData}>
+                <CartesianGrid vertical={false} />
+                <XAxis
+                  dataKey="date"
+                  tickLine={false}
+                  axisLine={false}
+                  tickMargin={8}
+                  minTickGap={32}
+                  tickFormatter={(value) => {
+                    const date = new Date(value);
+                    return date.toLocaleDateString("en-US", {
+                      month: "short",
+                      day: "numeric",
+                    });
+                  }}
+                />
+                <ChartTooltip
+                  cursor={false}
+                  content={
+                    <ChartTooltipContent
+                      labelFormatter={(value) => {
+                        return new Date(value).toLocaleDateString("en-US", {
+                          month: "short",
+                          day: "numeric",
+                        });
+                      }}
+                      indicator="dot"
+                    />
+                  }
+                />
+                <Bar dataKey="mobile" fill="var(--color-mobile)" stackId="a" />
+                <Bar
+                  dataKey="desktop"
+                  fill="var(--color-desktop)"
+                  stackId="a"
+                />
+                <ChartLegend content={<ChartLegendContent />} />
+              </BarChart>
+            </ChartContainer>
+          </CardContent>
+        </Card>
       </div>
-    </CardHeader>
-    <CardContent className="px-5 pt-4 sm:pt-6">
-      <ChartContainer
-        config={chartConfig}
-        className="aspect-auto h-[250px] w-full"
-      >
-        <BarChart data={filteredData}>
-          <CartesianGrid vertical={false} />
-          <XAxis
-            dataKey="date"
-            tickLine={false}
-            axisLine={false}
-            tickMargin={8}
-            minTickGap={32}
-            tickFormatter={(value) => {
-              const date = new Date(value);
-              return date.toLocaleDateString("en-US", {
-                month: "short",
-                day: "numeric",
-              });
-            }}
-          />
-          <ChartTooltip
-            cursor={false}
-            content={
-              <ChartTooltipContent
-                labelFormatter={(value) => {
-                  return new Date(value).toLocaleDateString("en-US", {
-                    month: "short",
-                    day: "numeric",
-                  });
-                }}
-                indicator="dot"
-              />
-            }
-          />
-          <Bar
-            dataKey="mobile"
-            fill="var(--color-mobile)"
-            stackId="a"
-          />
-          <Bar
-            dataKey="desktop"
-            fill="var(--color-desktop)"
-            stackId="a"
-          />
-          <ChartLegend content={<ChartLegendContent />} />
-        </BarChart>
-      </ChartContainer>
-    </CardContent>
-  </Card>
-</div>
-</section>
-  )
+    </section>
+  );
 }
 
 function BestBuy() {
   return (
-<>
-<section className="w-full lg:w-[30%] rounded-[16px] border-[0.5px] bg-white/[0.02] md:h-[390px] px-3 py-4 -mt-4 shadow-none">
-  <div className="flex justify-between items-center">
-
-  <h2 className="text-lg">Best to buy</h2>
-  <div className="cursor-pointer w-8 h-8 rounded-md border border-primary flex justify-center items-center">
-  <RefreshCcw size={15} />
-  </div>
-  </div>
-  <h2 className="text-gray-400 mt-2 flex justify-start items-end gap-x-3 text-4xl font-semibold">
-  $3,200<span className="-ms-2 text-muted">.80</span></h2>
-  <div>
-    <h2 className="flex justify-start items-center gap-x-2">Ethereum <span className="text-muted font-semibold">ETH</span><h5 className="text-sm -ms-2 flex gap-x-1 justify-start items-center text-green-500">
+    <>
+      <section className="-mt-4 w-full rounded-[16px] border-[0.5px] bg-white/[0.02] px-3 py-4 shadow-none md:h-[390px] lg:w-[30%]">
+        <div className="flex items-center justify-between">
+          <h2 className="text-lg">Best to buy</h2>
+          <div className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border border-primary">
+            <RefreshCcw size={15} />
+          </div>
+        </div>
+        <h2 className="mt-2 flex items-end justify-start gap-x-3 text-4xl font-semibold text-gray-400">
+          $0<span className="-ms-2 text-muted">.00</span>
+        </h2>
+        <div>
+          <h2 className="flex items-center justify-start gap-x-2">
+            Ethereum <span className="font-semibold text-muted">ETH</span>
+            <h5 className="-ms-2 flex items-center justify-start gap-x-1 text-sm text-green-500">
               <ChevronUp size={15} /> 85.66%
-            </h5></h2>
-
-  </div>
-  <section className="flex-wrap gap-y-3  flex justify-start items-center gap-x-2 my-3">
-    <button className="hover:bg-primary/25 w-full sm:w-fit rounded-full p-2 px-8 py-1 border">Smart trade</button>
-    <button className="hover:bg-primary/25 w-full sm:w-fit rounded-full p-2 px-8 py-1 border">Set Alert</button>
-  </section>
-</section>
-</>
-  )
+            </h5>
+          </h2>
+        </div>
+        <section className="my-3 flex  flex-wrap items-center justify-start gap-x-2 gap-y-3">
+          <button className="w-full rounded-full border p-2 px-8 py-1 hover:bg-primary/25 sm:w-fit">
+            Smart trade
+          </button>
+          <button className="w-full rounded-full border p-2 px-8 py-1 hover:bg-primary/25 sm:w-fit">
+            Set Alert
+          </button>
+        </section>
+      </section>
+    </>
+  );
 }
 
 function Assets() {
   const router = useRouter();
-  const allAssets = () => {
-    router.push("/assets")
+  const { address } = useAccount();
+
+  const {
+    isPending,
+    error,
+    data: tokens,
+  } = useQuery({
+    queryKey: ["getTokenAssets", address],
+    queryFn: () => getTokenAssets(address!),
+  });
+
+  if (isPending) {
+    return (
+      <div className="flex h-96 w-full items-center justify-center rounded-[16px] border-[0.5px] bg-white/[0.02] px-3 pb-10 lg:h-96 lg:w-[70%]">
+        Loading assets...
+      </div>
+    );
   }
+
+  if (error) {
+    return (
+      <div className="flex h-96 w-full items-center justify-center rounded-[16px] border-[0.5px] bg-white/[0.02] px-3 pb-10 lg:h-96 lg:w-[70%]">
+        Error loading assets
+      </div>
+    );
+  }
+
+  const allAssets = () => {
+    router.push("/assets");
+  };
   return (
-    <section className="w-full lg:w-[70%] pb-10 rounded-[16px] border-[0.5px] bg-white/[0.02] px-3 lg:h-96">
-        <div className="mt-4 ms-1.5 flex justify-start items-center gap-x-4">
-              <h2 onClick={allAssets} className="text-lg cursor-pointer">All assets</h2>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>
-                  <div className=" flex items-center gap-1">
-                    <Info size={14} className="text-muted-foreground" />
-                  
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="text-xs">
-                    We're actively developing these assets.
-                    <br /> Stay tuned!
-                  </p>
-                </TooltipContent>
-              </Tooltip>
-          </TooltipProvider>
+    <section className="w-full rounded-[16px] border-[0.5px] bg-white/[0.02] px-3 pb-10 lg:h-96 lg:w-[70%]">
+      <div className="ms-1.5 mt-4 flex items-center justify-start gap-x-4">
+        <h2 onClick={allAssets} className="cursor-pointer text-lg">
+          All assets
+        </h2>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              <div className=" flex items-center gap-1">
+                <Info size={14} className="text-muted-foreground" />
               </div>
-            {/* assets */}
-            <section className="mt-6">
-              <section className="flex border-b text-muted text-lg font-semibold">
-                <div className="w-[30%] p-2">Name</div>
-                <div className="w-[30%] p-2">Balance</div>
-                <div className="w-[30%] p-2">USD</div>
-                <div className="w-[30%] p-2"></div>
-              </section>
-              <section className="flex-wrap md:flex-nowrap flex justify-start items-center border-b">
-                <div className="w-[30%] p-2 flex justify-start items-center gap-x-1 text-base sm:text-lg">
-                <Image src={CoinIcon} alt="coin" className="rounded-full" width={25} height={25} />
-                <h3>DRC</h3>
-                </div>
-                <div className="w-[30%] p-2 text-base sm:text-lg">$1,236 <span className="text-gray-400">.88</span></div>
-                <div className="w-[30%] p-2 text-base sm:text-lg text-gray-400">$0.185578</div>
-                <div className="w-[30%] p-2 flex justify-start items-center gap-x-2">
-                  <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Buy</button>
-                  <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Send</button>
-                </div>
-              </section>
-              <section className="flex-wrap md:flex-nowrap flex justify-start items-center border-b">
-                <div className="w-[30%] p-2 flex justify-start items-center gap-x-1 text-base sm:text-lg">
-                <Image src={CoinIcon} alt="coin" className="rounded-full" width={25} height={25} />
-                <h3>ETH</h3>
-                </div>
-                <div className="w-[30%] p-2 text-base sm:text-lg">$3,236 <span className="text-gray-400">.88</span></div>
-                <div className="w-[30%] p-2 text-base sm:text-lg text-gray-400">$0.185578</div>
-                <div className="w-[30%] p-2 flex justify-start items-center gap-x-2">
-                  <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Buy</button>
-                  <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Send</button>
-                </div>
-              </section>
-              <section className="flex-wrap md:flex-nowrap flex justify-start items-center border-b">
-                <div className="w-[30%] p-2 flex justify-start items-center gap-x-1 text-base sm:text-lg">
-                <Image src={CoinIcon} alt="coin" className="rounded-full" width={25} height={25} />
-                <h3>SOL</h3>
-                </div>
-                <div className="w-[30%] p-2 text-base sm:text-lg">$1,236 <span className="text-gray-400">.88</span></div>
-                <div className="w-[30%] p-2 text-base sm:text-lg text-gray-400">$0.185578</div>
-                <div className="w-[30%] p-2 flex justify-start items-center gap-x-2">
-                  <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Buy</button>
-                  <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Send</button>
-                </div>
-              </section>
-              <section className="flex-wrap md:flex-nowrap flex justify-start items-center border-b">
-                <div className="w-[30%] p-2 flex justify-start items-center gap-x-1 text-base sm:text-lg">
-                <Image src={CoinIcon} alt="coin" className="rounded-full" width={25} height={25} />
-                <h3>XRP</h3>
-                </div>
-                <div className="w-[30%] p-2 text-base sm:text-lg">$1,236 <span className="text-gray-400">.88</span></div>
-                <div className="w-[30%] p-2 text-base sm:text-lg text-gray-400">$0.185578</div>
-                <div className="w-[30%] p-2 flex justify-start items-center gap-x-2">
-                  <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Buy</button>
-                  <button className="hover:bg-primary/25 border-full px-8 p-2 bg-muted rounded-full">Send</button>
-                </div>
-              </section>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p className="text-xs">
+                We're actively developing these assets.
+                <br /> Stay tuned!
+              </p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
+      {/* assets */}
+      <section className="mt-6">
+        <section className="flex border-b text-lg font-semibold text-muted">
+          <div className="w-[30%] p-2">Name</div>
+          <div className="w-[30%] p-2">Balance</div>
+          <div className="w-[30%] p-2">Value</div>
+          <div className="w-[30%] p-2"></div>
+        </section>
+        {tokens.map((token) => (
+          <Link key={token.tokenAddress} href={`/token/${token.tokenAddress}`}>
+            <section className="flex flex-wrap items-center justify-start border-b p-2 hover:bg-primary/5 md:flex-nowrap">
+              <div className="flex w-[30%] items-center justify-start gap-x-1 p-2 text-base sm:text-lg">
+                <Image
+                  src={CoinIcon}
+                  alt="coin"
+                  className="rounded-full"
+                  width={25}
+                  height={25}
+                />
+                <h3>{token.name}</h3>
+              </div>
+              <div className="w-[30%] p-2 text-base sm:text-lg">
+                {token.balance} {token.symbol}
+              </div>
+              <div className="w-[30%] p-2 text-base text-gray-400 sm:text-lg">
+                $0
+              </div>
+              <div className="flex w-[30%] items-center justify-start gap-x-2 p-2">
+                {/* <button className="border-full rounded-full bg-muted p-2 px-8 hover:bg-primary/25">
+                  Buy
+                </button>
+                <button className="border-full rounded-full bg-muted p-2 px-8 hover:bg-primary/25">
+                  Send
+                </button> */}
+              </div>
             </section>
+          </Link>
+        ))}
+      </section>
     </section>
-  )
+  );
 }
 function Summary() {
   return (
-<>
-<section className="w-full lg:w-[30%] rounded-[16px] border-[0.5px] bg-white/[0.02] md:h-[385px] px-3 py-4 shadow-none">
-  <div className="flex justify-between items-center">
-    <h2 className="text-lg">Summary</h2>
-  </div>
-  <h2 className="text-gray-400 mt-2 flex justify-start items-end gap-x-3 text-4xl font-semibold">
-  $ 3,200<span className="-ms-2 text-muted">.80</span></h2>
+    <>
+      <section className="w-full rounded-[16px] border-[0.5px] bg-white/[0.02] px-3 py-4 shadow-none md:h-[385px] lg:w-[30%]">
+        <div className="flex items-center justify-between">
+          <h2 className="text-lg">Summary</h2>
+        </div>
+        <h2 className="mt-2 flex items-end justify-start gap-x-3 text-4xl font-semibold text-gray-400">
+          $ 0<span className="-ms-2 text-muted">.00</span>
+        </h2>
 
-  <div className="flex my-6 justify-start items-center gap-x-4 w-full">
-  <div className="w-12 h-12 bg-blue-300/20  rounded-full flex justify-center items-center">
-  <DollarSign color="blue" size={25} /></div>
-  <div className="flex-1">
-    <h2 className="text-2xl">$ 3,326.18</h2>
-    <div className="flex justify-between  items-center">
-      <h2 className="text-muted">Available to trade</h2>
-            <TooltipProvider>
+        <div className="my-6 flex w-full items-center justify-start gap-x-4">
+          <div className="flex h-12 w-12  items-center justify-center rounded-full bg-blue-300/20">
+            <DollarSign color="blue" size={25} />
+          </div>
+          <div className="flex-1">
+            <h2 className="text-2xl">$ 0.00</h2>
+            <div className="flex items-center  justify-between">
+              <h2 className="text-muted">Available to trade</h2>
+              <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger>
                     <div className=" flex items-center gap-1">
                       <Info size={14} className="text-muted-foreground" />
-                    
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
@@ -422,23 +448,23 @@ function Summary() {
                     </p>
                   </TooltipContent>
                 </Tooltip>
-            </TooltipProvider>
-    </div>
-  </div>
-  </div>
-  <div className="flex my-6 justify-start items-center gap-x-4 w-full">
-  <div className="w-12 h-12 bg-primary/20 opacity-65 rounded-full flex justify-center items-center">
-  <MoveUpRight  color="green" size={25} /></div>
-  <div className="flex-1">
-    <h2 className="text-2xl">$ 3,326.18</h2>
-    <div className="flex justify-between  items-center">
-      <h2 className="text-muted">Available cash out</h2>
-            <TooltipProvider>
+              </TooltipProvider>
+            </div>
+          </div>
+        </div>
+        <div className="my-6 flex w-full items-center justify-start gap-x-4">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 opacity-65">
+            <MoveUpRight color="green" size={25} />
+          </div>
+          <div className="flex-1">
+            <h2 className="text-2xl">$ 0.00</h2>
+            <div className="flex items-center  justify-between">
+              <h2 className="text-muted">Available cash out</h2>
+              <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger>
                     <div className=" flex items-center gap-1">
                       <Info size={14} className="text-muted-foreground" />
-                    
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
@@ -448,12 +474,14 @@ function Summary() {
                     </p>
                   </TooltipContent>
                 </Tooltip>
-            </TooltipProvider>
-    </div>
-  </div>
-  </div>
-    <button className="hover:bg-primary/25 mt-6 w-full rounded-full p-2 px-8 py-2 bg-muted">Cash Out</button>
-</section>
-</>
-  )
+              </TooltipProvider>
+            </div>
+          </div>
+        </div>
+        <button className="mt-6 w-full rounded-full bg-muted p-2 px-8 py-2 hover:bg-primary/25">
+          Cash Out
+        </button>
+      </section>
+    </>
+  );
 }
