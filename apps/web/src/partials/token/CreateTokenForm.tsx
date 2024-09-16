@@ -1,17 +1,7 @@
-import Image from "next/image";
 import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { config } from "@/providers/web3";
 import { abi as artistTokenFactoryAbi } from "@/abis/ArtistTokenFactory";
@@ -23,34 +13,24 @@ import {
 import { getAccount } from "@wagmi/core";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { useToast } from "@/components/ui/use-toast";
-import { CgSpinner } from "react-icons/cg";
-import Balancer from "react-wrap-balancer";
-import Spacer from "@/components/ui/spacer";
-import { HiOutlineRocketLaunch } from "react-icons/hi2";
+import { BiError } from "react-icons/bi";
+import { LuLoader2 } from "react-icons/lu";
+import confetti from "canvas-confetti";
 
-function CreateArtistToken() {
+function CreateArtistToken({ onTokenCreated }: { onTokenCreated: () => void }) {
   const [formData, setFormData] = useState({
     name: "",
     symbol: "",
-    supply: "",
+    supply: "1000000",
     artist: "",
     spotify: "",
   });
-  const [hasViewedCompletedTransaction, setHasViewedCompletedTransaction] =
-    useState(false);
   const [opendialog, setOpendialog] = useState(false);
 
   const { isConnected } = useAccount();
   const { openConnectModal, connectModalOpen } = useConnectModal();
   const { toast } = useToast();
 
-  // const handleDialog = (value: React.SetStateAction<boolean>) => {
-  //   if (connectModalOpen) {
-  //     setOpendialog(true);
-  //   } else {
-  //     setOpendialog(value);
-  //   }
-  // };
   useEffect(() => {
     if (connectModalOpen) {
       setOpendialog(false);
@@ -83,28 +63,19 @@ function CreateArtistToken() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isConnected) {
-      if (!hasViewedCompletedTransaction && isConfirmed) {
-        window.open(
-          `https://sepolia.arbiscan.io/tx/${hash}`,
-          "_blank",
-          "noopener,noreferrer",
-        );
-        setHasViewedCompletedTransaction(true);
-      } else {
-        const { connector } = getAccount(config);
-        writeContract?.({
-          ...wagmiContractConfig,
-          functionName: "createToken",
-          connector,
-          args: [
-            formData.name,
-            formData.symbol,
-            BigInt(formData.supply),
-            formData.artist,
-            formData.spotify,
-          ],
-        });
-      }
+      const { connector } = getAccount(config);
+      writeContract?.({
+        ...wagmiContractConfig,
+        functionName: "createToken",
+        connector,
+        args: [
+          formData.name,
+          formData.symbol,
+          BigInt(formData.supply),
+          formData.artist,
+          formData.spotify,
+        ],
+      });
     } else {
       openConnectModal?.();
     }
@@ -122,8 +93,14 @@ function CreateArtistToken() {
     if (isConfirmed) {
       toast({
         title: "Transaction Confirmed",
-        description: "Your transaction has been successfully confirmed.",
+        description: "Your transaction has been successfully isConfirmed.",
       });
+      const colors1 = ["##B8FF5B", "##FFA41B"];
+      const colors2 = ["##B45946", "##9747FF"];
+      fireConfetti(colors1);
+      fireConfetti(colors2);
+
+      onTokenCreated();
     }
 
     if (buyError) {
@@ -139,93 +116,121 @@ function CreateArtistToken() {
       setFormData({
         name: "",
         symbol: "",
-        supply: "",
+        supply: "1000000",
         artist: "",
         spotify: "",
       });
     }
   }, [opendialog, isConfirmed]);
 
+  /* Known Issue: Confetti effect only uses the first two colors from the array */
+  function fireConfetti(colors: string[]) {
+    const end = Date.now() + 4 * 1000;
+
+    const frame = () => {
+      if (Date.now() > end) return;
+
+      confetti({
+        particleCount: 2,
+        angle: 60,
+        spread: 55,
+        startVelocity: 60,
+        origin: { x: 0, y: 0.5 },
+        colors: colors,
+      });
+      confetti({
+        particleCount: 2,
+        angle: 120,
+        spread: 55,
+        startVelocity: 60,
+        origin: { x: 1, y: 0.5 },
+        colors: colors,
+      });
+
+      requestAnimationFrame(frame);
+    };
+
+    frame();
+  }
+
   return (
-    <div className="w-full">
-      <h2>Create Token</h2>
-      <form className="my-8" onSubmit={handleSubmit}>
-        <div></div>
+    <div className="px-8 py-12">
+      <div className="flex flex-col gap-2">
+        <h2 className="text-xl font-semibold tracking-[0.04em]">
+          Create your token
+        </h2>
+        <p className="text-sm text-[#D0D0D0]">
+          Launch your token today, Build fan connections, and grow your music
+          journey with them.
+        </p>
+      </div>
+      <form className="mt-8" onSubmit={handleSubmit}>
         {buyError && (
-          <div className="mx-auto mb-4 h-32 max-w-md overflow-y-scroll break-words rounded-lg bg-card p-4 text-red-500">
-            {buyError.message}
+          <div className="mb-5 flex items-center rounded-md bg-orange-600/10 p-4 text-sm font-medium text-orange-600/60">
+            <BiError className="mr-2 mt-0.5 h-4 w-4 shrink-0 text-orange-600/50" />
+            {/* @ts-expect-error */}
+            {buyError.shortMessage}
           </div>
         )}
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="name">Token Name</Label>
-          <Input
-            id="name"
-            name="name"
-            placeholder="Enter name of Token"
-            type="text"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </LabelInputContainer>
-        <div className="mb-4 flex flex-col space-y-2 md:flex-row md:space-x-2 md:space-y-0">
-          <LabelInputContainer>
-            <Label htmlFor="symbol">Token Symbol</Label>
+        <div className="flex flex-col gap-5">
+          <div className="flex w-full flex-col gap-2.5">
+            <Label htmlFor="name">Name</Label>
+            <Input
+              id="name"
+              name="name"
+              placeholder="Enter name"
+              type="text"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="flex w-full flex-col gap-2.5">
+            <Label htmlFor="symbol">Ticker</Label>
             <Input
               id="symbol"
               name="symbol"
-              placeholder="ART"
+              placeholder="Enter ticker"
               type="text"
               value={formData.symbol}
               onChange={handleChange}
               required
             />
-          </LabelInputContainer>
-          <LabelInputContainer>
-            <Label htmlFor="supply">Initial Supply</Label>
+          </div>
+          <div className="flex w-full flex-col gap-2.5">
+            <Label htmlFor="text">Spotify Link</Label>
             <Input
-              id="supply"
-              name="supply"
-              placeholder="21000000"
-              type="number"
-              value={formData.supply}
+              id="spotify"
+              name="spotify"
+              placeholder="Enter spotify link"
+              type="text"
+              value={formData.spotify}
               onChange={handleChange}
               required
             />
-          </LabelInputContainer>
+          </div>
         </div>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="text">Spotify Link</Label>
-          <Input
-            id="spotify"
-            name="spotify"
-            placeholder="Enter your Spotify link"
-            type="text"
-            value={formData.spotify}
-            onChange={handleChange}
-            required
-          />
-        </LabelInputContainer>
+
         <Button
           type="submit"
-          variant="outline"
-          size="sm"
-          className="w-full py-2 text-white"
+          size="lg"
+          className="mt-8 w-full"
           disabled={isPending || isConfirming}
         >
           {isConnected ? (
             isPending ? (
-              <div className="inline-flex items-center gap-4">
-                <CgSpinner className="h-4 w-4 animate-spin" /> Confirm In Your
+              <div className="inline-flex items-center gap-2">
+                <LuLoader2 className="h-4 w-4 animate-spin" /> Confirm In Your
                 Wallet...
               </div>
             ) : isConfirming ? (
-              <div className="inline-flex items-center gap-4">
-                <CgSpinner className="h-4 w-4 animate-spin" /> Submitting...
+              <div className="inline-flex items-center gap-2">
+                <LuLoader2 className="h-4 w-4 animate-spin" /> Launching...
               </div>
-            ) : !hasViewedCompletedTransaction && isConfirmed ? (
-              <div className="inline-flex items-center gap-4">
-                View Transaction
+            ) : isConfirmed ? (
+              <div className="inline-flex items-center gap-2">
+                <LuLoader2 className="h-4 w-4 animate-spin" />
+                Launching...
               </div>
             ) : (
               "Create Token"
@@ -233,45 +238,10 @@ function CreateArtistToken() {
           ) : (
             "Connect Wallet"
           )}
-          <BottomGradient />
         </Button>
-        {/* <button
-                          className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
-                          type="submit"
-                        
-                          Create
-                          <BottomGradient />
-                        </button> */}
-        <div className="my-8 h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-700" />
-        <p className="text-center text-xs">
-          Support for liquidity pools coming soon 🚀
-        </p>
       </form>
     </div>
   );
 }
-
-const BottomGradient = () => {
-  return (
-    <>
-      <span className="absolute inset-x-0 -bottom-px block h-px w-full bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-0 transition duration-500 group-hover/btn:opacity-100" />
-      <span className="absolute inset-x-10 -bottom-px mx-auto block h-px w-1/2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-0 blur-sm transition duration-500 group-hover/btn:opacity-100" />
-    </>
-  );
-};
-
-const LabelInputContainer = ({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => {
-  return (
-    <div className={cn("flex w-full flex-col space-y-2", className)}>
-      {children}
-    </div>
-  );
-};
 
 export default CreateArtistToken;

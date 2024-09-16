@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import CreateTokenForm from "@/partials/token/CreateTokenForm";
 import { motion, AnimatePresence } from "framer-motion";
 
-function NoArtistToken() {
+function NoArtistToken({ onTokenCreated }: { onTokenCreated: () => void }) {
   const [opendialog, setOpendialog] = useState(false);
 
   return (
@@ -38,7 +38,7 @@ function NoArtistToken() {
               </Button>
             </DialogTrigger>
             <DialogContent>
-              <CreateTokenForm />
+              <CreateTokenForm onTokenCreated={onTokenCreated} />
             </DialogContent>
           </Dialog>
         </div>

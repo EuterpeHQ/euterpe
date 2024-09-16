@@ -1,13 +1,14 @@
 "use client";
-
 import React, { useEffect, useRef, useState } from "react";
 import { ConnectButton as OriginalConnectButton } from "@rainbow-me/rainbowkit";
 import { Button } from "@/components/ui/button";
-import { IoWalletOutline } from "react-icons/io5";
 import Link from "next/link";
 import Transition from "@/lib/Transition";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useDisconnect } from "wagmi";
+import Image from "next/image";
+import WhiteWalletIcon from "@/assets/icons/wallet-white.png";
+import WalletIcon from "@/assets/icons/wallet.png";
 
 function ConnectButton({ align }: { align?: "left" | "right" }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -15,7 +16,6 @@ function ConnectButton({ align }: { align?: "left" | "right" }) {
   const trigger = useRef<HTMLButtonElement>(null);
   const dropdown = useRef<HTMLDivElement>(null);
 
-  // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }: { target: any }) => {
       if (!dropdown.current || !trigger.current) return;
@@ -31,7 +31,6 @@ function ConnectButton({ align }: { align?: "left" | "right" }) {
     return () => document.removeEventListener("click", clickHandler);
   });
 
-  // close if the esc key is pressed
   useEffect(() => {
     const keyHandler = (event: KeyboardEvent) => {
       if (!dropdownOpen || event.key !== "Escape") return;
@@ -65,7 +64,7 @@ function ConnectButton({ align }: { align?: "left" | "right" }) {
 
         return (
           <div
-            className="relative inline-flex min-w-36 cursor-pointer justify-end"
+            className="relative inline-flex min-w-fit cursor-pointer justify-end"
             {...(!ready && {
               "aria-hidden": true,
               style: {
@@ -80,10 +79,14 @@ function ConnectButton({ align }: { align?: "left" | "right" }) {
                 return (
                   <Button
                     onClick={openConnectModal}
-                    className="gap-3"
+                    className="gap-1 rounded-[8px] px-3 py-1.5 text-[0.625rem]"
                     size="sm"
                   >
-                    <IoWalletOutline className="h-4 w-4" />
+                    <Image
+                      src={WalletIcon}
+                      alt="Wallet Icon"
+                      className="h-4 w-4"
+                    />
                     Connect Wallet
                   </Button>
                 );
@@ -91,22 +94,49 @@ function ConnectButton({ align }: { align?: "left" | "right" }) {
 
               if (chain.unsupported) {
                 return (
-                  <Button onClick={openChainModal} className="gap-3" size="sm">
-                    <IoWalletOutline className="h-4 w-4" />
+                  <Button
+                    onClick={openChainModal}
+                    className="gap-1 rounded-[8px] border-[0.5px] border-destructive-foreground bg-destructive px-3 py-1.5 text-[0.625rem] text-white hover:bg-destructive/15"
+                    size="sm"
+                  >
+                    <Image
+                      src={WhiteWalletIcon}
+                      alt="Wallet Icon"
+                      className="h-4 w-4"
+                    />
                     Wrong network
                   </Button>
                 );
               }
 
               return (
-                <div className="inline-flex items-center justify-center">
+                <div className="inline-flex items-center gap-4">
+                  <button
+                    ref={trigger}
+                    aria-haspopup="true"
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                    aria-expanded={dropdownOpen}
+                  >
+                    <div className="flex items-center gap-2 truncate rounded-[8px] bg-border px-3 py-1.5">
+                      <span className="truncate text-[0.688rem] font-medium">
+                        {account.displayName}
+                      </span>
+                      <svg
+                        className="h-2 w-2 shrink-0 fill-current text-muted-foreground"
+                        viewBox="0 0 12 12"
+                      >
+                        <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
+                      </svg>
+                    </div>
+                  </button>
+
                   <Avatar
                     onClick={openAccountModal}
-                    className="h-8 w-8 rounded-full"
+                    className="h-6 w-6 rounded-full bg-[#FFAE65]"
                   >
                     <AvatarImage
                       className="h-full w-full"
-                      src={`https://i.pravatar.cc/300`}
+                      src="https://api.dicebear.com/9.x/notionists/svg?seed=Felix"
                     />
                     <AvatarFallback className="relative bg-black/5">
                       <svg
@@ -123,32 +153,13 @@ function ConnectButton({ align }: { align?: "left" | "right" }) {
                       </svg>
                     </AvatarFallback>
                   </Avatar>
-
-                  <button
-                    ref={trigger}
-                    aria-haspopup="true"
-                    onClick={() => setDropdownOpen(!dropdownOpen)}
-                    aria-expanded={dropdownOpen}
-                  >
-                    <div className="ml-2 flex items-center truncate rounded-md bg-card/65 p-1">
-                      <span className="ml-2 truncate font-federant text-sm font-medium group-hover:text-slate-800 dark:text-slate-300 dark:group-hover:text-slate-200">
-                        {account.displayName}
-                      </span>
-                      <svg
-                        className="ml-1 h-2 w-2 shrink-0 fill-current text-muted-foreground"
-                        viewBox="0 0 12 12"
-                      >
-                        <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
-                      </svg>
-                    </div>
-                  </button>
                 </div>
               );
             })()}
 
             {/* @ts-expect-error */}
             <Transition
-              className={`absolute top-full z-10 mt-1 min-w-44 origin-top-right overflow-hidden rounded border border-slate-200 bg-white py-1.5 shadow-lg dark:border-card/65 dark:bg-surface ${align === "right" ? "right-0" : "left-0"}`}
+              className={`absolute top-full z-10 mt-1 min-w-44 origin-top-right overflow-hidden rounded border bg-white py-1.5 shadow-lg dark:border-card/65 dark:bg-surface ${align === "right" ? "right-0" : "left-0"}`}
               show={dropdownOpen}
               enter="transition ease-out duration-200 transform"
               enterStart="opacity-0 -translate-y-2"
@@ -162,9 +173,8 @@ function ConnectButton({ align }: { align?: "left" | "right" }) {
                 onFocus={() => setDropdownOpen(true)}
                 onBlur={() => setDropdownOpen(false)}
               >
-                <div className="mb-1 border-b border-slate-200 px-3 pb-2 pt-0.5 dark:border-slate-700">
-                  <div className="font-federant font-medium text-slate-800 dark:text-slate-100">
-                    {/* 12,531 ETP */}
+                <div className="mb-1 border-b-2 px-3 pb-2 pt-0.5">
+                  <div className="font-medium text-white">
                     {account?.displayBalance}
                   </div>
                   <div
@@ -205,7 +215,7 @@ function ConnectButton({ align }: { align?: "left" | "right" }) {
                   <li>
                     <Link
                       className="flex items-center px-3 py-1 text-sm font-medium text-white/80 hover:text-primary dark:hover:text-primary"
-                      href="/profile/connect-wallet"
+                      href="/profile"
                       onClick={() => setDropdownOpen(!dropdownOpen)}
                     >
                       Settings
@@ -224,10 +234,12 @@ function ConnectButton({ align }: { align?: "left" | "right" }) {
                     </Link>
                     <Link
                       className="flex items-center px-3 py-1 text-sm font-medium text-white/80 hover:text-primary dark:hover:text-primary"
-                      href="#"
+                      href="/welcome"
                       onClick={() => {
                         setDropdownOpen(!dropdownOpen);
+                        disconnect();
                       }}
+                      replace
                     >
                       Logout
                     </Link>
