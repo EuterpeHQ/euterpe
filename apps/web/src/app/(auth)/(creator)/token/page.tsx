@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { abi as artistTokenFactoryAbi } from "@/abis/ArtistTokenFactory";
 import { abi as artistTokenAbi } from "@/abis/ArtistToken";
 import { useAccount } from "wagmi";
@@ -11,12 +11,14 @@ import { config } from "@/providers/web3";
 import { formatEther } from "viem";
 import ArtistTokenSkeleton from "@/partials/token/ArtistTokenSkeleton";
 import NoArtistToken from "@/partials/token/NoArtistToken";
+import { watchAsset } from "@/lib/web3";
 
 function Page() {
   const { address } = useAccount();
   const [isLoading, setIsLoading] = useState(true);
   const [artistToken, setArtistToken] = useState<ArtistTokenProps | null>(null);
   const [isTokenCreated, setIsTokenCreated] = useState(false);
+  const hasWatchedAsset = useRef(false);
 
   const fetchArtistToken = async () => {
     const tokenAddresses = [];
@@ -99,6 +101,17 @@ function Page() {
 
     fetchArtistTokenAsync();
   }, [address, isTokenCreated]);
+
+  useEffect(() => {
+    async function watchAssetAsync() {
+      if (artistToken && !hasWatchedAsset.current) {
+        const result = await watchAsset(artistToken);
+        hasWatchedAsset.current = result;
+      }
+    }
+
+    watchAssetAsync();
+  }, [artistToken]);
 
   return (
     <div className="max-w-9xl mx-auto flex h-full w-full flex-col px-5 pb-5">

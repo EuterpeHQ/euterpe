@@ -167,7 +167,7 @@ function CreateArtistToken({ onTokenCreated }: { onTokenCreated: () => void }) {
       <form className="mt-8" onSubmit={handleSubmit}>
         {buyError && (
           <div className="mb-5 flex items-center rounded-md bg-orange-600/10 p-4 text-sm font-medium text-orange-600/60">
-            <BiError className="mr-2 h-4 w-4 text-orange-600/50" />
+            <BiError className="mr-2 mt-0.5 h-4 w-4 shrink-0 text-orange-600/50" />
             {/* @ts-expect-error */}
             {buyError.shortMessage}
           </div>

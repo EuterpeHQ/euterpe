@@ -10,7 +10,11 @@ import {
 } from "@wagmi/core";
 import { config } from "@/providers/web3";
 import { formatEther, parseEther } from "viem";
-import type { BaseError, WriteContractErrorType } from "@wagmi/core";
+import type {
+  BaseError,
+  ReadContractErrorType,
+  WriteContractErrorType,
+} from "@wagmi/core";
 
 /**
  * [KNOWN ERROR]
@@ -88,6 +92,55 @@ export async function getArtistTokens() {
   }
 
   return tokens;
+}
+
+export async function getArtistTokenByAddress(tokenAddress: `0x${string}`) {
+  try {
+    const tokenDetails = await readContracts(config, {
+      contracts: [
+        {
+          address: tokenAddress as `0x${string}`,
+          abi: artistTokenAbi,
+          functionName: "name",
+        },
+        {
+          address: tokenAddress as `0x${string}`,
+          abi: artistTokenAbi,
+          functionName: "symbol",
+        },
+        {
+          address: tokenAddress as `0x${string}`,
+          abi: artistTokenAbi,
+          functionName: "totalSupply",
+        },
+        {
+          address: tokenAddress as `0x${string}`,
+          abi: artistTokenAbi,
+          functionName: "artist",
+        },
+        {
+          address: tokenAddress as `0x${string}`,
+          abi: artistTokenAbi,
+          functionName: "owner",
+        },
+      ],
+    });
+
+    return {
+      data: {
+        address: tokenAddress,
+        name: tokenDetails[0].result as string,
+        symbol: tokenDetails[1].result as string,
+        totalSupply: formatEther(tokenDetails[2].result as bigint),
+        value: "0",
+        artistName: tokenDetails[3].result as string,
+        owner: tokenDetails[4].result as `0x${string}`,
+      },
+      error: null,
+    };
+  } catch (error) {
+    return { data: null, error: error as ReadContractErrorType };
+  }
 }
 
 export async function getArtistTokenByArtistAddress(

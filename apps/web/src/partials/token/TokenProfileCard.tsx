@@ -17,7 +17,6 @@ export default function TokenProfileCard(props: ArtistTokenProps) {
       try {
         setIsLoading(true);
         const status = await getTokenStatus(props.address);
-        console.log("status", status);
         setIsLive(status);
       } catch (error) {
         console.error("Error fetching token status:", error);
