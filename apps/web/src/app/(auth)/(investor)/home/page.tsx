@@ -433,13 +433,15 @@ function TopToken() {
 
   if (isPending) {
     return (
-      <div className="flex h-full items-center justify-center">Loading...</div>
+      <div className="flex h-72 w-full items-center justify-center px-3 pb-10">
+        Loading...
+      </div>
     );
   }
 
   if (error) {
     return (
-      <div className="flex h-full items-center justify-center">
+      <div className="flex h-72 w-full items-center justify-center px-3 pb-10 ">
         Error loading tokens
       </div>
     );
