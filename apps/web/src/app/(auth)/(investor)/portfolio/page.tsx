@@ -21,6 +21,7 @@ import { cn } from "@/lib/utils";
 import {  Tooltip,TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import  Image from "next/image";
 import CoinIcon from "@/assets/icons/coin-vertical.svg";
+import { useRouter } from "next/navigation";
 
 
 
@@ -304,10 +305,14 @@ function BestBuy() {
 }
 
 function Assets() {
+  const router = useRouter();
+  const allAssets = () => {
+    router.push("/assets")
+  }
   return (
     <section className="w-full lg:w-[70%] pb-10 rounded-[16px] border-[0.5px] bg-white/[0.02] px-3 lg:h-96">
         <div className="mt-4 ms-1.5 flex justify-start items-center gap-x-4">
-              <h2 className="text-lg">All assets</h2>
+              <h2 onClick={allAssets} className="text-lg cursor-pointer">All assets</h2>
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>

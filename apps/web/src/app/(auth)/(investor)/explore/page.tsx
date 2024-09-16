@@ -1,7 +1,13 @@
-import React from "react";
+"use client"
+import AllTokens from "@/partials/explore/AllTokens";
 
-function Page() {
-  return <div>Explore</div>;
+export default function Page() {
+
+
+  return (
+    <>
+
+     <AllTokens />
+    </>
+  )
 }
-
-export default Page;
